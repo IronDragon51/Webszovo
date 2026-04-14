@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FERRO — Borbélyszalon Budapest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;background:#0a0908;color:#f4f0ea;-webkit-font-smoothing:antialiased}
+
+        .hero{height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+        .hero-img{position:absolute;inset:0}
+        .hero-img img{width:100%;height:100%;object-fit:cover}
+        .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,9,8,.7) 0%,rgba(10,9,8,.1) 40%,rgba(10,9,8,.15) 100%)}
+        .hero-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:24px 40px}
+        .hero-nav a{color:#f4f0ea;text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;opacity:.8;transition:opacity .2s}
+        .hero-nav a:hover{opacity:1}
+        .nav-logo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;letter-spacing:.06em;opacity:1!important}
+        .hero-content{position:relative;z-index:1;padding:0 40px 64px}
+        .hero-box{display:inline-block;background:rgba(244,240,234,.92);color:#0a0908;padding:14px 28px;font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.5vw,2.6rem);font-weight:600;line-height:1.3;margin-bottom:6px}
+        .hero-scroll{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:1;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;opacity:.5;animation:bob 2s ease-in-out infinite}
+        @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+        .book-bar{text-align:center;padding:48px 24px}
+        .btn{display:inline-block;padding:16px 48px;border:1.5px solid #c8965a;color:#c8965a;text-decoration:none;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;transition:all .25s}
+        .btn:hover{background:#c8965a;color:#0a0908}
+
+        .quote-strip{background:#f4f0ea;color:#0a0908;padding:56px 40px;text-align:center;position:relative}
+        .quote-strip::before,.quote-strip::after{content:"";position:absolute;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,#c8965a 0,#c8965a 8px,transparent 8px,transparent 16px)}
+        .quote-strip::before{top:0}.quote-strip::after{bottom:0}
+        .quote-text{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);font-style:italic;max-width:700px;margin:0 auto 16px;line-height:1.6}
+        .quote-src{font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#c8965a}
+
+        .split{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+        .split-img{overflow:hidden;position:relative}
+        .split-img img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+        .split-img:hover img{transform:scale(1.04)}
+        .split-text{display:flex;flex-direction:column;justify-content:center;padding:64px 56px}
+        .s-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#c8965a;font-weight:600;margin-bottom:16px}
+        .s-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;line-height:1.15;margin-bottom:20px}
+        .s-body{color:#9c9385;font-size:.95rem;line-height:1.75}
+
+        .prices{background:#0f0e0c;padding:80px 40px}
+        .prices-inner{max-width:640px;margin:0 auto}
+        .prices .s-label,.prices .s-title{text-align:center}
+        .prices .s-title{margin-bottom:48px}
+        .pr{display:flex;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(244,240,234,.08)}
+        .pr:last-child{border:none}
+        .pr-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600}
+        .pr-desc{font-size:.78rem;color:#9c9385;margin-top:3px}
+        .pr-dots{flex:1;border-bottom:1px dotted rgba(244,240,234,.15);margin:0 16px;align-self:center}
+        .pr-val{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#c8965a;white-space:nowrap}
+
+        .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr}
+        .gallery img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(30%);transition:filter .4s}
+        .gallery img:hover{filter:grayscale(0)}
+        .gw{grid-column:span 2}
+
+        .info-bar{background:#c8965a;color:#0a0908;padding:56px 40px}
+        .info-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+        .info-grid h4{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:12px}
+        .info-grid p{font-size:.88rem;line-height:1.8;opacity:.85}
+
+        .cta{padding:120px 40px;text-align:center}
+        .cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;margin-bottom:8px}
+        .cta h2 em{font-style:italic;color:#c8965a}
+        .cta p{color:#9c9385;margin-bottom:32px}
+
+        footer{border-top:1px solid rgba(244,240,234,.06);padding:28px 40px;text-align:center;font-size:.75rem;color:#9c9385}
+        .badge{position:fixed;bottom:16px;right:16px;z-index:99;background:rgba(10,9,8,.9);backdrop-filter:blur(8px);border:1px solid rgba(244,240,234,.1);border-radius:100px;padding:8px 16px;font-size:.72rem;color:#9c9385;text-decoration:none;transition:all .2s}
+        .badge:hover{color:#c8965a;border-color:#c8965a}
+        .badge b{color:#c8965a}
+
+        @media(max-width:768px){
+            .hero-nav{padding:16px 20px}.hero-content{padding:0 20px 40px}
+            .split{grid-template-columns:1fr}.split-img{min-height:50vh}
+            .split-text{padding:40px 24px}.gallery{grid-template-columns:1fr 1fr}
+            .info-grid{grid-template-columns:1fr;gap:24px}.prices{padding:60px 24px}
+            .hero-nav a:not(.nav-logo){display:none}
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1800&q=85" alt="Ferro Borbély"></div>
+    <nav class="hero-nav">
+        <div style="display:flex;gap:28px;align-items:center"><a href="#" class="nav-logo">FERRO</a><a href="#arak">Árak</a><a href="#info">Kapcsolat</a></div>
+        <a href="tel:+36301234567" class="btn" style="padding:10px 24px;font-size:.75rem;border-color:rgba(244,240,234,.4);color:#f4f0ea">Időpont</a>
+    </nav>
+    <div class="hero-content">
+        <div class="hero-box">Ahol a stílus</div><br>
+        <div class="hero-box">precizitással találkozik</div>
+    </div>
+    <div class="hero-scroll">↓</div>
+</section>
+
+<div class="book-bar"><a href="tel:+36301234567" class="btn">Időpont foglalás</a></div>
+
+<div class="quote-strip">
+    <p class="quote-text">„A Ferro nem egyszerűen egy borbélyszalon — ez az a hely, ahol a precizitás és a stílus természetesen találkozik. Budapest egyik legjobb választása."</p>
+    <p class="quote-src">— Budapest Magazine</p>
+</div>
+
+<section class="split">
+    <div class="split-img"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1000&q=80" alt="Borbély"></div>
+    <div class="split-text">
+        <div class="s-label">A szalon</div>
+        <h2 class="s-title">Klasszikus borbélymesterség,<br>modern precizitással</h2>
+        <p class="s-body">A Ferro 2019 óta Budapest VII. kerületében fogadja vendégeit. Minden borbélyunk tapasztalt szakember — a klasszikus ollós vágástól a skin fade-ig, a forró törölközős borotválástól a szakálligazításig.<br><br>Prémium termékekkel és odafigyeléssel dolgozunk, mert hisszük, hogy a stílus nem opció — alapvetés.</p>
+    </div>
+</section>
+
+<section class="split" style="direction:rtl">
+    <div class="split-img" style="direction:ltr"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1000&q=80" alt="Interior"></div>
+    <div class="split-text" style="direction:ltr">
+        <div class="s-label">A csapat</div>
+        <h2 class="s-title">Borbélyaink</h2>
+        <p class="s-body"><strong>Márk</strong> — Alapító, 12 év tapasztalat. Fade és klasszikus frizurák specialistája.<br><br><strong>Dani</strong> — Senior borbély. A szakáll művésze — precíz kontúr, tökéletes forma.<br><br><strong>Bence</strong> — Kreatív stílusok, modern textúrák. A fiatal generáció kedvence.</p>
+    </div>
+</section>
+
+<section class="prices" id="arak">
+    <div class="prices-inner">
+        <div class="s-label">Szolgáltatások</div>
+        <h2 class="s-title">Árlista</h2>
+        <div class="pr"><div><div class="pr-name">Hajvágás</div><div class="pr-desc">Konzultáció, mosás, vágás, styling</div></div><div class="pr-dots"></div><div class="pr-val">5.500 Ft</div></div>
+        <div class="pr"><div><div class="pr-name">Fade hajvágás</div><div class="pr-desc">Skin fade, mid fade, low fade</div></div><div class="pr-dots"></div><div class="pr-val">6.500 Ft</div></div>
+        <div class="pr"><div><div class="pr-name">Szakálligazítás</div><div class="pr-desc">Gépi és pengés formázás</div></div><div class="pr-dots"></div><div class="pr-val">3.500 Ft</div></div>
+        <div class="pr"><div><div class="pr-name">Hajvágás + szakáll</div><div class="pr-desc">Teljes csomag, ~50 perc</div></div><div class="pr-dots"></div><div class="pr-val">8.500 Ft</div></div>
+        <div class="pr"><div><div class="pr-name">Forró törölközős borotválás</div><div class="pr-desc">Klasszikus borotvakéssel</div></div><div class="pr-dots"></div><div class="pr-val">4.500 Ft</div></div>
+        <div class="pr"><div><div class="pr-name">VIP csomag</div><div class="pr-desc">Haj + szakáll + borotválás + masszázs</div></div><div class="pr-dots"></div><div class="pr-val">12.000 Ft</div></div>
+    </div>
+</section>
+
+<div class="gallery">
+    <img class="gw" src="https://images.unsplash.com/photo-1585747860019-8e8ef1ee9bba?w=800&q=75" alt="" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500&q=75" alt="" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1596728325488-58c87691e9af?w=500&q=75" alt="" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1634480155729-89e1ce4e9bdc?w=500&q=75" alt="" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1593702288056-7927b442d0fa?w=500&q=75" alt="" loading="lazy">
+    <img class="gw" src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&q=75" alt="" loading="lazy">
+</div>
+
+<div class="info-bar" id="info">
+    <div class="info-grid">
+        <div><h4>Cím</h4><p>1073 Budapest<br>Erzsébet körút 42.<br>Bejárat az udvarból</p></div>
+        <div><h4>Nyitvatartás</h4><p>H–P: 9:00 – 20:00<br>Sz: 9:00 – 17:00<br>V: Zárva</p></div>
+        <div><h4>Kapcsolat</h4><p>+36 30 123 4567<br>info@ferroborbely.hu<br>@ferrobarbershop</p></div>
+    </div>
+</div>
+
+<section class="cta" id="idopont">
+    <h2>Készen áll a <em>változásra</em>?</h2>
+    <p>Foglaljon időpontot telefonon vagy Instagramon.</p>
+    <a href="tel:+36301234567" class="btn" style="font-size:.9rem;padding:18px 48px">+36 30 123 4567</a>
+</section>
+
+<footer>© 2026 FERRO Borbély — Budapest</footer>
+<a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+</body>
+</html>
