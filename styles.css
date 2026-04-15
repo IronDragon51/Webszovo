@@ -5,7 +5,7 @@
     --text-muted: #6B6960;
     --accent: #2D5A27;
     --accent-light: #3D7A35;
-    --accent-bg: #E8F0E6;
+    --accent-bg: #e8f0e6f1;
     --white: #FFFFFF;
     --border: #DDD8CE;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.05);
@@ -186,20 +186,21 @@ nav .container {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--accent-bg);
+    /* background: var(--accent-bg); */
+    background: rgba(40, 184, 83, 0.185);
     color: var(--accent);
     padding: 6px 16px;
     border-radius: 100px;
-    font-size: 0.82rem;
+    font-size: 1rem;
     font-weight: 600;
     margin-bottom: 28px;
     animation: badgeFloat 3s ease-in-out infinite;
 }
 
-@keyframes badgeFloat {
+/* @keyframes badgeFloat {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-4px); }
-}
+} */
 
 .hero-badge::before {
     content: "";
@@ -212,7 +213,7 @@ nav .container {
 }
 
 @keyframes dotPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
+    0%, 100% { opacity: 1; transform: scale(1.1); }
     50% { opacity: 0.5; transform: scale(0.7); }
 }
 
