@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D5A27'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='sans-serif' fill='white' font-weight='bold'>W</text></svg>">
@@ -47,6 +47,7 @@
 
     <!-- HERO -->
     <section class="hero">
+        <div class="hero-glow"></div>
         <div class="container">
             <div class="hero-badge">Ingyenes mintaoldal, kötelezettség nélkül</div>
             <h1>Modern weboldal,<br>ami <em>ügyfeleket hoz</em></h1>
@@ -70,6 +71,8 @@
             </div>
         </div>
     </div>
+
+    <div class="section-divider"><span class="divider-dot"></span></div>
 
     <!-- SERVICES -->
     <section id="szolgaltatasok">
@@ -554,6 +557,11 @@
             });
         });
 
+        // Nav shadow on scroll
+        const navEl = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            navEl.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
 
         // FAQ accordion
         document.querySelectorAll('.faq-q').forEach(btn => {
@@ -569,10 +577,10 @@
             });
         });
 
-        // Scroll animations
+        // Scroll animations with stagger
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
         // Contact form
