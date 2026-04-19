@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.65;
@@ -34,7 +34,7 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Sora', 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -71,7 +71,7 @@ nav .container {
 }
 
 .logo {
-    font-family: 'Sora', 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 1.35rem;
     color: var(--accent);
@@ -101,7 +101,7 @@ nav .container {
     background: var(--accent);
     color: var(--white) !important;
     padding: 10px 22px;
-    border-radius: 100px;
+    border-radius: 6px;
     font-weight: 600;
     transition: background 0.2s, transform 0.15s;
 }
@@ -177,19 +177,416 @@ nav .container {
     100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 }
 
-/* 3D Canvas */
-#hero3d {
+/* ═══════════════════════════════════════════
+   HERO STAGE — centered, with web animation
+   ═══════════════════════════════════════════ */
+.hero-stage {
+    position: static;   /* was: relative — let .hero be the positioning context */
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 96px 32px;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SVG web fills the stage and sits behind content */
+.hero-web {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
     pointer-events: none;
+    overflow: visible;
 }
 
-.hero:hover #hero3d {
-    pointer-events: auto;
+.hero-web .web-line {
+    stroke: #2D5A27;
+    stroke-width: 0.7;
+    opacity: 0;
+    fill: none;
 }
+
+.hero-web .web-dot {
+    fill: #2D5A27;
+    opacity: 0;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 640px;
+}
+
+/* Brand wordmark — Playfair serif, large, italic */
+.hero-wordmark {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 7vw, 5rem);
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+/* Make the regular H1 a touch smaller now that wordmark leads */
+.hero h1 {
+    font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 14px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero h1 em {
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    background: none;
+    -webkit-text-fill-color: var(--accent);
+    color: var(--accent);
+}
+
+.hero p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+}
+
+/* When SVG is "drawn", let dots gently breathe */
+.hero-web.assembled .web-dot {
+    animation: webDotBreathe 4s ease-in-out infinite !important;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+@keyframes webDotBreathe {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.15); }
+}
+
+@keyframes webDraw {
+    0%   { opacity: 0; stroke-dashoffset: var(--len, 600); }
+    30%  { opacity: 0.32; }
+    100% { opacity: 0.22; stroke-dashoffset: 0; }
+}
+
+@keyframes webDotIn {
+    0%   { opacity: 0; transform: scale(0); }
+    60%  { opacity: 0.85; transform: scale(1.4); }
+    100% { opacity: 0.45; transform: scale(1); }
+}
+
+.web-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+
+/* ═══════════════════════════════════════════
+   DEMO PREVIEW MOCKUPS — refined per demo
+   Realistic mini-screenshots that reflect each
+   demo's actual color palette + typography.
+   ═══════════════════════════════════════════ */
+.preview-screen {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shared tiny preview building blocks */
+.dp-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.dp-nav.dark { border-bottom-color: rgba(238, 240, 244, 0.08); }
+.dp-nav.dark-warm { border-bottom-color: rgba(244, 240, 234, 0.12); }
+
+.dp-nav-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.5rem;
+    letter-spacing: 0.04em;
+    color: #6b7280;
+}
+.dp-nav-links .muted { color: rgba(238, 240, 244, 0.55); }
+.dp-nav-links .muted-warm { color: rgba(244, 240, 234, 0.55); }
+
+.dp-nav-cta {
+    background: #1a2332;
+    color: #faf9f7;
+    padding: 3px 8px;
+    font-size: 0.46rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.dp-nav-cta.yellow {
+    background: #FFD23F;
+    color: #0b0c10;
+    font-weight: 800;
+}
+.dp-nav-cta-outline {
+    color: #c8965a;
+    border: 1px solid #c8965a;
+    padding: 3px 8px;
+    font-size: 0.46rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dp-eyebrow {
+    font-size: 0.46rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8b7355;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.dp-eyebrow.yellow { color: #FFD23F; }
+
+.dp-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: #1a2332;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.dp-h1 em { font-style: italic; color: #8b7355; font-weight: 600; }
+
+.dp-h1-bold {
+    font-size: 1rem;
+    color: #eef0f4;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.dp-mini-sub {
+    font-size: 0.45rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFD23F;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.dp-sub-line {
+    height: 2px;
+    width: 80%;
+    background: rgba(26, 35, 50, 0.15);
+    margin-bottom: 4px;
+    border-radius: 2px;
+}
+.dp-sub-line.short { width: 50%; margin-bottom: 12px; }
+
+.dp-buttons {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.dp-btn-dark {
+    background: #1a2332;
+    color: #faf9f7;
+    font-size: 0.44rem;
+    padding: 4px 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.dp-btn-ghost {
+    border: 1.5px solid #1a2332;
+    color: #1a2332;
+    font-size: 0.44rem;
+    padding: 4px 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.dp-btn-yellow {
+    background: #FFD23F;
+    color: #0b0c10;
+    font-size: 0.44rem;
+    padding: 4px 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.dp-btn-outline-light {
+    border: 1px solid rgba(238, 240, 244, 0.3);
+    color: #eef0f4;
+    font-size: 0.44rem;
+    padding: 4px 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.dp-btn-outline-gold {
+    border: 1px solid #c8965a;
+    color: #c8965a;
+    font-size: 0.46rem;
+    padding: 4px 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ── Fogászat (cream + tan + dark navy serif) ── */
+.demo-fogaszat { background: #faf9f7; }
+.demo-fogaszat .dp-brand-serif {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6rem;
+    color: #1a2332;
+    font-weight: 600;
+}
+.demo-fogaszat .dp-brand-serif em {
+    color: #8b7355;
+    font-style: italic;
+}
+.dp-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 10px;
+    padding: 12px 14px 8px;
+    align-items: center;
+}
+.dp-hero-text { display: flex; flex-direction: column; }
+.dp-hero-img {
+    height: 72px;
+    border-radius: 4px;
+    background:
+      linear-gradient(135deg, rgba(139, 115, 85, 0.18), rgba(26, 35, 50, 0.22)),
+      radial-gradient(ellipse at 30% 30%, #d9c5a8 0%, #8b7355 60%, #1a2332 120%);
+}
+.dp-trust-bar {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 6px 14px 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.dp-trust-item {
+    text-align: center;
+    font-size: 0.42rem;
+    color: #8b7355;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.dp-trust-item strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    color: #1a2332;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 1px;
+}
+
+/* ── Villany (dark + yellow industrial) ── */
+.demo-villany { background: #0b0c10; }
+.demo-villany .dp-brand-bold {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    color: #eef0f4;
+    font-weight: 800;
+}
+.dp-villany-hero {
+    text-align: center;
+    padding: 14px 14px 8px;
+    background:
+      radial-gradient(ellipse at center, rgba(255, 210, 63, 0.06) 0%, transparent 70%),
+      #0b0c10;
+}
+.dp-bolt {
+    font-size: 1.4rem;
+    color: #FFD23F;
+    line-height: 1;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 6px rgba(255, 210, 63, 0.4));
+}
+.dp-villany-hero .dp-buttons { justify-content: center; }
+.dp-phone-strip {
+    background: #FFD23F;
+    color: #0b0c10;
+    text-align: center;
+    padding: 6px 10px;
+}
+.dp-phone-strip strong {
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    display: block;
+}
+.dp-phone-strip span {
+    font-size: 0.4rem;
+    opacity: 0.7;
+    letter-spacing: 0.06em;
+}
+
+/* ── FERRO (dark warm + serif + gold) ── */
+.demo-ferro { background: #0a0908; }
+.demo-ferro .dp-brand-serif-light {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: #f4f0ea;
+    font-weight: 700;
+}
+.dp-ferro-hero {
+    flex: 1;
+    padding: 26px 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background:
+      linear-gradient(0deg, rgba(10, 9, 8, 0.7) 0%, rgba(10, 9, 8, 0.15) 100%),
+      radial-gradient(ellipse at 30% 60%, #3a2e22 0%, #1a1410 40%, #0a0908 90%);
+    min-height: 110px;
+}
+.dp-ferro-quote-1,
+.dp-ferro-quote-2 {
+    background: rgba(244, 240, 234, 0.92);
+    color: #0a0908;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 11px;
+    line-height: 1.2;
+    margin-bottom: 3px;
+    align-self: flex-start;
+}
+.dp-ferro-strip {
+    text-align: center;
+    padding: 8px 14px;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-web .web-line,
+    .hero-web .web-dot {
+        opacity: 0.35 !important;
+        animation: none !important;
+    }
+}
+
+/* ═══════════════════════════════════════════ */
 
 .hero .container {
     position: relative;
@@ -266,7 +663,7 @@ nav .container {
     background: var(--accent);
     color: var(--white);
     padding: 14px 32px;
-    border-radius: 100px;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
@@ -302,7 +699,7 @@ nav .container {
     background: var(--white);
     color: var(--text);
     padding: 14px 32px;
-    border-radius: 100px;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
@@ -341,7 +738,7 @@ nav .container {
     display: block;
     font-size: 1.75rem;
     color: var(--accent);
-    font-family: 'Sora', 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     letter-spacing: -0.02em;
 }
 
@@ -497,7 +894,7 @@ section {
 }
 
 .step-number {
-    font-family: 'Sora', 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 3rem;
     font-weight: 700;
     color: var(--accent);
@@ -509,7 +906,7 @@ section {
 .step h3 {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
 }
 
@@ -913,7 +1310,7 @@ section {
 }
 
 .price-name {
-    font-family: 'Sora', 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 16px;
@@ -1061,7 +1458,7 @@ section {
     border: none;
     width: 100%;
     text-align: left;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: var(--text);
     font-size: 1.02rem;
 }
@@ -1218,7 +1615,7 @@ section {
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 11px 14px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.92rem;
     color: var(--text);
     background: var(--bg);
@@ -1248,8 +1645,8 @@ section {
     color: var(--white);
     border: none;
     padding: 14px 24px;
-    border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
     font-size: 0.98rem;
     font-weight: 600;
     cursor: pointer;
@@ -1344,7 +1741,7 @@ footer {
     letter-spacing: 0.1em;
     color: rgba(255, 255, 255, 0.3);
     margin-bottom: 16px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .footer-nav a,
@@ -1379,6 +1776,8 @@ footer {
 
 /* ── TABLET ── */
 @media (max-width: 900px) and (min-width: 769px) {
+    .hero-stage { padding: 56px 24px; min-height: 440px; }
+
     .portfolio-grid {
         grid-template-columns: 1fr;
         max-width: 520px;
@@ -1424,7 +1823,26 @@ footer {
     }
 
     .nav-toggle { display: block; }
-    .hero { padding: 128px 0 72px; }
+    .hero { padding: 120px 0 64px; }
+
+    /* New centered hero stage on mobile */
+    .hero-stage {
+        padding: 32px 12px;
+        min-height: 380px;
+    }
+    .hero-wordmark {
+        font-size: clamp(2.6rem, 13vw, 3.6rem);
+        margin-bottom: 12px;
+    }
+    .hero h1 {
+        font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+        margin-bottom: 12px;
+    }
+    .hero p {
+        font-size: 0.92rem;
+        margin-bottom: 22px;
+    }
+
     .trust-items { gap: 32px; }
     section { padding: 72px 0; }
 
