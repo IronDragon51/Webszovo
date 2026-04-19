@@ -179,9 +179,12 @@ nav .container {
 
 /* ═══════════════════════════════════════════
    HERO STAGE — centered, with web animation
+   The SVG web is absolute-positioned against
+   the .hero section (full-bleed), not the stage.
+   The stage just holds the centered text block.
    ═══════════════════════════════════════════ */
 .hero-stage {
-    position: static;   /* was: relative — let .hero be the positioning context */
+    position: static;
     width: 100%;
     max-width: 1080px;
     margin: 0 auto;
@@ -192,7 +195,7 @@ nav .container {
     justify-content: center;
 }
 
-/* SVG web fills the stage and sits behind content */
+/* Full-bleed web: covers the entire hero section, behind everything */
 .hero-web {
     position: absolute;
     inset: 0;
@@ -205,16 +208,31 @@ nav .container {
 
 .hero-web .web-line {
     stroke: #2D5A27;
-    stroke-width: 0.7;
+    stroke-width: 0.8;
     opacity: 0;
     fill: none;
+    transition: opacity 1.2s ease-in-out, stroke-width 1.2s ease-in-out;
+}
+
+/* When a line's node pulses, it briefly glows brighter */
+.hero-web .web-line.glow {
+    opacity: 0.55 !important;
+    stroke-width: 1.1;
 }
 
 .hero-web .web-dot {
     fill: #2D5A27;
     opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
 }
 
+/* When a node is pulsing: brighter and slightly larger */
+.hero-web .web-dot.pulse {
+    opacity: 1;
+    transform: scale(1.6);
+}
 .hero-inner {
     position: relative;
     z-index: 2;
@@ -262,35 +280,35 @@ nav .container {
     line-height: 1.7;
 }
 
-/* When SVG is "drawn", let dots gently breathe */
-.hero-web.assembled .web-dot {
-    animation: webDotBreathe 4s ease-in-out infinite !important;
-    transform-box: fill-box;
-    transform-origin: center;
-}
+/* After the entrance completes, JS adds .assembled to the container.
+   The rest-opacity variable is set per-line by JS based on the line's
+   length (shorter = more prominent). */
 
-@keyframes webDotBreathe {
-    0%, 100% { opacity: 0.45; transform: scale(1); }
-    50% { opacity: 0.75; transform: scale(1.15); }
-}
+/* Web entrance keyframes — line draws in then settles to its rest opacity */
+/* @keyframes webDraw {
+    0%   { opacity: 0; stroke-dashoffset: var(--len, 600); }
+    40%  { opacity: 0.45; }
+    100% { opacity: var(--rest-opacity, 0.2); stroke-dashoffset: 0; }
+} */
 
 @keyframes webDraw {
     0%   { opacity: 0; stroke-dashoffset: var(--len, 600); }
-    30%  { opacity: 0.32; }
-    100% { opacity: 0.22; stroke-dashoffset: 0; }
+    100% { opacity: 0.3; stroke-dashoffset: 0; }
 }
 
 @keyframes webDotIn {
     0%   { opacity: 0; transform: scale(0); }
-    60%  { opacity: 0.85; transform: scale(1.4); }
-    100% { opacity: 0.45; transform: scale(1); }
+    60%  { opacity: 1; transform: scale(1.4); }
+    100% { opacity: 0.7; transform: scale(1); }
 }
 
-.web-dot {
-    transform-box: fill-box;
-    transform-origin: center;
+.hero-web.assembled .web-dot {
+    opacity: 0.7;
 }
 
+.hero-web.assembled .web-line {
+    opacity: 1;
+}
 
 /* ═══════════════════════════════════════════
    DEMO PREVIEW MOCKUPS — refined per demo
