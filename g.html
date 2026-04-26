@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>demo nav</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: #0e0e0e;
+    color: #888;
+    font-family: 'Courier New', monospace;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrap { width: 320px; }
+  .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid #1a1a1a;
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.15s;
+  }
+  a:last-child { border-bottom: none; }
+  a:hover { color: #fff; }
+  a:hover .arrow { color: #e63946; }
+  .name { font-weight: bold; letter-spacing: 0.02em; }
+  .tag { font-size: 0.72rem; color: #444; }
+  .arrow { color: #2a2a2a; font-size: 0.9rem; transition: color 0.15s; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="label">webszövő · demók</div>
+
+  <a href="demo-autoszaki-copyright.html">
+    <span class="name">autoszaki</span>
+    <span class="tag">autószerviz XVIII.</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="demo-tesgarage-copyright.html">
+    <span class="name">tesgarage</span>
+    <span class="tag">autószerviz</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="demo-foliadealer-copyright.html">
+    <span class="name">foliadealer</span>
+    <span class="tag">fóliázás</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="demo-fogaszat.html">
+    <span class="name">fogaszat</span>
+    <span class="tag">fogászat</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="demo-barbershop.html">
+    <span class="name">barbershop</span>
+    <span class="tag">borbély</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="demo-villanyszerelo.html">
+    <span class="name">villanyszerelo</span>
+    <span class="tag">villanyszerelő</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a href="index.html">
+    <span class="name">index</span>
+    <span class="tag">webszovo.hu</span>
+    <span class="arrow">→</span>
+  </a>
+
+</div>
+</body>
+</html>
