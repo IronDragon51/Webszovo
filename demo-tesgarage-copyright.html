@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TES GARAGE — Autószerviz & Autóvillamossági Szerviz</title>
+<meta name="description" content="TES GARAGE — Autószerviz, autóvillamossági szerviz. Gumiszerelés, futóműállítás, HiFi beépítés, ülésfűtés, tolatóradar. Szakszerű javítás.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #E8711A;
+  --orange-l: #FF9040;
+  --dark: #090909;
+  --dark2: #111111;
+  --dark3: #1A1A1A;
+  --white: #FFFFFF;
+  --gray3: #888888;
+  --gray5: #555555;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--dark);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position:relative;
+  width:100%;
+  height:100vh;
+  min-height:560px;
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center; /* image is 1672×941 ≈ 16:9, so cover = no crop on 16:9 viewports */
+  z-index:0;
+  filter:brightness(0.82) contrast(1.05);
+}
+.hero-overlay {
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    radial-gradient(ellipse 55% 90% at 18% 50%, rgba(0,0,0,0.6) 0%, transparent 70%),
+    linear-gradient(to right, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0.08) 62%, rgba(0,0,0,0.50) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, transparent 28%, transparent 68%, rgba(0,0,0,0.70) 100%);
+}
+/* Film grain */
+.hero-grain {
+  position:absolute;
+  inset:0;
+  z-index:2;
+  opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+  pointer-events:none;
+}
+
+/* ─── BRAND ─── */
+.hero-brand {
+  position:absolute;
+  top:38px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+  text-align:center;
+  pointer-events:none;
+}
+.hero-brand-name {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,8vw,8rem);
+  letter-spacing:0.14em;
+  line-height:1;
+  text-shadow:0 2px 40px rgba(0,0,0,0.9);
+  white-space:nowrap;
+}
+.hero-brand-name em { color:var(--orange); font-style:normal; }
+.hero-brand-sub {
+  font-size:clamp(0.6rem,1.1vw,0.74rem);
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.48);
+  margin-top:8px;
+}
+.hero-brand-rule {
+  width:48px;
+  height:2px;
+  background:var(--orange);
+  margin:14px auto 0;
+  box-shadow:0 0 14px rgba(232,113,26,0.7);
+}
+
+/* ─── STAIR NAV ─── */
+/* Each item overlays a specific stair step in tesbg.png */
+.stair-nav {
+  position:absolute;
+  inset:0;
+  z-index:10;
+  pointer-events:none;
+}
+.stair-step {
+  position:absolute;
+  display:flex;
+  align-items:center;
+  gap: 0px;;
+  pointer-events:all;
+  text-decoration:none;
+  cursor:pointer;
+}
+/* Positions calibrated to tesbg.png (1672×941 = 1:1 fill at 1920×1080).
+   Stair step right-edges in image: x≈490,454,418,382,346 (2.2% apart),
+   y≈830,716,602,488,374 (≈12% apart from bottom). */
+   .stair-step:nth-child(1) { left:24%; bottom:68.8%; }
+   .stair-step:nth-child(2) { left:23%; bottom:63.8%; }
+   .stair-step:nth-child(3) { left:22%; bottom:58.2%; }
+   .stair-step:nth-child(4) { left:21%; bottom:52%; }
+   .stair-step:nth-child(5) { left:20%; bottom:45%; }
+
+.step-badge {
+  width:24px;
+  height:24px;
+  border:1.5px solid rgba(232,113,26,0.45);
+  color:rgba(232,113,26,0.9);
+  font-family:'Space Grotesk',monospace;
+  font-size:0.6rem;
+  font-weight:700;
+  letter-spacing:0.04em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  transition:background 0.28s, border-color 0.28s, box-shadow 0.28s, color 0.28s;
+}
+.step-tread {
+  width:28px;
+  height:1px;
+  background:rgba(255,255,255,0.22);
+  transition:width 0.28s ease, background 0.28s;
+}
+.step-label {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:0.875rem;
+  letter-spacing:0.14em;
+  color:rgba(255,255,255,0.6);
+  padding-left:10px;
+  white-space:nowrap;
+  transition:color 0.28s, letter-spacing 0.28s;
+  text-shadow:0 1px 10px rgba(0,0,0,0.95);
+}
+.stair-step:hover .step-badge,
+.stair-step.is-active .step-badge {
+  background:var(--orange);
+  border-color:var(--orange);
+  color:var(--white);
+  box-shadow:0 0 18px rgba(232,113,26,0.7);
+}
+.stair-step:hover .step-tread,
+.stair-step.is-active .step-tread {
+  background:var(--orange);
+  width:44px;
+  box-shadow:0 0 8px rgba(232,113,26,0.4);
+}
+.stair-step:hover .step-label,
+.stair-step.is-active .step-label {
+  color:var(--white);
+  letter-spacing:0.18em;
+}
+
+/* ─── CAR HOTSPOTS ─── */
+.car-layer {
+  position:absolute;
+  inset:0;
+  z-index:6;
+  pointer-events:none;
+}
+.hotspot {
+  position:absolute;
+  pointer-events:all;
+  cursor:crosshair;
+}
+.h-dot {
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--orange);
+  border:2px solid rgba(255,255,255,0.85);
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  animation:hpulse 2.4s ease-in-out infinite;
+  transition:transform 0.18s, box-shadow 0.18s;
+  z-index:2;
+}
+@keyframes hpulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(232,113,26,0.75); }
+  50%      { box-shadow:0 0 0 10px rgba(232,113,26,0); }
+}
+.hotspot:hover .h-dot {
+  transform:translate(-50%,-50%) scale(1.5);
+  animation:none;
+  box-shadow:0 0 24px rgba(232,113,26,0.9);
+}
+.h-area {
+  position:absolute;
+  inset:0;
+  transition:background 0.22s;
+}
+.hotspot:hover .h-area {
+  background:rgba(232,113,26,0.07);
+}
+/* Popup card */
+.h-card {
+  position:absolute;
+  width:210px;
+  background:rgba(7,7,7,0.93);
+  backdrop-filter:blur(20px) saturate(1.3);
+  -webkit-backdrop-filter:blur(20px) saturate(1.3);
+  border:1px solid rgba(232,113,26,0.28);
+  border-radius:6px;
+  padding:14px 16px 16px;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(6px) scale(0.96);
+  transition:opacity 0.22s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  z-index:20;
+  box-shadow:0 8px 40px rgba(0,0,0,0.7);
+}
+.hotspot:hover .h-card {
+  opacity:1;
+  pointer-events:all;
+  transform:translateY(0) scale(1);
+}
+.h-card-icon { font-size:1.3rem; margin-bottom:6px; display:block; }
+.h-card-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;
+  letter-spacing:0.1em;
+  color:var(--orange);
+  margin-bottom:6px;
+}
+.h-card-desc {
+  font-size:0.75rem;
+  color:rgba(255,255,255,0.55);
+  line-height:1.55;
+  margin-bottom:10px;
+}
+.h-tags { display:flex; flex-wrap:wrap; gap:4px; }
+.h-tag {
+  font-size:0.62rem;
+  padding:2px 7px;
+  border:1px solid rgba(232,113,26,0.35);
+  color:rgba(232,113,26,0.85);
+  background:rgba(232,113,26,0.08);
+  border-radius:2px;
+  letter-spacing:0.04em;
+}
+
+/* ─── HOTSPOT POSITIONS ───
+   Image: 1672×941 (16:9). Car occupies ~x36-92%, y38-82%.
+   Dot is always at 50%/50% of its container (centered).
+   Container sized generously for an easy hover target. 
+   
+   komfort & elektronika , gumi & futómű, radar & kamera, autóvilamosság, motor & olajcsere
+   */
+/* Hood — long flat engine cover, upper-centre of car */
+.hs-hood        { left:56%; top:42%; width:130px; height:80px; }
+.hs-hood .h-dot { top:50%; left:50%; }
+.hs-hood .h-card { top:108%; left:-60px; }
+
+/* Windshield — A-pillar / glass area */
+.hs-windshield        { left:44%; top:36%; width:110px; height:75px; }
+.hs-windshield .h-dot { top:50%; left:50%; }
+.hs-windshield .h-card { top:108%; left:-50px; }
+
+/* Door — driver's side body panel (left of car in frame) */
+.hs-door        { left:36%; top:52%; width:100px; height:85px; }
+.hs-door .h-dot { top:50%; left:50%; }
+.hs-door .h-card { bottom:108%; left:-50px; }
+
+/* Front wheel — right-side wheel visible in 3/4 view */
+.hs-wheel        { left:65%; top:66%; width:110px; height:90px; }
+.hs-wheel .h-dot { top:50%; left:50%; }
+.hs-wheel .h-card { bottom:108%; left:-50px; }
+
+/* Front grille / bumper — far right of car */
+.hs-grille        { left:78%; top:57%; width:100px; height:80px; }
+.hs-grille .h-dot { top:50%; left:50%; }
+.hs-grille .h-card { bottom:108%; right:0; left:auto; }
+
+/* ─── SCROLL HINT ─── */
+.scroll-hint {
+  position:absolute;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:7px;
+  opacity:0.42;
+  transition:opacity 0.4s;
+  pointer-events:none;
+}
+.scroll-hint span {
+  font-size:0.6rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+}
+.scroll-bar {
+  width:1px;
+  height:34px;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+  animation:sbar 1.8s ease-in-out infinite;
+}
+@keyframes sbar {
+  0%,100% { transform:scaleY(1); opacity:0.8; }
+  50%      { transform:scaleY(0.5) translateY(10px); opacity:0.15; }
+}
+
+/* ─── COMMON ─── */
+section { padding:96px 0; }
+.container { max-width:1160px; margin:0 auto; padding:0 28px; }
+.sec-eyebrow {
+  font-size:0.68rem;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:10px;
+}
+.sec-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  letter-spacing:0.07em;
+  line-height:1;
+}
+.sec-rule {
+  width:44px;
+  height:2px;
+  background:var(--orange);
+  margin-top:14px;
+  box-shadow:0 0 10px rgba(232,113,26,0.5);
+}
+
+/* ─── SERVICES ─── */
+#services { background:var(--dark2); }
+.srv-intro {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:32px;
+  margin-bottom:52px;
+  flex-wrap:wrap;
+}
+.srv-intro-lead {
+  font-size:0.95rem;
+  color:rgba(255,255,255,0.42);
+  line-height:1.75;
+  max-width:400px;
+}
+.srv-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.05);
+}
+.srv-card {
+  background:var(--dark2);
+  padding:34px 28px 32px;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.25s;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.srv-card::after {
+  content:'';
+  position:absolute;
+  bottom:0; left:0;
+  width:0; height:2px;
+  background:var(--orange);
+  transition:width 0.3s ease;
+}
+.srv-card:hover { background:var(--dark3); }
+.srv-card:hover::after { width:100%; }
+.srv-card-n {
+  position:absolute;
+  top:14px; right:18px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem;
+  color:rgba(255,255,255,0.03);
+  line-height:1;
+  pointer-events:none;
+}
+.srv-icon { font-size:1.8rem; display:block; }
+.srv-name {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.45rem;
+  letter-spacing:0.07em;
+}
+.srv-desc { font-size:0.82rem; color:var(--gray3); line-height:1.65; }
+
+/* ─── ABOUT ─── */
+#about { background:var(--dark); }
+.about-layout {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:72px;
+  align-items:center;
+  margin-top:52px;
+}
+.about-body p {
+  font-size:0.95rem;
+  color:rgba(255,255,255,0.48);
+  line-height:1.85;
+  margin-bottom:18px;
+}
+.about-body p:last-child { margin-bottom:0; }
+.stats-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+}
+.stat {
+  background:var(--dark2);
+  padding:28px 24px;
+  position:relative;
+}
+.stat::before {
+  content:'';
+  position:absolute;
+  top:0; left:0;
+  width:2px; height:100%;
+  background:var(--orange);
+}
+.stat-n {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.2rem;
+  color:var(--orange);
+  line-height:1;
+  letter-spacing:0.04em;
+}
+.stat-l {
+  font-size:0.75rem;
+  color:var(--gray3);
+  letter-spacing:0.06em;
+  margin-top:4px;
+}
+
+/* ─── CONTACT ─── */
+#contact { background:var(--dark2); }
+.contact-layout {
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:64px;
+  margin-top:52px;
+}
+.cinfo-list { display:flex; flex-direction:column; }
+.cinfo-row {
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  padding:22px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.cinfo-row:last-child { border-bottom:none; }
+.cinfo-ico {
+  width:42px; height:42px;
+  flex-shrink:0;
+  background:rgba(232,113,26,0.08);
+  border:1px solid rgba(232,113,26,0.2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem;
+}
+.cinfo-lbl {
+  font-size:0.65rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:3px;
+}
+.cinfo-val { font-size:0.95rem; font-weight:500; }
+.cinfo-sub { font-size:0.75rem; color:var(--gray3); margin-top:2px; }
+
+/* Form */
+.c-form { display:flex; flex-direction:column; gap:14px; }
+.f-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.f-group { display:flex; flex-direction:column; gap:7px; }
+.f-lbl {
+  font-size:0.65rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--gray3);
+}
+.f-input,.f-area {
+  background:var(--dark);
+  border:1px solid rgba(255,255,255,0.08);
+  color:var(--white);
+  padding:12px 14px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.88rem;
+  outline:none;
+  border-radius:0;
+  transition:border-color 0.2s;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.f-input::placeholder,.f-area::placeholder { color:var(--gray5); }
+.f-input:focus,.f-area:focus { border-color:var(--orange); }
+.f-area { resize:vertical; min-height:110px; }
+.f-btn {
+  align-self:flex-start;
+  background:var(--orange);
+  color:var(--white);
+  border:none;
+  padding:14px 36px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;
+  letter-spacing:0.14em;
+  cursor:pointer;
+  transition:background 0.2s, transform 0.15s;
+}
+.f-btn:hover { background:var(--orange-l); transform:translateY(-1px); }
+.f-btn:active { transform:translateY(0); }
+
+/* ─── FOOTER ─── */
+footer {
+  background:#040404;
+  border-top:1px solid rgba(255,255,255,0.04);
+  padding:28px 0;
+}
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.footer-logo {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.25rem;
+  letter-spacing:0.16em;
+}
+.footer-logo em { color:var(--orange); font-style:normal; }
+.footer-copy { font-size:0.72rem; color:var(--gray5); }
+.footer-copy a { color:var(--orange); text-decoration:none; }
+.footer-copy a:hover { text-decoration:underline; }
+
+/* ─── MOBILE ─── */
+@media (max-width:900px) {
+  .srv-grid { grid-template-columns:1fr 1fr; }
+  .about-layout,.contact-layout { grid-template-columns:1fr; gap:48px; }
+}
+@media (max-width:600px) {
+  .srv-grid { grid-template-columns:1fr; }
+  .f-row { grid-template-columns:1fr; }
+  .h-card { display:none; }
+  .stair-nav { display:none; }
+  .mobile-nav { display:flex !important; }
+}
+.mobile-nav { display:none; }
+.mobile-nav {
+  position:fixed;
+  bottom:0; left:0; right:0;
+  background:rgba(9,9,9,0.96);
+  backdrop-filter:blur(12px);
+  border-top:1px solid rgba(232,113,26,0.2);
+  z-index:100;
+  padding:0;
+}
+.mobile-nav a {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:10px 4px 12px;
+  text-decoration:none;
+  color:rgba(255,255,255,0.5);
+  font-size:0.58rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  gap:4px;
+  transition:color 0.2s;
+}
+.mobile-nav a:hover { color:var(--orange); }
+.mobile-nav a span { font-size:1.1rem; }
+
+/* ─── REVEAL ─── */
+.reveal {
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in-view { opacity:1; transform:translateY(0); }
+.reveal-d1 { transition-delay:0.1s; }
+.reveal-d2 { transition-delay:0.2s; }
+.reveal-d3 { transition-delay:0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero" id="home">
+  <img class="hero-bg" src="tesbg.png" alt="TES GARAGE műhely">
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+
+  <!-- Brand -->
+  <div class="hero-brand">
+    <div class="hero-brand-name">TES <em>GARAGE</em></div>
+    <div class="hero-brand-sub">Autószerviz &amp; Autóvillamossági Szerviz</div>
+    <div class="hero-brand-rule"></div>
+  </div>
+
+  <!-- ── STAIR NAVIGATION ──
+       Each .stair-step is placed over a real stair step in tesbg.png.
+       Stairs run bottom-right → top-left in the left portion of the image.
+  -->
+  <nav class="stair-nav" aria-label="Főmenü">
+
+    <a href="#home" class="stair-step is-active" title="Főoldal">
+      <div class="step-badge">01</div>
+      <div class="step-tread"></div>
+      <div class="step-label">Főoldal</div>
+    </a>
+
+    <a href="#services" class="stair-step" title="Szolgáltatások">
+      <div class="step-badge">02</div>
+      <div class="step-tread"></div>
+      <div class="step-label">Szolgáltatások</div>
+    </a>
+
+    <a href="#about" class="stair-step" title="Rólunk">
+      <div class="step-badge">03</div>
+      <div class="step-tread"></div>
+      <div class="step-label">Rólunk</div>
+    </a>
+
+    <a href="#contact" class="stair-step" title="Kapcsolat">
+      <div class="step-badge">04</div>
+      <div class="step-tread"></div>
+      <div class="step-label">Kapcsolat</div>
+    </a>
+
+    <a href="tel:+3630000000" class="stair-step" title="Telefonálj most">
+      <div class="step-badge">☎</div>
+      <div class="step-tread"></div>
+      <div class="step-label">Hívj most</div>
+    </a>
+
+  </nav>
+
+  <!-- ── CAR HOTSPOTS ── -->
+  <div class="car-layer" aria-hidden="true">
+
+    <!-- Hood → motor, olajcsere -->
+    <div class="hotspot hs-hood">
+      <div class="h-area"></div>
+      <div class="h-dot"></div>
+      <div class="h-card">
+        <span class="h-card-icon">🔧</span>
+        <div class="h-card-title">Motorjavítás</div>
+        <div class="h-card-desc">Teljes körű motordiagnosztika, olajcsere, vezérlés és szivárgások javítása.</div>
+        <div class="h-tags">
+          <span class="h-tag">Motorjavítás</span>
+          <span class="h-tag">Olajcsere</span>
+          <span class="h-tag">Diagnosztika</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windshield → tolatóradar, kamera -->
+    <div class="hotspot hs-windshield">
+      <div class="h-area"></div>
+      <div class="h-dot"></div>
+      <div class="h-card">
+        <span class="h-card-icon">📡</span>
+        <div class="h-card-title">Radar & Kamera</div>
+        <div class="h-card-desc">Tolatóradar és kamera beépítés, parkolássegítő rendszerek telepítése.</div>
+        <div class="h-tags">
+          <span class="h-tag">Tolatóradar</span>
+          <span class="h-tag">Kamera</span>
+          <span class="h-tag">Parkolássegítő</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Door → HiFi, ülésfűtés, elektromosság -->
+    <div class="hotspot hs-door">
+      <div class="h-area"></div>
+      <div class="h-dot"></div>
+      <div class="h-card">
+        <span class="h-card-icon">🎵</span>
+        <div class="h-card-title">Komfort & Elektronika</div>
+        <div class="h-card-desc">HiFi rendszer, ülésfűtés, elektromos ablakmozgató, autóvillamossági javítás.</div>
+        <div class="h-tags">
+          <span class="h-tag">HiFi</span>
+          <span class="h-tag">Ülésfűtés</span>
+          <span class="h-tag">Elektromosság</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Front wheel → gumiszerelés, futóműállítás -->
+    <div class="hotspot hs-wheel">
+      <div class="h-area"></div>
+      <div class="h-dot"></div>
+      <div class="h-card">
+        <span class="h-card-icon">⚙️</span>
+        <div class="h-card-title">Gumi & Futómű</div>
+        <div class="h-card-desc">Gumiszerelés, kerékkiegyensúlyozás, futóműállítás CCD berendezéssel.</div>
+        <div class="h-tags">
+          <span class="h-tag">Gumiszerelés</span>
+          <span class="h-tag">Futóműállítás</span>
+          <span class="h-tag">Kiegyensúlyozás</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grille → autóvillamosság, akkumulátor -->
+    <div class="hotspot hs-grille">
+      <div class="h-area"></div>
+      <div class="h-dot"></div>
+      <div class="h-card">
+        <span class="h-card-icon">⚡</span>
+        <div class="h-card-title">Autóvillamosság</div>
+        <div class="h-card-desc">Elektromos hibakeresés, akkumulátor, generátor, önindító javítás.</div>
+        <div class="h-tags">
+          <span class="h-tag">Villamosság</span>
+          <span class="h-tag">Akkumulátor</span>
+          <span class="h-tag">Hibakeresés</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" id="scrollHint">
+    <span>Görgetés</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+
+<!-- ════════════ SERVICES ════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="srv-intro">
+      <div>
+        <div class="sec-eyebrow reveal">Amit kínálunk</div>
+        <h2 class="sec-title reveal reveal-d1">Szolgáltatásaink</h2>
+        <div class="sec-rule reveal reveal-d2"></div>
+      </div>
+      <p class="srv-intro-lead reveal reveal-d2">Minden, amire autójának szüksége lehet — egy helyen. Tapasztalt szakembereink a legmodernebb eszközökkel dolgoznak.</p>
+    </div>
+
+    <div class="srv-grid">
+      <div class="srv-card reveal">
+        <div class="srv-card-n">01</div>
+        <span class="srv-icon">🔧</span>
+        <div class="srv-name">Általános Javítás</div>
+        <div class="srv-desc">Szakszerű autószerelés minden típusú járműre. Motor, futómű, fékrendszer — teljes szerviz garanciával.</div>
+      </div>
+      <div class="srv-card reveal reveal-d1">
+        <div class="srv-card-n">02</div>
+        <span class="srv-icon">⚡</span>
+        <div class="srv-name">Autóvillamosság</div>
+        <div class="srv-desc">Komplex elektromos hibakeresés és javítás. Akkumulátor, generátor, önindító, biztosítéktábla.</div>
+      </div>
+      <div class="srv-card reveal reveal-d2">
+        <div class="srv-card-n">03</div>
+        <span class="srv-icon">🎵</span>
+        <div class="srv-name">HiFi Beépítés</div>
+        <div class="srv-desc">Fejegység, hangszóró, erősítő, mélynyomó telepítés. Profi hangrendszer — tervezéstől megvalósításig.</div>
+      </div>
+      <div class="srv-card reveal reveal-d1">
+        <div class="srv-card-n">04</div>
+        <span class="srv-icon">📡</span>
+        <div class="srv-name">Tolatóradar</div>
+        <div class="srv-desc">Parkolássegítő szenzor és kamera rendszerek beépítése. OEM minőségű szerelés minden márkához.</div>
+      </div>
+      <div class="srv-card reveal reveal-d2">
+        <div class="srv-card-n">05</div>
+        <span class="srv-icon">🔥</span>
+        <div class="srv-name">Ülésfűtés</div>
+        <div class="srv-desc">Utólagos ülésfűtés beépítés termosztátos vezérléssel. Mindkét ülőfelületbe, eredeti minőségben.</div>
+      </div>
+      <div class="srv-card reveal reveal-d3">
+        <div class="srv-card-n">06</div>
+        <span class="srv-icon">⚙️</span>
+        <div class="srv-name">Gumiszerelés & Futómű</div>
+        <div class="srv-desc">Gumiszerelés, kerékkiegyensúlyozás és futóműállítás CCD berendezéssel, milliméteres pontossággal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════ ABOUT ════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Kik vagyunk</div>
+    <h2 class="sec-title reveal reveal-d1">Rólunk</h2>
+    <div class="sec-rule reveal reveal-d2"></div>
+
+    <div class="about-layout">
+      <div class="about-body">
+        <p class="reveal reveal-d1">A TES GARAGE egy tapasztalt autószerviz és autóvillamossági műhely. Szakembereink évtizedes tapasztalattal rendelkeznek minden típusú gépjármű javításában és karbantartásában.</p>
+        <p class="reveal reveal-d2">Célunk, hogy autóját a legmagasabb minőségben, határidőre és megfizethető áron szereljük meg. Legyen szó egyszerű karbantartásról vagy komplex elektromos hibáról — nálunk megoldást talál.</p>
+        <p class="reveal reveal-d3">Modern diagnosztikai eszközeinkkel pontosan feltérképezzük a hibát. Csak a szükséges javítást végezzük el — felesleges cserékre nem vesztegetjük az Ön idejét és pénzét.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat reveal">
+          <div class="stat-n">15+</div>
+          <div class="stat-l">Év tapasztalat</div>
+        </div>
+        <div class="stat reveal reveal-d1">
+          <div class="stat-n">2K+</div>
+          <div class="stat-l">Elégedett ügyfél</div>
+        </div>
+        <div class="stat reveal reveal-d2">
+          <div class="stat-n">100%</div>
+          <div class="stat-l">Garancia</div>
+        </div>
+        <div class="stat reveal reveal-d3">
+          <div class="stat-n">6</div>
+          <div class="stat-l">Szakterület</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════ CONTACT ════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-eyebrow reveal">Elérhetőség</div>
+    <h2 class="sec-title reveal reveal-d1">Kapcsolat</h2>
+    <div class="sec-rule reveal reveal-d2"></div>
+
+    <div class="contact-layout">
+      <div class="cinfo-list">
+        <div class="cinfo-row reveal">
+          <div class="cinfo-ico">📞</div>
+          <div>
+            <div class="cinfo-lbl">Telefon</div>
+            <div class="cinfo-val">+36 30 000 0000</div>
+            <div class="cinfo-sub">H–P: 8:00–18:00 &nbsp;|&nbsp; Szo: 8:00–13:00</div>
+          </div>
+        </div>
+        <div class="cinfo-row reveal reveal-d1">
+          <div class="cinfo-ico">📧</div>
+          <div>
+            <div class="cinfo-lbl">Email</div>
+            <div class="cinfo-val">info@tesgarage.hu</div>
+            <div class="cinfo-sub">24 órán belül válaszolunk</div>
+          </div>
+        </div>
+        <div class="cinfo-row reveal reveal-d2">
+          <div class="cinfo-ico">📍</div>
+          <div>
+            <div class="cinfo-lbl">Cím</div>
+            <div class="cinfo-val">Budapest, Példa utca 12.</div>
+            <div class="cinfo-sub">Ingyenes parkoló az udvaron</div>
+          </div>
+        </div>
+        <div class="cinfo-row reveal reveal-d3">
+          <div class="cinfo-ico">🕐</div>
+          <div>
+            <div class="cinfo-lbl">Nyitvatartás</div>
+            <div class="cinfo-val">Hétfő–Péntek: 08:00–18:00</div>
+            <div class="cinfo-sub">Szombat: 08:00–13:00 &nbsp;|&nbsp; Vasárnap: Zárva</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="c-form reveal reveal-d1" onsubmit="handleForm(event)">
+        <div class="f-row">
+          <div class="f-group">
+            <label class="f-lbl">Név</label>
+            <input type="text" class="f-input" placeholder="Kovács János" required>
+          </div>
+          <div class="f-group">
+            <label class="f-lbl">Telefon</label>
+            <input type="tel" class="f-input" placeholder="+36 30 …">
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-lbl">Email</label>
+          <input type="email" class="f-input" placeholder="email@example.com" required>
+        </div>
+        <div class="f-group">
+          <label class="f-lbl">Rendszám / Autó típusa</label>
+          <input type="text" class="f-input" placeholder="ABC-123  /  VW Golf 2018">
+        </div>
+        <div class="f-group">
+          <label class="f-lbl">Üzenet</label>
+          <textarea class="f-area" placeholder="Írja le a problémát vagy kérdését…" required></textarea>
+        </div>
+        <button type="submit" class="f-btn">Üzenet küldése &nbsp;→</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">TES <em>GARAGE</em></div>
+    <div class="footer-copy">
+      © 2026 TES GARAGE. Minden jog fenntartva.
+      &nbsp;|&nbsp; Weboldal: <a href="https://webszovo.hu" target="_blank" rel="noopener">webszovo.hu</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile nav fallback -->
+<nav class="mobile-nav">
+  <a href="#home"><span>🏠</span>Főoldal</a>
+  <a href="#services"><span>🔧</span>Szerviz</a>
+  <a href="#about"><span>ℹ️</span>Rólunk</a>
+  <a href="#contact"><span>📞</span>Kapcsolat</a>
+</nav>
+
+
+<script>
+// ── Active stair step on scroll
+const sectionIds = ['home','services','about','contact'];
+const steps = document.querySelectorAll('.stair-step');
+
+function setActive(id) {
+  steps.forEach(s => s.classList.remove('is-active'));
+  const t = document.querySelector(`.stair-step[href="#${id}"]`);
+  if (t) t.classList.add('is-active');
+}
+
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+}, { threshold: 0.4 });
+
+sectionIds.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) secObs.observe(el);
+});
+
+// ── Scroll hint fade
+const hint = document.getElementById('scrollHint');
+window.addEventListener('scroll', () => {
+  hint.style.opacity = window.scrollY > 60 ? '0' : '0.42';
+}, { passive: true });
+
+// ── Scroll reveal
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in-view'); revObs.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin:'0px 0px -36px 0px' });
+revEls.forEach(el => revObs.observe(el));
+
+// ── Form submit feedback
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.f-btn');
+  const orig = btn.textContent;
+  btn.textContent = '✓ Elküldve!';
+  btn.style.background = '#2a9d5c';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autószaki — Autószerviz Budapest XVIII. kerület</title>
-    <meta name="description" content="Autószaki — megbízható autószerviz a XVIII. kerületben. Vezérlés beállítás, motorjavítás, általános autószerelés. 4.7★ Google értékelés.">
+    <title>Autószaki — Autószerviz Budapest XVIII. kerület | autoszaki-budapest.hu</title>
+    <meta name="description" content="Autószaki — megbízható autószerviz a XVIII. kerületben. Vezérlés beállítás, motorjavítás, általános autószerelés, laktatás, fényezés, szívósor tisztítás. Minden autómárkához. Kiváló Google értékelés.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -162,18 +162,14 @@
         }
         .btn-dark:hover { background: var(--dark-2); }
         .hero-rating {
-            display: flex; align-items: center; gap: 20px;
-            padding: 20px 24px; background: var(--white);
+            display: flex; align-items: center; gap: 16px;
+            padding: 18px 22px; background: var(--white);
             border-left: 4px solid var(--red); border-radius: 2px;
             max-width: 440px; box-shadow: 0 4px 16px rgba(0,0,0,0.05);
         }
-        .hero-rating-num {
-            font-family: 'Oswald', sans-serif; font-size: 2.4rem;
-            font-weight: 700; color: var(--dark); line-height: 1;
-        }
         .hero-rating-stars { color: var(--red); font-size: 1rem; letter-spacing: 3px; margin-bottom: 4px; }
         .hero-rating-lbl { font-size: 0.78rem; color: var(--gray-600); font-weight: 500; }
-        .hero-rating-lbl b { color: var(--dark); font-weight: 700; }
+        .hero-rating-lbl a { color: var(--red); text-decoration: none; }
         .hero-image {
             position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 2px;
         }
@@ -188,7 +184,23 @@
         }
         .hero-image-tag b { display: block; font-size: 1.4rem; margin-bottom: 2px; }
 
-        /* ═══ FEATURE STRIP (overlapping) ═══ */
+        /* Live dot */
+        .live-dot {
+            display: inline-block;
+            width: 9px; height: 9px;
+            background: #22c55e;
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: pulse-dot 2s ease-in-out infinite;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+        }
+        @keyframes pulse-dot {
+            0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+            50%  { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* ═══ FEATURE STRIP ═══ */
         .feature-strip { background: var(--white); padding: 0 0 60px; }
         .feature-strip-grid {
             display: grid; grid-template-columns: repeat(2, 1fr);
@@ -218,6 +230,60 @@
         .feature-card.red h3, .feature-card.red a { color: var(--white); }
         .feature-card.red p { color: rgba(255,255,255,0.9); }
         .feature-card.red .feature-card-bg img { opacity: 0.2; }
+
+        /* ═══ AUTO TICKER ═══ */
+        .auto-ticker {
+            position: relative;
+            background: #111;
+            border-top: 2px solid var(--red);
+            border-bottom: 2px solid var(--red);
+            overflow: hidden;
+            user-select: none;
+        }
+        .auto-ticker::after {
+            content: "";
+            position: absolute;
+            top: 50%; left: 0; right: 0;
+            height: 0;
+            border-top: 1px dashed rgba(230,57,70,0.28);
+            pointer-events: none;
+            z-index: 2;
+        }
+        .ticker-row { overflow: hidden; }
+        .ticker-track {
+            display: flex;
+            flex-wrap: nowrap;
+            width: max-content;
+            will-change: transform;
+            animation: t-left 50s linear infinite;
+        }
+        .ticker-track.t-rev {
+            animation: t-left 32s linear infinite reverse;
+        }
+        @keyframes t-left {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        .t-item {
+            white-space: nowrap;
+            padding: 11px 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.82);
+            flex-shrink: 0;
+        }
+        .t-item.brand { color: var(--red); font-weight: 600; }
+        .t-sep {
+            flex-shrink: 0;
+            padding: 11px 20px;
+            color: rgba(230,57,70,0.6);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
 
         /* ═══ SERVICES ═══ */
         .services { padding: 100px 0; background: var(--white); }
@@ -332,56 +398,65 @@
         }
         .manage-image img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ═══ TEAM ═══ */
+        /* ═══ ABOUT / TEAM ═══ */
         .team { padding: 100px 0; background: var(--gray-50); }
         .team-in {
-            display: grid; grid-template-columns: 1fr 1.3fr;
-            gap: 48px; align-items: start;
+            display: grid; grid-template-columns: 1.2fr 1fr;
+            gap: 64px; align-items: start;
         }
         .team-left .sec-label { justify-content: flex-start; margin-bottom: 16px; }
         .team-left .sec-label::after { display: none; }
         .team-left h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 20px; }
         .team-left h2 span { color: var(--red); }
-        .team-left > p { color: var(--gray-600); margin-bottom: 32px; }
-        .team-stats {
+        .team-left > p { color: var(--gray-600); margin-bottom: 32px; max-width: 520px; }
+
+        .trust-grid {
             display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 16px; margin-top: 32px;
+            gap: 12px; margin-bottom: 32px;
         }
-        .team-stat { padding: 24px; background: var(--red); color: var(--white); }
-        .team-stat-num {
-            font-family: 'Oswald', sans-serif; font-size: 2.4rem;
-            font-weight: 700; line-height: 1; margin-bottom: 6px;
+        .trust-item {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-left: 3px solid var(--red);
+            padding: 18px 20px;
         }
-        .team-stat-lbl { font-size: 0.8rem; opacity: 0.9; font-weight: 500; }
-        .team-stat.dark { background: var(--dark); }
-        .team-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+        .trust-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem; font-weight: 700;
+            color: var(--dark); line-height: 1; margin-bottom: 4px;
         }
-        .team-card {
-            position: relative; aspect-ratio: 3/2;
-            overflow: hidden; border-radius: 2px;
+        .trust-lbl {
+            font-size: 0.76rem; color: var(--gray-600); font-weight: 500;
         }
-        .team-card img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.4s;
+
+        .team-quote {
+            background: var(--dark); color: var(--white);
+            padding: 24px 28px;
+            border-left: 4px solid var(--red);
         }
-        .team-card:hover img { transform: scale(1.05); }
-        .team-card::after {
-            content: ""; position: absolute; inset: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 55%);
+        .team-quote blockquote {
+            font-style: italic; font-size: 0.98rem; line-height: 1.68;
+            color: rgba(255,255,255,0.82); margin-bottom: 14px;
         }
-        .team-card-info {
-            position: absolute; left: 18px; bottom: 18px;
-            z-index: 1; color: var(--white);
+        .team-quote cite {
+            font-size: 0.74rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--red); font-style: normal;
         }
-        .team-card-info h4 {
-            font-size: 1.1rem; font-family: 'Oswald', sans-serif;
-            letter-spacing: 0.02em; margin-bottom: 4px;
+
+        .team-visual { position: sticky; top: 100px; }
+        .team-visual img {
+            width: 100%; aspect-ratio: 2/3;
+            object-fit: cover; display: block; border-radius: 2px;
         }
-        .team-card-info span {
-            font-size: 0.75rem; color: var(--red);
-            font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+        .team-visual-tag {
+            background: var(--red); color: var(--white);
+            padding: 16px 20px; margin-top: 0;
+            font-family: 'Oswald', sans-serif; font-weight: 600;
+            letter-spacing: 0.04em; font-size: 0.9rem;
+            text-transform: uppercase;
         }
+        .team-visual-tag b { font-size: 1.3rem; display: block; margin-bottom: 2px; }
 
         /* ═══ ENGINE / SPECIALITY ═══ */
         .engine { padding: 100px 0; background: var(--white); }
@@ -435,25 +510,6 @@
             border-radius: 2px; position: relative; z-index: 1;
         }
 
-        /* ═══ BRANDS ═══ */
-        .brands { background: var(--red); padding: 36px 0; color: var(--white); }
-        .brands-label {
-            text-align: center; font-size: 0.82rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.14em;
-            margin-bottom: 24px; opacity: 0.9;
-        }
-        .brands-row {
-            display: flex; justify-content: center; gap: 48px;
-            flex-wrap: wrap; align-items: center;
-        }
-        .brands-row span {
-            font-family: 'Oswald', sans-serif; font-weight: 500;
-            font-size: 1.6rem; letter-spacing: 0.05em;
-            text-transform: uppercase; opacity: 0.9;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        .brands-row span:hover { opacity: 1; transform: translateY(-2px); }
-
         /* ═══ REVIEWS ═══ */
         .reviews { padding: 100px 0; background: var(--gray-50); }
         .rev-grid {
@@ -489,6 +545,15 @@
         }
         .rev-name { font-weight: 700; color: var(--dark); font-size: 0.95rem; margin-bottom: 2px; }
         .rev-meta { font-size: 0.78rem; color: var(--gray-600); }
+        .rev-cta { text-align: center; margin-top: 40px; }
+        .rev-cta a {
+            display: inline-flex; align-items: center; gap: 10px;
+            color: var(--red); text-decoration: none; font-weight: 700;
+            font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.08em;
+            border: 2px solid var(--red); padding: 14px 28px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .rev-cta a:hover { background: var(--red); color: var(--white); }
 
         /* ═══ CTA BANNER ═══ */
         .cta-banner {
@@ -578,6 +643,12 @@
         }
         .hours-note b { display: block; margin-bottom: 4px; font-size: 0.92rem; }
 
+        /* ═══ MAPS EMBED ═══ */
+        .maps-embed {
+            margin-top: 32px; overflow: hidden;
+            border-radius: 2px; border: 1px solid var(--gray-200);
+        }
+
         /* ═══ FOOTER ═══ */
         footer { background: var(--dark); color: var(--gray-400); padding: 60px 0 0; }
         .foot-top {
@@ -619,6 +690,13 @@
         .badge:hover { color: var(--red); border-color: var(--red); }
         .badge b { color: var(--red); }
 
+        /* ═══ FADE-UP SCROLL REVEAL ═══ */
+        .fade-up {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.in-view { opacity: 1; transform: translateY(0); }
+
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 900px) {
             .nav-links { gap: 12px; }
@@ -636,6 +714,7 @@
             .manage-image { max-width: 380px; margin: 0 auto; }
             .manage-features { grid-template-columns: 1fr; }
             .team-in { grid-template-columns: 1fr; gap: 40px; }
+            .team-visual { position: static; }
             .team { padding: 70px 0; }
             .engine-in { grid-template-columns: 1fr; gap: 40px; }
             .engine { padding: 70px 0; }
@@ -653,10 +732,9 @@
             .topbar-info { justify-content: center; width: 100%; gap: 14px; font-size: 0.72rem; }
         }
         @media (max-width: 560px) {
-            .team-stats { grid-template-columns: 1fr; }
-            .team-grid { grid-template-columns: 1fr; }
-            .brands-row { gap: 24px; }
-            .brands-row span { font-size: 1.2rem; }
+            .trust-grid { grid-template-columns: 1fr 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .rev-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -700,16 +778,16 @@
         <div>
             <div class="hero-eyebrow">Autószerviz Budapest XVIII.</div>
             <h1>Pontos diagnózis,<br><span>tiszta munka.</span></h1>
-            <p>Vezérlés beállítás rögzítővel, motorjavítás, általános szerelés. Feti vezetésével, 25+ év szakmai tapasztalattal — mindent egy helyen.</p>
+            <p>Vezérlés beállítás rögzítővel, motorjavítás, általános szerelés. Feti vezetésével, 25+ év szakmai tapasztalattal — mindent egy helyen. <strong>Minden autómárkához.</strong></p>
             <div class="hero-actions">
                 <a href="tel:+36202101970" class="btn-red">Hívjon most →</a>
                 <a href="#szolgaltatasok" class="btn-dark">Szolgáltatások</a>
             </div>
             <div class="hero-rating">
-                <div class="hero-rating-num">4.7</div>
+                <span class="live-dot"></span>
                 <div>
                     <div class="hero-rating-stars">★★★★★</div>
-                    <div class="hero-rating-lbl"><b>9 vélemény</b> a Google-ön</div>
+                    <div class="hero-rating-lbl"><strong>Kiváló értékelés</strong> &nbsp;·&nbsp; <a href="https://maps.app.goo.gl/h5PqPYwTqyY9S8pz7" target="_blank" rel="noopener">Olvassa el a véleményeket →</a></div>
                 </div>
             </div>
         </div>
@@ -729,12 +807,12 @@
         <div class="feature-strip-grid">
             <div class="feature-card">
                 <div class="feature-card-bg">
-                    <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1000&q=80" alt="">
+                    <img src="https://images.unsplash.com/photo-1504222490345-c075b6008014?w=1000&q=80" alt="">
                 </div>
                 <div class="feature-card-content">
-                    <h3>Karbantartás</h3>
-                    <p>Olajcsere, szűrőcsere, időszakos átvizsgálás — hogy az autó hosszú életű legyen.</p>
-                    <a href="#szolgaltatasok">Bővebben →</a>
+                    <h3>Tételes bizonylat</h3>
+                    <p>Minden munkáról pontos számla — mit, miért, mennyiért. Nincs rejtett tétel, nincs meglepetés.</p>
+                    <a href="#rolunk">Miért fontos →</a>
                 </div>
             </div>
             <div class="feature-card red">
@@ -751,15 +829,81 @@
     </div>
 </section>
 
+<!-- ═══ AUTO TICKER ═══ -->
+<div class="auto-ticker">
+    <div class="ticker-row">
+        <div class="ticker-track">
+            <span class="t-item">Vezérlés beállítás</span><span class="t-sep">·</span>
+            <span class="t-item">Motorjavítás</span><span class="t-sep">·</span>
+            <span class="t-item">Általános szerelés</span><span class="t-sep">·</span>
+            <span class="t-item">Diagnosztika</span><span class="t-sep">·</span>
+            <span class="t-item">Fékek &amp; futómű</span><span class="t-sep">·</span>
+            <span class="t-item">Laktatás &amp; polírozás</span><span class="t-sep">·</span>
+            <span class="t-item">Fényezés &amp; karosszéria</span><span class="t-sep">·</span>
+            <span class="t-item">Szívósor tisztítás</span><span class="t-sep">·</span>
+            <span class="t-item">Műszaki vizsga előkészítés</span><span class="t-sep">·</span>
+            <span class="t-item">Vezérlés beállítás</span><span class="t-sep">·</span>
+            <span class="t-item">Motorjavítás</span><span class="t-sep">·</span>
+            <span class="t-item">Általános szerelés</span><span class="t-sep">·</span>
+            <span class="t-item">Diagnosztika</span><span class="t-sep">·</span>
+            <span class="t-item">Fékek &amp; futómű</span><span class="t-sep">·</span>
+            <span class="t-item">Laktatás &amp; polírozás</span><span class="t-sep">·</span>
+            <span class="t-item">Fényezés &amp; karosszéria</span><span class="t-sep">·</span>
+            <span class="t-item">Szívósor tisztítás</span><span class="t-sep">·</span>
+            <span class="t-item">Műszaki vizsga előkészítés</span><span class="t-sep">·</span>
+        </div>
+    </div>
+    <div class="ticker-row">
+        <div class="ticker-track t-rev">
+            <span class="t-item brand">VW</span><span class="t-sep">·</span>
+            <span class="t-item brand">Audi</span><span class="t-sep">·</span>
+            <span class="t-item brand">BMW</span><span class="t-sep">·</span>
+            <span class="t-item brand">Mercedes</span><span class="t-sep">·</span>
+            <span class="t-item brand">Opel</span><span class="t-sep">·</span>
+            <span class="t-item brand">Ford</span><span class="t-sep">·</span>
+            <span class="t-item brand">Toyota</span><span class="t-sep">·</span>
+            <span class="t-item brand">Honda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Renault</span><span class="t-sep">·</span>
+            <span class="t-item brand">Citroën</span><span class="t-sep">·</span>
+            <span class="t-item brand">Škoda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Peugeot</span><span class="t-sep">·</span>
+            <span class="t-item brand">Seat</span><span class="t-sep">·</span>
+            <span class="t-item brand">Mazda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Hyundai</span><span class="t-sep">·</span>
+            <span class="t-item brand">Kia</span><span class="t-sep">·</span>
+            <span class="t-item brand">Suzuki</span><span class="t-sep">·</span>
+            <span class="t-item brand">Nissan</span><span class="t-sep">·</span>
+            <span class="t-item brand">VW</span><span class="t-sep">·</span>
+            <span class="t-item brand">Audi</span><span class="t-sep">·</span>
+            <span class="t-item brand">BMW</span><span class="t-sep">·</span>
+            <span class="t-item brand">Mercedes</span><span class="t-sep">·</span>
+            <span class="t-item brand">Opel</span><span class="t-sep">·</span>
+            <span class="t-item brand">Ford</span><span class="t-sep">·</span>
+            <span class="t-item brand">Toyota</span><span class="t-sep">·</span>
+            <span class="t-item brand">Honda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Renault</span><span class="t-sep">·</span>
+            <span class="t-item brand">Citroën</span><span class="t-sep">·</span>
+            <span class="t-item brand">Škoda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Peugeot</span><span class="t-sep">·</span>
+            <span class="t-item brand">Seat</span><span class="t-sep">·</span>
+            <span class="t-item brand">Mazda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Hyundai</span><span class="t-sep">·</span>
+            <span class="t-item brand">Kia</span><span class="t-sep">·</span>
+            <span class="t-item brand">Suzuki</span><span class="t-sep">·</span>
+            <span class="t-item brand">Nissan</span><span class="t-sep">·</span>
+        </div>
+    </div>
+</div>
+
 <!-- ═══ SERVICES ═══ -->
 <section class="services" id="szolgaltatasok">
     <div class="container">
-        <div class="sec-head">
+        <div class="sec-head fade-up">
             <div class="sec-label">Szolgáltatásaim</div>
-            <h2 class="sec-title">Több mint <span>6 szakterület</span><br>egy műhelyben</h2>
+            <h2 class="sec-title"><span>9 szakterület</span><br>egy műhelyben</h2>
             <p class="sec-desc">A vezérlés beállítástól a teljes motorjavításig — Feti vezetésével mindent elvégzünk, amire az autójának szüksége lehet.</p>
         </div>
-        <div class="services-grid">
+        <div class="services-grid fade-up">
             <div class="svc-card">
                 <div class="svc-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -788,7 +932,7 @@
                 <div class="svc-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                 </div>
-                <h3>Fékek & futómű</h3>
+                <h3>Fékek &amp; futómű</h3>
                 <p>Fékbetét, tárcsa, lengéscsillapító, geometria — biztonságkritikus munkák precízen.</p>
                 <a href="#kapcsolat">Részletek →</a>
             </div>
@@ -808,6 +952,30 @@
                 <p>Átnézés, hibák javítása, minden, ami az átvételhez kell — elsőre menjen át.</p>
                 <a href="#kapcsolat">Részletek →</a>
             </div>
+            <div class="svc-card">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12c0-2.76 1.12-5.26 2.93-7.07"/><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3>Laktatás &amp; polírozás</h3>
+                <p>Kézzel vagy géppel, mosásálló viasszal — a fényezés védelme és visszaállítása. Alap laktatástól a mélyfényesítésig.</p>
+                <a href="#kapcsolat">Részletek →</a>
+            </div>
+            <div class="svc-card">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="8" y="14" width="8" height="7" rx="1"/><path d="M9 3l3 3 3-3"/></svg>
+                </div>
+                <h3>Fényezés &amp; karosszéria</h3>
+                <p>Karcolás, horpadás javítás, lokális fényezés. Pontos színkeverés, gyári felülethez illesztve.</p>
+                <a href="#kapcsolat">Részletek →</a>
+            </div>
+            <div class="svc-card">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                </div>
+                <h3>Szívósor tisztítás</h3>
+                <p>Karbonlerakódás, bekoksolt szelepek, fojtószelep — vegyszeres és kézi tisztítással. Motorteljesítmény visszaállítva.</p>
+                <a href="#kapcsolat">Részletek →</a>
+            </div>
         </div>
         <div class="services-cta">
             <a href="tel:+36202101970" class="btn-red">Kérjen árajánlatot →</a>
@@ -821,30 +989,30 @@
         <div class="manage-left">
             <div class="sec-label">Miért Autószaki?</div>
             <h2>25 év <span>tapasztalat,</span><br>őszinte munka</h2>
-            <p class="manage-lead">Nem varázsolok — csak jól csinálom. Minden munkáról előre tájékoztatást kap: mit, miért, mennyiért. Ha munka közben valami más jön ki, először megbeszéljük.</p>
+            <p class="manage-lead">Nem varázsolok — csak jól csinálom. Minden munkáról előre tájékoztatást kap: mit, miért, mennyiért. Ha munka közben valami más jön ki, először megbeszéljük. <strong style="color:rgba(255,255,255,0.9);">Minden autómárkát vállalunk.</strong></p>
             <div class="manage-features">
-                <div class="manage-feat">
+                <div class="manage-feat fade-up">
                     <div class="manage-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                     <div>
                         <h4>Rögzítővel dolgozom</h4>
                         <p>A vezérlés nem az a munka, ahol a „majdnem jó" elég — gyári pontossággal.</p>
                     </div>
                 </div>
-                <div class="manage-feat">
+                <div class="manage-feat fade-up">
                     <div class="manage-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                     <div>
                         <h4>Tételes számla</h4>
                         <p>Minden anyagról, minden munkaóráról pontos bizonylat — nincs rejtett tétel.</p>
                     </div>
                 </div>
-                <div class="manage-feat">
+                <div class="manage-feat fade-up">
                     <div class="manage-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                     <div>
                         <h4>Garancia a munkára</h4>
                         <p>Amit elvállalok, azért állok is — mind a munkára, mind az alkatrészekre.</p>
                     </div>
                 </div>
-                <div class="manage-feat">
+                <div class="manage-feat fade-up">
                     <div class="manage-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                     <div>
                         <h4>Rugalmas időpontok</h4>
@@ -859,60 +1027,41 @@
     </div>
 </section>
 
-<!-- ═══ TEAM ═══ -->
-<section class="team">
+<!-- ═══ ABOUT / TEAM ═══ -->
+<section class="team" id="rolam">
     <div class="container team-in">
         <div class="team-left">
             <div class="sec-label">A műhely</div>
             <h2>Egy szerelő, aki<br><span>érti az autóját</span></h2>
             <p>Feti vagyok — 25+ év a szakmában, a Bem József Szakközépiskola után. A XVIII. kerület szívében dolgozom, és az ügyfeleim azóta is visszajárnak. Nem a reklámokból élek, hanem abból, hogy jól csinálom.</p>
-            <div class="team-stats">
-                <div class="team-stat">
-                    <div class="team-stat-num">25+</div>
-                    <div class="team-stat-lbl">év tapasztalat</div>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-num">25+</div>
+                    <div class="trust-lbl">év tapasztalat</div>
                 </div>
-                <div class="team-stat dark">
-                    <div class="team-stat-num">4.7★</div>
-                    <div class="team-stat-lbl">Google értékelés</div>
+                <div class="trust-item">
+                    <div class="trust-num">Több ezer</div>
+                    <div class="trust-lbl">elégedett ügyfél</div>
                 </div>
-                <div class="team-stat dark">
-                    <div class="team-stat-num">9</div>
-                    <div class="team-stat-lbl">Google vélemény</div>
+                <div class="trust-item">
+                    <div class="trust-num">100%</div>
+                    <div class="trust-lbl">pozitív visszajelzés</div>
                 </div>
-                <div class="team-stat">
-                    <div class="team-stat-num">100%</div>
-                    <div class="team-stat-lbl">tételes számla</div>
+                <div class="trust-item">
+                    <div class="trust-num">Minden</div>
+                    <div class="trust-lbl">autómárkához</div>
                 </div>
+            </div>
+            <div class="team-quote">
+                <blockquote>„Próbáltam, de nem tudok rosszat írni, mondani… Meg voltunk, vagyunk elégedve, ahogy kezdetektől fogva van. Ajánlom Fetit mindenkinek!"</blockquote>
+                <cite>András Gosztola &nbsp;·&nbsp; Google Helyi idegenvezető</cite>
             </div>
         </div>
-        <div class="team-grid">
-            <div class="team-card">
-                <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=800&q=85" alt="">
-                <div class="team-card-info">
-                    <h4>Vezérlés</h4>
-                    <span>Specialitás</span>
-                </div>
-            </div>
-            <div class="team-card">
-                <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=800&q=85" alt="">
-                <div class="team-card-info">
-                    <h4>Motorjavítás</h4>
-                    <span>Komplex munkák</span>
-                </div>
-            </div>
-            <div class="team-card">
-                <img src="https://images.unsplash.com/photo-1613214049841-028c4709a6ff?w=800&q=85" alt="">
-                <div class="team-card-info">
-                    <h4>Diagnosztika</h4>
-                    <span>Pontos felmérés</span>
-                </div>
-            </div>
-            <div class="team-card">
-                <img src="https://images.unsplash.com/photo-1632823469937-80b3c8d92d42?w=800&q=85" alt="" onerror="this.src='https://images.unsplash.com/photo-1562141961-b5d1acafa5d8?w=800&q=85'">
-                <div class="team-card-info">
-                    <h4>Karbantartás</h4>
-                    <span>Rendszeres szerviz</span>
-                </div>
+        <div class="team-visual">
+            <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=900&q=85" alt="Feti műhelye">
+            <div class="team-visual-tag">
+                <b>XVIII. kerület</b>
+                Királyhágó u. 36. · 1182 Budapest
             </div>
         </div>
     </div>
@@ -921,7 +1070,7 @@
 <!-- ═══ ENGINE / SPECIALITY ═══ -->
 <section class="engine" id="specialitas">
     <div class="container">
-        <div class="sec-head">
+        <div class="sec-head fade-up">
             <div class="sec-label">A specialitásom</div>
             <h2 class="sec-title">Vezérlés beállítás — <span>rögzítővel</span></h2>
             <p class="sec-desc">Ha a vezérlés egy fokkal elcsúszik, az autó fogyaszt, rángat, rosszabb esetben a szelep a dugattyúba csapódik. Ez nem az a munka, ahol a „majdnem jó" elég.</p>
@@ -951,34 +1100,15 @@
     </div>
 </section>
 
-<!-- ═══ BRANDS ═══ -->
-<div class="brands">
-    <div class="container">
-        <div class="brands-label">Minden márkához · Minden motortípushoz</div>
-        <div class="brands-row">
-            <span>VW</span>
-            <span>Audi</span>
-            <span>BMW</span>
-            <span>Opel</span>
-            <span>Ford</span>
-            <span>Toyota</span>
-            <span>Renault</span>
-            <span>Citroën</span>
-            <span>Škoda</span>
-            <span>Peugeot</span>
-        </div>
-    </div>
-</div>
-
 <!-- ═══ REVIEWS ═══ -->
 <section class="reviews" id="velemenyek">
     <div class="container">
-        <div class="sec-head">
+        <div class="sec-head fade-up">
             <div class="sec-label">Ügyfelek mondták</div>
-            <h2 class="sec-title">4.7 <span>csillag</span> a Google-ön</h2>
-            <p class="sec-desc">Valódi vélemények, valódi ügyfelektől — olvassa el, mit mondanak rólunk.</p>
+            <h2 class="sec-title">Ügyfeleim <span>mondták</span> rólam</h2>
+            <p class="sec-desc">Valódi vélemények, valódi ügyfelektől. Nem ígérek csodát — csak jól csinálom, és a visszajelzések ezt tükrözik.</p>
         </div>
-        <div class="rev-grid">
+        <div class="rev-grid fade-up">
             <div class="rev">
                 <div class="rev-stars">★★★★★</div>
                 <p class="rev-text">„Nagyon rugalmasak és hozzáértőek!"</p>
@@ -1013,6 +1143,9 @@
                 </div>
             </div>
         </div>
+        <div class="rev-cta">
+            <a href="https://maps.app.goo.gl/h5PqPYwTqyY9S8pz7" target="_blank" rel="noopener">Összes vélemény a Google-ön →</a>
+        </div>
     </div>
 </section>
 
@@ -1030,7 +1163,7 @@
 <!-- ═══ CONTACT ═══ -->
 <section class="contact" id="kapcsolat">
     <div class="container">
-        <div class="sec-head">
+        <div class="sec-head fade-up">
             <div class="sec-label">Kapcsolat</div>
             <h2 class="sec-title">Hozza be az <span>autóját</span></h2>
         </div>
@@ -1077,6 +1210,17 @@
                 </div>
             </div>
         </div>
+        <div class="maps-embed">
+            <iframe
+                src="https://maps.google.com/maps?q=1182+Budapest+Kir%C3%A1lyh%C3%A1g%C3%B3+utca+36&output=embed&hl=hu&z=16"
+                width="100%"
+                height="420"
+                style="border:0; display:block;"
+                allowfullscreen=""
+                loading="lazy"
+                title="Autószaki térkép">
+            </iframe>
+        </div>
     </div>
 </section>
 
@@ -1106,22 +1250,57 @@
                 <a href="#">Általános szerelés</a>
                 <a href="#">Diagnosztika</a>
                 <a href="#">Műszaki vizsga</a>
+                <a href="#">Laktatás &amp; polírozás</a>
+                <a href="#">Fényezés &amp; karosszéria</a>
+                <a href="#">Szívósor tisztítás</a>
             </div>
             <div class="foot-col">
                 <h4>Kapcsolat</h4>
                 <p>Királyhágó u. 36.<br>1182 Budapest</p>
                 <a href="tel:+36202101970">06 20 210 1970</a>
                 <a href="https://www.facebook.com/people/Autószaki/61575581591066" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://autoszaki-budapest.hu" target="_blank" rel="noopener">autoszaki-budapest.hu</a>
             </div>
         </div>
         <div class="foot-bottom">
-            <div>© 2026 Autószaki — Minden jog fenntartva.</div>
+            <div>© 2026 Autószaki (autoszaki-budapest.hu) — Minden jog fenntartva.</div>
             <div>Készítette: <a href="https://webszovo.hu">Webszövő</a></div>
         </div>
     </div>
 </footer>
 
 <a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ── Scroll reveal ── */
+    var fadeEls = document.querySelectorAll('.fade-up');
+    if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        fadeEls.forEach(function (el) { revealObserver.observe(el); });
+    } else {
+        fadeEls.forEach(function (el) { el.classList.add('in-view'); });
+    }
+
+    /* ── Engine tabs ── */
+    var tabs = document.querySelectorAll('.engine-tab');
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            tabs.forEach(function (t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+        });
+    });
+})();
+</script>
 
 </body>
 </html>

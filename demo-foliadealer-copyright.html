@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fóliadealer Kft. — Prémium autó- és épületfóliázás Budapest</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0a0a0c;
+    --bg-2: #131418;
+    --bg-3: #1c1d22;
+    --orange: #ff6b1a;
+    --orange-2: #ff8a47;
+    --orange-dim: rgba(255, 107, 26, 0.1);
+    --text: #ebebeb;
+    --muted: #82828a;
+    --muted-2: #5a5a62;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-2: rgba(255, 255, 255, 0.12);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* === NAV === */
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 12, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    transition: background 0.3s;
+}
+.nav-in {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.nav-brand {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-brand .dot {
+    width: 9px;
+    height: 9px;
+    background: var(--orange);
+    border-radius: 50%;
+    box-shadow: 0 0 14px var(--orange);
+    animation: pulse 2.4s ease-in-out infinite;
+}
+.nav-brand b { color: var(--orange); font-weight: 800; }
+.nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+    background: var(--orange);
+    color: var(--bg) !important;
+    padding: 11px 22px;
+    font-weight: 700 !important;
+    transition: all 0.2s;
+}
+.nav-cta:hover {
+    background: var(--orange-2);
+    transform: translateY(-1px);
+}
+
+/* === HERO === */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 120px 40px 80px;
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(10,10,12,0.55) 0%, rgba(10,10,12,0.85) 65%, var(--bg) 100%),
+        linear-gradient(90deg, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.45) 60%, transparent 100%);
+}
+.hero-glow {
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(255, 107, 26, 0.20), transparent 70%);
+    top: 25%;
+    right: -8%;
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(40px);
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+}
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 107, 26, 0.3);
+    background: rgba(255, 107, 26, 0.08);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+.hero-tag .pulse {
+    width: 6px;
+    height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 107, 26, 0.6); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 9px rgba(255, 107, 26, 0); }
+}
+.hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin-bottom: 26px;
+    max-width: 760px;
+}
+.hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero-desc {
+    font-size: 1.08rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 38px;
+}
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+.btn-orange {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--bg);
+    text-decoration: none;
+    padding: 16px 30px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+    box-shadow: 0 8px 28px rgba(255, 107, 26, 0.28);
+}
+.btn-orange:hover {
+    background: var(--orange-2);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 42px rgba(255, 107, 26, 0.42);
+}
+.btn-orange svg { transition: transform 0.25s; }
+.btn-orange:hover svg { transform: translateX(4px); }
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--border-2);
+    color: var(--text);
+    text-decoration: none;
+    padding: 15px 30px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(8px);
+}
+.btn-ghost:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+.hero-stats {
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+}
+.hero-stat-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+}
+.hero-stat-num span { color: var(--orange); }
+.hero-stat-lbl {
+    font-size: 0.76rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 10px;
+}
+
+/* === MARQUEE === */
+.marquee {
+    background: var(--orange);
+    color: var(--bg);
+    padding: 14px 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+.marquee-track {
+    display: flex;
+    gap: 64px;
+    animation: scroll 28s linear infinite;
+    white-space: nowrap;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.92rem;
+}
+.marquee-track span { display: inline-flex; align-items: center; gap: 64px; }
+.marquee-track .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--bg);
+    border-radius: 50%;
+    display: inline-block;
+}
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* === SECTIONS === */
+section {
+    padding: 110px 40px;
+}
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.sec-label {
+    display: inline-block;
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+.sec-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 720px;
+}
+.sec-title em {
+    font-style: normal;
+    color: var(--orange);
+}
+.sec-desc {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 64px;
+}
+
+/* === SERVICES === */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+.svc {
+    background: var(--bg);
+    padding: 44px 32px;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.svc::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--orange);
+    transition: width 0.4s ease;
+}
+.svc:hover {
+    background: var(--bg-2);
+}
+.svc:hover::before { width: 100%; }
+.svc-num {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted-2);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+.svc-icon {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 107, 26, 0.25);
+    background: rgba(255, 107, 26, 0.06);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+    margin-bottom: 26px;
+    transition: all 0.3s;
+}
+.svc:hover .svc-icon {
+    background: var(--orange);
+    color: var(--bg);
+    border-color: var(--orange);
+    transform: scale(1.05);
+}
+.svc h3 {
+    font-size: 1.22rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+.svc p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+/* === SHOWCASE === */
+.showcase-section {
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.showcase-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 12px;
+}
+.showcase-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-3);
+    cursor: pointer;
+    border-radius: 4px;
+}
+.showcase-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+.showcase-item:hover img {
+    transform: scale(1.06);
+}
+.showcase-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(10,10,12,0.92) 0%, rgba(10,10,12,0.1) 60%, transparent 100%);
+    z-index: 1;
+}
+.showcase-meta {
+    position: absolute;
+    bottom: 22px;
+    left: 24px;
+    right: 24px;
+    z-index: 2;
+}
+.showcase-meta .cat {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.showcase-meta .title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text);
+}
+.showcase-item:nth-child(1) {
+    grid-row: span 2;
+}
+.showcase-item:nth-child(1) .showcase-meta .title {
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+/* === WHY US === */
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+.why-item {
+    border-top: 2px solid var(--orange);
+    padding-top: 26px;
+}
+.why-item .num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 14px;
+}
+.why-item .num span { color: var(--orange); }
+.why-item h4 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.why-item p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+/* === SPLIT ABOUT === */
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.split-img {
+    overflow: hidden;
+    position: relative;
+    min-height: 480px;
+}
+.split-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.split-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 60%, var(--bg-2) 100%);
+}
+.split-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+}
+.split-text .sec-title {
+    margin-bottom: 24px;
+}
+.split-text p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 16px;
+}
+.split-text strong {
+    color: var(--text);
+    font-weight: 600;
+}
+.split-text .highlight {
+    color: var(--orange);
+    font-weight: 600;
+}
+
+/* === REVIEWS === */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.rev {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    padding: 32px;
+    transition: all 0.3s;
+}
+.rev:hover {
+    border-color: rgba(255, 107, 26, 0.25);
+    transform: translateY(-4px);
+}
+.rev-stars {
+    color: var(--orange);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+}
+.rev p {
+    color: rgba(235, 235, 235, 0.78);
+    font-size: 0.93rem;
+    line-height: 1.75;
+    margin-bottom: 22px;
+    font-style: italic;
+}
+.rev-author {
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.rev-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--orange-dim);
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+}
+.rev-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text);
+}
+.rev-role {
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* === CTA === */
+.cta-section {
+    text-align: center;
+    padding: 130px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.cta-section::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(255, 107, 26, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(20px);
+}
+.cta-section > * { position: relative; z-index: 1; }
+.cta-section h2 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    line-height: 1.1;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cta-section h2 em {
+    font-style: normal;
+    color: var(--orange);
+}
+.cta-section .sub {
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 36px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+.cta-phone {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--orange);
+    text-decoration: none;
+    margin: 8px 0;
+    transition: opacity 0.2s;
+}
+.cta-phone:hover { opacity: 0.85; }
+.cta-meta {
+    color: var(--muted-2);
+    font-size: 0.88rem;
+    margin-top: 4px;
+}
+
+/* === FOOTER === */
+footer {
+    border-top: 1px solid var(--border);
+    padding: 64px 40px 24px;
+    background: var(--bg);
+}
+.foot-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+}
+.foot-brand h4 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.foot-brand h4 .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+}
+.foot-brand p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.75;
+    max-width: 340px;
+}
+.foot-col h5 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted-2);
+    margin-bottom: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+}
+.foot-col a, .foot-col p {
+    display: block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    line-height: 1.95;
+    transition: color 0.2s;
+}
+.foot-col a:hover {
+    color: var(--orange);
+}
+.foot-bottom {
+    max-width: 1280px;
+    margin: 24px auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--muted-2);
+}
+
+/* === BADGE === */
+.badge {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 99;
+    background: rgba(10, 10, 12, 0.92);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-2);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.badge:hover {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+.badge b { color: var(--orange); }
+
+/* === SCROLL ANIMATIONS === */
+.fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === MOBILE === */
+@media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .nav-links { gap: 0; }
+    .hero { padding: 120px 20px 70px; min-height: auto; }
+    .hero h1 { font-size: clamp(2.4rem, 9vw, 3.4rem); }
+    .hero-desc { font-size: 1rem; }
+    .hero-stats { gap: 28px; }
+    .hero-stat-num { font-size: 1.9rem; }
+    section { padding: 72px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .showcase-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    .showcase-item { height: 200px; }
+    .showcase-item:nth-child(1) {
+        grid-column: span 2;
+        grid-row: span 1;
+        height: 260px;
+    }
+    .why-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .split { grid-template-columns: 1fr; }
+    .split-img { min-height: 320px; }
+    .split-img::after { display: none; }
+    .split-text { padding: 56px 24px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .foot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+    }
+    .foot-brand { grid-column: span 2; }
+    .foot-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .marquee-track { gap: 32px; font-size: 0.82rem; }
+    .marquee-track span { gap: 32px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#" class="nav-brand"><span class="dot"></span>Fólia<b>dealer</b></a>
+    <div class="nav-links">
+      <a href="#szolgaltatasok">Szolgáltatások</a>
+      <a href="#munkaink">Munkáink</a>
+      <a href="#rolunk">Rólunk</a>
+      <a href="#velemenyek">Vélemények</a>
+      <a href="#kapcsolat" class="nav-cta">Ajánlatot kérek</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1800&q=85" alt="Fóliázott prémium autó">
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span class="pulse"></span>15+ év tapasztalat · Budapest</div>
+    <h1>Védelem.<br>Stílus.<br><em>Precizitás.</em></h1>
+    <p class="hero-desc">Prémium autó- és épületfóliázás 2008 óta. Autóüveg sötétítés, PPF kőfelverődés elleni védelem, biztonsági fólia és építészeti üvegfólia — mindezt egy helyen, egy saját műhelyben.</p>
+    <div class="hero-actions">
+      <a href="#kapcsolat" class="btn-orange">Ingyenes ajánlat
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#szolgaltatasok" class="btn-ghost">Szolgáltatásaink</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">15<span>+</span></div>
+        <div class="hero-stat-lbl">Év tapasztalat</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">5000<span>+</span></div>
+        <div class="hero-stat-lbl">Elkészült munka</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4.9<span>★</span></div>
+        <div class="hero-stat-lbl">Google értékelés</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Autóüveg fóliázás <i class="dot"></i> PPF védelem <i class="dot"></i> Autódekoráció <i class="dot"></i> Építészeti fóliázás <i class="dot"></i> Biztonsági fólia <i class="dot"></i> Lámpafóliázás <i class="dot"></i></span>
+    <span>Autóüveg fóliázás <i class="dot"></i> PPF védelem <i class="dot"></i> Autódekoráció <i class="dot"></i> Építészeti fóliázás <i class="dot"></i> Biztonsági fólia <i class="dot"></i> Lámpafóliázás <i class="dot"></i></span>
+  </div>
+</div>
+
+<!-- === SERVICES === -->
+<section id="szolgaltatasok">
+  <div class="container">
+    <div class="sec-label">Szolgáltatások</div>
+    <h2 class="sec-title">Egy hely. <em>Hat szakterület.</em></h2>
+    <p class="sec-desc">Lakossági, céges és építészeti fóliázás — autóüvegtől irodaházig, sportkocsitól szállítójárműig. Saját műhely, prémium fóliák, garantált munka.</p>
+
+    <div class="services-grid fade-up">
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17V9a2 2 0 012-2h10a2 2 0 012 2v8"/><path d="M3 17h18"/><path d="M7 7l1-3h8l1 3"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
+        <h3>Autóüveg fóliázás</h3>
+        <p>Hőszigetelő és sötétítő ablakfóliák. Akár 99% UV szűrés, kívülről nem belátható, belülről tiszta látás — minden évszakban.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v10l8 5 8-5V7l-8-5z"/><path d="M12 7v10M4 7l8 5 8-5"/></svg></div>
+        <h3>PPF karosszéria védelem</h3>
+        <p>Láthatatlan, öngyógyuló fólia a fényezésen. Védelem a kőfelverődés, karcolások és UV ellen — a fény tükröződése változatlan.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14h3M14 14h3"/></svg></div>
+        <h3>Autódekoráció</h3>
+        <p>Céges arculat, reklámfólia, csíkozás, részleges vagy teljes wrap. Egyedi tervezés és precíz kivitelezés — a brand a kerekeken.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+        <h3>Építészeti fóliázás</h3>
+        <p>Épületüveg fóliák — hőszigetelő, betekintésvédő, dekoratív. Iroda, lakás, üzlet — komfortosabb tér, alacsonyabb energiaszámla.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">05</div>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7l-8-5z"/></svg></div>
+        <h3>Biztonsági fólia</h3>
+        <p>Betörésvédő és üvegszilánk-megkötő fólia. Betörés, baleset vagy üvegtörés esetén egyben tartja az üveget — emberek és értékek védelme.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">06</div>
+        <div class="svc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18M3 12h18"/></svg></div>
+        <h3>Lámpafóliázás</h3>
+        <p>Fényszóró sötétítő és védő fólia. Egyedi karakter és köveket kivédő réteg — egyszerre stílus és védelem, eltávolítható nyom nélkül.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === SHOWCASE === -->
+<section class="showcase-section" id="munkaink">
+  <div class="container">
+    <div class="sec-label">Referenciák</div>
+    <h2 class="sec-title">A munkánk <em>beszél helyettünk.</em></h2>
+    <p class="sec-desc">Sportkocsiktól szállítójárművekig, családi autóktól irodaházakig — több ezer projekt mögöttünk, több ezer elégedett ügyféllel.</p>
+
+    <div class="showcase-grid fade-up">
+      <div class="showcase-item">
+        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=85" alt="Sötétített prémium autó" loading="lazy">
+        <div class="showcase-meta">
+          <div class="cat">Autóüveg fóliázás</div>
+          <div class="title">Prémium szedán — teljes ablakfóliázás</div>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80" alt="PPF védelem" loading="lazy">
+        <div class="showcase-meta">
+          <div class="cat">PPF</div>
+          <div class="title">Karosszéria védelem</div>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Épületfóliázás" loading="lazy">
+        <div class="showcase-meta">
+          <div class="cat">Építészet</div>
+          <div class="title">Iroda üvegfólia</div>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <img src="https://images.unsplash.com/photo-1572312284334-bf72e5e1ddde?w=800&q=80" alt="Cégautó dekoráció" loading="lazy">
+        <div class="showcase-meta">
+          <div class="cat">Autódekoráció</div>
+          <div class="title">Céges flottabranding</div>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80" alt="Sportkocsi" loading="lazy">
+        <div class="showcase-meta">
+          <div class="cat">PPF + Wrap</div>
+          <div class="title">Sportkocsi részleges fóliázás</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === WHY US === -->
+<section>
+  <div class="container">
+    <div class="sec-label">Miért minket</div>
+    <h2 class="sec-title">Tapasztalat, amit <em>szemmel látható.</em></h2>
+    <p class="sec-desc">Több mint másfél évtizede dolgozunk fóliákkal. Tudjuk, mi a különbség egy 3 éves és egy 15 éves tartósságú fólia között — és hogy melyik mikor a megoldás.</p>
+
+    <div class="why-grid fade-up">
+      <div class="why-item">
+        <div class="num">15<span>+</span></div>
+        <h4>Év tapasztalat</h4>
+        <p>2008 óta foglalkozunk autó- és épületfóliázással. Több ezer ügyfél, mindenféle járműtípus.</p>
+      </div>
+      <div class="why-item">
+        <div class="num">100<span>%</span></div>
+        <h4>Prémium fóliák</h4>
+        <p>Csak nemzetközileg elismert márkák — Llumar, SunTek, 3M szintű minőség, hosszú élettartam.</p>
+      </div>
+      <div class="why-item">
+        <div class="num">5<span>év</span></div>
+        <h4>Garancia</h4>
+        <p>Minden munkánkra és a felhasznált fóliákra teljes körű garanciát vállalunk — papíron is.</p>
+      </div>
+      <div class="why-item">
+        <div class="num">1<span>nap</span></div>
+        <h4>Gyors átfutás</h4>
+        <p>A legtöbb fóliázás aznap elkészül. Nem várakoztatunk heteket — időpontot adunk és tartjuk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === ABOUT (split) === -->
+<div class="split" id="rolunk">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1200&q=85" alt="Fóliadealer műhely">
+  </div>
+  <div class="split-text">
+    <div class="sec-label">Rólunk</div>
+    <h2 class="sec-title">Nem csak feltesszük —<br>jól tesszük fel.</h2>
+    <p>A <strong>Fóliadealer Kft.</strong> 2008 óta foglalkozik prémium fóliázással Budapesten. Saját műhellyel, saját csapattal — nem bízunk semmit alvállalkozóra.</p>
+    <p>Az autóüveg fóliázástól a karosszéria PPF védelméig, a céges flottabrandingtől az irodaházak üvegfóliázásáig — egy helyen, egy szabványban dolgozzuk fel az igényeket.</p>
+    <p><span class="highlight">Több mint 5000 elkészült projekt</span> — Skoda Octaviától Porsche 911-ig, családi vállalkozástól országos jégkrémforgalmazóig.</p>
+  </div>
+</div>
+
+<!-- === REVIEWS === -->
+<section id="velemenyek">
+  <div class="container">
+    <div class="sec-label">Vélemények</div>
+    <h2 class="sec-title">Amit ügyfeleink <em>mondanak.</em></h2>
+    <p class="sec-desc">A Google-ön szerzett 4.9 csillagos átlag mögött valódi emberek és valódi munkák állnak.</p>
+
+    <div class="reviews-grid fade-up">
+      <div class="rev">
+        <div class="rev-stars">★★★★★</div>
+        <p>"Az új BMW-mre kerestünk PPF-et. Zsolték végigmagyarázták a lehetőségeket, korrekt árat adtak, és a munka makulátlan lett. Két éve van rajta — semmi karc, semmi fakulás."</p>
+        <div class="rev-author">
+          <div class="rev-avatar">SP</div>
+          <div>
+            <div class="rev-name">Szabó Péter</div>
+            <div class="rev-role">Magánügyfél · BMW X5</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev">
+        <div class="rev-stars">★★★★★</div>
+        <p>"15 autós flottát fóliáztattunk velük céges arculattal. Pontosan, határidőre, és visszafogott árajánlattal. Évek óta visszatérő ügyfelek vagyunk — mindenkinek ajánlom."</p>
+        <div class="rev-author">
+          <div class="rev-avatar">KG</div>
+          <div>
+            <div class="rev-name">Kovács Gábor</div>
+            <div class="rev-role">Üzemeltetési vezető · Szállítmányozó</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev">
+        <div class="rev-stars">★★★★★</div>
+        <p>"Az iroda üvegére kértünk hőszigetelő fóliát — tényleg érezhető a különbség nyáron, és a klímaszámla is csökkent. Profi felmérés, tiszta munka, semmi macera."</p>
+        <div class="rev-author">
+          <div class="rev-avatar">NA</div>
+          <div>
+            <div class="rev-name">Nagy Andrea</div>
+            <div class="rev-role">Office Manager · IT cég</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === CTA === -->
+<section class="cta-section" id="kapcsolat">
+  <div class="sec-label">Kapcsolat</div>
+  <h2>Kérje az <em>ingyenes ajánlatot.</em></h2>
+  <p class="sub">Hívjon, vagy írjon — 24 órán belül válaszolunk árajánlattal és időponttal. Felmérés a műhelyben vagy a helyszínen.</p>
+  <a href="tel:+36309228966" class="cta-phone">+36 30 922 8966</a>
+  <p class="cta-meta">H–P: 8:00–17:00 · Sz: 9:00–13:00 · Budapest</p>
+</section>
+
+<!-- === FOOTER === -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <h4><span class="dot"></span>Fólia<span style="color:var(--orange)">dealer</span> Kft.</h4>
+      <p>Prémium autó- és épületfóliázás Budapesten 2008 óta. Autóüveg fóliázás, PPF, autódekoráció, építészeti és biztonsági fóliák — egy helyen, garanciával.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Szolgáltatások</h5>
+      <a href="#szolgaltatasok">Autóüveg fóliázás</a>
+      <a href="#szolgaltatasok">PPF védelem</a>
+      <a href="#szolgaltatasok">Autódekoráció</a>
+      <a href="#szolgaltatasok">Építészeti fólia</a>
+      <a href="#szolgaltatasok">Biztonsági fólia</a>
+      <a href="#szolgaltatasok">Lámpafóliázás</a>
+    </div>
+    <div class="foot-col">
+      <h5>Cég</h5>
+      <a href="#rolunk">Rólunk</a>
+      <a href="#munkaink">Referenciák</a>
+      <a href="#velemenyek">Vélemények</a>
+      <a href="#kapcsolat">Kapcsolat</a>
+    </div>
+    <div class="foot-col">
+      <h5>Elérhetőség</h5>
+      <p>+36 30 922 8966</p>
+      <p>info@foliadealer.hu</p>
+      <p>1158 Budapest</p>
+      <p>H–P: 8–17 · Sz: 9–13</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 Fóliadealer Kft. — Minden jog fenntartva</p>
+    <p>Adatvédelem · ÁSZF</p>
+  </div>
+</footer>
+
+<a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+    });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Nav background opacity on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+        nav.style.background = 'rgba(10, 10, 12, 0.92)';
+    } else {
+        nav.style.background = 'rgba(10, 10, 12, 0.72)';
+    }
+});
+</script>
+
+</body>
+</html>
