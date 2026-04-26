@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>He-Zo Carservice Kft. — Teljes Körű Autószerviz, Gödöllő</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --dark: #131c35;
+            --dark2: #222d57;
+            --dark3: #233363;
+            --yellow: #f5c518;
+            --yellow2: #ffd84a;
+            --yellow-dim: rgba(245, 197, 24, .08);
+            --blue: #1a3a6e;
+            --blue-light: #2a5aaa;
+            --text: #e8eaf0;
+            --muted: #6b7080;
+            --stripe: #f5c518;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase
+        }
+
+        /* ═══ TOPBAR ═══ */
+        .topbar {
+            background: var(--yellow);
+            color: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            padding: 10px 24px;
+            font-size: .8rem;
+            font-weight: 600
+        }
+
+        .topbar a {
+            color: var(--dark);
+            text-decoration: none
+        }
+
+        .topbar span {
+            opacity: .5
+        }
+
+        /* ═══ NAV ═══ */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(12, 14, 20, .92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, .04);
+            padding: 0 40px
+        }
+
+        .nav-in {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+            max-width: 1200px;
+            margin: 0 auto
+        }
+
+        .nav-brand {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--yellow);
+            text-decoration: none;
+            letter-spacing: .04em;
+            text-transform: uppercase
+        }
+
+        .nav-brand small {
+            font-weight: 500;
+            font-size: .7rem;
+            color: var(--muted);
+            text-transform: none;
+            letter-spacing: 0;
+            display: block;
+            margin-top: -2px
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .82rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            transition: color .2s
+        }
+
+        .nav-links a:hover {
+            color: var(--text)
+        }
+
+        .nav-tel {
+            background: var(--yellow);
+            color: var(--dark) !important;
+            padding: 10px 22px;
+            font-weight: 800 !important;
+            font-size: .82rem !important;
+            letter-spacing: .02em;
+            transition: filter .2s
+        }
+
+        .nav-tel:hover {
+            filter: brightness(1.1)
+        }
+
+        /* ═══ HERO ═══ */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 60%
+        }
+
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(12, 14, 20, .92) 0%, rgba(12, 14, 20, .7) 45%, rgba(12, 14, 20, .3) 100%)
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245, 197, 24, .1);
+            border: 1px solid rgba(245, 197, 24, .2);
+            padding: 8px 18px;
+            margin-bottom: 24px;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--yellow)
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--yellow);
+            border-radius: 50%
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: .95;
+            letter-spacing: .02em;
+            margin-bottom: 16px
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--yellow);
+            display: block
+        }
+
+        .hero-desc {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 440px;
+            line-height: 1.7;
+            margin-bottom: 32px
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px
+        }
+
+        .btn-y {
+            display: inline-block;
+            padding: 16px 36px;
+            background: var(--yellow);
+            color: var(--dark);
+            text-decoration: none;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 800;
+            font-size: .95rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transition: all .2s
+        }
+
+        .btn-y:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px)
+        }
+
+        .btn-o {
+            display: inline-block;
+            padding: 16px 36px;
+            border: 1.5px solid rgba(255, 255, 255, .15);
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: .95rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transition: all .2s
+        }
+
+        .btn-o:hover {
+            border-color: rgba(255, 255, 255, .35)
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px
+        }
+
+        .hero-stat-val {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--yellow)
+        }
+
+        .hero-stat-lbl {
+            font-size: .72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .1em
+        }
+
+        /* ═══ YELLOW STRIPE ═══ */
+        .yellow-stripe {
+            background: var(--yellow);
+            padding: 3px 0
+        }
+
+        /* ═══ SERVICES (3-panel photo grid like the Russian screenshot) ═══ */
+        .services {
+            padding: 80px 40px
+        }
+
+        .services-in {
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        .sec-label {
+            font-size: .7rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--yellow);
+            font-weight: 700;
+            margin-bottom: 10px
+        }
+
+        .sec-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+            margin-bottom: 48px
+        }
+
+        .svc-panels {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px
+        }
+
+        .svc-panel {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--dark2);
+            cursor: pointer
+        }
+
+        .svc-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .5;
+            transition: all .5s
+        }
+
+        .svc-panel:hover img {
+            opacity: .7;
+            transform: scale(1.05)
+        }
+
+        .svc-panel-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            z-index: 1;
+            background: linear-gradient(0deg, rgba(12, 14, 20, .85) 0%, transparent 100%)
+        }
+
+        .svc-panel h3 {
+            font-size: 1.1rem;
+            letter-spacing: .06em;
+            margin-bottom: 4px
+        }
+
+        .svc-panel p {
+            font-size: .78rem;
+            color: var(--muted)
+        }
+
+        /* ═══ WHY US (icon strip like Автомагистр screenshot) ═══ */
+        .why {
+            background: var(--dark2);
+            padding: 64px 40px;
+            border-top: 1px solid rgba(255, 255, 255, .04);
+            border-bottom: 1px solid rgba(255, 255, 255, .04)
+        }
+
+        .why-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center
+        }
+
+        .why-icon {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 14px
+        }
+
+        .why-grid h4 {
+            font-size: .85rem;
+            letter-spacing: .08em;
+            margin-bottom: 6px;
+            font-weight: 700
+        }
+
+        .why-grid p {
+            font-size: .78rem;
+            color: var(--muted);
+            line-height: 1.6
+        }
+
+        /* ═══ SPLIT ABOUT ═══ */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 50vh
+        }
+
+        .split-img {
+            overflow: hidden;
+            position: relative
+        }
+
+        .split-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .split-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 64px 56px;
+            background: var(--dark)
+        }
+
+        /* ═══ REVIEWS ═══ */
+        .reviews {
+            padding: 80px 40px;
+            background: var(--dark)
+        }
+
+        .reviews-in {
+            max-width: 1000px;
+            margin: 0 auto
+        }
+
+        .reviews .sec-title {
+            margin-bottom: 40px
+        }
+
+        .rev-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px
+        }
+
+        .rev {
+            background: var(--dark2);
+            border: 1px solid rgba(255, 255, 255, .04);
+            padding: 32px;
+            transition: border-color .3s
+        }
+
+        .rev:hover {
+            border-color: rgba(245, 197, 24, .15)
+        }
+
+        .rev-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px
+        }
+
+        .rev-name {
+            font-weight: 700;
+            font-size: .9rem
+        }
+
+        .rev-stars {
+            color: var(--yellow);
+            letter-spacing: 2px;
+            font-size: .85rem
+        }
+
+        .rev p {
+            font-size: .88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            font-style: italic
+        }
+
+        /* ═══ CTA ═══ */
+        .cta {
+            text-align: center;
+            padding: 100px 40px;
+            position: relative
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 250px;
+            background: radial-gradient(ellipse, var(--yellow-dim), transparent 70%);
+            pointer-events: none
+        }
+
+        .cta h2 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            letter-spacing: .02em;
+            margin-bottom: 12px;
+            position: relative
+        }
+
+        .cta-phone {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            color: var(--yellow);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            letter-spacing: .02em;
+            transition: opacity .2s;
+            position: relative
+        }
+
+        .cta-phone:hover {
+            opacity: .8
+        }
+
+        .cta-sub {
+            color: var(--muted);
+            font-size: .88rem;
+            position: relative
+        }
+
+        /* ═══ FOOTER ═══ */
+        .foot-stripe {
+            background: var(--yellow);
+            padding: 48px 40px;
+            color: var(--dark)
+        }
+
+        .foot-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px
+        }
+
+        .foot-grid h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: .06em;
+            margin-bottom: 12px
+        }
+
+        .foot-grid p {
+            font-size: .88rem;
+            line-height: 1.8;
+            opacity: .8
+        }
+
+        footer {
+            background: var(--dark);
+            padding: 20px 40px;
+            text-align: center;
+            font-size: .72rem;
+            color: var(--muted)
+        }
+
+        .badge {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 99;
+            background: rgba(12, 14, 20, .92);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 100px;
+            padding: 8px 16px;
+            font-size: .72rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: all .2s
+        }
+
+        .badge:hover {
+            color: var(--yellow);
+            border-color: var(--yellow)
+        }
+
+        .badge b {
+            color: var(--yellow)
+        }
+
+        @media(max-width:768px) {
+            .hero {
+                min-height: auto;
+                padding: 100px 0 60px
+            }
+
+            .hero-bg::after {
+                background: linear-gradient(0deg, rgba(12, 14, 20, .95) 0%, rgba(12, 14, 20, .7) 50%, rgba(12, 14, 20, .4) 100%)
+            }
+
+            .hero-content {
+                padding: 0 20px
+            }
+
+            .hero-stats {
+                gap: 24px
+            }
+
+            .svc-panels {
+                grid-template-columns: 1fr
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px
+            }
+
+            .split {
+                grid-template-columns: 1fr
+            }
+
+            .split-img {
+                min-height: 45vh
+            }
+
+            .split-text {
+                padding: 40px 24px
+            }
+
+            .rev-grid {
+                grid-template-columns: 1fr
+            }
+
+            .foot-grid {
+                grid-template-columns: 1fr;
+                gap: 20px
+            }
+
+            .nav-links a:not(.nav-tel) {
+                display: none
+            }
+
+            nav {
+                padding: 0 20px
+            }
+
+            .topbar {
+                flex-wrap: wrap;
+                gap: 12px;
+                font-size: .72rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <span>📍</span> Gödöllő, Kossuth Lajos u.
+        <span>|</span>
+        <a href="tel:+36201234567">📞 +36 20 123 4567</a>
+        <span>|</span>
+        H–P: 8:00–17:00 · Sz: 8:00–12:00
+    </div>
+
+    <nav>
+        <div class="nav-in">
+            <a href="#" class="nav-brand">He-Zo Carservice<small>Teljes körű autószerviz · Gödöllő</small></a>
+            <div class="nav-links">
+                <a href="#szolgaltatasok">Szolgáltatások</a>
+                <a href="#rolunk">Rólunk</a>
+                <a href="#velemenyek">Vélemények</a>
+                <a href="tel:+36201234567" class="nav-tel">Hívjon most</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1800&q=85"
+                alt="He-Zo Carservice Gödöllő">
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="dot"></div> Gödöllő · 5.0★ Google értékelés
+            </div>
+            <h1>Teljes körű<em>autószerviz</em></h1>
+            <p class="hero-desc">Személygépjárművek szervizelése, javítása és karbantartása Gödöllőn. Szakértelem,
+                korrektség és 5 csillagos Google értékelés</p>
+            <div class="hero-btns">
+                <a href="tel:+36201234567" class="btn-y">📞 Időpont foglalás</a>
+                <a href="#szolgaltatasok" class="btn-o">Szolgáltatások →</a>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-val">5.0★</div>
+                    <div class="hero-stat-lbl">Google értékelés</div>
+                </div>
+                <div>
+                    <div class="hero-stat-val">12+</div>
+                    <div class="hero-stat-lbl">Vélemény</div>
+                </div>
+                <div>
+                    <div class="hero-stat-val">10+ év</div>
+                    <div class="hero-stat-lbl">Tapasztalat</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="yellow-stripe"></div>
+
+    <section class="services" id="szolgaltatasok">
+        <div class="services-in">
+            <div class="sec-label">Szolgáltatások</div>
+            <h2 class="sec-title">Amiben segítünk</h2>
+            <div class="svc-panels">
+                <div class="svc-panel">
+                    <img src="https://images.unsplash.com/photo-1727893380169-4dda123e19f7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&q=75"
+                        alt="Diagnosztika" loading="lazy">
+                    <div class="svc-panel-text">
+                        <h3>Diagnosztika</h3>
+                        <p>Hibakód olvasás, komputer diagnosztika, hibafelderítés</p>
+                    </div>
+                </div>
+                <div class="svc-panel">
+                    <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&q=75" alt="Szerviz"
+                        loading="lazy">
+                    <div class="svc-panel-text">
+                        <h3>Szerviz & karbantartás</h3>
+                        <p>Olajcsere, szűrőcsere, időszakos karbantartás</p>
+                    </div>
+                </div>
+                <div class="svc-panel">
+                    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=75" alt="Futómű"
+                        loading="lazy">
+                    <div class="svc-panel-text">
+                        <h3>Futómű & fékek</h3>
+                        <p>Futómű javítás, fékbetét csere, lengéscsillapító</p>
+                    </div>
+                </div>
+                <div class="svc-panel">
+                    <img src="https://images.unsplash.com/photo-1725289339928-06ee31684df5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&q=75" alt="Motor"
+                        loading="lazy">
+                    <div class="svc-panel-text">
+                        <h3>Motorjavítás</h3>
+                        <p>Vezérlés, tömítés, henger munkák, motorfelújítás</p>
+                    </div>
+                </div>
+                <div class="svc-panel">
+                    <!-- <img src="https://images.unsplash.com/photo-1565534355217-85fcfb04ce71?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&q=75" alt="Klíma"
+                        loading="lazy"> -->
+                    <div class="svc-panel-text">
+                        <h3>Klíma szerviz</h3>
+                        <p>Klíma feltöltés, fertőtlenítés, szivárgás keresés</p>
+                    </div>
+                </div>
+                <div class="svc-panel">
+                    <!-- <img src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&q=75"
+                        alt="Gumiszerelés" loading="lazy"> -->
+                    <div class="svc-panel-text">
+                        <h3>Gumiszerelés</h3>
+                        <p>Gumi csere, centrírozás, szezonális átszerelés</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why">
+        <div class="why-grid">
+            <div>
+                <div class="why-icon">🔧</div>
+                <h4>Szakértelem</h4>
+                <p>Tapasztalt szerelők, akik minden márkát ismernek</p>
+            </div>
+            <div>
+                <div class="why-icon">💰</div>
+                <h4>Korrekt árak</h4>
+                <p>Előre megbeszélt árak, nincs rejtett költség</p>
+            </div>
+            <div>
+                <div class="why-icon">⏱</div>
+                <h4>Gyors átfutás</h4>
+                <p>Nem váratsz heteket — gyorsan és precízen dolgozunk</p>
+            </div>
+            <div>
+                <div class="why-icon">✅</div>
+                <h4>Garancia</h4>
+                <p>Minden munkánkra és a felhasznált alkatrészekre</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="split" id="rolunk">
+        <div class="split-img">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAGQYJ6VjFlSFdqKYxFpKESilZnyrjGxZHbiZCTOEl4gAeA2HlUO4RA5mfe5-i-8z4yd2YjIYViI35XPyaYnNkfXT-I7CHlMzt5cupvwla0ec8qSPQNTVF8oLIyEoBm1Je-tIJAdHw=s680-w680-h510-rw?w=1000&q=80" alt="He-Zo műhely">
+        </div>
+        <div class="split-text">
+            <div class="sec-label">Rólunk</div>
+            <h2 class="sec-title" style="margin-bottom:20px">Nem csak megjavítjuk —<br>rendbe tesszük</h2>
+            <p style="color:var(--muted);line-height:1.8;font-size:.92rem">A He-Zo Carservice Gödöllőn, a Kossuth Lajos
+                utcán található teljes körű autószerviz. Személygépjárművek szervizelésével, javításával és
+                karbantartásával foglalkozunk — márkafüggetlenül.<br><br>Nálunk előre tudod, mit kell csinálni és
+                mennyibe kerül. Ha munka közben bármi plusz merül fel, előbb egyeztetünk — nem csinálunk semmit a tudtod
+                nélkül.<br><br><strong style="color:var(--yellow)">5.0 csillag a Google-ön</strong> — mert a munkánk
+                beszél helyettünk.</p>
+        </div>
+    </section>
+
+    <!-- later -->
+    <section class="reviews" id="velemenyek">
+        <div class="reviews-in">
+            <div class="sec-label">Google vélemények</div>
+            <h2 class="sec-title">5.0 ★ — amit ügyfeleink mondanak</h2>
+            <div class="rev-grid">
+                <div class="rev">
+                    <div class="rev-head">
+                        <div class="rev-name">Réka Juhász</div>
+                        <div class="rev-stars">★★★★★</div>
+                    </div>
+                    <p>„Nagyon hálás vagyok a srácoknak. Gyorsan és profin megcsinálták az autómat. Mindemellett nagyon
+                        kedvesek és tisztességesek. Manapság kevés az ilyen szerelő."</p>
+                </div>
+                <div class="rev">
+                    <div class="rev-head">
+                        <div class="rev-name">Gyuri Márki</div>
+                        <div class="rev-stars">★★★★★</div>
+                    </div>
+                    <p>„Szakértelem és korrektség. Előre megbeszéltek alapján dolgoznak és időben jelzik ha valami még
+                        hozzá jön."</p>
+                </div>
+                <div class="rev">
+                    <div class="rev-head">
+                        <div class="rev-name">Endre Boros</div>
+                        <div class="rev-stars">★★★★★</div>
+                    </div>
+                    <p>„Maximálisan elégedett vagyok az elvégzett munkával. Korrekt, megbízható szerviz, csak ajánlani
+                        tudom."</p>
+                </div>
+                <div class="rev">
+                    <div class="rev-head">
+                        <div class="rev-name">Olivér Papp</div>
+                        <div class="rev-stars">★★★★★</div>
+                    </div>
+                    <p>„A srácok lelkiismeretesen dolgoznak és nagyon profin. Csak ajánlani tudom őket, egy rossz szó
+                        nincs rájuk."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Időpont foglalás</h2>
+        <a href="tel:+36201234567" class="cta-phone">+36 20 123 4567</a>
+        <p class="cta-sub">H–P: 8:00–17:00 · Sz: 8:00–12:00 · Gödöllő, Kossuth Lajos u.</p>
+    </section>
+
+    <div class="foot-stripe">
+        <div class="foot-grid">
+            <div>
+                <h4>📍 Cím</h4>
+                <p>He-Zo Carservice Kft.<br>Gödöllő, Kossuth Lajos u.<br>2100 Gödöllő</p>
+            </div>
+            <div>
+                <h4>🕐 Nyitvatartás</h4>
+                <p>H–P: 8:00 – 17:00<br>Sz: 8:00 – 12:00<br>V: Zárva</p>
+            </div>
+            <div>
+                <h4>📞 Kapcsolat</h4>
+                <p>+36 20 123 4567<br>info@hezocarservice.hu<br>Google Maps: He-Zo Carservice</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>© 2026 He-Zo Carservice Kft. — Gödöllő</footer>
+    <a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+
+</body>
+
+</html>
