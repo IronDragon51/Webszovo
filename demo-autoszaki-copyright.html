@@ -496,17 +496,18 @@
         }
         .engine-image {
             position: relative; aspect-ratio: 1/1; background: var(--gray-50);
+            width: 100%; border-radius: 2px;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden;
         }
         .engine-image::before {
             content: ""; position: absolute; inset: 0;
-            background-image: repeating-linear-gradient(45deg,
+            /* background-image: repeating-linear-gradient(45deg,
                 transparent 0, transparent 20px,
-                rgba(230,57,70,0.04) 20px, rgba(230,57,70,0.04) 21px);
+                rgba(255, 255, 255, 0.04) 20px, rgba(255, 255, 255, 0.04) 21px); */
         }
         .engine-image img {
-            width: 85%; height: 85%; object-fit: cover;
+            width: 100%; height: 70%; object-fit: cover;
             border-radius: 2px; position: relative; z-index: 1;
         }
 
@@ -784,10 +785,10 @@
                 <a href="#szolgaltatasok" class="btn-dark">Szolgáltatások</a>
             </div>
             <div class="hero-rating">
-                <span class="live-dot"></span>
+                <!-- <span class="live-dot"></span> -->
                 <div>
                     <div class="hero-rating-stars">★★★★★</div>
-                    <div class="hero-rating-lbl"><strong>Több mint 10 kiváló értékelés</strong></div>
+                    <div class="hero-rating-lbl"><strong> Több mint 10 kiváló értékelés, több száz elégedett ügyfél</strong></div>
                     <div class="hero-rating-lbl"><a href="https://maps.app.goo.gl/h5PqPYwTqyY9S8pz7" target="_blank" rel="noopener">Google Maps vélemények →</a></div>
                 </div>
             </div>
