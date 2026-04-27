@@ -101,14 +101,14 @@
         /* ═══ HERO ═══ */
         .hero {
             position: relative; background: var(--gray-50);
-            overflow: hidden; padding: 80px 0 160px;
+            overflow: hidden; padding: 10px 0 110px;
         }
         .hero::before {
             content: "AUTÓSZAKI"; position: absolute;
-            top: 30px; left: -30px;
+            top: -10px; left: 10px;
             font-family: 'Oswald', sans-serif; font-weight: 700;
             font-size: clamp(6rem, 14vw, 14rem);
-            color: var(--gray-200); opacity: 0.65;
+            color: var(--gray-200); opacity: 0.35;
             letter-spacing: 0.02em; z-index: 0; pointer-events: none;
             line-height: 0.9;
         }
@@ -136,7 +136,7 @@
         .hero h1 span { color: var(--red); }
         .hero > .hero-in > div > p {
             font-size: 1.05rem; color: var(--gray-600);
-            margin-bottom: 32px; max-width: 500px;
+            margin-bottom: 32px; max-width: 500px; 
         }
         .hero-actions {
             display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px;
@@ -779,7 +779,7 @@
         <div>
             <div class="hero-eyebrow">Autószerviz Budapest XVIII.</div>
             <h1>Pontos diagnózis,<br><span>tiszta munka.</span></h1>
-            <p>Vezérlés beállítás rögzítővel, motorjavítás, általános szerelés. Feti vezetésével, 25+ év szakmai tapasztalattal — mindent egy helyen. <strong>Minden autómárkához.</strong></p>
+            <p>Autószaki – autószerelő műhely Budapest XVIII. kerületében, teljes körű szerviz szolgáltatásokkal. Több mint 20 év tapasztalatával, gyors időponttal.</p>
             <div class="hero-actions">
                 <a href="tel:+36202101970" class="btn-red">Hívjon most →</a>
                 <a href="#szolgaltatasok" class="btn-dark">Szolgáltatások</a>
@@ -804,7 +804,7 @@
 </section>
 
 <!-- ═══ FEATURE STRIP ═══ -->
-<section class="feature-strip">
+<!-- <section class="feature-strip">
     <div class="container">
         <div class="feature-strip-grid">
             <div class="feature-card">
@@ -829,7 +829,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- ═══ AUTO TICKER ═══ -->
 <div class="auto-ticker">
@@ -845,6 +845,15 @@
             <span class="t-item">Szívósor tisztítás</span><span class="t-sep">·</span>
             <span class="t-item">Műszaki vizsga előkészítés</span><span class="t-sep">·</span>
             <span class="t-item">Vezérlés beállítás</span><span class="t-sep">·</span>
+            <span class="t-item">Motorjavítás</span><span class="t-sep">·</span>
+            <span class="t-item">Általános szerelés</span><span class="t-sep">·</span>
+            <span class="t-item">Diagnosztika</span><span class="t-sep">·</span>
+            <span class="t-item">Fékek &amp; futómű</span><span class="t-sep">·</span>
+            <span class="t-item">Laktatás &amp; polírozás</span><span class="t-sep">·</span>
+            <span class="t-item">Fényezés &amp; karosszéria</span><span class="t-sep">·</span>
+            <span class="t-item">Szívósor tisztítás</span><span class="t-sep">·</span>
+            <span class="t-item">Műszaki vizsga előkészítés</span><span class="t-sep">·</span>
+                        <span class="t-item">Vezérlés beállítás</span><span class="t-sep">·</span>
             <span class="t-item">Motorjavítás</span><span class="t-sep">·</span>
             <span class="t-item">Általános szerelés</span><span class="t-sep">·</span>
             <span class="t-item">Diagnosztika</span><span class="t-sep">·</span>
@@ -877,6 +886,23 @@
             <span class="t-item brand">Nissan</span><span class="t-sep">·</span>
             <span class="t-item brand">VW</span><span class="t-sep">·</span>
             <span class="t-item brand">Audi</span><span class="t-sep">·</span>
+            <span class="t-item brand">BMW</span><span class="t-sep">·</span>
+            <span class="t-item brand">Mercedes</span><span class="t-sep">·</span>
+            <span class="t-item brand">Opel</span><span class="t-sep">·</span>
+            <span class="t-item brand">Ford</span><span class="t-sep">·</span>
+            <span class="t-item brand">Toyota</span><span class="t-sep">·</span>
+            <span class="t-item brand">Honda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Renault</span><span class="t-sep">·</span>
+            <span class="t-item brand">Citroën</span><span class="t-sep">·</span>
+            <span class="t-item brand">Škoda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Peugeot</span><span class="t-sep">·</span>
+            <span class="t-item brand">Seat</span><span class="t-sep">·</span>
+            <span class="t-item brand">Mazda</span><span class="t-sep">·</span>
+            <span class="t-item brand">Hyundai</span><span class="t-sep">·</span>
+            <span class="t-item brand">Kia</span><span class="t-sep">·</span>
+            <span class="t-item brand">Suzuki</span><span class="t-sep">·</span>
+            <span class="t-item brand">Nissan</span><span class="t-sep">·</span>
+                        <span class="t-item brand">Audi</span><span class="t-sep">·</span>
             <span class="t-item brand">BMW</span><span class="t-sep">·</span>
             <span class="t-item brand">Mercedes</span><span class="t-sep">·</span>
             <span class="t-item brand">Opel</span><span class="t-sep">·</span>
@@ -996,8 +1022,8 @@
                 <div class="manage-feat fade-up">
                     <div class="manage-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                     <div>
-                        <h4>Rögzítővel dolgozom</h4>
-                        <p>A vezérlés nem az a munka, ahol a „majdnem jó" elég — gyári pontossággal.</p>
+                        <h4>Rövid átfutási idő</h4>
+                        <p>Tiszteletben tartom az ügyfelek idejét és elvárásait.</p>
                     </div>
                 </div>
                 <div class="manage-feat fade-up">
@@ -1042,7 +1068,7 @@
                     <div class="trust-lbl">év tapasztalat</div>
                 </div>
                 <div class="trust-item">
-                    <div class="trust-num">Több ezer</div>
+                    <div class="trust-num">Több száz</div>
                     <div class="trust-lbl">elégedett ügyfél</div>
                 </div>
                 <div class="trust-item">
@@ -1072,11 +1098,11 @@
 <!-- ═══ ENGINE / SPECIALITY ═══ -->
 <section class="engine" id="specialitas">
     <div class="container">
-        <div class="sec-head fade-up">
+        <!-- <div class="sec-head fade-up">
             <div class="sec-label">A specialitásom</div>
             <h2 class="sec-title">Vezérlés beállítás — <span>rögzítővel</span></h2>
             <p class="sec-desc">Ha a vezérlés egy fokkal elcsúszik, az autó fogyaszt, rángat, rosszabb esetben a szelep a dugattyúba csapódik. Ez nem az a munka, ahol a „majdnem jó" elég.</p>
-        </div>
+        </div> -->
         <div class="engine-in">
             <div class="engine-text">
                 <div class="engine-tabs">
