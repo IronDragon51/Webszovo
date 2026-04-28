@@ -361,6 +361,7 @@ nav .container {
     color: var(--accent);
     background: linear-gradient(135deg, var(--accent), var(--accent-light));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
