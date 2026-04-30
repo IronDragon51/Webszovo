@@ -237,7 +237,8 @@ body {
   z-index:20;
   box-shadow:0 8px 40px rgba(0,0,0,0.7);
 }
-.hotspot:hover .h-card {
+.hotspot:hover .h-card,
+.hotspot.is-active .h-card {
   opacity:1;
   pointer-events:all;
   transform:translateY(0) scale(1);
@@ -265,6 +266,28 @@ body {
   background:rgba(232,113,26,0.08);
   border-radius:2px;
   letter-spacing:0.04em;
+}
+
+/* ─── PART OVERLAYS (full-canvas transparent PNGs over hero-bg) ─── */
+.part-overlay {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.28s ease, filter 0.28s ease;
+}
+.part-overlay.is-hover,
+.part-overlay.is-active {
+  opacity:1;
+  animation:glow-bright 1.4s ease-in-out infinite;
+}
+@keyframes glow-bright {
+  0%,100% { filter:drop-shadow(0 0 22px rgba(232,113,26,1)) drop-shadow(0 0 44px rgba(232,113,26,0.65)); }
+  50%      { filter:drop-shadow(0 0 34px rgba(232,113,26,1)) drop-shadow(0 0 68px rgba(232,113,26,0.85)); }
 }
 
 /* ─── HOTSPOT POSITIONS ───
@@ -667,8 +690,13 @@ footer {
   <!-- ── CAR HOTSPOTS ── -->
   <div class="car-layer" aria-hidden="true">
 
+    <!-- Full-canvas part overlays — same dimensions as tesbg.png, transparent PNGs -->
+    <img class="part-overlay" data-part="hood"  src="hood.png"  alt="">
+    <img class="part-overlay" data-part="door"  src="door.png"  alt="">
+    <img class="part-overlay" data-part="wheel" src="wheel.png" alt="">
+
     <!-- Hood → motor, olajcsere -->
-    <div class="hotspot hs-hood">
+    <div class="hotspot hs-hood" data-part="hood">
       <div class="h-area"></div>
       <div class="h-dot"></div>
       <div class="h-card">
@@ -700,7 +728,7 @@ footer {
     </div>
 
     <!-- Door → HiFi, ülésfűtés, elektromosság -->
-    <div class="hotspot hs-door">
+    <div class="hotspot hs-door" data-part="door">
       <div class="h-area"></div>
       <div class="h-dot"></div>
       <div class="h-card">
@@ -716,7 +744,7 @@ footer {
     </div>
 
     <!-- Front wheel → gumiszerelés, futóműállítás -->
-    <div class="hotspot hs-wheel">
+    <div class="hotspot hs-wheel" data-part="wheel">
       <div class="h-area"></div>
       <div class="h-dot"></div>
       <div class="h-card">
@@ -988,6 +1016,45 @@ function handleForm(e) {
     e.target.reset();
   }, 3000);
 }
+
+// ── Hotspot ↔ part overlay interaction
+const hotspots = document.querySelectorAll('.hotspot');
+const overlayMap = {};
+document.querySelectorAll('.part-overlay').forEach(img => {
+  overlayMap[img.dataset.part] = img;
+});
+
+function clearAll() {
+  hotspots.forEach(h => {
+    h.classList.remove('is-active');
+    const ov = overlayMap[h.dataset.part];
+    if (ov) ov.classList.remove('is-hover', 'is-active');
+  });
+}
+
+hotspots.forEach(hotspot => {
+  const ov = overlayMap[hotspot.dataset.part] || null;
+
+  hotspot.addEventListener('mouseenter', () => {
+    if (ov && !hotspot.classList.contains('is-active')) ov.classList.add('is-hover');
+  });
+  hotspot.addEventListener('mouseleave', () => {
+    if (ov && !hotspot.classList.contains('is-active')) ov.classList.remove('is-hover');
+  });
+
+  hotspot.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (e.target.closest('.h-card')) return; // card clicks don't toggle
+    const wasActive = hotspot.classList.contains('is-active');
+    clearAll();
+    if (!wasActive) {
+      hotspot.classList.add('is-active');
+      if (ov) { ov.classList.remove('is-hover'); ov.classList.add('is-active'); }
+    }
+  });
+});
+
+document.body.addEventListener('click', clearAll);
 </script>
 </body>
 </html>
