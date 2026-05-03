@@ -164,6 +164,7 @@
   .hero__content {
     position: relative;
     z-index: 2;
+    padding-left: 4.5rem;
   }
 
   .hero__badge {
@@ -259,20 +260,22 @@
     max-width: 560px;
     margin: 0 auto;
     aspect-ratio: 1/1;
+    padding-right: 6rem;
   }
 
   .photo-cluster {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 150%;
+    height: 140%;
+    padding-right: 150px;
   }
 
   .cluster-photo {
     position: absolute;
     border-radius: 50%;
     overflow: hidden;
-    border: 6px solid var(--cream);
-    box-shadow: 0 25px 60px -15px rgba(27, 40, 66, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.88);
+    box-shadow: 0 4px 18px rgba(27, 40, 66, 0.12), 0 22px 55px -12px rgba(27, 40, 66, 0.25);
   }
   .cluster-photo img {
     width: 100%;
@@ -300,7 +303,7 @@
     left: 2%;
     z-index: 3;
     background: linear-gradient(135deg, #DAEFF8 0%, #6BB8DC 60%, #2E7CA3 100%);
-    transform: rotate(-8deg);
+    transform: rotate(-6deg);
     animation: bobTop 7s ease-in-out infinite;
   }
 
@@ -312,21 +315,21 @@
     right: 4%;
     z-index: 3;
     background: linear-gradient(135deg, #FFF1B8 0%, #FFCE3D 60%, #B89525 100%);
-    transform: rotate(6deg);
+    transform: rotate(5deg);
     animation: bobBottom 8s ease-in-out infinite;
   }
 
   @keyframes bobMain {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-5px); }
   }
   @keyframes bobTop {
-    0%, 100% { transform: rotate(-8deg) translateY(0); }
-    50% { transform: rotate(-8deg) translateY(-12px); }
+    0%, 100% { transform: rotate(-6deg) translateY(0); }
+    50% { transform: rotate(-6deg) translateY(-7px); }
   }
   @keyframes bobBottom {
-    0%, 100% { transform: rotate(6deg) translateY(0); }
-    50% { transform: rotate(6deg) translateY(-10px); }
+    0%, 100% { transform: rotate(5deg) translateY(0); }
+    50% { transform: rotate(5deg) translateY(-6px); }
   }
 
   /* Floating sticker badges */
@@ -339,7 +342,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: 0 12px 30px -8px rgba(27, 40, 66, 0.3);
+    box-shadow: 0 4px 14px rgba(27, 40, 66, 0.12), 0 14px 32px -6px rgba(27, 40, 66, 0.22);
     z-index: 4;
     font-family: var(--display);
     font-weight: 700;
@@ -371,11 +374,11 @@
 
   @keyframes bobSticker1 {
     0%, 100% { transform: rotate(10deg) translateY(0); }
-    50% { transform: rotate(10deg) translateY(-12px); }
+    50% { transform: rotate(10deg) translateY(-7px); }
   }
   @keyframes bobSticker2 {
     0%, 100% { transform: rotate(-12deg) translateY(0); }
-    50% { transform: rotate(-12deg) translateY(-10px); }
+    50% { transform: rotate(-12deg) translateY(-6px); }
   }
 
   /* SVG decorations floating */
@@ -559,6 +562,94 @@
     color: var(--navy-soft);
   }
   .numbers__item:nth-child(3) .numbers__label { color: rgba(255, 247, 232, 0.85); }
+
+  /* ============ ATMOSPHERE — full-bleed parallax quote ============ */
+  .atmosphere {
+    position: relative;
+    height: 80vh;
+    min-height: 520px;
+    overflow: hidden;
+    background: var(--navy);
+  }
+  .atmosphere__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://welovebudapest.com/i/f6/amaretto-fagyizo-balatonalmadi-korosi-tamas-30.exact1980w.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    background-attachment: fixed;
+    background-color: var(--pink-deep);
+  }
+  .atmosphere__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(160deg,
+        rgba(27, 40, 66, 0.55) 0%,
+        rgba(230, 56, 120, 0.25) 45%,
+        rgba(27, 40, 66, 0.65) 100%);
+  }
+  .atmosphere__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--cream);
+  }
+  .atmosphere__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.1rem;
+    background: rgba(255, 247, 232, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 247, 232, 0.25);
+    border-radius: 100px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .atmosphere__label-dot {
+    width: 6px; height: 6px;
+    background: var(--yellow);
+    border-radius: 50%;
+  }
+  .atmosphere__quote {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5.2vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  }
+  .atmosphere__quote em {
+    font-family: var(--script);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.45em;
+    color: var(--yellow);
+    line-height: 0.5;
+    vertical-align: -0.05em;
+    margin: 0 0.05em;
+  }
+  .atmosphere__attribution {
+    margin-top: 2.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-weight: 500;
+  }
 
   /* ============ FLAVOR PARADE (replaces builder, horizontal scrolling) ============ */
   .parade {
@@ -1234,9 +1325,9 @@
     .nav__cta { padding: 0.5rem 0.9rem; font-size: 0.75rem; }
 
     .hero {
-      grid-template-columns: 1fr;
-      padding: 5.5rem 1.2rem 3rem;
-      gap: 3rem;
+      /* grid-template-columns: 1fr; */
+      /* padding: 16.5rem 11.2rem 13rem; */
+      /* gap: 0rem; */
     }
     .hero__visual { max-width: 360px; }
     .sticker--1 { width: 90px; height: 90px; }
@@ -1257,6 +1348,10 @@
     .numbers { padding: 4rem 1.2rem; }
     .numbers__inner { grid-template-columns: 1fr; gap: 1rem; }
     .numbers__item { padding: 2.5rem 1.5rem; }
+
+    .atmosphere { height: 60vh; min-height: 400px; }
+    .atmosphere__bg { background-attachment: scroll; }
+    .atmosphere__content { padding: 3rem 1.5rem; }
 
     .parade { padding: 5rem 0; }
     .parade__head { grid-template-columns: 1fr; gap: 1.5rem; padding: 0 1.2rem; margin-bottom: 2rem; }
@@ -1355,35 +1450,35 @@
     <div class="photo-cluster">
       <div class="cluster-photo cluster-photo--top">
         <img
-          src="https://welovebalaton.hu/i/cb/amaretto-fagyizo-balatonalmadi-korosi-tamas-1.exact1980w.jpg"
-          alt="Az Amaretto kívülről"
-          loading="eager"
-          onerror="this.remove()">
-      </div>
-      <div class="cluster-photo cluster-photo--main">
-        <img
           src="https://likebalaton.hu/wp-content/uploads/2023/05/4523247Balatonfagyija2023fotoNyitottBalaton.jpg"
           alt="Az Amaretto fagylaltpultja"
           loading="eager"
           onerror="this.remove()">
       </div>
+      <div class="cluster-photo cluster-photo--main">
+        <img
+          src="https://welovebudapest.com/i/f6/amaretto-fagyizo-balatonalmadi-korosi-tamas-30.exact1980w.jpg"
+          alt="Amaretto sorbet pohárban a napon"
+          loading="eager"
+          onerror="this.remove()">
+      </div>
       <div class="cluster-photo cluster-photo--bottom">
         <img
-          src="https://likebalaton.hu/wp-content/uploads/2019/06/AmarettoFagyizo.jpg"
-          alt="Vendégek az Amarettóban"
+          src="https://welovebalaton.hu/i/cb/amaretto-fagyizo-balatonalmadi-korosi-tamas-1.exact1980w.jpg"
+          alt="Az Amaretto kívülről"
           loading="eager"
           onerror="this.remove()">
       </div>
     </div>
 
-    <div class="sticker sticker--1">
+    <div class="sticker sticker--1" style="width: 9rem; height: 9rem;">
       <small>Az év fagyija</small>
       <strong>2023</strong>
       <em>tövises mangó</em>
     </div>
-    <div class="sticker sticker--2">
-      <small>Napi</small>
-      <strong>32–36</strong>
+    <div class="sticker sticker--2" style="width: 7rem; height: 7rem; top: auto; bottom: 6.5rem; left: 6.5rem;">
+        <strong STYLE="font-size: 1.5rem; padding-top: 0.5rem;">32–36</strong>
+      <small>napi íz</small>
     </div>
   </div>
 </section>
@@ -1428,8 +1523,10 @@
         loading="lazy"
         onerror="this.parentElement.style.background='linear-gradient(135deg, #DAEFF8 0%, #FFCE3D 100%)'">
       <div class="story__photo-stamp">
-        Est.<br>
+        Est.
+        <br>
         <strong>1996</strong>
+        
         Almádi
       </div>
     </div>
@@ -1474,6 +1571,23 @@
       <div class="numbers__value">100<sup>%</sup></div>
       <div class="numbers__label">olasz alapanyag</div>
     </div>
+  </div>
+</section>
+
+<!-- ============ ATMOSPHERE ============ -->
+<section class="atmosphere">
+  <div class="atmosphere__bg"></div>
+  <div class="atmosphere__overlay"></div>
+  <div class="atmosphere__content">
+    <div class="atmosphere__label">
+      <span class="atmosphere__label-dot"></span>
+      A nyár íze
+    </div>
+    <p class="atmosphere__quote">
+      Egy gombóc, és a <em>nyár</em><br>
+      örökké tart.
+    </p>
+    <p class="atmosphere__attribution">— Egy délután a Balaton partján</p>
   </div>
 </section>
 
