@@ -70,6 +70,117 @@
         });
     });
 
+    // ── Portfolio card expand popup (desktop only)
+    if (!window.matchMedia('(hover: none)').matches) {
+        let popupBackdrop = null;
+        let popupSourceCard = null;
+
+        function closeExpandedPopup() {
+            if (!popupBackdrop) return;
+            const el = popupBackdrop;
+            popupBackdrop = null;
+            popupSourceCard = null;
+            el.classList.remove('active');
+            el.querySelector('.portfolio-popup').classList.remove('active');
+            setTimeout(() => el.remove(), 280);
+        }
+
+        function openExpandedPopup(card) {
+            if (popupBackdrop) {
+                if (popupSourceCard === card) return;
+                popupBackdrop.remove();
+                popupBackdrop = null;
+            }
+            popupSourceCard = card;
+
+            const preview = card.querySelector('.portfolio-preview');
+            const href = preview.getAttribute('href');
+
+            const backdrop = document.createElement('div');
+            backdrop.className = 'portfolio-popup-backdrop';
+
+            const popup = document.createElement('div');
+            popup.className = 'portfolio-popup';
+
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'popup-close';
+            closeBtn.setAttribute('aria-label', 'Bezárás');
+            closeBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+            closeBtn.addEventListener('click', closeExpandedPopup);
+
+            const browserWrap = document.createElement('div');
+            browserWrap.className = 'popup-browser-wrap';
+
+            const chrome = document.createElement('div');
+            chrome.className = 'browser-chrome';
+            const dots = document.createElement('div');
+            dots.className = 'browser-dots';
+            dots.innerHTML = '<span></span><span></span><span></span>';
+            const addrEl = document.createElement('div');
+            addrEl.className = 'browser-addr';
+            addrEl.textContent = card.querySelector('.browser-addr').textContent.trim();
+            chrome.appendChild(dots);
+            chrome.appendChild(addrEl);
+            browserWrap.appendChild(chrome);
+
+            const iframe = document.createElement('iframe');
+            iframe.className = 'popup-iframe';
+            iframe.src = href;
+            iframe.setAttribute('loading', 'lazy');
+            iframe.setAttribute('title', card.querySelector('.portfolio-meta h3').textContent.trim());
+            browserWrap.appendChild(iframe);
+
+            const meta = document.createElement('div');
+            meta.className = 'popup-meta';
+
+            const metaText = document.createElement('div');
+            metaText.className = 'popup-meta-text';
+
+            const catEl = document.createElement('div');
+            catEl.className = 'portfolio-category';
+            catEl.textContent = card.querySelector('.portfolio-category').textContent.trim();
+
+            const titleEl = document.createElement('h3');
+            titleEl.textContent = card.querySelector('.portfolio-meta h3').textContent.trim();
+
+            metaText.appendChild(catEl);
+            metaText.appendChild(titleEl);
+
+            const ctaEl = document.createElement('a');
+            ctaEl.href = href;
+            ctaEl.target = preview.getAttribute('target') || '_blank';
+            ctaEl.rel = 'noopener';
+            ctaEl.className = 'btn-primary';
+            ctaEl.textContent = 'Megnyitás új lapon →';
+
+            meta.appendChild(metaText);
+            meta.appendChild(ctaEl);
+
+            popup.appendChild(closeBtn);
+            popup.appendChild(browserWrap);
+            popup.appendChild(meta);
+            backdrop.appendChild(popup);
+            document.body.appendChild(backdrop);
+            popupBackdrop = backdrop;
+
+            backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeExpandedPopup(); });
+
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                backdrop.classList.add('active');
+                popup.classList.add('active');
+            }));
+        }
+
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) e.preventDefault();
+                openExpandedPopup(card);
+            });
+        });
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeExpandedPopup(); });
+    }
+
     // ════════════════════════════════════════
     // HERO WEB — full-bleed ambient network
     // Points are spread across the entire hero

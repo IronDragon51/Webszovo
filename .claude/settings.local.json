@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:unsplash.com)"
+      "WebFetch(domain:unsplash.com)",
+      "Bash(dir \"d:\\\\Code\\\\webszovo.hu\\\\demo\")",
+      "Bash(dir \"d:\\\\Code\\\\webszovo.hu\\\\demo\\\\calypso\")"
     ]
   }
 }
