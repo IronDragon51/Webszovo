@@ -982,6 +982,7 @@
         .gallery {
             background: #0e0e0e;
             padding: 72px 0 64px;
+            min-height: 800px;
         }
 
         .gallery-head {
@@ -1024,7 +1025,7 @@
 
         .gallery-item {
             flex-shrink: 0;
-            height: 360px;
+            height: 450px;
             scroll-snap-align: start;
             overflow: hidden;
             border-radius: 2px;
@@ -1572,7 +1573,7 @@
             }
 
             .gallery-item {
-                height: 280px;
+                height: 350px;
             }
 
             .rev-grid {
@@ -2066,13 +2067,25 @@
             <span class="gallery-hint">húzza →</span>
         </div>
         <div class="gallery-strip">
-            <div class="gallery-item"><img src="https://placehold.co/600x400" alt="Műhely" draggable="false"></div>
-            <div class="gallery-item"><img src="https://placehold.co/300x400" alt="Szerelés" draggable="false"></div>
-            <div class="gallery-item"><img src="https://placehold.co/400x400" alt="Motor" draggable="false"></div>
-            <div class="gallery-item"><img src="https://placehold.co/600x400" alt="Futómű" draggable="false"></div>
-            <div class="gallery-item"><img src="https://placehold.co/300x400" alt="Diagnosztika" draggable="false"></div>
-            <div class="gallery-item"><img src="https://placehold.co/400x400" alt="Karosszéria" draggable="false"></div>
-            <div class="gallery-item"><img src="https://placehold.co/600x400" alt="Motorjavítás" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (2).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (18).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (5).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (11).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (20).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (1).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (16).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (9).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (14).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (3).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (19).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (6).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (12).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (13).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (7).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (17).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (8).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (15).jpg" alt="Autószaki műhely" draggable="false"></div>
+            <div class="gallery-item"><img src="aszakimg (10).jpg" alt="Autószaki műhely" draggable="false"></div>
         </div>
     </section>
 
@@ -2308,7 +2321,7 @@
             });
             document.addEventListener('mouseup', function () {
                 isDragging = false;
-                strip.classList.remove('is-dragging');
+                // setTimeout(function () { strip.classList.remove('is-dragging'); }, 1400);
             });
             strip.addEventListener('mousemove', function (e) {
                 if (!isDragging) return;
