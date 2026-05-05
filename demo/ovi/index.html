@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szentimrevárosi Óvoda — Ahol a gyermekkor kibontakozik</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-mark"></span>
+            Szentimrevárosi Óvoda
+        </a>
+        <div class="nav-links">
+            <div class="nav-has-dropdown active">
+                <a>Rólunk <span class="nav-chevron"></span></a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-panel-inner">
+                        <a href="index.html#rolunk">Bemutatkozás</a>
+                        <a href="#">Székhely és Telephelyei</a>
+                        <a href="munkatarsak.html">Munkatársak</a>
+                        <a href="#">Alapítványok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-has-dropdown">
+                <a>Hasznos info <span class="nav-chevron"></span></a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-panel-inner">
+                        <a href="#">Étkezés</a>
+                        <a href="#">Beiratkozás</a>
+                        <a href="#">Szülői értekezletek</a>
+                        <a href="index.html#programok">Programok</a>
+                        <a href="#">Pályázatok</a>
+                        <a href="#">Szünetek</a>
+                    </div>
+                </div>
+            </div>
+            <a href="hireink.html">Híreink</a>
+            <a href="dokumentumok.html">Dokumentumok</a>
+            <a href="gyik.html">GYIK</a>
+            <a href="kapcsolat.html" class="nav-cta">Felvételi</a>
+        </div>
+        <button class="nav-burger" onclick="this.closest('nav').classList.toggle('nav-open')" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-mobile-panel">
+        <div class="mobile-section">
+            <div class="mobile-section-label">Rólunk</div>
+            <a href="index.html#rolunk">Bemutatkozás</a>
+            <a href="#">Székhely és Telephelyei</a>
+            <a href="munkatarsak.html">Munkatársak</a>
+            <a href="#">Alapítványok</a>
+        </div>
+        <div class="mobile-section">
+            <div class="mobile-section-label">Hasznos info</div>
+            <a href="#">Étkezés</a>
+            <a href="#">Beiratkozás</a>
+            <a href="#">Szülői értekezletek</a>
+            <a href="index.html#programok">Programok</a>
+            <a href="#">Pályázatok</a>
+            <a href="#">Szünetek</a>
+        </div>
+        <a href="hireink.html">Híreink</a>
+        <a href="dokumentumok.html">Dokumentumok</a>
+        <a href="gyik.html">GYIK</a>
+        <a href="kapcsolat.html" class="mobile-cta">Felvételi</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="accent accent-1"></div>
+    <div class="accent accent-2"></div>
+    <div class="accent accent-3"></div>
+    <div class="hero-grid">
+        <div>
+            <div class="hero-eye">Újbuda · 1118 Budapest</div>
+            <h1 class="hero-title">
+                Ahol a gyermekkor<br>
+                <em>kibontakozik<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M2 9 Q 50 -1 100 7 T 198 6" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></em>
+            </h1>
+            <p class="hero-sub">Három óvoda, egy közös szemlélet. Játékos tanulás, biztonságos környezet, természetközeli élmények — Újbuda szívében, családias légkörben.</p>
+            <div class="hero-ctas">
+                <a href="kapcsolat.html" class="btn-primary">
+                    Felvételi információk
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#rolunk" class="btn-ghost">Bemutatkozunk</a>
+            </div>
+            <div class="pills">
+                <span class="pill"><span class="pill-dot" style="background:var(--primary)"></span>Játékos tanulás</span>
+                <span class="pill"><span class="pill-dot" style="background:var(--sage-deep)"></span>Zöld szemlélet</span>
+                <span class="pill"><span class="pill-dot" style="background:var(--butter)"></span>Családias légkör</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-shape"></div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=85" alt="Vidám gyerekek az óvodában">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="stats">
+    <div><div class="stat-num">3 <em>óvoda</em></div><div class="stat-lbl">Újbuda kerületében</div></div>
+    <div><div class="stat-num">12 <em>csoport</em></div><div class="stat-lbl">3-tól 7 éves korig</div></div>
+    <div><div class="stat-num">35 <em>év</em></div><div class="stat-lbl">Pedagógiai tapasztalat</div></div>
+</div>
+
+<section class="about" id="rolunk">
+    <div class="about-grid">
+        <div class="about-photos">
+            <div class="photo-deco"></div>
+            <div class="photo-1"><img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=700&q=85" alt="Óvodai csoportszoba"></div>
+            <div class="photo-2"><img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=700&q=85" alt="Kreatív foglalkozás"></div>
+        </div>
+        <div class="about-text">
+            <div class="eye">Rólunk</div>
+            <h2>A közös értékek <em>egysége,</em><br>az egyéni arculatok színessége.</h2>
+            <p>Pedagógiai Programunk három különböző karakterű óvodát fog össze egy közös szemléletben — miközben minden tagintézményünk megőrzi a saját, helyi sajátosságaiból fakadó egyéni arculatát.</p>
+            <p>Hisszük, hogy a gyermekkor a felfedezés, a játék és az első barátságok ideje. A mi feladatunk, hogy ehhez biztosítsuk a legjobb környezetet — szakértő pedagógusokkal, természetközeli udvarokkal, és sok-sok mosollyal.</p>
+            <a href="dokumentumok.html" class="about-link">Pedagógiai programunk
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="programs" id="programok">
+    <div class="programs-inner">
+        <div class="programs-head">
+            <div class="eye">Programok</div>
+            <h2>Mindennap egy <em>új kaland</em></h2>
+        </div>
+        <div class="programs-grid">
+            <div class="prog">
+                <div class="prog-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg>
+                </div>
+                <h3>Kreatív műhely</h3>
+                <p>Festés, agyagozás, kollázs és kézműves foglalkozások — ahol minden gyermek megtalálja a saját kifejezésmódját.</p>
+            </div>
+            <div class="prog">
+                <div class="prog-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-3 4-6 6-6 11a6 6 0 0012 0c0-5-3-7-6-11z"/><path d="M12 13v8"/></svg>
+                </div>
+                <h3>Zöld sarok</h3>
+                <p>Saját kertünkben ültetünk, gondozunk és figyelünk meg élőlényeket — a környezettudatosság itt nem tananyag, hanem mindennapi gyakorlat.</p>
+            </div>
+            <div class="prog">
+                <div class="prog-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M9 11h6M12 11v3l-3 7M12 14l3 7"/></svg>
+                </div>
+                <h3>Mozgás és tánc</h3>
+                <p>Heti rendszerességgel néptánc, mozgásfejlesztő foglalkozások és szabadtéri sportok a Gabányi Sportcsarnokban.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Szentimrevárosi Óvoda · Újbuda Önkormányzata · Minden jog fenntartva
+</footer>
+
+<a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+
+</body>
+</html>

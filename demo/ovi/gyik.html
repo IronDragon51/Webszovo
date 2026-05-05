@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyakori kérdések — Szentimrevárosi Óvoda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-mark"></span>
+            Szentimrevárosi Óvoda
+        </a>
+        <div class="nav-links">
+            <div class="nav-has-dropdown">
+                <a>Rólunk <span class="nav-chevron"></span></a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-panel-inner">
+                        <a href="index.html#rolunk">Bemutatkozás</a>
+                        <a href="#">Székhely és Telephelyei</a>
+                        <a href="munkatarsak.html">Munkatársak</a>
+                        <a href="#">Alapítványok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-has-dropdown">
+                <a>Hasznos info <span class="nav-chevron"></span></a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-panel-inner">
+                        <a href="#">Étkezés</a>
+                        <a href="#">Beiratkozás</a>
+                        <a href="#">Szülői értekezletek</a>
+                        <a href="index.html#programok">Programok</a>
+                        <a href="#">Pályázatok</a>
+                        <a href="#">Szünetek</a>
+                    </div>
+                </div>
+            </div>
+            <a href="hireink.html">Híreink</a>
+            <a href="dokumentumok.html">Dokumentumok</a>
+            <a href="gyik.html" class="active">GYIK</a>
+            <a href="kapcsolat.html" class="nav-cta">Felvételi</a>
+        </div>
+        <button class="nav-burger" onclick="this.closest('nav').classList.toggle('nav-open')" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-mobile-panel">
+        <div class="mobile-section">
+            <div class="mobile-section-label">Rólunk</div>
+            <a href="index.html#rolunk">Bemutatkozás</a>
+            <a href="#">Székhely és Telephelyei</a>
+            <a href="munkatarsak.html">Munkatársak</a>
+            <a href="#">Alapítványok</a>
+        </div>
+        <div class="mobile-section">
+            <div class="mobile-section-label">Hasznos info</div>
+            <a href="#">Étkezés</a>
+            <a href="#">Beiratkozás</a>
+            <a href="#">Szülői értekezletek</a>
+            <a href="index.html#programok">Programok</a>
+            <a href="#">Pályázatok</a>
+            <a href="#">Szünetek</a>
+        </div>
+        <a href="hireink.html">Híreink</a>
+        <a href="dokumentumok.html">Dokumentumok</a>
+        <a href="gyik.html">GYIK</a>
+        <a href="kapcsolat.html" class="mobile-cta">Felvételi</a>
+    </div>
+</nav>
+
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <div class="eye" style="color:var(--sage-deep)">Szülőknek</div>
+        <h1>Gyakori <em>kérdések</em></h1>
+    </div>
+</div>
+
+<section class="faq">
+    <div class="faq-inner">
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>Hány éves kortól vesznek fel gyermekeket?<span class="faq-toggle"></span></summary>
+                <div class="faq-answer">A 3. életévüket betöltött gyermekeket vesszük fel óvodánkba, a beiratkozási időszakban benyújtott jelentkezések alapján. A felvétel feltétele a szobatisztaság és az alapvető önkiszolgálási képességek megléte.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Mikor van a felvételi időszak?<span class="faq-toggle"></span></summary>
+                <div class="faq-answer">A beiratkozás minden évben március 1. és április 30. között zajlik. A pontos időpontokat és a szükséges dokumentumok listáját a felvételi tájékoztatónk tartalmazza, amelyet a Dokumentumok szekcióból tölthet le.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Milyen iratokat kell hozni a beiratkozáshoz?<span class="faq-toggle"></span></summary>
+                <div class="faq-answer">A gyermek születési anyakönyvi kivonatát, lakcímkártyáját, TAJ-számát, valamint a szülők személyazonosító okmányait. Egészségügyi alkalmasságról szóló igazolást a védőnő vagy a gyermekorvos állít ki.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Milyen az étkezés? Figyelnek az allergiákra?<span class="faq-toggle"></span></summary>
+                <div class="faq-answer">Napi háromszori étkezést biztosítunk (tízórai, ebéd, uzsonna). Az étrendet az Étkeztetés menüpont alatt heti bontásban tesszük közzé, az allergének feltüntetésével. Speciális étrendet — orvosi igazolás alapján — egyedileg tudunk biztosítani.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Vannak külön foglalkozások, különórák?<span class="faq-toggle"></span></summary>
+                <div class="faq-answer">Igen — heti rendszerességgel néptánc, kreatív műhely, mozgásfejlesztés és angol játszóház várja a gyermekeket. Ezek a délutáni időszakban, az alaptevékenység után, opcionális részvétellel zajlanak.</div>
+            </details>
+            <details class="faq-item">
+                <summary>Milyen nyitvatartásban működnek?<span class="faq-toggle"></span></summary>
+                <div class="faq-answer">Hétköznapokon 6:30 és 17:30 között fogadjuk a gyermekeket. A reggeli érkezés 8:30-ig javasolt, hogy a foglalkozások zavartalanul indulhassanak. Hosszabb hiányzást kérjük előre jelezni a csoportvezetőnél.</div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Szentimrevárosi Óvoda · Újbuda Önkormányzata · Minden jog fenntartva
+</footer>
+
+<a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+
+</body>
+</html>

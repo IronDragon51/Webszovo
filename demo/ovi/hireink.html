@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Híreink — Szentimrevárosi Óvoda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-mark"></span>
+            Szentimrevárosi Óvoda
+        </a>
+        <div class="nav-links">
+            <div class="nav-has-dropdown">
+                <a>Rólunk <span class="nav-chevron"></span></a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-panel-inner">
+                        <a href="index.html#rolunk">Bemutatkozás</a>
+                        <a href="#">Székhely és Telephelyei</a>
+                        <a href="munkatarsak.html">Munkatársak</a>
+                        <a href="#">Alapítványok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-has-dropdown">
+                <a>Hasznos info <span class="nav-chevron"></span></a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-panel-inner">
+                        <a href="#">Étkezés</a>
+                        <a href="#">Beiratkozás</a>
+                        <a href="#">Szülői értekezletek</a>
+                        <a href="index.html#programok">Programok</a>
+                        <a href="#">Pályázatok</a>
+                        <a href="#">Szünetek</a>
+                    </div>
+                </div>
+            </div>
+            <a href="hireink.html" class="active">Híreink</a>
+            <a href="dokumentumok.html">Dokumentumok</a>
+            <a href="gyik.html">GYIK</a>
+            <a href="kapcsolat.html" class="nav-cta">Felvételi</a>
+        </div>
+        <button class="nav-burger" onclick="this.closest('nav').classList.toggle('nav-open')" aria-label="Menü">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav-mobile-panel">
+        <div class="mobile-section">
+            <div class="mobile-section-label">Rólunk</div>
+            <a href="index.html#rolunk">Bemutatkozás</a>
+            <a href="#">Székhely és Telephelyei</a>
+            <a href="munkatarsak.html">Munkatársak</a>
+            <a href="#">Alapítványok</a>
+        </div>
+        <div class="mobile-section">
+            <div class="mobile-section-label">Hasznos info</div>
+            <a href="#">Étkezés</a>
+            <a href="#">Beiratkozás</a>
+            <a href="#">Szülői értekezletek</a>
+            <a href="index.html#programok">Programok</a>
+            <a href="#">Pályázatok</a>
+            <a href="#">Szünetek</a>
+        </div>
+        <a href="hireink.html">Híreink</a>
+        <a href="dokumentumok.html">Dokumentumok</a>
+        <a href="gyik.html">GYIK</a>
+        <a href="kapcsolat.html" class="mobile-cta">Felvételi</a>
+    </div>
+</nav>
+
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <div class="eye" style="color:var(--primary)">Híreink</div>
+        <h1>Friss <em>aktualitások</em></h1>
+    </div>
+</div>
+
+<section class="news">
+    <div class="news-inner">
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=600&q=85" alt="2026. év élőlényei">
+                    <span class="news-tag green">Zöld sarok</span>
+                </div>
+                <div class="news-date">2026. február 28.</div>
+                <h3>2026. év élőlényei — közös felfedezés</h3>
+            </article>
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=85" alt="Felvételi">
+                    <span class="news-tag">Felvételi</span>
+                </div>
+                <div class="news-date">2026. február 25.</div>
+                <h3>2026-27. óvodai felvételek elindultak</h3>
+            </article>
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=600&q=85" alt="Parasport Napja">
+                    <span class="news-tag green">Esemény</span>
+                </div>
+                <div class="news-date">2026. február 18.</div>
+                <h3>Parasport Napja az óvodánkban</h3>
+            </article>
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1571210862729-78a52d3779a2?w=600&q=85" alt="Gabányi Sportcsarnok">
+                    <span class="news-tag">Esemény</span>
+                </div>
+                <div class="news-date">2026. február 15.</div>
+                <h3>Látogatás a Gabányi Sportcsarnokban</h3>
+            </article>
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=600&q=85" alt="Süni csoport">
+                    <span class="news-tag butter">Csoportok</span>
+                </div>
+                <div class="news-date">2026. február 8.</div>
+                <h3>A Süni csoport a Mesemúzeumban</h3>
+            </article>
+            <article class="news-card">
+                <div class="news-img">
+                    <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&q=85" alt="Gyermeklélektan">
+                    <span class="news-tag green">Tudástár</span>
+                </div>
+                <div class="news-date">2026. február 1.</div>
+                <h3>Gyermeklélektan — szülői előadás-sorozat</h3>
+            </article>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Szentimrevárosi Óvoda · Újbuda Önkormányzata · Minden jog fenntartva
+</footer>
+
+<a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+
+</body>
+</html>
