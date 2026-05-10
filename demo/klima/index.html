@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SepsiKlíma — Klíma, hűtés, légtechnika · Daikin partner Sepsiszentgyörgy</title>
+<meta name="description" content="SepsiKlíma — Daikin hivatalos partner Kovászna megyében. Helyszíni felmérés 24 órán belül.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-1:#EBF1F7;--sky-2:#DBE5EF;--frost:#F4F8FB;--paper:#FFFFFF;
+  --ink:#0F1B2E;--ink-2:#1F2D44;--ink-3:#37445C;--steel:#4A5870;--mist:#8794A8;
+  --line:#E5EAF1;--line-2:#CBD3DE;
+  --teal:#1FA9A1;--teal-d:#178A83;--teal-soft:#D5EDE9;
+  --ember:#E8693C;--ember-d:#C7521F;--ember-soft:#FCE3D6;
+  --shadow-sm:0 2px 8px rgba(15,27,46,.04);
+  --shadow:0 12px 40px -12px rgba(15,27,46,.12);
+  --shadow-lg:0 30px 60px -20px rgba(15,27,46,.18);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Geist',system-ui,sans-serif;background:var(--sky-1);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5;font-feature-settings:"ss01","cv11","cv05"}
+img,svg{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(255,255,255,.7),transparent 60%),radial-gradient(ellipse 80% 50% at 80% 100%,rgba(31,169,161,.05),transparent 60%),radial-gradient(ellipse 60% 40% at 10% 90%,rgba(232,105,60,.04),transparent 60%)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:10px 16px;font-size:.85rem;border-radius:0 0 8px 0;z-index:200}
+.skip:focus{left:0}
+
+/* HEADER */
+.header{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:1280px;padding:10px 14px 10px 22px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(255,255,255,.72);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(255,255,255,.5);border-radius:999px;box-shadow:0 4px 24px -4px rgba(15,27,46,.08)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.02rem;letter-spacing:-.015em;color:var(--ink)}
+.logo-mark{width:30px;height:30px;flex-shrink:0}
+.logo-cool{color:var(--teal-d)}.logo-warm{color:var(--ember-d)}
+.nav{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:.88rem;font-weight:500;color:var(--ink-2);transition:color .15s,opacity .15s;opacity:.78}
+.nav-link:hover{opacity:1;color:var(--ember-d)}
+.header-right{display:flex;align-items:center;gap:8px}
+.lang{display:flex;align-items:center;background:rgba(15,27,46,.05);border-radius:999px;padding:3px;font-family:'Geist Mono',monospace}
+.lang button{padding:5px 9px;font-size:.7rem;font-weight:500;color:var(--steel);border-radius:999px;letter-spacing:.04em;transition:all .2s}
+.lang button.active{background:var(--ink);color:var(--paper)}
+.lang button:not(.active):hover{color:var(--ink)}
+.phone-icon{width:38px;height:38px;border-radius:50%;background:rgba(15,27,46,.05);display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s,transform .2s;color:var(--ink-2);position:relative}
+.phone-icon:hover{background:var(--ember);color:var(--paper);transform:scale(1.05)}
+.phone-icon svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.phone-icon::after{content:attr(data-tt);position:absolute;top:calc(100% + 8px);right:0;background:var(--ink);color:var(--paper);padding:6px 12px;border-radius:8px;font-family:'Geist Mono',monospace;font-size:.72rem;letter-spacing:.02em;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateY(-4px)}
+.phone-icon:hover::after{opacity:1;transform:translateY(0)}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:500;font-size:.85rem;letter-spacing:-.005em;transition:transform .25s cubic-bezier(.4,0,.2,1),background .25s,box-shadow .25s}
+.cta-btn:hover{background:var(--ember-d);transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(232,105,60,.5)}
+.cta-btn.primary{background:var(--ember)}
+.cta-btn.primary:hover{background:var(--ember-d);box-shadow:0 8px 24px -8px rgba(232,105,60,.6)}
+.cta-btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;color:var(--ink);font-weight:500;font-size:.85rem;background:rgba(255,255,255,.7);border:1px solid var(--line-2);transition:background .2s,border-color .2s,transform .2s}
+.cta-btn-ghost:hover{background:var(--paper);border-color:var(--ink);transform:translateY(-1px)}
+.menu-toggle{display:none;width:38px;height:38px;border-radius:50%;background:rgba(15,27,46,.05);align-items:center;justify-content:center}
+.menu-toggle svg{width:16px;height:16px;stroke:var(--ink)}
+
+/* HERO */
+.hero{position:relative;z-index:1;padding:130px 32px 64px;max-width:1280px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:.72rem;font-weight:500;color:var(--steel);letter-spacing:.02em;margin-bottom:32px;animation:fadeUp .6s .1s both}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--ember);animation:pulse 2.4s ease-in-out infinite}
+.hero-eyebrow b{color:var(--ink);font-weight:600}
+@keyframes pulse{0%,100%{opacity:.7}50%{opacity:1}}
+.hero h1{font-weight:500;font-size:clamp(2.6rem,7.4vw,5.8rem);line-height:1;letter-spacing:-.04em;color:var(--ink);max-width:900px;margin-bottom:28px;animation:fadeUp .7s .2s both}
+.hero h1 .em-warm{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--ember);letter-spacing:-.025em}
+.hero h1 .em-cool{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-d);letter-spacing:-.025em}
+.hero-sub{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--ink-2);max-width:560px;line-height:1.55;margin-bottom:36px;animation:fadeUp .8s .3s both}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px;animation:fadeUp .9s .4s both}
+.hero-actions .cta-btn,.hero-actions .cta-btn-ghost{padding:14px 24px;font-size:.95rem}
+.hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:32px;padding-top:28px;border-top:1px solid var(--line);animation:fadeUp 1s .5s both}
+.htrust-item{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--ink-2)}
+.htrust-stars{display:flex;gap:1px}.htrust-stars svg{width:13px;height:13px;fill:var(--ember)}
+.htrust-num{font-weight:600;color:var(--ink)}
+.htrust-divider{width:1px;height:18px;background:var(--line)}
+.htrust-daikin-icon{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#0090D0,#005a8c);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.htrust-daikin-icon svg{width:13px;height:13px;fill:var(--paper)}
+.htrust-item b{color:var(--ink);font-weight:600}
+.hero-visual{position:relative;margin-top:60px;aspect-ratio:18/9;border-radius:28px;overflow:hidden;background:linear-gradient(150deg,#D6E5F0 0%,#EBF1F7 50%,#F8FBFE 100%);box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.7);animation:fadeUp 1.1s .6s both}
+.hero-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(31,169,161,.10),transparent 70%),radial-gradient(ellipse 30% 50% at 80% 80%,rgba(232,105,60,.08),transparent 70%)}
+.hero-scene{position:absolute;inset:0}
+.hero-scene svg{width:100%;height:100%}
+.live-status{position:absolute;left:24px;bottom:24px;display:flex;align-items:center;gap:12px;padding:11px 18px 11px 16px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-radius:999px;border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow-sm);text-decoration:none;cursor:pointer;transition:transform .25s,background .25s,box-shadow .25s}
+.live-status:hover{transform:scale(1.03);background:var(--paper);box-shadow:var(--shadow)}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#22c55e;flex-shrink:0;position:relative;box-shadow:0 0 8px #22c55e}
+.live-dot::before{content:"";position:absolute;inset:-4px;border-radius:50%;background:#22c55e;opacity:.4;animation:livePulse 1.8s ease-out infinite}
+@keyframes livePulse{0%{transform:scale(1);opacity:.5}80%,100%{transform:scale(2.2);opacity:0}}
+.live-text{display:flex;flex-direction:column;gap:1px}
+.live-text strong{font-size:.84rem;font-weight:600;color:var(--ink);letter-spacing:-.005em}
+.live-text span{font-family:'Geist Mono',monospace;font-size:.64rem;color:var(--steel);letter-spacing:.04em}
+.scene-label{position:absolute;display:flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:999px;border:1px solid rgba(255,255,255,.7);font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--ink);letter-spacing:.04em;font-weight:500;box-shadow:var(--shadow-sm);animation:floatY 4s ease-in-out infinite}
+.scene-label .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.scene-label.cool .dot{background:var(--teal);box-shadow:0 0 8px var(--teal)}
+.scene-label.warm .dot{background:var(--ember);box-shadow:0 0 8px var(--ember)}
+.scene-label.cold .dot{background:#7AC4DD;box-shadow:0 0 8px #7AC4DD}
+.scene-label-1{top:18%;left:12%}
+.scene-label-2{top:42%;right:14%;animation-delay:1s}
+.scene-label-3{bottom:22%;left:38%;animation-delay:2s}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* STATS */
+.stats{padding:120px 32px 60px;position:relative;z-index:1}
+.stats-inner{max-width:1280px;margin:0 auto}
+.stats-head{margin-bottom:60px;max-width:760px}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.stat{padding:48px 32px 36px 0;border-top:1px solid var(--line-2);position:relative}
+.stat::before{content:"";position:absolute;top:-1px;left:0;height:2px;width:0;background:var(--ember);transition:width 1s cubic-bezier(.4,0,.2,1) .2s}
+.stat.in-view::before{width:48%}
+.stat-num{font-weight:300;font-size:clamp(4.5rem,9vw,8rem);line-height:.9;letter-spacing:-.045em;color:var(--teal);font-feature-settings:"tnum","cv11";margin-bottom:14px}
+.stat-num small{font-size:.5em;font-weight:400;color:var(--steel);margin-left:4px;letter-spacing:-.02em}
+.stat-num.warm{color:var(--ember)}
+.stat-label b{display:block;font-weight:600;font-size:.92rem;color:var(--ink);margin-bottom:4px;letter-spacing:-.005em}
+.stat-label{font-size:.86rem;color:var(--steel);line-height:1.5;max-width:240px}
+
+/* SECTION SHELL */
+.section{padding:100px 32px;position:relative;z-index:1}
+.section-inner{max-width:1280px;margin:0 auto}
+.section-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono',monospace;font-size:.72rem;color:var(--steel);letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;font-weight:500}
+.section-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ember)}
+.section-title{font-weight:500;font-size:clamp(2rem,5vw,4rem);line-height:1.02;letter-spacing:-.035em;margin-bottom:24px;max-width:780px;color:var(--ink)}
+.section-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal);letter-spacing:-.025em}
+.section-title .warm{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--ember);letter-spacing:-.025em}
+.section-lede{font-size:1.05rem;color:var(--ink-2);max-width:580px;line-height:1.6;margin-bottom:48px}
+
+/* SEGMENT TABS */
+.segments{padding:60px 32px 100px;position:relative;z-index:1}
+.segments-inner{max-width:1280px;margin:0 auto}
+.seg-tabs-wrap{margin-bottom:32px}
+.seg-tabs-cue
+{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;padding:9px 19px;
+    border-radius:999px;background:var(--ember-soft);font-family:'Geist Mono',monospace;
+    font-size:.7rem;font-weight:600;color:var(--ember-d);letter-spacing:.04em;
+    margin-left:14px;
+    text-transform:uppercase}
+.seg-tabs-cue .cue-arrow{font-family:'Geist',sans-serif;font-size:.95rem;animation:cueBounce 1.6s ease-in-out infinite;display:inline-block}
+@keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.seg-tabs{display:inline-flex;background:var(--paper);border-radius:18px;padding:6px;border:1px solid var(--line);box-shadow:0 4px 16px -4px rgba(15,27,46,.10),0 1px 3px rgba(15,27,46,.04);position:relative}
+.seg-tab{padding:14px 22px;font-size:.95rem;font-weight:500;color:var(--steel);border-radius:14px;letter-spacing:-.005em;transition:color .25s;position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px}
+.seg-tab-icon{width:18px;height:18px;flex-shrink:0;opacity:.65;transition:opacity .25s}
+.seg-tab.active{color:var(--paper)}
+.seg-tab.active .seg-tab-icon{opacity:1}
+.seg-tab:not(.active):hover{color:var(--ink)}
+.seg-tab:not(.active):hover .seg-tab-icon{opacity:1}
+.seg-tab-bg{position:absolute;top:6px;height:calc(100% - 12px);background:var(--ember);border-radius:14px;transition:transform .35s cubic-bezier(.4,0,.2,1),width .35s cubic-bezier(.4,0,.2,1);z-index:1;box-shadow:0 6px 14px -3px rgba(232,105,60,.45)}
+.seg-panel{background:var(--paper);border-radius:28px;border:1px solid var(--line);padding:48px;display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start;box-shadow:var(--shadow-sm);min-height:520px;position:relative;overflow:hidden}
+.seg-panel-content{display:none}
+.seg-panel-content.active{display:contents;animation:panelIn .4s cubic-bezier(.4,0,.2,1)}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.seg-left h3{font-weight:500;font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.025em;line-height:1.05;margin-bottom:16px}
+.seg-left h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--ember);letter-spacing:-.02em}
+.seg-lede{font-size:1rem;color:var(--ink-2);line-height:1.6;margin-bottom:28px;max-width:440px}
+.seg-example{background:var(--frost);border-radius:14px;padding:20px 22px;border-left:3px solid var(--ember);margin-bottom:24px}
+.seg-example-label{font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--ember-d);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;font-weight:600}
+.seg-example p{font-size:.92rem;color:var(--ink-2);line-height:1.55}
+.seg-example p b{color:var(--ink);font-weight:600}
+.seg-cta{display:flex;gap:10px;flex-wrap:wrap}
+.seg-right{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.seg-svc{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);transition:padding .25s,background .25s}
+.seg-svc:hover{padding-left:14px;padding-right:14px;background:var(--frost);margin:0 -14px}
+.seg-svc-num{font-family:'Geist Mono',monospace;font-size:.72rem;color:var(--mist);letter-spacing:.04em;width:24px}
+.seg-svc-content{display:flex;flex-direction:column;gap:3px;min-width:0}
+.seg-svc-title{font-weight:500;font-size:.98rem;letter-spacing:-.01em;color:var(--ink)}
+.seg-svc-desc{font-size:.82rem;color:var(--steel);line-height:1.5}
+.seg-svc-arrow{width:30px;height:30px;border-radius:50%;background:var(--frost);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .25s;color:var(--steel);flex-shrink:0}
+.seg-svc-arrow svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.seg-svc:hover .seg-svc-arrow{background:var(--ember);color:var(--paper);border-color:var(--ember);transform:rotate(-45deg)}
+
+/* NICHE */
+.niche{padding:120px 32px;background:var(--ink);color:var(--paper);border-radius:32px;margin:32px;position:relative;overflow:hidden;z-index:1}
+.niche::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:120%;background:radial-gradient(circle,rgba(31,169,161,.18),transparent 70%);filter:blur(40px)}
+.niche::after{content:"";position:absolute;bottom:-30%;left:-10%;width:60%;height:120%;background:radial-gradient(circle,rgba(232,105,60,.15),transparent 70%);filter:blur(40px)}
+.niche-inner{position:relative;z-index:1;max-width:1280px;margin:0 auto}
+.niche .section-eyebrow{color:rgba(255,255,255,.55)}
+.niche .section-title{color:var(--paper);max-width:880px;margin-bottom:32px}
+.niche .section-title em{color:#7DDBD3}
+.niche .section-title .warm{color:var(--ember-soft)}
+.niche-claim{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:28px 32px;margin-bottom:48px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;max-width:780px}
+.niche-claim-num{font-weight:300;font-size:clamp(3rem,5vw,4.5rem);color:var(--ember);line-height:.9;letter-spacing:-.04em}
+.niche-claim-num small{font-size:.4em;color:rgba(255,255,255,.6);font-weight:400;display:block;margin-top:4px;letter-spacing:.04em;font-family:'Geist Mono',monospace;text-transform:uppercase}
+.niche-claim-text{font-size:1.1rem;line-height:1.5;color:rgba(255,255,255,.92);max-width:440px}
+.niche-claim-text b{color:var(--paper);font-weight:600}
+.niche-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.niche-points{display:grid;border-top:1px solid rgba(255,255,255,.12)}
+.niche-point{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid rgba(255,255,255,.12);transition:padding .25s}
+.niche-point:hover{padding-left:8px}
+.niche-point-num{font-family:'Geist Mono',monospace;font-size:.74rem;color:var(--ember);letter-spacing:.04em;font-weight:500;padding-top:2px}
+.niche-point h4{font-weight:500;font-size:1.05rem;letter-spacing:-.012em;color:var(--paper);margin-bottom:8px}
+.niche-point p{font-size:.92rem;color:rgba(255,255,255,.72);line-height:1.55;margin-bottom:8px}
+.niche-point .spec{font-family:'Geist Mono',monospace;font-size:.72rem;color:var(--teal);letter-spacing:.04em}
+.niche-story{background:linear-gradient(135deg,rgba(232,105,60,.08),rgba(31,169,161,.05));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px;position:relative}
+.niche-story-tag{font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--ember);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+.niche-story-quote{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.35rem;line-height:1.4;color:var(--paper);margin-bottom:18px}
+.niche-story-quote::before{content:"„";color:var(--ember);font-size:2rem;margin-right:4px;line-height:0;vertical-align:-12px}
+.niche-story-attr{font-family:'Geist Mono',monospace;font-size:.74rem;color:rgba(255,255,255,.6);letter-spacing:.04em}
+.niche-story-attr b{color:var(--paper);font-weight:600}
+.niche-cta-row{margin-top:48px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.niche-cta-row .cta-btn{background:var(--ember);color:var(--paper)}
+.niche-cta-row .cta-btn:hover{background:var(--paper);color:var(--ink)}
+.niche-cta-row .help{font-size:.88rem;color:rgba(255,255,255,.65)}
+
+/* PROCESS */
+.process{padding:120px 32px;position:relative;z-index:1}
+.process-head{display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:end;margin-bottom:60px;max-width:1280px;margin-left:auto;margin-right:auto}
+.process-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 22px 28px;min-height:260px;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(15,27,46,.04),0 8px 24px -16px rgba(15,27,46,.18);transition:transform .25s,box-shadow .25s,border-color .25s}
+.step:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--ember-soft)}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:auto;font-family:'Geist Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--mist)}
+.step-num{font-weight:600;color:var(--ink-3)}
+.step-time{color:var(--ember-d);font-weight:600}
+.step-icon{width:30px;height:30px;color:var(--steel);margin-top:auto;margin-bottom:14px;opacity:.55;transition:opacity .25s,color .25s}
+.step:hover .step-icon{opacity:1;color:var(--ember-d)}
+.step-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.step h4{font-weight:500;font-size:1.05rem;letter-spacing:-.012em;margin-bottom:8px;color:var(--ink)}
+.step p{font-size:.84rem;color:var(--steel);line-height:1.5}
+
+/* REFS */
+.refs{padding:120px 32px;position:relative;z-index:1}
+.refs-head{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-bottom:48px;max-width:1280px;margin-left:auto;margin-right:auto}
+.refs-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ref-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column}
+.ref-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--ember-soft)}
+.ref-card-art{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--frost);border-bottom:1px solid var(--line)}
+.ref-card-art svg{position:absolute;inset:0;width:100%;height:100%}
+.ref-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ref-card-tag{font-family:'Geist Mono',monospace;font-size:.7rem;color:var(--ember-d);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.ref-card-title{font-weight:500;font-size:1.1rem;letter-spacing:-.015em;color:var(--ink);line-height:1.25}
+.ref-card-desc{font-size:.88rem;color:var(--ink-2);line-height:1.5}
+.ref-card-specs{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.ref-card-specs span{font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--steel);background:var(--frost);padding:4px 9px;border-radius:6px;letter-spacing:.02em}
+
+/* REVIEWS */
+.reviews{padding:120px 32px;position:relative;z-index:1}
+.reviews-head{max-width:1280px;margin:0 auto 48px}
+.reviews-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px;transition:all .25s;display:flex;flex-direction:column;gap:18px}
+.review:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--ember-soft)}
+.review-stars{display:flex;gap:1px}
+.review-stars svg{width:13px;height:13px;fill:var(--ember)}
+.review-text{font-size:1rem;line-height:1.55;letter-spacing:-.005em;color:var(--ink-2);font-weight:400;flex:1}
+.review-attr{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding-top:16px;border-top:1px solid var(--line)}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-d));display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--paper);font-size:.86rem;letter-spacing:-.01em}
+.review-avatar.warm{background:linear-gradient(135deg,var(--ember),var(--ember-d))}
+.review-name{display:flex;flex-direction:column;gap:1px}
+.review-name b{font-size:.88rem;font-weight:600;color:var(--ink);letter-spacing:-.005em}
+.review-name span{font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--steel);letter-spacing:.02em}
+.review-meta{font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--mist);text-align:right}
+.reviews-foot{max-width:1280px;margin:32px auto 0;text-align:center}
+.reviews-foot a{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--ember-d);font-weight:500;transition:color .2s,gap .2s}
+.reviews-foot a:hover{color:var(--ember);gap:12px}
+
+/* FAQ */
+.faq{padding:120px 32px;position:relative;z-index:1}
+.faq-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:80px}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.faq-item:hover{border-color:var(--line-2)}
+.faq-item.open{border-color:var(--ember);box-shadow:0 12px 28px -12px rgba(232,105,60,.18)}
+.faq-q{width:100%;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-weight:500;font-size:1.02rem;color:var(--ink);text-align:left;letter-spacing:-.01em}
+.faq-q-icon{width:30px;height:30px;flex-shrink:0;border-radius:50%;background:var(--frost);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.faq-q-icon svg{width:12px;height:12px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round}
+.faq-item.open .faq-q-icon{background:var(--ember);border-color:var(--ember);transform:rotate(45deg)}
+.faq-item.open .faq-q-icon svg{stroke:var(--paper)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a-inner{padding:0 24px 24px;color:var(--ink-2);font-size:.96rem;line-height:1.65}
+.faq-a-inner b{color:var(--ink);font-weight:600}
+.faq-final{margin-top:14px;padding:24px;border-radius:16px;background:linear-gradient(135deg,var(--ember-soft),var(--frost));border:1px solid var(--ember-soft);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.faq-final p{font-size:.95rem;color:var(--ink);font-weight:500;letter-spacing:-.005em}
+.faq-final p span{display:block;font-weight:400;color:var(--steel);font-size:.86rem;margin-top:2px}
+
+/* CONTACT */
+.contact{padding:120px 32px;position:relative;z-index:1}
+.contact-card{background:var(--paper);border-radius:32px;border:1px solid var(--line);padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1280px;margin:0 auto;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.contact-card::before{content:"";position:absolute;top:-30%;right:-10%;width:50%;height:80%;background:radial-gradient(circle,rgba(232,105,60,.08),transparent 70%);filter:blur(30px);pointer-events:none}
+.contact-info{position:relative;display:flex;flex-direction:column;z-index:1}
+.contact-info .section-title{font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:16px}
+.contact-info .section-lede{font-size:1rem;margin-bottom:28px}
+.contact-rows{display:flex;flex-direction:column;margin-bottom:24px}
+.contact-row{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);transition:padding .25s}
+.contact-row:last-child{border-bottom:none}
+.contact-row:hover{padding-left:8px}
+.contact-row-icon{width:36px;height:36px;background:var(--frost);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;color:var(--ember-d)}
+.contact-row-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.contact-row:hover .contact-row-icon{background:var(--ember);color:var(--paper)}
+.contact-row-text{display:flex;flex-direction:column;gap:1px;min-width:0}
+.contact-row-label{font-family:'Geist Mono',monospace;font-size:.64rem;color:var(--steel);letter-spacing:.06em;text-transform:uppercase}
+.contact-row-value{font-weight:500;font-size:.96rem;color:var(--ink);letter-spacing:-.005em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contact-row-arrow{color:var(--mist);transition:all .2s;flex-shrink:0}
+.contact-row:hover .contact-row-arrow{color:var(--ember-d);transform:translateX(4px)}
+.contact-map{margin-top:auto;border-radius:14px;overflow:hidden;border:1px solid var(--line);height:200px;background:var(--frost);position:relative}
+.contact-map iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.85) contrast(.96)}
+.contact-map-pin{position:absolute;top:12px;right:12px;background:var(--paper);border-radius:8px;padding:6px 10px;font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--ink);letter-spacing:.02em;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+.contact-form{display:flex;flex-direction:column;position:relative;z-index:1}
+.form-eyebrow{font-family:'Geist Mono',monospace;font-size:.72rem;color:var(--ember-d);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.contact-form h3{font-weight:500;font-size:1.7rem;letter-spacing:-.025em;margin-bottom:8px;line-height:1.1}
+.contact-form h3 .warm{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--ember)}
+.contact-form > p{color:var(--steel);font-size:.94rem;margin-bottom:24px;line-height:1.55}
+.form-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--teal-soft);font-family:'Geist Mono',monospace;font-size:.7rem;color:var(--teal-d);letter-spacing:.02em;font-weight:600;margin-bottom:24px;align-self:flex-start}
+.form-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:pulse 2.4s infinite}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field label{display:block;font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--steel);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;font-weight:500}
+.field input,.field textarea{width:100%;padding:13px 16px;background:var(--frost);border:1px solid var(--line);border-radius:12px;color:var(--ink);font-family:inherit;font-size:.96rem;transition:all .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ember);background:var(--paper);box-shadow:0 0 0 3px rgba(232,105,60,.12)}
+.field textarea{resize:vertical;min-height:90px}
+.form-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px}
+.form-note{font-size:.74rem;color:var(--mist);max-width:55%;line-height:1.5}
+
+/* FOOTER */
+footer{padding:72px 32px 28px;position:relative;z-index:1;border-top:1px solid var(--line);margin-top:32px}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-tagline{color:var(--steel);font-size:.95rem;line-height:1.55;margin:18px 0 0;max-width:300px}
+.footer-col h5{font-family:'Geist Mono',monospace;font-size:.66rem;color:var(--mist);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;font-weight:500}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:.95rem;color:var(--ink-2);transition:all .2s;display:inline-block}
+.footer-col a:hover{color:var(--ember-d);padding-left:4px}
+.footer-bottom{max-width:1280px;margin:0 auto;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:'Geist Mono',monospace;font-size:.7rem;color:var(--mist);letter-spacing:.04em;gap:16px;flex-wrap:wrap}
+.footer-bottom a{color:var(--steel);transition:color .2s}
+.footer-bottom a:hover{color:var(--ember-d)}
+
+/* MOBILE STICKY CTA */
+.mobile-cta{position:fixed;bottom:0;left:0;right:0;z-index:48;display:none;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);backdrop-filter:blur(16px) saturate(160%);border-top:1px solid var(--line);gap:8px;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.mobile-cta.show{transform:translateY(0)}
+.mobile-cta a{flex:1;text-align:center;justify-content:center;padding:13px 16px;font-size:.88rem}
+.mobile-cta .cta-btn-ghost{background:var(--paper)}
+
+/* BADGE */
+.badge{position:fixed;bottom:18px;right:18px;z-index:99;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-family:'Geist Mono',monospace;font-size:.7rem;color:var(--steel);box-shadow:var(--shadow-sm);transition:all .2s}
+.badge:hover{color:var(--ember-d);border-color:var(--ember)}
+.badge b{color:var(--ink);font-weight:500;margin-left:2px}
+.badge:hover b{color:var(--ember-d)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .reveal{opacity:1;transform:none}
+}
+
+@media (max-width:1100px){
+  .stats-grid{grid-template-columns:1fr}
+  .stat{padding:32px 0 24px}
+  .seg-panel{grid-template-columns:1fr;gap:32px;padding:32px;min-height:auto}
+  .niche{margin:24px 16px;padding:80px 32px;border-radius:24px}
+  .niche-grid{grid-template-columns:1fr;gap:32px}
+  .process-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .process-head{grid-template-columns:1fr;gap:24px}
+  .refs-grid{grid-template-columns:1fr 1fr}
+  .refs-head{grid-template-columns:1fr;gap:24px}
+  .reviews-grid{grid-template-columns:1fr;gap:14px}
+  .faq-grid{grid-template-columns:1fr;gap:32px}
+  .contact-card{grid-template-columns:1fr;gap:48px;padding:36px 28px}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:36px}
+  .scene-label{font-size:.6rem;padding:5px 10px}
+}
+@media (max-width:760px){
+  .header{padding:8px 8px 8px 18px;gap:6px;width:calc(100% - 24px)}
+  .nav{display:none;position:fixed;top:80px;left:12px;right:12px;flex-direction:column;align-items:flex-start;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+  .nav.open{display:flex}
+  .menu-toggle{display:inline-flex}
+  .header-right .lang{display:none}
+  .header-right .cta-btn{padding:9px 14px;font-size:.8rem}
+  .hero{padding:110px 20px 40px}
+  .hero h1{font-size:clamp(2.4rem,11vw,3.6rem)}
+  .hero-trust{gap:16px;flex-direction:column;align-items:flex-start}
+  .htrust-divider{display:none}
+  .hero-visual{aspect-ratio:4/3;border-radius:20px;margin-top:36px}
+  .scene-label{font-size:.55rem;padding:4px 8px}
+  .live-status{left:14px;bottom:14px;padding:8px 14px 8px 12px}
+  .live-text strong{font-size:.76rem}
+  .live-text span{font-size:.58rem}
+  .stats{padding:60px 20px 30px}
+  .section{padding:64px 20px}
+  .segments{padding:30px 20px 64px}
+  .seg-tabs{width:100%;padding:5px}
+  .seg-tab{padding:11px 12px;font-size:.78rem;flex:1;justify-content:center;gap:6px}
+  .seg-tab span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .seg-tab-icon{width:14px;height:14px}
+  .seg-tab-bg{top:5px;height:calc(100% - 10px)}
+  .seg-panel{padding:24px;border-radius:20px}
+  .niche{margin:16px 12px;padding:48px 24px;border-radius:20px}
+  .niche-claim{grid-template-columns:1fr;gap:14px;padding:24px}
+  .niche-claim-num{font-size:3.4rem}
+  .process{padding:64px 20px}
+  .process-grid{grid-template-columns:1fr}
+  .step{min-height:auto;padding:20px}
+  .refs{padding:64px 20px}
+  .refs-grid{grid-template-columns:1fr}
+  .reviews{padding:64px 20px}
+  .review{padding:22px}
+  .faq{padding:64px 20px}
+  .faq-q{padding:18px 20px;font-size:.95rem}
+  .faq-a-inner{padding:0 20px 20px}
+  .faq-final{flex-direction:column;align-items:stretch;text-align:left}
+  .contact{padding:64px 20px;padding-bottom:140px}
+  .contact-card{padding:28px 22px;border-radius:24px}
+  .form-row{grid-template-columns:1fr}
+  .form-foot{flex-direction:column;align-items:stretch}
+  .form-note{max-width:100%}
+  footer{padding:48px 20px 20px;padding-bottom:90px}
+  .footer-inner{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;text-align:center;gap:10px}
+  .badge{display:none}
+  .mobile-cta{display:flex}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Tartalomra ugrás</a>
+
+<header class="header">
+  <a href="#" class="logo">
+    <svg class="logo-mark" viewBox="0 0 64 64"><path d="M32 4 L56 18 L56 46 L32 60 L8 46 L8 18 Z" fill="#1FA9A1"/><path d="M22 38 C 19 32 22 26 24 24 C 23 28 26 28 26 25 C 27 28 29 30 28 34 C 31 32 30 38 26 42 C 24 41 21 41 22 38 Z" fill="#E8693C"/><g stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" fill="none"><line x1="40" y1="22" x2="40" y2="40"/><line x1="33" y1="31" x2="47" y2="31"/><line x1="35" y1="26" x2="45" y2="36"/><line x1="45" y1="26" x2="35" y2="36"/></g></svg>
+    <span class="logo-cool">Sepsi</span><span class="logo-warm">Klíma</span>
+  </a>
+  <nav class="nav" id="nav">
+    <a href="#segments" class="nav-link" data-i18n="nav.s">Szolgáltatások</a>
+    <a href="#niche" class="nav-link" data-i18n="nav.n">Specializáció</a>
+    <a href="#refs" class="nav-link" data-i18n="nav.r">Munkáink</a>
+    <a href="#contact" class="nav-link" data-i18n="nav.c">Kapcsolat</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang"><button class="active" data-lang="hu">HU</button><button data-lang="ro">RO</button><button data-lang="en">EN</button></div>
+    <a href="tel:+40757267057" class="phone-icon" data-tt="+40 757 267 057" aria-label="+40 757 267 057">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <a href="#contact" class="cta-btn primary" data-i18n="nav.cta">Felmérést foglalok</a>
+    <button class="menu-toggle" id="mt" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg></button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="hero-eyebrow"><span class="dot"></span><span data-i18n-html="h.eb"><b>Daikin Hivatalos Partner</b> · Kovászna megye</span></div>
+  <h1 data-i18n-html="h.t">Klíma, hűtés, légtechnika — <span class="em-warm">egy</span> mérnöki <span class="em-cool">csapatra</span> bízva.</h1>
+  <p class="hero-sub" data-i18n="h.s">Helyszíni felmérés 24 órán belül. Fix ár, írásban. Garancia a készülékre és a munkára egyaránt.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="cta-btn primary"><span data-i18n="h.c1">Felmérést foglalok</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    <a href="#segments" class="cta-btn-ghost" data-i18n="h.c2">Lássuk mit csinálunk</a>
+  </div>
+
+  <div class="hero-trust">
+    <div class="htrust-item">
+      <div class="htrust-stars">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg>
+      </div>
+      <span><span class="htrust-num">5.0</span> · <span data-i18n="h.tr1">14 Google vélemény</span></span>
+    </div>
+    <div class="htrust-divider"></div>
+    <div class="htrust-item">
+      <div class="htrust-daikin-icon"><svg viewBox="0 0 24 24"><path d="M12 2 L4 7 v10 l8 5 l8-5 V7 z" fill-rule="evenodd"/></svg></div>
+      <span data-i18n-html="h.tr2"><b>Daikin Hivatalos Partner</b></span>
+    </div>
+    <div class="htrust-divider"></div>
+    <div class="htrust-item"><span data-i18n-html="h.tr3"><b>Kovászna megyén belül</b> díjmentes a kiszállás</span></div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-scene">
+      <svg viewBox="0 0 900 480" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="hf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4F8FB"/></linearGradient>
+          <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7AC4DD" stop-opacity=".5"/><stop offset="1" stop-color="#7AC4DD" stop-opacity="0"/></linearGradient>
+        </defs>
+        <g transform="translate(60 80)">
+          <path d="M0 60 L110 0 L220 60 L220 280 L0 280 Z" fill="url(#hf)" stroke="#CBD3DE" stroke-width="1.2"/>
+          <path d="M0 60 L110 0 L220 60" fill="none" stroke="#CBD3DE" stroke-width="1.2"/>
+          <line x1="0" y1="160" x2="220" y2="160" stroke="#CBD3DE" stroke-width="1" stroke-dasharray="3 3"/>
+          <rect x="30" y="100" width="46" height="40" fill="#EBF1F7" stroke="#CBD3DE" stroke-width="1"/>
+          <line x1="53" y1="100" x2="53" y2="140" stroke="#CBD3DE" stroke-width="1"/>
+          <rect x="120" y="90" width="76" height="22" rx="3" fill="#FFFFFF" stroke="#178A83" stroke-width="1.2"/>
+          <rect x="124" y="106" width="68" height="4" rx="1" fill="#1F2D44" opacity=".88"/>
+          <path d="M158 112 L130 175 L186 175 Z" fill="url(#cg)"/>
+          <rect x="40" y="200" width="96" height="36" rx="6" fill="#DBE5EF"/>
+          <rect x="40" y="190" width="96" height="14" rx="4" fill="#CBD3DE"/>
+          <rect x="170" y="220" width="38" height="60" fill="#FCE3D6" stroke="#E8693C" stroke-width="1" opacity=".6"/>
+          <g stroke="#7AC4DD" stroke-width="1" stroke-linecap="round" fill="none" opacity=".7" transform="translate(150 145)"><line x1="0" y1="-7" x2="0" y2="7"/><line x1="-6" y1="-3" x2="6" y2="3"/><line x1="-6" y1="3" x2="6" y2="-3"/></g>
+        </g>
+        <g transform="translate(330 100)">
+          <rect x="0" y="40" width="240" height="240" fill="url(#hf)" stroke="#CBD3DE" stroke-width="1.2"/>
+          <path d="M0 40 L40 20 L240 20 L240 40 Z" fill="#E8693C" opacity=".88"/>
+          <rect x="60" y="50" width="120" height="20" fill="#FFFFFF" stroke="#CBD3DE" stroke-width=".8"/>
+          <text x="120" y="64" font-family="Geist,sans-serif" font-size="9" font-weight="600" fill="#1F2D44" text-anchor="middle" letter-spacing="1">ÜZLET</text>
+          <rect x="20" y="90" width="200" height="180" fill="#EBF1F7" opacity=".5" stroke="#CBD3DE" stroke-width="1"/>
+          <line x1="120" y1="90" x2="120" y2="270" stroke="#CBD3DE" stroke-width="1"/>
+          <rect x="40" y="130" width="50" height="120" rx="4" fill="#FFFFFF" stroke="#178A83" stroke-width="1.5"/>
+          <line x1="40" y1="160" x2="90" y2="160" stroke="#CBD3DE" stroke-width=".8"/>
+          <line x1="40" y1="195" x2="90" y2="195" stroke="#CBD3DE" stroke-width=".8"/>
+          <line x1="40" y1="225" x2="90" y2="225" stroke="#CBD3DE" stroke-width=".8"/>
+          <g fill="#1FA9A1" opacity=".4"><rect x="48" y="138" width="6" height="18" rx="1"/><rect x="58" y="138" width="6" height="18" rx="1"/><rect x="68" y="138" width="6" height="18" rx="1"/><rect x="78" y="138" width="6" height="18" rx="1"/></g>
+          <rect x="150" y="100" width="58" height="16" rx="2" fill="#FFFFFF" stroke="#178A83" stroke-width="1"/>
+          <rect x="153" y="112" width="52" height="3" rx="1" fill="#1F2D44" opacity=".8"/>
+          <path d="M179 116 L155 168 L203 168 Z" fill="url(#cg)"/>
+        </g>
+        <g transform="translate(620 110)">
+          <path d="M0 30 L0 250 L220 250 L220 30 L110 0 Z" fill="url(#hf)" stroke="#CBD3DE" stroke-width="1.2"/>
+          <path d="M0 30 L110 0 L220 30" fill="none" stroke="#CBD3DE" stroke-width="1.2"/>
+          <rect x="60" y="-12" width="46" height="14" rx="2" fill="#1F2D44" opacity=".85"/>
+          <rect x="120" y="-8" width="32" height="10" rx="1" fill="#1F2D44" opacity=".7"/>
+          <line x1="110" y1="30" x2="110" y2="80" stroke="#1F2D44" stroke-width="3" stroke-linecap="round" opacity=".4"/>
+          <line x1="110" y1="80" x2="60" y2="80" stroke="#1F2D44" stroke-width="3" stroke-linecap="round" opacity=".4"/>
+          <line x1="110" y1="80" x2="180" y2="80" stroke="#1F2D44" stroke-width="3" stroke-linecap="round" opacity=".4"/>
+          <rect x="20" y="120" width="80" height="120" rx="4" fill="#EBF1F7" stroke="#178A83" stroke-width="1.5"/>
+          <rect x="55" y="180" width="40" height="60" rx="2" fill="#FFFFFF" stroke="#178A83" stroke-width="1"/>
+          <circle cx="86" cy="210" r="2" fill="#1FA9A1"/>
+          <rect x="30" y="106" width="60" height="14" rx="2" fill="#1FA9A1" opacity=".25" stroke="#178A83" stroke-width=".8"/>
+          <line x1="20" y1="150" x2="50" y2="150" stroke="#7AC4DD" stroke-width="1" opacity=".7"/>
+          <line x1="20" y1="170" x2="50" y2="170" stroke="#7AC4DD" stroke-width="1" opacity=".7"/>
+          <g stroke="#1FA9A1" stroke-width="1" stroke-linecap="round" fill="none" opacity=".8" transform="translate(35 200)"><line x1="0" y1="-7" x2="0" y2="7"/><line x1="-6" y1="-3" x2="6" y2="3"/><line x1="-6" y1="3" x2="6" y2="-3"/></g>
+          <rect x="120" y="150" width="80" height="90" rx="4" fill="#F4F8FB" stroke="#CBD3DE" stroke-width="1"/>
+          <rect x="135" y="180" width="50" height="40" rx="2" fill="#CBD3DE" opacity=".6"/>
+          <rect x="125" y="155" width="38" height="12" rx="1" fill="#0F1B2E"/>
+          <text x="144" y="164" font-family="Geist Mono,monospace" font-size="7" fill="#7DDBD3" text-anchor="middle" letter-spacing=".5">−18°C</text>
+        </g>
+        <line x1="0" y1="430" x2="900" y2="430" stroke="#CBD3DE" stroke-width="1" opacity=".5"/>
+        <ellipse cx="170" cy="430" rx="160" ry="6" fill="#0F1B2E" opacity=".05"/>
+        <ellipse cx="450" cy="430" rx="160" ry="6" fill="#0F1B2E" opacity=".05"/>
+        <ellipse cx="730" cy="430" rx="160" ry="6" fill="#0F1B2E" opacity=".05"/>
+      </svg>
+    </div>
+    <div class="scene-label scene-label-1 cool"><span class="dot"></span><span data-i18n="h.sc1">Lakossági klíma</span></div>
+    <div class="scene-label scene-label-2 warm"><span class="dot"></span><span data-i18n="h.sc2">Üzleti hűtővitrin</span></div>
+    <div class="scene-label scene-label-3 cold"><span class="dot"></span><span data-i18n="h.sc3">Ipari hűtőkamra</span></div>
+    <a href="#contact" class="live-status">
+      <span class="live-dot"></span>
+      <span class="live-text"><strong data-i18n="h.v1">Most válaszolunk</strong><span data-i18n="h.v2">Munkanapokon · átlag 3 órán belül</span></span>
+    </a>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stats-head reveal">
+      <div class="section-eyebrow" data-i18n="st.eb">Miért minket</div>
+      <h2 class="section-title" data-i18n-html="st.t">Három <em>egyenes</em> ok.</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-num" data-i18n-html="st.1n">5.0<small>★</small></div>
+        <div class="stat-label"><b data-i18n="st.1b">Mind a 14 ötcsillagos.</b><span data-i18n="st.1s">Olvasd el a Google-on — nem mi mondjuk magunkról, ők mondják rólunk.</span></div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num warm" data-i18n-html="st.2n">24<small>h</small></div>
+        <div class="stat-label"><b data-i18n="st.2b">Munkanapokon ennyi alatt jelentkezünk.</b><span data-i18n="st.2s">Telefon, email, Facebook — hét közben írsz, másnap reggel ott a válasz.</span></div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num" data-i18n-html="st.3n">7<small>+</small></div>
+        <div class="stat-label"><b data-i18n="st.3b">Prémium márka — minden feladatra a megfelelő.</b><span data-i18n="st.3s">Daikin, NIBE, Mitsubishi, Gree, AUX, AHT — mert egy márka nem fed le mindent.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="segments" id="segments">
+  <div class="segments-inner">
+    <div class="reveal" style="margin-bottom:32px">
+      <div class="section-eyebrow" data-i18n="sg.eb">Szolgáltatások</div>
+      <h2 class="section-title" data-i18n-html="sg.t">Te <em>mivel</em> jössz hozzánk?</h2>
+      <p class="section-lede" data-i18n="sg.l">Válaszd ki, milyen környezetbe kell a megoldás. A többi tőlünk jön — felmérés, terv, kivitelezés, karbantartás.</p>
+    </div>
+
+    <div class="seg-tabs-wrap">
+        <div class="seg-tabs" id="segTabs" role="tablist">
+            <button class="seg-tab active" data-tab="res" role="tab" aria-selected="true">
+                <svg class="seg-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 12 L12 4 L21 12"/><path d="M5 11 L5 20 L19 20 L19 11"/><line x1="10" y1="20" x2="10" y2="14"/><line x1="14" y1="20" x2="14" y2="14"/>
+                </svg>
+                <span data-i18n="sg.tr">Otthon</span>
+            </button>
+            <button class="seg-tab" data-tab="com" role="tab" aria-selected="false">
+                <svg class="seg-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 9 L5 4 L19 4 L21 9 L21 20 L3 20 Z"/><line x1="3" y1="9" x2="21" y2="9"/><path d="M9 14 L15 14 L15 20 L9 20 Z"/>
+                </svg>
+                <span data-i18n="sg.tc">Üzlet, étterem</span>
+            </button>
+            <button class="seg-tab" data-tab="ind" role="tab" aria-selected="false">
+                <svg class="seg-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 20 L3 11 L9 14 L9 11 L15 14 L15 11 L21 14 L21 20 Z"/><line x1="7" y1="20" x2="7" y2="17"/><line x1="13" y1="20" x2="13" y2="17"/><line x1="19" y1="20" x2="19" y2="17"/>
+                </svg>
+                <span data-i18n="sg.ti">Üzem, csarnok</span>
+            </button>
+            <span class="seg-tab-bg" id="segTabBg"></span>
+        </div>
+        <div class="seg-tabs-cue">
+          <span class="cue-arrow">↓</span>
+          <span data-i18n="sg.cue">Válaszd, mire van szükséged</span>
+        </div>
+    </div>
+
+    <div class="seg-panel">
+      <div class="seg-panel-content active" data-panel="res">
+        <div class="seg-left">
+          <h3 data-i18n-html="sg.r.h">Lakossági <em>klíma és hőszivattyú.</em></h3>
+          <p class="seg-lede" data-i18n="sg.r.l">Családi háznak és lakásnak. Egy gép ami nyáron hűt, télen pedig olcsóbban fűt mint a gáz vagy a fa.</p>
+          <div class="seg-example">
+            <div class="seg-example-label" data-i18n="sg.r.el">Tipikus projekt</div>
+            <p data-i18n-html="sg.r.et"><b>9-12 ezer BTU-s inverter klíma</b> egy átlagos kétszobás lakásba. Felmérés délelőtt, telepítés délutánra — kávézásra még marad idő.</p>
+          </div>
+          <div class="seg-cta"><a href="#contact" class="cta-btn primary" data-i18n="sg.r.c">Otthonra kérek ajánlatot</a></div>
+        </div>
+        <div class="seg-right">
+          <div class="seg-svc"><div class="seg-svc-num">01</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.r.s1t">Inverteres split klíma</div><div class="seg-svc-desc" data-i18n="sg.r.s1d">Mono- és multi-split · Daikin, Mitsubishi, Gree, AUX</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">02</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.r.s2t">Levegő-víz hőszivattyú</div><div class="seg-svc-desc" data-i18n="sg.r.s2d">NIBE és Daikin · padlófűtéshez vagy radiátorhoz</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">03</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.r.s3t">Klímás fűtéskorszerűsítés</div><div class="seg-svc-desc" data-i18n="sg.r.s3d">Régi gáz/fa fűtés mellé olcsó kiegészítő</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">04</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.r.s4t">Karbantartás, tisztítás</div><div class="seg-svc-desc" data-i18n="sg.r.s4d">Évi 1-2 alkalom · meghosszabbítja a készülék életét</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">05</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.r.s5t">Garanciális javítás</div><div class="seg-svc-desc" data-i18n="sg.r.s5d">Bármilyen márka · diagnózis és csere</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+        </div>
+      </div>
+
+      <div class="seg-panel-content" data-panel="com">
+        <div class="seg-left">
+          <h3 data-i18n-html="sg.c.h">Üzleti és <em>vendéglátóipari hűtés.</em></h3>
+          <p class="seg-lede" data-i18n="sg.c.l">Bolt, étterem, kávézó. Hűtővitrin, fagyasztó, klimatizálás — gyors kiszállással ha valami áll.</p>
+          <div class="seg-example">
+            <div class="seg-example-label" data-i18n="sg.c.el">Tipikus projekt</div>
+            <p data-i18n-html="sg.c.et"><b>Egy étterem teljes klimatizálása</b> Daikin VRV multi-split rendszerrel. Konyha plusz vendégtér, központi vezérlés, csendes éjszakai üzemmód.</p>
+          </div>
+          <div class="seg-cta"><a href="#contact" class="cta-btn primary" data-i18n="sg.c.c">Üzletbe kérek ajánlatot</a></div>
+        </div>
+        <div class="seg-right">
+          <div class="seg-svc"><div class="seg-svc-num">01</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.c.s1t">Hűtővitrinek, fagyasztóládák</div><div class="seg-svc-desc" data-i18n="sg.c.s1d">AHT és más prémium márkák · italoknak, fagyinak, húsnak</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">02</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.c.s2t">Üzleti split és multi-split</div><div class="seg-svc-desc" data-i18n="sg.c.s2d">Boltok, irodák, éttermek · 1-30 belső egység</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">03</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.c.s3t">Daikin VRV / VRF rendszerek</div><div class="seg-svc-desc" data-i18n="sg.c.s3d">Központi vezérlés, hőszivattyú alapú, energiahatékony</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">04</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.c.s4t">Sürgősségi szervízhívás</div><div class="seg-svc-desc" data-i18n="sg.c.s4d">Munkaidőben gyors kiszállás · kritikus berendezésekhez</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">05</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.c.s5t">Karbantartási szerződés</div><div class="seg-svc-desc" data-i18n="sg.c.s5d">Megelőző karbantartás · ne álljon le a forgalom</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+        </div>
+      </div>
+
+      <div class="seg-panel-content" data-panel="ind">
+        <div class="seg-left">
+          <h3 data-i18n-html="sg.i.h">Ipari hűtéstechnika és <em>légkezelés.</em></h3>
+          <p class="seg-lede" data-i18n="sg.i.l">Csarnok, üzem, élelmiszer-feldolgozó. Hűtőkamrák, központi légkezelők, méretre szabva — tervezéstől a beüzemelésig.</p>
+          <div class="seg-example">
+            <div class="seg-example-label" data-i18n="sg.i.el">Tipikus projekt</div>
+            <p data-i18n-html="sg.i.et"><b>20-50 m³-es hűtőkamra</b> hentesüzlet vagy raktárépülethez. Tervezés, panel, gépészet, vezérlés és beüzemelés — egy kézből.</p>
+          </div>
+          <div class="seg-cta"><a href="#contact" class="cta-btn primary" data-i18n="sg.i.c">Ipari ajánlatot kérek</a></div>
+        </div>
+        <div class="seg-right">
+          <div class="seg-svc"><div class="seg-svc-num">01</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.i.s1t">Hűtő- és fagyasztókamrák</div><div class="seg-svc-desc" data-i18n="sg.i.s1d">Méretre szabott panelből · -25°C-ig minden hőmérsékleten</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">02</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.i.s2t">Húsérlelő szekrények</div><div class="seg-svc-desc" data-i18n="sg.i.s2d">Szabályozott páratartalom és hőmérséklet · prémium húsoknak</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">03</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.i.s3t">Légkezelő, szellőztetés</div><div class="seg-svc-desc" data-i18n="sg.i.s3d">Csarnokok, gyártóterek · friss levegő, hő- és pára-kontroll</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">04</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.i.s4t">Tervezés, mérnöki támogatás</div><div class="seg-svc-desc" data-i18n="sg.i.s4d">Beruházás előtt segítünk méretezni · papíron mindent</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+          <div class="seg-svc"><div class="seg-svc-num">05</div><div class="seg-svc-content"><div class="seg-svc-title" data-i18n="sg.i.s5t">Folyamatos karbantartás</div><div class="seg-svc-desc" data-i18n="sg.i.s5d">Rendszeres szemle · kritikus berendezésnél kötelező</div></div><div class="seg-svc-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="niche" id="niche">
+  <div class="niche-inner">
+    <div class="reveal">
+      <div class="section-eyebrow" data-i18n="ni.eb">Specializáció · ebben különbözünk</div>
+      <h2 class="section-title" data-i18n-html="ni.t">A hűtőkamra <span class="warm">nem hűtőszekrény.</span><br>Az árukészlet múlik rajta.</h2>
+    </div>
+    <div class="niche-claim reveal">
+      <div class="niche-claim-num">½<small data-i18n="ni.cu">óra leállás</small></div>
+      <div class="niche-claim-text" data-i18n-html="ni.ct">Egy nyári napon a hűtőkamrád veszteség nélkül maximum fél órát bír leállást. <b>Mi szerződéssel és pontos válaszidővel dolgozunk</b> — nem akkor érkezünk, mikor már árukárt számolsz.</div>
+    </div>
+
+    <div class="niche-grid">
+      <div class="niche-points reveal">
+        <div class="niche-point"><div class="niche-point-num">01</div><div><h4 data-i18n="ni.1t">Hűtő- és fagyasztókamrák</h4><p data-i18n="ni.1b">Tervezéstől beüzemelésig, méretre szabva. Sandwich-panel, gépészet, vezérlés, távfelügyelet.</p><div class="spec" data-i18n="ni.1s">PANEL · GÉPÉSZET · VEZÉRLÉS</div></div></div>
+        <div class="niche-point"><div class="niche-point-num">02</div><div><h4 data-i18n="ni.2t">Húsérlelő szekrények</h4><p data-i18n="ni.2b">Szabályozott klíma — pontos hőmérséklet és páratartalom, csendes ventilátorok.</p><div class="spec" data-i18n="ni.2s">PRECÍZ HŐM. · PÁRATART. · CSENDES</div></div></div>
+        <div class="niche-point"><div class="niche-point-num">03</div><div><h4 data-i18n="ni.3t">Légkezelő rendszerek</h4><p data-i18n="ni.3b">Csarnokok és üzemek levegőminőségének biztosítása — friss levegő, hőmérséklet, pára.</p><div class="spec" data-i18n="ni.3s">FRISS LEVEGŐ · HŐ · PÁRA</div></div></div>
+        <div class="niche-point"><div class="niche-point-num">04</div><div><h4 data-i18n="ni.4t">Karbantartási szerződés</h4><p data-i18n="ni.4b">Megelőző karbantartás — kevesebb leállás, hosszabb élettartam, kisebb energiafogyasztás.</p><div class="spec" data-i18n="ni.4s">MEGELŐZÉS · STABIL ÜZEM</div></div></div>
+      </div>
+      <div class="niche-story reveal">
+        <div class="niche-story-tag" data-i18n="ni.sg">Egy konkrét eset · Hentesüzlet, Sepsiszentgyörgy</div>
+        <p class="niche-story-quote" data-i18n="ni.sq">Pénteken este hívtak — leállt a hűtőkamra. Szombat reggel 8-ra a kompresszor cseréje megvolt, és a friss áru egy fokot se mozdult. Ezért érdemes karbantartási szerződést kötni.</p>
+        <div class="niche-story-attr" data-i18n-html="ni.sa"><b>Helyszíni szervíz</b> · ÉLELMISZERIPARI ÜGYFÉL · 2024</div>
+      </div>
+    </div>
+    <div class="niche-cta-row reveal">
+      <a href="#contact" class="cta-btn" data-i18n="ni.cta">Beszéljünk az élelmiszer-projektről</a>
+      <span class="help" data-i18n="ni.h">Vagy hívj inkább telefonon — sürgős ügyben gyorsabb.</span>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="process-head reveal">
+    <div>
+      <div class="section-eyebrow" data-i18n="pr.eb">Folyamat</div>
+      <h2 class="section-title" data-i18n-html="pr.t">A felméréstől <span class="warm">a kulcsátadásig.</span></h2>
+    </div>
+    <p style="max-width:340px;color:var(--ink-2);font-size:1rem;line-height:1.6" data-i18n="pr.l">Átlátható öt lépés. Egyenes kommunikáció, határidők papíron.</p>
+  </div>
+  <div class="process-grid">
+    <div class="step reveal"><div class="step-head"><span class="step-num">01.</span><span class="step-time" data-i18n="pr.1t">~45 PERC</span></div><div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg></div><h4 data-i18n="pr.1h">Felmérés</h4><p data-i18n="pr.1p">Helyszínre megyünk, tisztázzuk az igényt, költséget becsülünk. Díjmentes.</p></div>
+    <div class="step reveal"><div class="step-head"><span class="step-num">02.</span><span class="step-time" data-i18n="pr.2t">2-3 NAP</span></div><div class="step-icon"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div><h4 data-i18n="pr.2h">Fix árajánlat</h4><p data-i18n="pr.2p">Megfelelő rendszer, részletes ütemterv, írásban — egyszer egyezünk meg, utána nem mozog.</p></div>
+    <div class="step reveal"><div class="step-head"><span class="step-num">03.</span><span class="step-time" data-i18n="pr.3t">1-3 NAP</span></div><div class="step-icon"><svg viewBox="0 0 24 24"><path d="M14 4l4 4-9 9-5 1 1-5z"/><path d="M13 5l4 4"/></svg></div><h4 data-i18n="pr.3h">Telepítés</h4><p data-i18n="pr.3p">Szakszerű kivitelezés, beüzemelés, működéspróba, dokumentáció átadása.</p></div>
+    <div class="step reveal"><div class="step-head"><span class="step-num">04.</span><span class="step-time" data-i18n="pr.4t">~30 PERC</span></div><div class="step-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h4 data-i18n="pr.4h">Átadás</h4><p data-i18n="pr.4p">Garancia papíron, használati tippek, vezérlés bemutatása.</p></div>
+    <div class="step reveal"><div class="step-head"><span class="step-num">05.</span><span class="step-time" data-i18n="pr.5t">FOLYAMATOS</span></div><div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div><h4 data-i18n="pr.5h">Karbantartás</h4><p data-i18n="pr.5p">Évi 1-2 alkalom · garanciális ügyek intézése helyetted.</p></div>
+  </div>
+</section>
+
+<section class="refs" id="refs">
+  <div class="refs-head reveal">
+    <div>
+      <div class="section-eyebrow" data-i18n="rf.eb">Munkáink</div>
+      <h2 class="section-title" data-i18n-html="rf.t">Néhány projekt a <span class="warm">közelmúltból.</span></h2>
+    </div>
+    <a href="#contact" class="cta-btn-ghost" data-i18n="rf.cta">Még többet kérek →</a>
+  </div>
+  <div class="refs-grid">
+    <div class="ref-card reveal">
+      <div class="ref-card-art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ra1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBF1F7"/><stop offset="1" stop-color="#D5EDE9"/></linearGradient></defs><rect width="400" height="300" fill="url(#ra1)"/><g stroke="#178A83" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M120 150 L200 90 L280 150 L280 230 L120 230 Z"/><path d="M120 150 L280 150"/><rect x="155" y="180" width="35" height="50" fill="#FFFFFF"/><rect x="210" y="170" width="40" height="30" fill="#FFFFFF"/><line x1="230" y1="170" x2="230" y2="200"/></g><rect x="285" y="195" width="40" height="34" fill="#FFFFFF" stroke="#178A83" stroke-width="1.4" rx="3"/><circle cx="305" cy="212" r="10" fill="none" stroke="#178A83" stroke-width="1"/><line x1="280" y1="200" x2="285" y2="200" stroke="#178A83" stroke-width="2"/><line x1="280" y1="225" x2="285" y2="225" stroke="#178A83" stroke-width="2"/><g stroke="#1FA9A1" stroke-width="1" stroke-linecap="round" fill="none" opacity=".6"><g transform="translate(80 90)"><line x1="0" y1="-8" x2="0" y2="8"/><line x1="-7" y1="-4" x2="7" y2="4"/><line x1="-7" y1="4" x2="7" y2="-4"/></g><g transform="translate(340 100)"><line x1="0" y1="-6" x2="0" y2="6"/><line x1="-5" y1="-3" x2="5" y2="3"/><line x1="-5" y1="3" x2="5" y2="-3"/></g></g></svg></div>
+      <div class="ref-card-body">
+        <div class="ref-card-tag" data-i18n="rf.1tag">№ 01 · Lakossági</div>
+        <div class="ref-card-title" data-i18n="rf.1t">NIBE 6 kW levegő-víz hőszivattyú</div>
+        <div class="ref-card-desc" data-i18n="rf.1d">Családi ház, padlófűtés és melegvíz egyetlen rendszerből. A téli gáz kiváltása az ügyfél egyik fő motivációja volt.</div>
+        <div class="ref-card-specs"><span data-i18n="rf.1s1">~140 m²</span><span data-i18n="rf.1s2">Padlófűtés</span><span data-i18n="rf.1s3">Sepsiszentgyörgy</span></div>
+      </div>
+    </div>
+    <div class="ref-card reveal">
+      <div class="ref-card-art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ra2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FCE3D6"/><stop offset="1" stop-color="#EBF1F7"/></linearGradient></defs><rect width="400" height="300" fill="url(#ra2)"/><g stroke="#1F2D44" stroke-width="1.2" fill="none"><rect x="60" y="100" width="280" height="140" fill="#FFFFFF" rx="2"/><line x1="60" y1="170" x2="340" y2="170" stroke-dasharray="2 4"/></g><g fill="#FFFFFF" stroke="#178A83" stroke-width="1.2"><rect x="90" y="115" width="50" height="14" rx="2"/><rect x="175" y="115" width="50" height="14" rx="2"/><rect x="260" y="115" width="50" height="14" rx="2"/></g><g fill="#1F2D44" opacity=".85"><rect x="93" y="126" width="44" height="2"/><rect x="178" y="126" width="44" height="2"/><rect x="263" y="126" width="44" height="2"/></g><g fill="#DBE5EF" stroke="#CBD3DE" stroke-width="1"><circle cx="120" cy="200" r="14"/><circle cx="200" cy="210" r="14"/><circle cx="280" cy="200" r="14"/></g><g fill="#7AC4DD" opacity=".25"><path d="M115 130 L100 165 L130 165 Z"/><path d="M200 130 L185 165 L215 165 Z"/><path d="M285 130 L270 165 L300 165 Z"/></g><rect x="340" y="40" width="40" height="40" fill="#FFFFFF" stroke="#178A83" stroke-width="1.2" rx="3"/><circle cx="360" cy="60" r="10" fill="none" stroke="#178A83" stroke-width="1"/></svg></div>
+      <div class="ref-card-body">
+        <div class="ref-card-tag" data-i18n="rf.2tag">№ 02 · Vendéglátás</div>
+        <div class="ref-card-title" data-i18n="rf.2t">Daikin VRV multi-split, étterem</div>
+        <div class="ref-card-desc" data-i18n="rf.2d">Vendégtér, konyha és iroda egyetlen rendszeren. Központi vezérléssel, csendes éjszakai üzemmóddal.</div>
+        <div class="ref-card-specs"><span data-i18n="rf.2s1">VRV</span><span data-i18n="rf.2s2">3 belső egység</span><span data-i18n="rf.2s3">Kovászna megye</span></div>
+      </div>
+    </div>
+    <div class="ref-card reveal">
+      <div class="ref-card-art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ra3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1F2D44"/><stop offset="1" stop-color="#0F1B2E"/></linearGradient></defs><rect width="400" height="300" fill="url(#ra3)"/><rect x="80" y="60" width="240" height="200" rx="6" fill="none" stroke="#7DDBD3" stroke-width="1.4"/><rect x="180" y="140" width="60" height="120" fill="rgba(255,255,255,.04)" stroke="#7DDBD3" stroke-width="1"/><circle cx="230" cy="200" r="3" fill="#1FA9A1"/><g stroke="#7DDBD3" stroke-width=".8" opacity=".5"><line x1="100" y1="100" x2="170" y2="100"/><line x1="100" y1="140" x2="170" y2="140"/><line x1="100" y1="180" x2="170" y2="180"/><line x1="100" y1="220" x2="170" y2="220"/><line x1="250" y1="80" x2="320" y2="80"/><line x1="250" y1="115" x2="320" y2="115"/></g><rect x="120" y="42" width="160" height="22" rx="3" fill="rgba(31,169,161,.2)" stroke="#1FA9A1" stroke-width="1"/><line x1="140" y1="55" x2="260" y2="55" stroke="#1FA9A1" stroke-width="1.2" stroke-dasharray="2 3"/><g stroke="#7DDBD3" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".7" transform="translate(140 200)"><line x1="0" y1="-12" x2="0" y2="12"/><line x1="-10" y1="-6" x2="10" y2="6"/><line x1="-10" y1="6" x2="10" y2="-6"/></g><rect x="240" y="40" width="60" height="18" rx="2" fill="#0F1B2E" stroke="#1FA9A1" stroke-width=".8"/><text x="270" y="53" font-family="Geist Mono,monospace" font-size="10" fill="#7DDBD3" text-anchor="middle" letter-spacing="1">−18°C</text></svg></div>
+      <div class="ref-card-body">
+        <div class="ref-card-tag" data-i18n="rf.3tag">№ 03 · Élelmiszeripar</div>
+        <div class="ref-card-title" data-i18n="rf.3t">Hűtőkamra hentesüzletbe</div>
+        <div class="ref-card-desc" data-i18n="rf.3d">Méretre szabott panel-konstrukció, automata vezérlés, távfelügyelet. A megrendeléstől átadásig egy kézből.</div>
+        <div class="ref-card-specs"><span data-i18n="rf.3s1">Panel</span><span data-i18n="rf.3s2">−18°C</span><span data-i18n="rf.3s3">Sepsiszentgyörgy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="reviews-head reveal">
+    <div class="section-eyebrow" data-i18n="rv.eb">Vélemények · 5.0 ★ Google</div>
+    <h2 class="section-title" data-i18n-html="rv.t">Amit <em>rólunk</em> mondanak.</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review reveal">
+      <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div>
+      <p class="review-text" data-i18n="rv.1t">Pontosak voltak az időponttal és az árajánlattal is. A felmérés napján már fix árat kaptam, és a telepítés is határidőre kész lett.</p>
+      <div class="review-attr"><div class="review-avatar" data-i18n="rv.1av">K</div><div class="review-name"><b data-i18n="rv.1n">K. család</b><span data-i18n="rv.1r">Lakossági ügyfél · Sepsiszentgyörgy</span></div><div class="review-meta" data-i18n="rv.1m">Google · 2025</div></div>
+    </div>
+    <div class="review reveal">
+      <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div>
+      <p class="review-text" data-i18n="rv.2t">Az üzletünk hűtővitrinjeit ők szerelték — gyors, tiszta munka. A karbantartással is megbízható partnerünk maradtak.</p>
+      <div class="review-attr"><div class="review-avatar warm" data-i18n="rv.2av">B</div><div class="review-name"><b data-i18n="rv.2n">B. üzlet</b><span data-i18n="rv.2r">Üzleti ügyfél · Kovászna megye</span></div><div class="review-meta" data-i18n="rv.2m">Google · 2024</div></div>
+    </div>
+    <div class="review reveal">
+      <div class="review-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.3 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.3 9 9"/></svg></div>
+      <p class="review-text" data-i18n="rv.3t">Ipari hűtőkamrát épített nálunk a csapat. Kommunikáltak, papíron volt minden, határidőre kész lett. Ennyi.</p>
+      <div class="review-attr"><div class="review-avatar" data-i18n="rv.3av">F</div><div class="review-name"><b data-i18n="rv.3n">F. cég</b><span data-i18n="rv.3r">Ipari ügyfél · Erdély</span></div><div class="review-meta" data-i18n="rv.3m">Google · 2025</div></div>
+    </div>
+  </div>
+  <div class="reviews-foot">
+    <a href="https://www.google.com/maps/place/Sepsiklima/" target="_blank" rel="noopener">
+      <span data-i18n="rv.cta">Olvasd el mind a 14 véleményt a Google-on</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+    </a>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="faq-grid">
+    <div class="reveal">
+      <div class="section-eyebrow" data-i18n="fq.eb">GYIK</div>
+      <h2 class="section-title" data-i18n-html="fq.t">Gyakori <em>kérdések.</em></h2>
+      <p class="section-lede" data-i18n="fq.l">Ha valami nincs itt, hívj direktben — szívesen elmondjuk.</p>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="fq.1q">Mennyibe kerül egy lakásklíma teljes telepítése?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n-html="fq.1a">Egy <b>9000-12000 BTU-s inverter klíma</b> kulcsrakészen általában <b>4500-7500 lej</b> között van — márkától, hosszától, falbontás szükségességétől függően. Helyszíni felmérés után fix árajánlatot adunk, ami nem mozdul a telepítés végéig.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="fq.2q">Megéri-e klímával fűteni télen?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n-html="fq.2a">Igen. A modern inverter klímák hőszivattyú elven működnek — <b>1 kW áramból 3-5 kW hőenergiát</b> adnak. Erdélyhez (-15-20°C-os éjszakákhoz) fűtésre optimalizált modelleket javasolunk, ezek -25°C-ig is dolgoznak.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="fq.3q">Mennyi időbe telik egy telepítés?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n-html="fq.3a">Egy lakásklíma <b>3-5 órát</b> vesz igénybe. Multi-split rendszer 1-2 nap, hűtőkamra építés <b>3-7 nap</b>, légkezelő rendszer akár több hét — ezt mindig a felmérés után tudjuk pontosan megmondani.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="fq.4q">Adtok garanciát?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n-html="fq.4a">Igen. A készülékre <b>3-10 év</b> gyártói garancia (márkától függően), a telepítésre pedig saját garancia. Daikin partnerként hosszabbított garanciát is tudunk adni — a regisztrációt mi intézzük.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="fq.5q">Milyen márkákkal dolgoztok?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n-html="fq.5a">Klímában: <b>Daikin (hivatalos partner), Mitsubishi Electric, Mitsubishi Heavy, Gree, AUX</b>. Hőszivattyúban: <b>NIBE</b> és Daikin. Hűtéstechnikában AHT és más prémium ipari beszállítók. Minden a feladathoz méretezve.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="fq.6q">Hova mentek ki helyszínre?</span><span class="faq-q-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n-html="fq.6a"><b>Kovászna megye egészében</b> (Sepsiszentgyörgy, Kézdivásárhely, Barót környéke, Kovászna város), és komolyabb projektnél <b>Hargita / Brassó megyékbe</b> is kimegyünk. Telefonon egyeztetjük.</div></div>
+      </div>
+      <div class="faq-final">
+        <p><span data-i18n="fq.ft">Más kérdésed van?</span><span data-i18n="fq.fs">Hívj telefonon, vagy írj — ennél gyorsabban tényleg nem megy.</span></p>
+        <a href="tel:+40757267057" class="cta-btn primary" data-i18n="fq.fc">Hívom: +40 757 267 057</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-card">
+    <div class="contact-info">
+      <div class="section-eyebrow" data-i18n="ct.eb">Kapcsolat</div>
+      <h2 class="section-title" data-i18n-html="ct.t">Beszéljünk a <em>projektedről.</em></h2>
+      <p class="section-lede" data-i18n="ct.l">Helyszíni felmérés és árajánlat díjmentes. Munkanapokon válaszolunk 24 órán belül.</p>
+
+      <div class="contact-rows">
+        <a href="tel:+40757267057" class="contact-row">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="contact-row-text"><span class="contact-row-label" data-i18n="ct.p">Telefon · leggyorsabb</span><span class="contact-row-value">+40 757 267 057</span></div>
+          <span class="contact-row-arrow">→</span>
+        </a>
+        <a href="mailto:servicespero@gmail.com" class="contact-row">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></div>
+          <div class="contact-row-text"><span class="contact-row-label" data-i18n="ct.e">Email</span><span class="contact-row-value">servicespero@gmail.com</span></div>
+          <span class="contact-row-arrow">→</span>
+        </a>
+        <a href="https://facebook.com/sepsiklima" target="_blank" rel="noopener" class="contact-row">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+          <div class="contact-row-text"><span class="contact-row-label" data-i18n="ct.f">Facebook · üzenet</span><span class="contact-row-value">/sepsiklima</span></div>
+          <span class="contact-row-arrow">→</span>
+        </a>
+        <div class="contact-row" style="cursor:default">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg></div>
+          <div class="contact-row-text"><span class="contact-row-label" data-i18n="ct.h">Nyitva</span><span class="contact-row-value" data-i18n="ct.hv">H-P · 09:30-17:30</span></div><span></span>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <div class="contact-map-pin" data-i18n="ct.mp">📍 Strada Arcușului · Sf. Gheorghe</div>
+        <iframe src="https://maps.google.com/maps?q=Sepsiklima+Sfantu+Gheorghe&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SepsiKlíma térképen"></iframe>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="event.preventDefault();alert('Demo prototípus — a form bekötése külön lépés.');">
+      <div class="form-eyebrow" data-i18n="fm.eb">Üzenet</div>
+      <h3 data-i18n-html="fm.t">Pár adat — és <span class="warm">visszahívunk.</span></h3>
+      <p data-i18n="fm.s">Csak a név és a telefon kötelező. A többit a beszélgetésen tisztázzuk.</p>
+      <div class="form-badge"><span class="dot"></span><span data-i18n="fm.b">24 órán belül válasz</span></div>
+      <div class="form-row">
+        <div class="field"><label data-i18n="fm.n">Név</label><input type="text" required></div>
+        <div class="field"><label data-i18n="fm.p">Telefon</label><input type="tel" required></div>
+      </div>
+      <div class="field" style="margin-bottom:0"><label data-i18n="fm.m">Mit szeretnél?</label><textarea required></textarea></div>
+      <div class="form-foot">
+        <p class="form-note" data-i18n="fm.no">A küldéssel hozzájárulsz az adataid kezeléséhez.</p>
+        <button type="submit" class="cta-btn primary"><span data-i18n="fm.sb">Küldés</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <a href="#" class="logo" style="font-size:1.2rem">
+        <svg class="logo-mark" viewBox="0 0 64 64"><path d="M32 4 L56 18 L56 46 L32 60 L8 46 L8 18 Z" fill="#1FA9A1"/><path d="M22 38 C 19 32 22 26 24 24 C 23 28 26 28 26 25 C 27 28 29 30 28 34 C 31 32 30 38 26 42 C 24 41 21 41 22 38 Z" fill="#E8693C"/><g stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" fill="none"><line x1="40" y1="22" x2="40" y2="40"/><line x1="33" y1="31" x2="47" y2="31"/><line x1="35" y1="26" x2="45" y2="36"/><line x1="45" y1="26" x2="35" y2="36"/></g></svg>
+        <span class="logo-cool">Sepsi</span><span class="logo-warm">Klíma</span>
+      </a>
+      <p class="footer-tagline" data-i18n="ft.tag">Daikin hivatalos partner Kovászna megyében. Klíma, hűtés és légtechnika tervezéstől a működésig.</p>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.menu">Menü</h5>
+      <ul>
+        <li><a href="#segments" data-i18n="nav.s">Szolgáltatások</a></li>
+        <li><a href="#niche" data-i18n="nav.n">Specializáció</a></li>
+        <li><a href="#process" data-i18n="ft.proc">Folyamat</a></li>
+        <li><a href="#refs" data-i18n="nav.r">Munkáink</a></li>
+        <li><a href="#faq" data-i18n="ft.faq">GYIK</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.brands">Márkák</h5>
+      <ul><li><a href="#">Daikin</a></li><li><a href="#">NIBE</a></li><li><a href="#">Mitsubishi Electric</a></li><li><a href="#">Mitsubishi Heavy</a></li><li><a href="#">Gree · AUX · AHT</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.contact">Kapcsolat</h5>
+      <ul>
+        <li><a href="tel:+40757267057">+40 757 267 057</a></li>
+        <li><a href="mailto:servicespero@gmail.com">servicespero@gmail.com</a></li>
+        <li><a href="https://facebook.com/sepsiklima" target="_blank">/sepsiklima</a></li>
+        <li><span style="color:var(--mist)" data-i18n="ft.hours">H-P · 09:30-17:30</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 SepsiKlíma · <span data-i18n="ft.r">Minden jog fenntartva</span></span>
+    <span data-i18n-html="ft.made">Készítette: <a href="#" target="_blank">Webszövő</a></span>
+  </div>
+</footer>
+
+<div class="mobile-cta" id="mobileCta">
+  <a href="tel:+40757267057" class="cta-btn-ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="mc.c">Hívás</span></a>
+  <a href="#contact" class="cta-btn primary" data-i18n="mc.b">Felmérés foglalása</a>
+</div>
+
+<a href="#" class="badge" target="_blank"><span data-i18n="bg">Készítette:</span><b>Webszövő</b></a>
+
+<script>
+const i18n = {
+  hu: {
+    'nav.s':'Szolgáltatások','nav.n':'Specializáció','nav.r':'Munkáink','nav.c':'Kapcsolat','nav.cta':'Felmérést foglalok',
+    'h.eb':'<b>Daikin Hivatalos Partner</b> · Kovászna megye',
+    'h.t':'Klíma, hűtés, légtechnika — <span class="em-warm">egy</span> mérnöki <span class="em-cool">csapatra</span> bízva.',
+    'h.s':'Helyszíni felmérés 24 órán belül. Fix ár, írásban. Garancia a készülékre és a munkára egyaránt.',
+    'h.c1':'Felmérést foglalok','h.c2':'Lássuk mit csinálunk',
+    'h.tr1':'14 Google vélemény','h.tr2':'<b>Daikin Hivatalos Partner</b>','h.tr3':'<b>Kovászna megyén belül</b> díjmentes a kiszállás',
+    'h.sc1':'Lakossági klíma','h.sc2':'Üzleti hűtővitrin','h.sc3':'Ipari hűtőkamra',
+    'h.v1':'Most válaszolunk','h.v2':'Munkanapokon · átlag 3 órán belül',
+    'st.eb':'Miért minket?','st.t':'Három <em>egyenes</em> ok.',
+    'st.1n':'5.0<small>★</small>','st.1b':'Mind a 14 ötcsillagos.','st.1s':'Olvasd el a Google-on — nem mi mondjuk magunkról, ők mondják rólunk.',
+    'st.2n':'24<small>h</small>','st.2b':'Munkanapokon ennyi alatt jelentkezünk.','st.2s':'Telefon, email, Facebook — hét közben írsz, másnap reggel ott a válasz.',
+    'st.3n':'7<small>+</small>','st.3b':'Prémium márka — minden feladatra a megfelelő.','st.3s':'Daikin, NIBE, Mitsubishi, Gree, AUX, AHT — mert egy márka nem fed le mindent.',
+    'sg.eb':'Szolgáltatások','sg.t':'Te <em>mivel</em> jössz hozzánk?','sg.l':'Válaszd ki, milyen környezetbe kell a megoldás. A többi tőlünk jön — felmérés, terv, kivitelezés, karbantartás.',
+    'sg.tr':'Otthon','sg.tc':'Üzlet, étterem','sg.ti':'Üzem, csarnok','sg.cue':'Válaszd ki, melyik a tied',
+    'sg.r.h':'Lakossági <em>klíma és hőszivattyú.</em>','sg.r.l':'Családi háznak és lakásnak. Egy gép ami nyáron hűt, télen pedig olcsóbban fűt mint a gáz vagy a fa.',
+    'sg.r.el':'Tipikus projekt','sg.r.et':'<b>9-12 ezer BTU-s inverter klíma</b> egy átlagos kétszobás lakásba. Felmérés délelőtt, telepítés délutánra — kávézásra még marad idő.','sg.r.c':'Otthonra kérek ajánlatot',
+    'sg.r.s1t':'Inverteres split klíma','sg.r.s1d':'Mono- és multi-split · Daikin, Mitsubishi, Gree, AUX',
+    'sg.r.s2t':'Levegő-víz hőszivattyú','sg.r.s2d':'NIBE és Daikin · padlófűtéshez vagy radiátorhoz',
+    'sg.r.s3t':'Klímás fűtéskorszerűsítés','sg.r.s3d':'Régi gáz/fa fűtés mellé olcsó kiegészítő',
+    'sg.r.s4t':'Karbantartás, tisztítás','sg.r.s4d':'Évi 1-2 alkalom · meghosszabbítja a készülék életét',
+    'sg.r.s5t':'Garanciális javítás','sg.r.s5d':'Bármilyen márka · diagnózis és csere',
+    'sg.c.h':'Üzleti és <em>vendéglátóipari hűtés.</em>','sg.c.l':'Bolt, étterem, kávézó. Hűtővitrin, fagyasztó, klimatizálás — gyors kiszállással ha valami áll.',
+    'sg.c.el':'Tipikus projekt','sg.c.et':'<b>Egy étterem teljes klimatizálása</b> Daikin VRV multi-split rendszerrel. Konyha plusz vendégtér, központi vezérlés, csendes éjszakai üzemmód.','sg.c.c':'Üzletbe kérek ajánlatot',
+    'sg.c.s1t':'Hűtővitrinek, fagyasztóládák','sg.c.s1d':'AHT és más prémium márkák · italoknak, fagyinak, húsnak',
+    'sg.c.s2t':'Üzleti split és multi-split','sg.c.s2d':'Boltok, irodák, éttermek · 1-30 belső egység',
+    'sg.c.s3t':'Daikin VRV / VRF rendszerek','sg.c.s3d':'Központi vezérlés, hőszivattyú alapú, energiahatékony',
+    'sg.c.s4t':'Sürgősségi szervízhívás','sg.c.s4d':'Munkaidőben gyors kiszállás · kritikus berendezésekhez',
+    'sg.c.s5t':'Karbantartási szerződés','sg.c.s5d':'Megelőző karbantartás · ne álljon le a forgalom',
+    'sg.i.h':'Ipari hűtéstechnika és <em>légkezelés.</em>','sg.i.l':'Csarnok, üzem, élelmiszer-feldolgozó. Hűtőkamrák, központi légkezelők, méretre szabva — tervezéstől a beüzemelésig.',
+    'sg.i.el':'Tipikus projekt','sg.i.et':'<b>20-50 m³-es hűtőkamra</b> hentesüzlet vagy raktárépülethez. Tervezés, panel, gépészet, vezérlés és beüzemelés — egy kézből.','sg.i.c':'Ipari ajánlatot kérek',
+    'sg.i.s1t':'Hűtő- és fagyasztókamrák','sg.i.s1d':'Méretre szabott panelből · -25°C-ig minden hőmérsékleten',
+    'sg.i.s2t':'Húsérlelő szekrények','sg.i.s2d':'Szabályozott páratartalom és hőmérséklet · prémium húsoknak',
+    'sg.i.s3t':'Légkezelő, szellőztetés','sg.i.s3d':'Csarnokok, gyártóterek · friss levegő, hő- és pára-kontroll',
+    'sg.i.s4t':'Tervezés, mérnöki támogatás','sg.i.s4d':'Beruházás előtt segítünk méretezni · papíron mindent',
+    'sg.i.s5t':'Folyamatos karbantartás','sg.i.s5d':'Rendszeres szemle · kritikus berendezésnél kötelező',
+    'ni.eb':'Specializáció · ebben különbözünk',
+    'ni.t':'A hűtőkamra <span class="warm">nem hűtőszekrény.</span><br>Az árukészlet múlik rajta.',
+    'ni.cu':'óra leállás','ni.ct':'Egy nyári napon a hűtőkamrád veszteség nélkül maximum fél órát bír leállást. <b>Mi szerződéssel és pontos válaszidővel dolgozunk</b> — nem akkor érkezünk, mikor már árukárt számolsz.',
+    'ni.1t':'Hűtő- és fagyasztókamrák','ni.1b':'Tervezéstől beüzemelésig, méretre szabva. Sandwich-panel, gépészet, vezérlés, távfelügyelet.','ni.1s':'PANEL · GÉPÉSZET · VEZÉRLÉS',
+    'ni.2t':'Húsérlelő szekrények','ni.2b':'Szabályozott klíma — pontos hőmérséklet és páratartalom, csendes ventilátorok.','ni.2s':'PRECÍZ HŐM. · PÁRATART. · CSENDES',
+    'ni.3t':'Légkezelő rendszerek','ni.3b':'Csarnokok és üzemek levegőminőségének biztosítása — friss levegő, hőmérséklet, pára.','ni.3s':'FRISS LEVEGŐ · HŐ · PÁRA',
+    'ni.4t':'Karbantartási szerződés','ni.4b':'Megelőző karbantartás — kevesebb leállás, hosszabb élettartam, kisebb energiafogyasztás.','ni.4s':'MEGELŐZÉS · STABIL ÜZEM',
+    'ni.sg':'Egy konkrét eset · Hentesüzlet, Sepsiszentgyörgy',
+    'ni.sq':'Pénteken este hívtak — leállt a hűtőkamra. Szombat reggel 8-ra a kompresszor cseréje megvolt, és a friss áru egy fokot se mozdult. Ezért érdemes karbantartási szerződést kötni.',
+    'ni.sa':'<b>Helyszíni szervíz</b> · ÉLELMISZERIPARI ÜGYFÉL · 2024',
+    'ni.cta':'Beszéljünk az élelmiszer-projektről','ni.h':'Vagy hívj inkább telefonon — sürgős ügyben gyorsabb.',
+    'pr.eb':'Folyamat','pr.t':'A felméréstől <span class="warm">a kulcsátadásig.</span>','pr.l':'Átlátható öt lépés. Egyenes kommunikáció, határidők papíron.',
+    'pr.1t':'~45 PERC','pr.1h':'Felmérés','pr.1p':'Helyszínre megyünk, tisztázzuk az igényt, költséget becsülünk. Díjmentes.',
+    'pr.2t':'2-3 NAP','pr.2h':'Fix árajánlat','pr.2p':'Megfelelő rendszer, részletes ütemterv, írásban — egyszer egyezünk meg, utána nem mozog.',
+    'pr.3t':'1-3 NAP','pr.3h':'Telepítés','pr.3p':'Szakszerű kivitelezés, beüzemelés, működéspróba, dokumentáció átadása.',
+    'pr.4t':'~30 PERC','pr.4h':'Átadás','pr.4p':'Garancia papíron, használati tippek, vezérlés bemutatása.',
+    'pr.5t':'FOLYAMATOS','pr.5h':'Karbantartás','pr.5p':'Évi 1-2 alkalom · garanciális ügyek intézése helyetted.',
+    'rf.eb':'Munkáink','rf.t':'Néhány projekt a <span class="warm">közelmúltból.</span>','rf.cta':'Még többet kérek →',
+    'rf.1tag':'№ 01 · Lakossági','rf.1t':'NIBE 6 kW levegő-víz hőszivattyú','rf.1d':'Családi ház, padlófűtés és melegvíz egyetlen rendszerből. A téli gáz kiváltása az ügyfél egyik fő motivációja volt.',
+    'rf.1s1':'~140 m²','rf.1s2':'Padlófűtés','rf.1s3':'Sepsiszentgyörgy',
+    'rf.2tag':'№ 02 · Vendéglátás','rf.2t':'Daikin VRV multi-split, étterem','rf.2d':'Vendégtér, konyha és iroda egyetlen rendszeren. Központi vezérléssel, csendes éjszakai üzemmóddal.',
+    'rf.2s1':'VRV','rf.2s2':'3 belső egység','rf.2s3':'Kovászna megye',
+    'rf.3tag':'№ 03 · Élelmiszeripar','rf.3t':'Hűtőkamra hentesüzletbe','rf.3d':'Méretre szabott panel-konstrukció, automata vezérlés, távfelügyelet. A megrendeléstől átadásig egy kézből.',
+    'rf.3s1':'Panel','rf.3s2':'−18°C','rf.3s3':'Sepsiszentgyörgy',
+    'rv.eb':'Vélemények · 5.0 ★ Google','rv.t':'Amit <em>rólunk</em> mondanak.',
+    'rv.1t':'Pontosak voltak az időponttal és az árajánlattal is. A felmérés napján már fix árat kaptam, és a telepítés is határidőre kész lett.',
+    'rv.1av':'K','rv.1n':'K. család','rv.1r':'Lakossági ügyfél · Sepsiszentgyörgy','rv.1m':'Google · 2025',
+    'rv.2t':'Az üzletünk hűtővitrinjeit ők szerelték — gyors, tiszta munka. A karbantartással is megbízható partnerünk maradtak.',
+    'rv.2av':'B','rv.2n':'B. üzlet','rv.2r':'Üzleti ügyfél · Kovászna megye','rv.2m':'Google · 2024',
+    'rv.3t':'Ipari hűtőkamrát épített nálunk a csapat. Kommunikáltak, papíron volt minden, határidőre kész lett. Ennyi.',
+    'rv.3av':'F','rv.3n':'F. cég','rv.3r':'Ipari ügyfél · Erdély','rv.3m':'Google · 2025',
+    'rv.cta':'Olvasd el mind a 14 véleményt a Google-on',
+    'fq.eb':'GYIK','fq.t':'Gyakori <em>kérdések.</em>','fq.l':'Ha valami nincs itt, hívj direktben — szívesen elmondjuk.',
+    'fq.1q':'Mennyibe kerül egy lakásklíma teljes telepítése?','fq.1a':'Egy <b>9000-12000 BTU-s inverter klíma</b> kulcsrakészen általában <b>4500-7500 lej</b> között van — márkától, hosszától, falbontás szükségességétől függően. Helyszíni felmérés után fix árajánlatot adunk, ami nem mozdul a telepítés végéig.',
+    'fq.2q':'Megéri-e klímával fűteni télen?','fq.2a':'Igen. A modern inverter klímák hőszivattyú elven működnek — <b>1 kW áramból 3-5 kW hőenergiát</b> adnak. Erdélyhez (-15-20°C-os éjszakákhoz) fűtésre optimalizált modelleket javasolunk, ezek -25°C-ig is dolgoznak.',
+    'fq.3q':'Mennyi időbe telik egy telepítés?','fq.3a':'Egy lakásklíma <b>3-5 órát</b> vesz igénybe. Multi-split rendszer 1-2 nap, hűtőkamra építés <b>3-7 nap</b>, légkezelő rendszer akár több hét — ezt mindig a felmérés után tudjuk pontosan megmondani.',
+    'fq.4q':'Adtok garanciát?','fq.4a':'Igen. A készülékre <b>3-10 év</b> gyártói garancia (márkától függően), a telepítésre pedig saját garancia. Daikin partnerként hosszabbított garanciát is tudunk adni — a regisztrációt mi intézzük.',
+    'fq.5q':'Milyen márkákkal dolgoztok?','fq.5a':'Klímában: <b>Daikin (hivatalos partner), Mitsubishi Electric, Mitsubishi Heavy, Gree, AUX</b>. Hőszivattyúban: <b>NIBE</b> és Daikin. Hűtéstechnikában AHT és más prémium ipari beszállítók. Minden a feladathoz méretezve.',
+    'fq.6q':'Hova mentek ki helyszínre?','fq.6a':'<b>Kovászna megye egészében</b> (Sepsiszentgyörgy, Kézdivásárhely, Barót környéke, Kovászna város), és komolyabb projektnél <b>Hargita / Brassó megyékbe</b> is kimegyünk. Telefonon egyeztetjük.',
+    'fq.ft':'Más kérdésed van?','fq.fs':'Hívj telefonon, vagy írj — ennél gyorsabban tényleg nem megy.','fq.fc':'Hívom: +40 757 267 057',
+    'ct.eb':'Kapcsolat','ct.t':'Beszéljünk a <em>projektedről.</em>','ct.l':'Helyszíni felmérés és árajánlat díjmentes. Munkanapokon válaszolunk 24 órán belül.',
+    'ct.p':'Telefon · leggyorsabb','ct.e':'Email','ct.f':'Facebook · üzenet','ct.h':'Nyitva','ct.hv':'H-P · 09:30-17:30',
+    'ct.mp':'📍 Strada Arcușului · Sf. Gheorghe',
+    'fm.eb':'Üzenet','fm.t':'Pár adat — és <span class="warm">visszahívunk.</span>','fm.s':'Csak a név és a telefon kötelező. A többit a beszélgetésen tisztázzuk.',
+    'fm.b':'24 órán belül válasz','fm.n':'Név','fm.p':'Telefon','fm.m':'Mit szeretnél?','fm.sb':'Küldés','fm.no':'A küldéssel hozzájárulsz az adataid kezeléséhez.',
+    'mc.c':'Hívás','mc.b':'Felmérés foglalása',
+    'ft.tag':'Daikin hivatalos partner Kovászna megyében. Klíma, hűtés és légtechnika tervezéstől a működésig.',
+    'ft.menu':'Menü','ft.brands':'Márkák','ft.contact':'Kapcsolat','ft.proc':'Folyamat','ft.faq':'GYIK','ft.hours':'H-P · 09:30-17:30',
+    'ft.r':'Minden jog fenntartva','ft.made':'Készítette: <a href="#" target="_blank">Webszövő</a>','bg':'Készítette: '
+  },
+
+  ro: {
+    'nav.s':'Servicii','nav.n':'Specializare','nav.r':'Lucrări','nav.c':'Contact','nav.cta':'Cere o evaluare',
+    'h.eb':'<b>Partener Oficial Daikin</b> · Județul Covasna',
+    'h.t':'Climă, răcire, ventilație — încredințate <span class="em-warm">unei</span> echipe <span class="em-cool">de ingineri.</span>',
+    'h.s':'Evaluare la fața locului în 24 de ore. Preț fix, în scris. Garanție pe echipament și pe manoperă.',
+    'h.c1':'Cere o evaluare','h.c2':'Hai să vedem ce facem',
+    'h.tr1':'14 recenzii Google','h.tr2':'<b>Partener Oficial Daikin</b>','h.tr3':'<b>În județul Covasna</b> deplasarea e gratuită',
+    'h.sc1':'AC rezidențial','h.sc2':'Vitrină frigorifică','h.sc3':'Cameră frigorifică',
+    'h.v1':'Răspundem acum','h.v2':'Zile lucrătoare · în medie 3 ore',
+    'st.eb':'De ce noi?','st.t':'Trei <em>motive</em> simple.',
+    'st.1n':'5.0<small>★</small>','st.1b':'Toate cele 14 — cinci stele.','st.1s':'Citește pe Google — nu noi vorbim despre noi, ei vorbesc despre noi.',
+    'st.2n':'24<small>h</small>','st.2b':'În acest interval răspundem în zilele lucrătoare.','st.2s':'Telefon, email, Facebook — scrii în timpul săptămânii, dimineața următoare ai răspunsul.',
+    'st.3n':'7<small>+</small>','st.3b':'Mărci premium — câte una pentru fiecare sarcină.','st.3s':'Daikin, NIBE, Mitsubishi, Gree, AUX, AHT — pentru că o singură marcă nu acoperă tot.',
+    'sg.eb':'Servicii','sg.t':'Tu cu <em>ce</em> vii la noi?','sg.l':'Alege în ce mediu ai nevoie de soluție. Restul vine de la noi — evaluare, proiect, execuție, mentenanță.',
+    'sg.tr':'Acasă','sg.tc':'Magazin, restaurant','sg.ti':'Hală, uzină','sg.cue':'Alege ce ai nevoie',
+    'sg.r.h':'AC rezidențial și <em>pompă de căldură.</em>','sg.r.l':'Pentru casă și apartament. Un singur aparat care vara răcește, iarna încălzește mai ieftin decât gazul sau lemnul.',
+    'sg.r.el':'Proiect tipic','sg.r.et':'<b>AC inverter de 9-12 mii BTU</b> într-un apartament obișnuit cu două camere. Evaluare dimineața, instalare după-amiaza — mai e timp și de cafea.','sg.r.c':'Cere ofertă pentru acasă',
+    'sg.r.s1t':'AC split inverter','sg.r.s1d':'Mono- și multi-split · Daikin, Mitsubishi, Gree, AUX',
+    'sg.r.s2t':'Pompă de căldură aer-apă','sg.r.s2d':'NIBE și Daikin · pentru pardoseală sau radiator',
+    'sg.r.s3t':'Modernizare cu AC','sg.r.s3d':'Pe lângă gazul/lemnul vechi · supliment ieftin',
+    'sg.r.s4t':'Mentenanță, curățare','sg.r.s4d':'1-2 ori pe an · prelungește viața aparatului',
+    'sg.r.s5t':'Reparații în garanție','sg.r.s5d':'Orice marcă · diagnostic și schimb',
+    'sg.c.h':'Răcire <em>comercială și HoReCa.</em>','sg.c.l':'Magazin, restaurant, cafenea. Vitrine, lăzi, climatizare — cu intervenții rapide când ceva stă.',
+    'sg.c.el':'Proiect tipic','sg.c.et':'<b>Climatizare completă pentru un restaurant</b> cu sistem Daikin VRV multi-split. Bucătărie plus salon, control central, modul silențios pe noapte.','sg.c.c':'Cere ofertă pentru magazin',
+    'sg.c.s1t':'Vitrine frigorifice, lăzi','sg.c.s1d':'AHT și alte mărci premium · pentru băuturi, înghețată, carne',
+    'sg.c.s2t':'Split și multi-split comercial','sg.c.s2d':'Magazine, birouri, restaurante · 1-30 unități interne',
+    'sg.c.s3t':'Sisteme Daikin VRV / VRF','sg.c.s3d':'Control central, bazat pe pompă de căldură, eficient energetic',
+    'sg.c.s4t':'Service de urgență','sg.c.s4d':'Intervenție rapidă în program · pentru echipamente critice',
+    'sg.c.s5t':'Contract de mentenanță','sg.c.s5d':'Mentenanță preventivă · să nu se oprească business-ul',
+    'sg.i.h':'Refrigerare industrială și <em>tratare aer.</em>','sg.i.l':'Hale, uzine, procesare alimentară. Camere frigorifice, sisteme de tratare a aerului — de la proiectare la punere în funcțiune.',
+    'sg.i.el':'Proiect tipic','sg.i.et':'<b>Cameră frigorifică de 20-50 m³</b> pentru măcelărie sau depozit. Proiectare, panel, mecanică, automatizare și punere în funcțiune — dintr-o singură mână.','sg.i.c':'Cere ofertă industrială',
+    'sg.i.s1t':'Camere frigorifice și de congelare','sg.i.s1d':'Din panel, la dimensiune · până la -25°C, la orice temperatură',
+    'sg.i.s2t':'Dulapuri de maturare carne','sg.i.s2d':'Umiditate și temperatură reglate · pentru carne premium',
+    'sg.i.s3t':'Tratare aer, ventilație','sg.i.s3d':'Hale, secții de producție · aer proaspăt, control termic și umiditate',
+    'sg.i.s4t':'Proiectare, suport tehnic','sg.i.s4d':'Înainte de investiție te ajutăm să dimensionezi · totul pe hârtie',
+    'sg.i.s5t':'Mentenanță continuă','sg.i.s5d':'Inspecții regulate · obligatorii la echipamente critice',
+    'ni.eb':'Specializare · ce ne face diferiți',
+    'ni.t':'O cameră frigorifică <span class="warm">nu e un frigider mare.</span><br>De ea depinde marfa.',
+    'ni.cu':'oră de oprire','ni.ct':'Într-o zi de vară, o cameră frigorifică suportă maxim o jumătate de oră de oprire fără pierderi. <b>Noi lucrăm cu contracte și timpi de răspuns clari</b> — nu venim când deja calculezi pierderi de marfă.',
+    'ni.1t':'Camere frigorifice și de congelare','ni.1b':'De la proiectare la punere în funcțiune, la dimensiune. Panel sandwich, mecanică, automatizare, supraveghere de la distanță.','ni.1s':'PANEL · MECANICĂ · CONTROL',
+    'ni.2t':'Dulapuri de maturare carne','ni.2b':'Climă reglementată — temperatură și umiditate exacte, ventilatoare silențioase.','ni.2s':'TEMP. PRECISĂ · UMID. · SILENȚIOS',
+    'ni.3t':'Sisteme de tratare a aerului','ni.3b':'Asigurarea calității aerului în hale și uzine — aer proaspăt, temperatură, umiditate.','ni.3s':'AER PROASPĂT · TEMP. · UMID.',
+    'ni.4t':'Contract de mentenanță','ni.4b':'Mentenanță preventivă — mai puține opriri, durată de viață mai lungă, consum mai mic.','ni.4s':'PREVENȚIE · FUNCȚIONARE STABILĂ',
+    'ni.sg':'Un caz concret · Măcelărie, Sf. Gheorghe',
+    'ni.sq':'M-au sunat vineri seara — se oprise camera frigorifică. Sâmbătă dimineață la 8, schimbarea compresorului era făcută, iar marfa proaspătă nu se mișcase nici cu un grad. De-asta merită contract de mentenanță.',
+    'ni.sa':'<b>Service la fața locului</b> · CLIENT ALIMENTAR · 2024',
+    'ni.cta':'Hai să vorbim despre proiectul alimentar','ni.h':'Sau sună mai bine la telefon — în situații urgente e mai rapid.',
+    'pr.eb':'Proces','pr.t':'De la evaluare <span class="warm">la predarea cheilor.</span>','pr.l':'Cinci pași transparenți. Comunicare directă, termene pe hârtie.',
+    'pr.1t':'~45 MIN','pr.1h':'Evaluare','pr.1p':'Mergem la fața locului, clarificăm nevoia, estimăm costuri. Gratuit.',
+    'pr.2t':'2-3 ZILE','pr.2h':'Ofertă fixă','pr.2p':'Sistem potrivit, plan detaliat, în scris — nu se modifică pe parcurs.',
+    'pr.3t':'1-3 ZILE','pr.3h':'Instalare','pr.3p':'Execuție profesională, punere în funcțiune, testare, predare documentație.',
+    'pr.4t':'~30 MIN','pr.4h':'Predare','pr.4p':'Garanție pe hârtie, sfaturi de utilizare, prezentarea controlului.',
+    'pr.5t':'CONTINUU','pr.5h':'Mentenanță','pr.5p':'1-2 ori pe an · gestionăm garanția în locul tău.',
+    'rf.eb':'Lucrări','rf.t':'Câteva proiecte <span class="warm">recente.</span>','rf.cta':'Vreau să văd mai multe →',
+    'rf.1tag':'№ 01 · Rezidențial','rf.1t':'Pompă de căldură aer-apă NIBE 6 kW','rf.1d':'Casă unifamilială, încălzire prin pardoseală și apă caldă dintr-un singur sistem. Înlocuirea gazului iarna a fost una din motivațiile principale ale clientului.',
+    'rf.1s1':'~140 m²','rf.1s2':'Pardoseală','rf.1s3':'Sf. Gheorghe',
+    'rf.2tag':'№ 02 · HoReCa','rf.2t':'Daikin VRV multi-split, restaurant','rf.2d':'Salon, bucătărie și birou pe un singur sistem. Cu control central și mod silențios pe noapte.',
+    'rf.2s1':'VRV','rf.2s2':'3 unități interne','rf.2s3':'Județul Covasna',
+    'rf.3tag':'№ 03 · Alimentar','rf.3t':'Cameră frigorifică pentru măcelărie','rf.3d':'Construcție din panel la dimensiune, control automat, supraveghere de la distanță. De la comandă la predare, totul dintr-o singură mână.',
+    'rf.3s1':'Panel','rf.3s2':'−18°C','rf.3s3':'Sf. Gheorghe',
+    'rv.eb':'Recenzii · 5.0 ★ Google','rv.t':'Ce spun <em>despre noi.</em>',
+    'rv.1t':'Au fost punctuali și cu programarea, și cu oferta. Am primit preț fix chiar în ziua evaluării, iar instalarea s-a făcut la termen.',
+    'rv.1av':'K','rv.1n':'Familia K.','rv.1r':'Client rezidențial · Sf. Gheorghe','rv.1m':'Google · 2025',
+    'rv.2t':'Vitrinele magazinului nostru au fost instalate de ei — muncă rapidă și curată. Și pe partea de mentenanță au rămas un partener de încredere.',
+    'rv.2av':'B','rv.2n':'Magazin B.','rv.2r':'Client comercial · Județul Covasna','rv.2m':'Google · 2024',
+    'rv.3t':'Echipa ne-a construit o cameră frigorifică industrială. Au comunicat, totul pe hârtie, gata la termen. Atât.',
+    'rv.3av':'F','rv.3n':'Firma F.','rv.3r':'Client industrial · Transilvania','rv.3m':'Google · 2025',
+    'rv.cta':'Citește toate cele 14 recenzii pe Google',
+    'fq.eb':'Întrebări','fq.t':'Întrebări <em>frecvente.</em>','fq.l':'Dacă ceva nu e aici, sună-ne — îți spunem cu plăcere.',
+    'fq.1q':'Cât costă instalarea completă a unui AC rezidențial?','fq.1a':'Un <b>AC inverter de 9000-12000 BTU</b> la cheie costă în general <b>4500-7500 lei</b> — în funcție de marcă, lungimea traseului, dacă e nevoie de spargere de zid. După evaluare la fața locului dăm ofertă fixă, care nu se modifică până la final.',
+    'fq.2q':'Merită încălzirea cu AC iarna?','fq.2a':'Da. Aparatele moderne cu invertor funcționează ca pompe de căldură — produc <b>3-5 kW de căldură din 1 kW de electricitate</b>. Pentru Transilvania (nopți de -15-20°C) recomandăm modele optimizate pentru încălzire, acestea funcționează până la -25°C.',
+    'fq.3q':'Cât durează o instalare?','fq.3a':'Un AC pentru apartament durează <b>3-5 ore</b>. Sistem multi-split 1-2 zile, construcția unei camere frigorifice <b>3-7 zile</b>, sistem de tratare a aerului chiar și mai multe săptămâni — putem spune exact doar după evaluare.',
+    'fq.4q':'Oferiți garanție?','fq.4a':'Da. Pe echipament <b>3-10 ani</b> garanția producătorului (depinde de marcă), iar pe instalare oferim propria noastră garanție. Ca partener Daikin, putem da și garanție extinsă — înregistrarea o facem noi.',
+    'fq.5q':'Cu ce mărci lucrați?','fq.5a':'În climatizare: <b>Daikin (partener oficial), Mitsubishi Electric, Mitsubishi Heavy, Gree, AUX</b>. În pompe de căldură: <b>NIBE</b> și Daikin. În refrigerare AHT și alți furnizori industriali premium. Totul dimensionat pentru sarcină.',
+    'fq.6q':'Unde mergeți la fața locului?','fq.6a':'<b>În tot județul Covasna</b> (Sf. Gheorghe, Târgu Secuiesc, zona Baraolt, orașul Covasna), iar la proiecte mai serioase mergem și în <b>județele Harghita / Brașov</b>. Ne înțelegem la telefon.',
+    'fq.ft':'Ai altă întrebare?','fq.fs':'Sună la telefon sau scrie — mai repede chiar nu se poate.','fq.fc':'Sun: +40 757 267 057',
+    'ct.eb':'Contact','ct.t':'Hai să discutăm despre <em>proiectul tău.</em>','ct.l':'Evaluarea și oferta sunt gratuite. Răspundem în 24 de ore în zilele lucrătoare.',
+    'ct.p':'Telefon · cel mai rapid','ct.e':'Email','ct.f':'Facebook · mesaj','ct.h':'Program','ct.hv':'L-V · 09:30-17:30',
+    'ct.mp':'📍 Strada Arcușului · Sf. Gheorghe',
+    'fm.eb':'Mesaj','fm.t':'Câteva date — și <span class="warm">te sunăm.</span>','fm.s':'Doar numele și telefonul sunt obligatorii. Restul îl clarificăm la telefon.',
+    'fm.b':'Răspuns în 24 de ore','fm.n':'Nume','fm.p':'Telefon','fm.m':'Ce ai nevoie?','fm.sb':'Trimite','fm.no':'Prin trimitere ești de acord cu prelucrarea datelor tale.',
+    'mc.c':'Sună','mc.b':'Cere evaluare',
+    'ft.tag':'Partener oficial Daikin în județul Covasna. Climatizare, răcire și ventilație de la proiectare la operare.',
+    'ft.menu':'Meniu','ft.brands':'Mărci','ft.contact':'Contact','ft.proc':'Proces','ft.faq':'Întrebări','ft.hours':'L-V · 09:30-17:30',
+    'ft.r':'Toate drepturile rezervate','ft.made':'Realizat de: <a href="#" target="_blank">Webszövő</a>','bg':'Realizat de: '
+  },
+
+  en: {
+    'nav.s':'Services','nav.n':'Specialty','nav.r':'Work','nav.c':'Contact','nav.cta':'Book a survey',
+    'h.eb':'<b>Daikin Authorized Partner</b> · Covasna County',
+    'h.t':'HVAC and refrigeration — handled by <span class="em-warm">one</span> engineering <span class="em-cool">team.</span>',
+    'h.s':'On-site survey within 24h. Fixed quote, in writing. Warranty on equipment and workmanship.',
+    'h.c1':'Book a survey','h.c2':'What we do',
+    'h.tr1':'14 Google reviews','h.tr2':'<b>Daikin Authorized Partner</b>','h.tr3':'<b>Within Covasna County</b> the call-out is free',
+    'h.sc1':'Residential AC','h.sc2':'Refrigerated display','h.sc3':'Industrial cold room',
+    'h.v1':'Replying now','h.v2':'Business days · 3 hour average',
+    'st.eb':'Why us?','st.t':'Three <em>honest</em> reasons.',
+    'st.1n':'5.0<small>★</small>','st.1b':'All 14 — five stars.','st.1s':'Read it on Google — not us talking about us, them talking about us.',
+    'st.2n':'24<small>h</small>','st.2b':'On business days we get back to you within this.','st.2s':'Phone, email, Facebook — write mid-week, the answer is there next morning.',
+    'st.3n':'7<small>+</small>','st.3b':'Premium brands — one for every job.','st.3s':'Daikin, NIBE, Mitsubishi, Gree, AUX, AHT — because no single brand fits everything.',
+    'sg.eb':'Services','sg.t':'What <em>brings</em> you to us?','sg.l':'Tell us where you need it — survey, design, install and maintenance are on us.',
+    'sg.tr':'Home','sg.tc':'Shop, restaurant','sg.ti':'Plant, hall','sg.cue':'Pick what you need',
+    'sg.r.h':'Residential <em>AC and heat pump.</em>','sg.r.l':'For houses and flats. One device that cools in summer, heats in winter cheaper than gas or wood.',
+    'sg.r.el':'Typical project','sg.r.et':'<b>9-12k BTU inverter AC</b> in an average two-room flat. Survey in the morning, install by afternoon — still time for coffee.','sg.r.c':'Get a quote for home',
+    'sg.r.s1t':'Inverter split AC','sg.r.s1d':'Mono- and multi-split · Daikin, Mitsubishi, Gree, AUX',
+    'sg.r.s2t':'Air-to-water heat pump','sg.r.s2d':'NIBE and Daikin · for underfloor or radiator',
+    'sg.r.s3t':'AC heat retrofit','sg.r.s3d':'Cheap supplement to old gas/wood heating',
+    'sg.r.s4t':'Maintenance, cleaning','sg.r.s4d':'1-2× per year · extends device life',
+    'sg.r.s5t':'Warranty repair','sg.r.s5d':'Any brand · diagnosis and replacement',
+    'sg.c.h':'Commercial and <em>hospitality cooling.</em>','sg.c.l':'Shop, restaurant, café. Display fridges, freezers, AC — fast callouts when something stops.',
+    'sg.c.el':'Typical project','sg.c.et':'<b>Full restaurant AC</b> with Daikin VRV multi-split. Kitchen plus dining, central control, quiet night mode.','sg.c.c':'Get a quote for shop',
+    'sg.c.s1t':'Display fridges, freezers','sg.c.s1d':'AHT and other premium brands · for drinks, ice cream, meat',
+    'sg.c.s2t':'Commercial split & multi-split','sg.c.s2d':'Shops, offices, restaurants · 1-30 indoor units',
+    'sg.c.s3t':'Daikin VRV / VRF systems','sg.c.s3d':'Central control, heat-pump-based, energy-efficient',
+    'sg.c.s4t':'Emergency callout','sg.c.s4d':'Quick on-site response in business hours · for critical equipment',
+    'sg.c.s5t':'Maintenance contract','sg.c.s5d':'Preventive service · don\'t let business stop',
+    'sg.i.h':'Industrial refrigeration and <em>air handling.</em>','sg.i.l':'Halls, plants, food processing. Cold rooms, central air handlers — from design to commissioning.',
+    'sg.i.el':'Typical project','sg.i.et':'<b>20-50 m³ cold room</b> for a butcher or warehouse. Design, panel, mechanics, control and commissioning — single source.','sg.i.c':'Get an industrial quote',
+    'sg.i.s1t':'Cold and freezer rooms','sg.i.s1d':'Custom panel build · down to -25°C, any temperature range',
+    'sg.i.s2t':'Meat-aging cabinets','sg.i.s2d':'Controlled humidity and temperature · for premium cuts',
+    'sg.i.s3t':'Air handling, ventilation','sg.i.s3d':'Halls, production lines · fresh air, thermal & humidity control',
+    'sg.i.s4t':'Engineering, design support','sg.i.s4d':'We help size before investment · everything on paper',
+    'sg.i.s5t':'Continuous maintenance','sg.i.s5d':'Regular inspections · mandatory on critical equipment',
+    'ni.eb':'Specialty · what sets us apart',
+    'ni.t':'A cold room <span class="warm">can\'t fail.</span><br>Your stock lives there.',
+    'ni.cu':'hours downtime','ni.ct':'On a hot day, a cold room can take maybe half an hour offline before stock starts taking damage. <b>We work with maintenance contracts and clear response times</b> — we don\'t arrive when you\'re already counting losses.',
+    'ni.1t':'Cold and freezer rooms','ni.1b':'From design to commissioning, custom-sized. Sandwich panel, mechanics, controls, remote monitoring.','ni.1s':'PANEL · MECHANICS · CONTROL',
+    'ni.2t':'Meat-aging cabinets','ni.2b':'Controlled climate — exact temperature and humidity, quiet fans.','ni.2s':'PRECISE TEMP. · HUMIDITY · QUIET',
+    'ni.3t':'Air-handling systems','ni.3b':'Ensuring air quality in halls and plants — fresh air, temperature, humidity.','ni.3s':'FRESH AIR · TEMP. · HUMIDITY',
+    'ni.4t':'Maintenance contract','ni.4b':'Preventive maintenance — fewer breakdowns, longer life, lower energy use.','ni.4s':'PREVENTION · STABLE OPERATION',
+    'ni.sg':'A real one · Butcher shop, Sf. Gheorghe',
+    'ni.sq':'They called Friday evening — cold room had stopped. By Saturday 8 AM compressor was swapped, fresh stock didn\'t move a degree. That\'s why a maintenance contract is worth it.',
+    'ni.sa':'<b>On-site service</b> · FOOD INDUSTRY CLIENT · 2024',
+    'ni.cta':'Let\'s talk about the food project','ni.h':'Or just call — for urgent matters, the phone is faster.',
+    'pr.eb':'Process','pr.t':'From survey <span class="warm">to handover.</span>','pr.l':'Five transparent steps. Direct communication, deadlines on paper.',
+    'pr.1t':'~45 MIN','pr.1h':'Survey','pr.1p':'On-site visit, requirements clarification, cost estimate. Free.',
+    'pr.2t':'2-3 DAYS','pr.2h':'Fixed quote','pr.2p':'Right system, detailed schedule, in writing — we agree once, no surprises after.',
+    'pr.3t':'1-3 DAYS','pr.3h':'Installation','pr.3p':'Professional execution, commissioning, test runs, documentation handover.',
+    'pr.4t':'~30 MIN','pr.4h':'Handover','pr.4p':'Warranty on paper, usage tips, control walkthrough.',
+    'pr.5t':'ONGOING','pr.5h':'Maintenance','pr.5p':'1-2× per year · we handle warranty matters for you.',
+    'rf.eb':'Work','rf.t':'<span class="warm">Recent</span> projects.','rf.cta':'Show me more →',
+    'rf.1tag':'№ 01 · Residential','rf.1t':'NIBE 6 kW air-to-water heat pump','rf.1d':'Family house, underfloor heating and hot water from a single system. Replacing winter gas was one of the client\'s main motivations.',
+    'rf.1s1':'~140 m²','rf.1s2':'Underfloor','rf.1s3':'Sf. Gheorghe',
+    'rf.2tag':'№ 02 · Hospitality','rf.2t':'Daikin VRV multi-split, restaurant','rf.2d':'Dining, kitchen and office on a single system. With central control and quiet night mode.',
+    'rf.2s1':'VRV','rf.2s2':'3 indoor units','rf.2s3':'Covasna County',
+    'rf.3tag':'№ 03 · Food industry','rf.3t':'Cold room for butcher','rf.3d':'Custom-sized panel construction, automated control, remote monitoring. From order to handover, single source.',
+    'rf.3s1':'Panel','rf.3s2':'−18°C','rf.3s3':'Sf. Gheorghe',
+    'rv.eb':'Reviews · 5.0 ★ Google','rv.t':'What people <em>say about us.</em>',
+    'rv.1t':'Punctual on schedule and on quote. We had a fixed price on assessment day, and the installation was done on time.',
+    'rv.1av':'K','rv.1n':'K. family','rv.1r':'Residential client · Sf. Gheorghe','rv.1m':'Google · 2025',
+    'rv.2t':'They installed our shop\'s display fridges — fast, clean work. They remained a reliable maintenance partner too.',
+    'rv.2av':'B','rv.2n':'B. shop','rv.2r':'Business client · Covasna County','rv.2m':'Google · 2024',
+    'rv.3t':'The team built our industrial cold room. They communicated, everything was on paper, finished on time. That\'s it.',
+    'rv.3av':'F','rv.3n':'F. company','rv.3r':'Industrial client · Transylvania','rv.3m':'Google · 2025',
+    'rv.cta':'Read all 14 reviews on Google',
+    'fq.eb':'FAQ','fq.t':'Frequent <em>questions.</em>','fq.l':'If something\'s not here, call directly — happy to tell you.',
+    'fq.1q':'How much does a full residential AC installation cost?','fq.1a':'A <b>9000-12000 BTU inverter AC</b> turnkey is generally between <b>4500-7500 lei</b> — depending on brand, line length, whether wall-drilling is needed. After on-site survey we give a fixed quote that doesn\'t move until the end.',
+    'fq.2q':'Is winter heating with AC worth it?','fq.2a':'Yes. Modern inverter ACs work as heat pumps — they deliver <b>3-5 kW of heat from 1 kW of electricity</b>. For Transylvania (nights at -15-20°C) we recommend heating-optimized models, which work down to -25°C.',
+    'fq.3q':'How long does an installation take?','fq.3a':'A flat AC takes <b>3-5 hours</b>. Multi-split system 1-2 days, cold room build <b>3-7 days</b>, air handling system even several weeks — we can tell exactly only after the survey.',
+    'fq.4q':'Do you offer warranty?','fq.4a':'Yes. <b>3-10 years</b> manufacturer warranty on the device (depends on brand), and our own warranty on the installation. As a Daikin partner, we can offer extended warranty — we handle registration.',
+    'fq.5q':'Which brands do you work with?','fq.5a':'AC: <b>Daikin (authorized partner), Mitsubishi Electric, Mitsubishi Heavy, Gree, AUX</b>. Heat pumps: <b>NIBE</b> and Daikin. Refrigeration: AHT and other premium industrial suppliers. Everything sized to the job.',
+    'fq.6q':'Where do you go on-site?','fq.6a':'<b>All of Covasna County</b> (Sf. Gheorghe, Târgu Secuiesc, Baraolt area, Covasna town, smaller villages), and for bigger projects we go to <b>Harghita / Brașov</b> too. We agree on the phone.',
+    'fq.ft':'Got another question?','fq.fs':'Call us or write — honestly, no faster way exists.','fq.fc':'Call: +40 757 267 057',
+    'ct.eb':'Contact','ct.t':'Let\'s talk about <em>your project.</em>','ct.l':'On-site survey and quote are free. We respond within 24h on business days.',
+    'ct.p':'Phone · fastest','ct.e':'Email','ct.f':'Facebook · message','ct.h':'Hours','ct.hv':'M-F · 09:30-17:30',
+    'ct.mp':'📍 Strada Arcușului · Sf. Gheorghe',
+    'fm.eb':'Message','fm.t':'A few details — and <span class="warm">we\'ll call you back.</span>','fm.s':'Only name and phone are required. We\'ll clarify the rest on the call.',
+    'fm.b':'Reply within 24h','fm.n':'Name','fm.p':'Phone','fm.m':'What do you need?','fm.sb':'Send','fm.no':'By submitting you agree to your data being processed.',
+    'mc.c':'Call','mc.b':'Book survey',
+    'ft.tag':'Daikin authorized partner in Covasna County. HVAC and refrigeration from design to operation.',
+    'ft.menu':'Menu','ft.brands':'Brands','ft.contact':'Contact','ft.proc':'Process','ft.faq':'FAQ','ft.hours':'M-F · 09:30-17:30',
+    'ft.r':'All rights reserved','ft.made':'Made by: <a href="#" target="_blank">Webszövő</a>','bg':'Made by: '
+  }
+};
+
+function applyLang(lang){
+  const dict = i18n[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.dataset.i18n; if(dict[k]!==undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.dataset.i18nHtml; if(dict[k]!==undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>applyLang(b.dataset.lang));
+});
+
+const mt = document.getElementById('mt');
+const navEl = document.getElementById('nav');
+mt.addEventListener('click',()=>navEl.classList.toggle('open'));
+navEl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navEl.classList.remove('open')));
+
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click',()=>{
+    const isOpen = item.classList.toggle('open');
+    a.style.maxHeight = isOpen ? a.scrollHeight + 'px' : '0';
+  });
+});
+
+// SEGMENT TABS — interactive panel switcher with sliding pill bg
+const segTabs = document.getElementById('segTabs');
+const segTabBg = document.getElementById('segTabBg');
+function moveTabBg(activeBtn){
+  if(!activeBtn) return;
+  segTabBg.style.width = activeBtn.offsetWidth + 'px';
+  segTabBg.style.transform = `translateX(${activeBtn.offsetLeft - 5}px)`;
+}
+segTabs.querySelectorAll('.seg-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    segTabs.querySelectorAll('.seg-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    moveTabBg(btn);
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.seg-panel-content').forEach(p=>{
+      p.classList.toggle('active', p.dataset.panel === target);
+    });
+  });
+});
+window.addEventListener('load',()=>moveTabBg(segTabs.querySelector('.seg-tab.active')));
+window.addEventListener('resize',()=>moveTabBg(segTabs.querySelector('.seg-tab.active')));
+
+// REVEAL ON SCROLL
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+  });
+},{threshold:.15,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .stat').forEach(el=>io.observe(el));
+
+// MOBILE STICKY CTA — show after hero
+const mobileCta = document.getElementById('mobileCta');
+let lastY = 0;
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY;
+  if(y > 600) mobileCta.classList.add('show');
+  else mobileCta.classList.remove('show');
+  lastY = y;
+},{passive:true});
+</script>
+
+</body>
+</html>
