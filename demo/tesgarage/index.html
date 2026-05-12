@@ -677,7 +677,7 @@ footer {
   .stair-nav { display:none; }
   .scroll-hint { display:none; }
   .mobile-nav { display:flex !important; }
-  .hero-bg, .part-overlay { object-position:64% center; }
+  .hero-bg, .part-overlay { object-position:64% center; top:-70px; }
   .hero-brand-sub { font-size:0.65rem; letter-spacing:0.18em; }
 
   /* Hotspot positions use calc(vw + vh) so dots track the car at any width ≤ 600px.
@@ -689,10 +689,10 @@ footer {
        Wheel      (img_x  938px): C = −14.0 → left: calc(64vw − 14vh − 60px)
      Grille (img_x 1469px) is always off-screen — kept hidden. */
   .hs-grille { display:none; }
-  .hs-hood       { left:min(calc(64vw + 13vh - 75px), calc(100% - 90px)); top:57%; width:150px; height:90px; }
-  .hs-windshield { left:calc(64vw +  2vh - 60px); top:36%; width:120px; height:80px; }
-  .hs-door       { left:calc(64vw - 22vh - 55px); top:55%; width:110px; height:90px; }
-  .hs-wheel      { left:calc(64vw - 14vh - 60px); top:67%; width:120px; height:95px; }
+  .hs-hood       { left:min(calc(64vw + 13vh - 75px), calc(100% - 90px)); top:calc(57% - 70px); width:150px; height:90px; }
+  .hs-windshield { left:calc(64vw +  2vh - 60px); top:calc(36% - 70px); width:120px; height:80px; }
+  .hs-door       { left:calc(64vw - 22vh - 55px); top:calc(55% - 70px); width:110px; height:90px; }
+  .hs-wheel      { left:calc(64vw - 14vh - 60px); top:calc(67% - 70px); width:120px; height:95px; }
 
   /* Bigger dot for easier tapping */
   .hotspot { touch-action:manipulation; }
