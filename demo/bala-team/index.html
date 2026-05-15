@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bala-Team Kft. — Klíma- és gázkészülék szerviz Szegeden</title>
+<meta name="description" content="Klímatelepítés, gázszerelés, karbantartás Szegeden. Engedélyezett épületgépész — Kothencz Balázs. Szegeden díjmentes kiszállás, gyors precíz kivitelezés.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --c-primary:#15445f;
+  --c-primary-2:#1a5a7a;
+  --c-primary-dark:#0e2d3f;
+  --c-cold:#4ea7ab;
+  --c-cold-light:#cde5e7;
+  --c-cold-soft:#eef5f5;
+  --c-warm:#d97757;
+  --c-warm-dark:#b85d3e;
+  --c-warm-light:#f7e6dc;
+  --c-bg:#fafaf7;
+  --c-surface:#f3f1ec;
+  --c-surface-2:#ece9e1;
+  --c-text:#1a2530;
+  --c-text-muted:#5f6670;
+  --c-text-soft:#8e8c84;
+  --c-border:#dcd9cf;
+  --c-border-soft:#e6e2d6;
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:18px;
+  --r-xl:24px;
+  --shadow-sm:0 1px 2px rgba(26,37,48,.04), 0 2px 8px rgba(26,37,48,.04);
+  --shadow-md:0 4px 16px rgba(26,37,48,.06), 0 12px 32px rgba(26,37,48,.06);
+  --shadow-lg:0 16px 48px rgba(21,68,95,.14);
+  --container: 1240px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter', system-ui, -apple-system, sans-serif;
+  color:var(--c-text);
+  background:var(--c-bg);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+h1,h2,h3,h4{font-family:'Manrope',sans-serif;font-weight:700;letter-spacing:-0.02em;line-height:1.18;color:var(--c-text)}
+h1{font-size:clamp(2.3rem, 5.2vw, 3.9rem);font-weight:800;letter-spacing:-0.035em;line-height:1.05}
+h2{font-size:clamp(1.85rem, 3.5vw, 2.55rem)}
+h3{font-size:1.18rem;font-weight:700}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+section{padding:5.5rem 0}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Manrope',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c-primary);margin-bottom:1.1rem}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--c-primary)}
+.eyebrow.warm{color:var(--c-warm-dark)}
+.eyebrow.warm::before{background:var(--c-warm-dark)}
+
+.section-head{max-width:680px;margin:0 auto 3.5rem;text-align:center}
+.section-head .eyebrow{margin-left:auto;margin-right:auto}
+.section-head h2{margin-bottom:1rem}
+.section-head p{color:var(--c-text-muted);font-size:1.08rem}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0.95rem 1.7rem;border-radius:var(--r-sm);font-family:'Manrope',sans-serif;font-weight:600;font-size:.96rem;cursor:pointer;border:none;transition:all .22s ease;text-decoration:none;white-space:nowrap}
+.btn-primary{background:var(--c-warm);color:#fafaf7;box-shadow:0 6px 18px rgba(217,119,87,.28)}
+.btn-primary:hover{background:var(--c-warm-dark);transform:translateY(-1px);box-shadow:0 10px 24px rgba(217,119,87,.38)}
+.btn-secondary{background:transparent;color:var(--c-primary);border:1.5px solid var(--c-border)}
+.btn-secondary:hover{border-color:var(--c-primary);background:var(--c-cold-soft)}
+.btn-dark{background:var(--c-primary);color:#fafaf7}
+.btn-dark:hover{background:var(--c-primary-dark)}
+.btn svg{width:16px;height:16px}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid transparent;transition:all .3s ease}
+header.scrolled{background:rgba(255,255,255,.93);border-bottom-color:var(--c-border-soft);box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.nav{max-width:var(--container);margin:0 auto;padding:1rem 24px;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.logo{display:flex;align-items:center;gap:11px;font-family:'Manrope',sans-serif;font-weight:800;font-size:1.18rem;color:var(--c-primary);letter-spacing:-0.02em}
+.logo-mark{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg, #15445f 0%, #4ea7ab 100%);display:grid;place-items:center;color:#fafaf7;box-shadow:0 5px 12px rgba(21,68,95,.28);position:relative;overflow:hidden}
+.logo-mark svg{width:22px;height:22px}
+.logo small{display:block;font-weight:500;font-size:.7rem;color:var(--c-text-soft);letter-spacing:.04em;margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:2.3rem;list-style:none}
+.nav-links a{font-family:'Manrope',sans-serif;font-weight:500;font-size:.94rem;color:var(--c-text-muted);transition:color .2s}
+.nav-links a:hover{color:var(--c-primary)}
+.nav-cta{display:flex;align-items:center;gap:.9rem}
+.nav-phone{font-family:'Manrope',sans-serif;font-weight:700;font-size:.96rem;color:var(--c-primary);display:flex;align-items:center;gap:7px}
+.nav-phone svg{width:16px;height:16px;color:var(--c-warm)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--c-primary)}
+.menu-toggle svg{width:26px;height:26px}
+
+/* Hero */
+.hero{padding:9rem 0 5rem;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:4.5rem;align-items:center}
+.hero h1 em{font-style:normal;color:var(--c-warm)}
+.hero h1 .cold{font-style:normal;color:var(--c-cold)}
+.hero-sub{font-size:1.18rem;color:var(--c-text-muted);max-width:540px;margin:1.5rem 0 2.2rem;line-height:1.6}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding-top:2rem;border-top:1px solid var(--c-border-soft)}
+.hero-trust-item{display:flex;flex-direction:column;gap:4px}
+.hero-trust-item strong{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.5rem;color:var(--c-primary);letter-spacing:-0.02em;line-height:1}
+.hero-trust-item span{font-size:.83rem;color:var(--c-text-muted);line-height:1.3}
+
+/* Hero visual */
+.hero-visual{position:relative}
+.hv-card{background:var(--c-bg);border:1px solid var(--c-border-soft);border-radius:var(--r-xl);padding:1.8rem;box-shadow:var(--shadow-md);position:relative}
+
+.hv-product{padding:1rem 0 1.5rem;display:grid;place-items:center}
+.hv-product svg{width:100%;max-width:360px;height:auto;filter:drop-shadow(0 12px 20px rgba(21,68,95,.12))}
+.hv-meta{display:flex;align-items:center;justify-content:space-between;padding-top:1.2rem;border-top:1px solid var(--c-border-soft);margin-top:.4rem}
+.hv-rating{display:flex;align-items:center;gap:8px}
+.hv-stars{color:#f0a826;font-size:.95rem;letter-spacing:1px}
+.hv-rating-text{font-family:'Manrope',sans-serif;font-weight:600;font-size:.86rem;color:var(--c-text)}
+.hv-rating-text small{color:var(--c-text-soft);font-weight:400}
+.hv-google{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--c-text-soft)}
+
+
+
+/* Offer section */
+.offer{background:var(--c-surface);position:relative}
+.offer-card{display:grid;grid-template-columns:1fr 1.1fr;background:#fafaf7;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--c-border-soft);position:relative;max-width:1100px;margin:0 auto}
+.offer-visual{background:linear-gradient(160deg, #eef5f5 0%, #cde5e7 100%);padding:3rem 2.5rem;display:grid;place-items:center;position:relative;min-height:380px}
+.offer-badge{position:absolute;top:24px;left:24px;background:var(--c-warm);color:#fafaf7;font-family:'Manrope',sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;padding:.5rem 1rem;border-radius:50px;box-shadow:0 6px 16px rgba(217,119,87,.35);z-index:2}
+.offer-visual svg.ac-illustration{width:100%;max-width:420px;height:auto;position:relative;z-index:1;filter:drop-shadow(0 18px 30px rgba(21,68,95,.16))}
+.offer-content{padding:3rem 3rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
+.offer-content h2{font-size:clamp(1.7rem, 2.5vw, 2.1rem);margin-bottom:.4rem}
+.offer-content h2 span{display:block;font-size:.82em;color:var(--c-primary);font-weight:700}
+.offer-price{display:flex;align-items:baseline;gap:14px;margin:1.4rem 0 .3rem;padding:1.3rem 0;border-top:1px solid var(--c-border-soft);border-bottom:1px solid var(--c-border-soft)}
+.offer-price-main{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(2.4rem, 4vw, 3.2rem);color:var(--c-primary);letter-spacing:-0.04em;line-height:1}
+.offer-price-side{display:flex;flex-direction:column;gap:2px}
+.offer-price-sub{font-family:'Manrope',sans-serif;font-weight:600;font-size:.92rem;color:var(--c-text);letter-spacing:.02em}
+.offer-price-note{font-size:.8rem;color:var(--c-text-soft)}
+.offer-benefits{list-style:none;margin:1.4rem 0 1.8rem;display:flex;flex-direction:column;gap:.7rem}
+.offer-benefits li{display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--c-text)}
+.offer-benefits li svg{width:18px;height:18px;color:var(--c-cold);flex-shrink:0}
+.offer-cta-row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+.offer-stock{margin-top:1.2rem;font-size:.83rem;color:var(--c-text-soft);font-style:italic;display:flex;align-items:center;gap:7px}
+.offer-stock::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c-warm);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+
+/* Services */
+.services{background:#fafaf7}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:#fafaf7;border:1px solid var(--c-border-soft);border-radius:var(--r-lg);padding:2rem;transition:all .3s ease;position:relative;overflow:hidden;cursor:default}
+.service-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--c-cold);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.service-card.warm::before{background:var(--c-warm)}
+.service-card:hover{transform:translateY(-4px);border-color:transparent;box-shadow:var(--shadow-md)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;margin-bottom:1.3rem;background:var(--c-cold-soft);color:var(--c-primary);transition:all .3s ease}
+.service-card.warm .service-icon{background:var(--c-warm-light);color:var(--c-warm-dark)}
+.service-card:hover .service-icon{transform:scale(1.04)}
+.service-icon svg{width:26px;height:26px}
+.service-card h3{margin-bottom:.6rem}
+.service-card p{color:var(--c-text-muted);font-size:.95rem;line-height:1.55}
+.service-tag{position:absolute;top:1.3rem;right:1.3rem;font-family:'Manrope',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-cold);background:var(--c-cold-soft);padding:.3rem .65rem;border-radius:50px}
+.service-card.warm .service-tag{color:var(--c-warm-dark);background:var(--c-warm-light)}
+
+/* Credentials / Why us */
+.credentials{background:var(--c-surface)}
+.cred-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center}
+.cred-text h2{margin-bottom:1.3rem}
+.cred-text > p{color:var(--c-text-muted);font-size:1.05rem;margin-bottom:2rem;max-width:480px}
+.cred-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}
+.cred-stat{background:#fafaf7;border:1px solid var(--c-border-soft);border-radius:var(--r-md);padding:1.3rem 1.2rem}
+.cred-stat strong{display:block;font-family:'Manrope',sans-serif;font-weight:800;font-size:2rem;color:var(--c-primary);line-height:1;margin-bottom:.4rem;letter-spacing:-0.02em}
+.cred-stat span{font-size:.86rem;color:var(--c-text-muted);line-height:1.35}
+.cred-list{display:flex;flex-direction:column;gap:1rem}
+.cred-item{background:#fafaf7;border:1px solid var(--c-border-soft);border-radius:var(--r-md);padding:1.3rem 1.5rem;display:flex;align-items:center;gap:1.2rem;transition:all .3s ease}
+.cred-item:hover{transform:translateX(4px);border-color:var(--c-cold);box-shadow:var(--shadow-sm)}
+.cred-item-icon{width:48px;height:48px;flex-shrink:0;border-radius:10px;background:linear-gradient(135deg, var(--c-primary) 0%, var(--c-cold) 100%);display:grid;place-items:center;color:#fafaf7;box-shadow:0 4px 10px rgba(21,68,95,.2)}
+.cred-item-icon svg{width:22px;height:22px}
+.cred-item-text strong{display:block;font-family:'Manrope',sans-serif;font-weight:700;color:var(--c-text);margin-bottom:2px;font-size:1.02rem}
+.cred-item-text span{font-size:.86rem;color:var(--c-text-muted);line-height:1.4}
+
+/* Process */
+.process{background:#fafaf7}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
+.process-step{text-align:center}
+.process-num{width:64px;height:64px;border-radius:50%;background:#fafaf7;border:1.5px solid var(--c-border);display:grid;place-items:center;margin:0 auto 1.3rem;font-family:'Manrope',sans-serif;font-weight:800;font-size:1.3rem;color:var(--c-primary);position:relative;transition:all .3s ease}
+.process-step:hover .process-num{border-color:var(--c-cold);background:var(--c-cold-soft);transform:scale(1.05)}
+.process-step:nth-child(even) .process-num{color:var(--c-warm-dark)}
+.process-step:nth-child(even):hover .process-num{border-color:var(--c-warm);background:var(--c-warm-light)}
+.process-step h3{margin-bottom:.5rem;font-size:1.1rem}
+.process-step p{color:var(--c-text-muted);font-size:.92rem;line-height:1.5;max-width:240px;margin:0 auto}
+
+/* Contact */
+.contact{background:var(--c-primary);color:#fafaf7;position:relative}
+.contact .eyebrow{color:var(--c-cold)}
+.contact .eyebrow::before{background:var(--c-cold)}
+.contact h2{color:#fafaf7;margin-bottom:.6rem}
+.contact .section-head p{color:rgba(255,255,255,.7)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3.5rem;margin-top:1rem}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem}
+.contact-info-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:1.4rem 1.6rem;display:flex;align-items:flex-start;gap:1.2rem;transition:all .3s ease}
+.contact-info-card:hover{background:rgba(255,255,255,.08);border-color:rgba(78,167,171,.3)}
+.contact-info-icon{width:42px;height:42px;border-radius:10px;background:rgba(78,167,171,.2);display:grid;place-items:center;color:var(--c-cold);flex-shrink:0}
+.contact-info-icon svg{width:20px;height:20px}
+.contact-info-text strong{display:block;font-family:'Manrope',sans-serif;font-weight:700;font-size:.86rem;color:rgba(255,255,255,.6);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.contact-info-text p{color:#fafaf7;font-size:1rem;line-height:1.55}
+.contact-info-text a{color:#fafaf7;transition:color .2s}
+.contact-info-text a:hover{color:var(--c-cold)}
+
+.contact-form{background:#fafaf7;color:var(--c-text);border-radius:var(--r-lg);padding:2.5rem;box-shadow:var(--shadow-lg)}
+.contact-form h3{font-size:1.35rem;margin-bottom:.4rem}
+.contact-form > p{color:var(--c-text-muted);font-size:.94rem;margin-bottom:1.8rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field.full{grid-column:1 / -1}
+.form-field label{font-family:'Manrope',sans-serif;font-weight:600;font-size:.84rem;color:var(--c-text)}
+.form-field input,.form-field select,.form-field textarea{padding:.85rem 1rem;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-family:'Inter',sans-serif;font-size:.95rem;color:var(--c-text);background:#fafaf7;transition:all .2s ease;font-family:inherit}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--c-cold);box-shadow:0 0 0 3px rgba(78,167,171,.15)}
+.form-field textarea{resize:vertical;min-height:110px;font-family:'Inter',sans-serif}
+.form-submit{width:100%;margin-top:.4rem}
+.form-success{display:none;background:var(--c-cold-soft);border:1px solid var(--c-cold);color:var(--c-primary);padding:1rem 1.3rem;border-radius:var(--r-sm);margin-bottom:1rem;font-size:.94rem;align-items:center;gap:10px}
+.form-success.show{display:flex}
+.form-success svg{width:18px;height:18px;color:var(--c-cold);flex-shrink:0}
+
+/* Footer */
+footer.site-footer{background:var(--c-primary-dark);color:rgba(255,255,255,.7);padding:3rem 0 1.5rem;font-size:.9rem}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.footer-brand .logo{color:#fafaf7}
+.footer-brand .logo small{color:rgba(255,255,255,.5)}
+.footer-brand p{margin-top:1rem;max-width:340px;line-height:1.6}
+.footer-col h4{color:#fafaf7;font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.1rem;font-weight:700}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col a:hover{color:#fafaf7}
+.footer-bottom{padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.83rem;color:rgba(255,255,255,.5)}
+
+/* Webszövő demo badge */
+.badge{position:fixed;bottom:16px;right:16px;z-index:99;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border:1px solid var(--c-border-soft);border-radius:100px;padding:8px 16px;font-size:.72rem;color:var(--c-text-muted);text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(26,37,48,.08);font-family:'Inter',sans-serif}
+.badge:hover{color:var(--c-primary);border-color:var(--c-cold)}
+.badge b{color:var(--c-primary);font-weight:700}
+
+/* Animations */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s ease}
+.fade-up.in{opacity:1;transform:translateY(0)}
+
+/* Responsive */
+@media (max-width: 1024px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .offer-card{grid-template-columns:1fr}
+  .offer-visual{min-height:280px;padding:2rem}
+  .offer-content{padding:2rem 2.2rem 2.2rem}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .cred-grid{grid-template-columns:1fr;gap:3rem}
+  .process-grid{grid-template-columns:repeat(2,1fr);gap:2.5rem}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+
+@media (max-width: 720px){
+  section{padding:4rem 0}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fafaf7;flex-direction:column;align-items:flex-start;padding:1.5rem 24px;gap:1.2rem;border-top:1px solid var(--c-border-soft);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .nav-links.open{display:flex}
+  .nav-cta .btn{display:none}
+  .nav-cta .nav-phone{display:none}
+  .menu-toggle{display:block}
+  .hero{padding-top:7rem}
+  .hero-trust{grid-template-columns:1fr 1fr;gap:1.2rem}
+  .hero-trust-item:last-child{grid-column:1 / -1}
+  .services-grid{grid-template-columns:1fr}
+  .cred-stats{grid-template-columns:1fr 1fr}
+  .process-grid{grid-template-columns:1fr;gap:2rem}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .offer-content{padding:1.8rem}
+  .offer-price{flex-direction:column;align-items:flex-start;gap:8px}
+  .offer-cta-row{flex-direction:column;align-items:stretch}
+  .offer-cta-row .btn{width:100%}
+  .badge{font-size:.65rem;padding:6px 12px}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <nav class="nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5z"/></svg>
+      </span>
+      <span>
+        Bala-Team<small>Klíma · Gáz · Fűtés</small>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+      <li><a href="#ajanlat">Akciós ajánlat</a></li>
+      <li><a href="#rolunk">Rólunk</a></li>
+      <li><a href="#folyamat">Folyamat</a></li>
+      <li><a href="#kapcsolat">Kapcsolat</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+36703175060" class="nav-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        06 70 317 5060
+      </a>
+      <a href="#kapcsolat" class="btn btn-primary">Ajánlatkérés</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content fade-up">
+        <span class="eyebrow">Bala-Team Kft. · Szeged</span>
+        <h1>Hűvös <span class="cold">nyár</span>, biztonságos <em>tél</em>.</h1>
+        <p class="hero-sub">Klíma- és gázkészülék szerviz, telepítés Szegeden — engedélyezett épületgépésztől. Egy szakember mindkét szolgáltatásra, garantált minőségben.</p>
+        <div class="hero-actions">
+          <a href="#kapcsolat" class="btn btn-primary">
+            Ingyenes ajánlatkérés
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="tel:+36703175060" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Hívás most
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <strong>7+ év</strong>
+            <span>helyi tapasztalat Szegeden</span>
+          </div>
+          <div class="hero-trust-item">
+            <strong>5,0 ★</strong>
+            <span>Google értékelés</span>
+          </div>
+          <div class="hero-trust-item">
+            <strong>4 szakképesítés</strong>
+            <span>engedélyezett szakember</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up">
+        <div class="hv-card">
+          <div class="hv-product">
+            <!-- Mini AC unit illustration -->
+            <svg viewBox="0 0 320 130" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="acBodyMini" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#fafaf7"/>
+                  <stop offset="1" stop-color="#ece9e1"/>
+                </linearGradient>
+              </defs>
+              <ellipse cx="160" cy="120" rx="130" ry="5" fill="#15445f" opacity="0.08"/>
+              <rect x="20" y="18" width="280" height="86" rx="11" fill="url(#acBodyMini)" stroke="#dcd9cf"/>
+              <rect x="36" y="32" width="248" height="3" rx="1.5" fill="#e8e4d8"/>
+              <g stroke="#c5c1b3" stroke-width="1.3" stroke-linecap="round">
+                <line x1="36" y1="62" x2="284" y2="62"/>
+                <line x1="36" y1="72" x2="284" y2="72"/>
+                <line x1="36" y1="82" x2="284" y2="82"/>
+                <line x1="36" y1="92" x2="284" y2="92"/>
+              </g>
+              <circle cx="266" cy="44" r="1.8" fill="#4ea7ab"/>
+              <circle cx="272" cy="44" r="1.8" fill="#dcd9cf"/>
+              <rect x="138" y="44" width="44" height="2" rx="1" fill="#a5a294"/>
+            </svg>
+          </div>
+
+          <div class="hv-meta">
+            <div class="hv-rating">
+              <span class="hv-stars">★★★★★</span>
+              <div class="hv-rating-text">5,0 <small>· Google</small></div>
+            </div>
+            <div class="hv-google">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Csap u. 99/a · Szeged
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer" id="ajanlat">
+  <div class="container">
+    <div class="offer-card fade-up">
+      <div class="offer-visual">
+        <div class="offer-badge">Akció</div>
+        <!-- Detailed AC unit SVG -->
+        <svg class="ac-illustration" viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="acBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fafaf7"/>
+              <stop offset="0.6" stop-color="#f4f1eb"/>
+              <stop offset="1" stop-color="#e0dcd0"/>
+            </linearGradient>
+            <linearGradient id="acTop" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fafaf7"/>
+              <stop offset="1" stop-color="#ede9df"/>
+            </linearGradient>
+            <linearGradient id="airStream" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4ea7ab" stop-opacity="0.55"/>
+              <stop offset="1" stop-color="#4ea7ab" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- shadow on wall -->
+          <ellipse cx="240" cy="210" rx="200" ry="6" fill="#15445f" opacity="0.1"/>
+
+          <!-- cool air streams (simplified) -->
+          <g opacity="0.6">
+            <path d="M 160 170 Q 158 188 162 200" stroke="url(#airStream)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M 240 172 Q 240 192 245 204" stroke="url(#airStream)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M 320 170 Q 322 188 318 200" stroke="url(#airStream)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- main body -->
+          <rect x="40" y="30" width="400" height="130" rx="14" fill="url(#acBody)" stroke="#cac6b9" stroke-width="1"/>
+
+          <!-- top intake area (slightly different surface) -->
+          <rect x="40" y="30" width="400" height="34" rx="14" fill="url(#acTop)"/>
+          <rect x="40" y="56" width="400" height="9" fill="url(#acTop)"/>
+
+          <!-- top edge highlight -->
+          <line x1="50" y1="32" x2="430" y2="32" stroke="#fafaf7" stroke-width="1.5" opacity="0.9"/>
+
+          <!-- top vent slits -->
+          <g stroke="#c8c4b7" stroke-width="0.9" stroke-linecap="round" opacity="0.7">
+            <line x1="60" y1="46" x2="170" y2="46"/>
+            <line x1="60" y1="52" x2="170" y2="52"/>
+            <line x1="180" y1="46" x2="300" y2="46"/>
+            <line x1="180" y1="52" x2="300" y2="52"/>
+            <line x1="310" y1="46" x2="420" y2="46"/>
+            <line x1="310" y1="52" x2="420" y2="52"/>
+          </g>
+
+          <!-- brand area / accent stripe -->
+          <rect x="200" y="78" width="80" height="2.5" rx="1.25" fill="#a5a294"/>
+
+          <!-- subtle LED panel -->
+          <g>
+            <circle cx="395" cy="76" r="2.4" fill="#4ea7ab"/>
+            <circle cx="403" cy="76" r="2.4" fill="#dcd9cf"/>
+            <circle cx="411" cy="76" r="2.4" fill="#dcd9cf"/>
+          </g>
+
+          <!-- louvers (bottom output) -->
+          <g stroke="#b0ad9f" stroke-width="1.5" stroke-linecap="round">
+            <line x1="60" y1="105" x2="420" y2="105"/>
+            <line x1="60" y1="118" x2="420" y2="118"/>
+            <line x1="60" y1="131" x2="420" y2="131"/>
+            <line x1="60" y1="144" x2="420" y2="144"/>
+          </g>
+
+          <!-- side bevel highlight -->
+          <line x1="42" y1="40" x2="42" y2="150" stroke="#fafaf7" stroke-width="1.5" opacity="0.8"/>
+        </svg>
+      </div>
+
+      <div class="offer-content">
+        <span class="eyebrow warm">Aktuális ajánlat</span>
+        <h2><span>LG Klíma</span>3,5 kW · Telepítéssel</h2>
+        <div class="offer-price">
+          <div class="offer-price-main">270.000<span style="font-size:0.55em;margin-left:6px;font-weight:600;color:var(--c-text-muted)">Ft</span></div>
+          <div class="offer-price-side">
+            <span class="offer-price-sub">teljes ár, telepítéssel</span>
+            <span class="offer-price-note">max. 3 m csővezetékkel</span>
+          </div>
+        </div>
+        <ul class="offer-benefits">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Szegeden díjmentes kiszállás és helyszíni felmérés
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Gyors, precíz kivitelezés — akár 1 nap alatt
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Gyári garancia + telepítési garancia
+          </li>
+        </ul>
+        <div class="offer-cta-row">
+          <a href="#kapcsolat" class="btn btn-primary">Ajánlatkérés</a>
+          <a href="tel:+36703175060" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+            06 70 317 5060
+          </a>
+        </div>
+        <div class="offer-stock">A készlet erejéig — érdemes minél előbb foglalni</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="szolgaltatasok">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Szolgáltatások</span>
+      <h2>Egy szakember, minden klíma- és gázfeladatra</h2>
+      <p>A telepítéstől a karbantartáson át a hivatalos felülvizsgálatig — Szegeden és vonzáskörzetében.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card fade-up">
+        <span class="service-tag">Klíma</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="8" rx="2"/><line x1="6" y1="18" x2="6" y2="20"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="18" y1="18" x2="18" y2="20"/></svg>
+        </div>
+        <h3>Klímatelepítés</h3>
+        <p>Lakossági és üzleti split klímák szakszerű felszerelése. Pontos méretezés, esztétikus vezetékezés, korrekt fixálás.</p>
+      </article>
+
+      <article class="service-card fade-up">
+        <span class="service-tag">Klíma</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+        </div>
+        <h3>Klíma karbantartás</h3>
+        <p>Éves tisztítás, fertőtlenítés, hűtőközeg-ellenőrzés. Hosszabb élettartam, alacsonyabb fogyasztás, tisztább levegő.</p>
+      </article>
+
+      <article class="service-card warm fade-up">
+        <span class="service-tag">Gáz</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
+        </div>
+        <h3>Gázkészülék telepítés</h3>
+        <p>Kazánok, vízmelegítők, konvektorok engedélyezett szerelése. Szabványos bekötés, üzembe helyezés, dokumentáció.</p>
+      </article>
+
+      <article class="service-card warm fade-up">
+        <span class="service-tag">Gáz</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3v7z"/></svg>
+        </div>
+        <h3>Gázbiztonsági felülvizsgálat</h3>
+        <p>Műszaki biztonsági felülvizsgálat akkreditált szakember által. Hivatalos jegyzőkönyv, törvényi megfelelőség.</p>
+      </article>
+
+      <article class="service-card warm fade-up">
+        <span class="service-tag">Fűtés</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h20"/><path d="M2 12h20"/><path d="M2 18h20"/><path d="M5 3v18"/><path d="M19 3v18"/></svg>
+        </div>
+        <h3>Fűtéskorszerűsítés</h3>
+        <p>Régi kazán cseréje modern, kondenzációs készülékre. Csökkentett rezsi, magasabb hatásfok, hosszú élettartam.</p>
+      </article>
+
+      <article class="service-card fade-up">
+        <span class="service-tag">Szerviz</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Javítás, hibaelhárítás</h3>
+        <p>Klíma- és gázkészülék meghibásodások gyors elhárítása. Pontos hibafelmérés, korrekt árajánlat, garanciális munka.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="credentials" id="rolunk">
+  <div class="container">
+    <div class="cred-grid">
+      <div class="cred-text fade-up">
+        <span class="eyebrow">Miért minket</span>
+        <h2>Egy ember, négy szakképesítés.</h2>
+        <p>A Bala-Team Kft. tulajdonosa <strong>Kothencz Balázs</strong>, aki minden szolgáltatást személyesen, vagy közvetlen felügyelete mellett végez. Nincs alvállalkozó, nincs láncszem — Ön közvetlenül a szakemberrel egyeztet a felméréstől az utógondozásig.</p>
+
+        <div class="cred-stats">
+          <div class="cred-stat">
+            <strong>2018</strong>
+            <span>óta szerelünk Szegeden és környékén</span>
+          </div>
+          <div class="cred-stat">
+            <strong>500+</strong>
+            <span>elvégzett telepítés és felülvizsgálat</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cred-list fade-up">
+        <div class="cred-item">
+          <div class="cred-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <div class="cred-item-text">
+            <strong>Épületgépész technikus</strong>
+            <span>Műszaki diploma a teljes épületgépészeti rendszerre</span>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
+          </div>
+          <div class="cred-item-text">
+            <strong>Engedélyezett gázszerelő</strong>
+            <span>Hivatalos gázszerelői jogosultság, jegyzőkönyves munkavégzés</span>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3v7z"/></svg>
+          </div>
+          <div class="cred-item-text">
+            <strong>Gáz műszaki biztonsági felülvizsgáló</strong>
+            <span>Akkreditált felülvizsgálatok és hivatalos jegyzőkönyvek</span>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/></svg>
+          </div>
+          <div class="cred-item-text">
+            <strong>Klímaszerelő</strong>
+            <span>F-gáz képesítés, szakszerű hűtőközeg-kezelés</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="folyamat">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Folyamat</span>
+      <h2>Egyszerű, átlátható, garantált</h2>
+      <p>Az első hívástól a befejezett munkáig négy lépés — előre tisztázott árral és időponttal.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step fade-up">
+        <div class="process-num">1</div>
+        <h3>Kapcsolatfelvétel</h3>
+        <p>Telefon vagy űrlap — válasz 24 órán belül, szóbeli előtájékoztatóval.</p>
+      </div>
+      <div class="process-step fade-up">
+        <div class="process-num">2</div>
+        <h3>Helyszíni felmérés</h3>
+        <p>Szegeden ingyenes kiszállás, pontos méretezés, igényfelmérés.</p>
+      </div>
+      <div class="process-step fade-up">
+        <div class="process-num">3</div>
+        <h3>Fix árajánlat</h3>
+        <p>Részletes, tételes ajánlat — nincs rejtett költség, nincs meglepetés.</p>
+      </div>
+      <div class="process-step fade-up">
+        <div class="process-num">4</div>
+        <h3>Kivitelezés és garancia</h3>
+        <p>Megegyezett időpontban, tisztán, precízen — gyári és telepítési garanciával.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kapcsolat">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Kapcsolat</span>
+      <h2>Kérjen ingyenes ajánlatot</h2>
+      <p>Telefonon, emailben vagy az alábbi űrlapon — 24 órán belül válaszolunk.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="contact-info-text">
+            <strong>Telefon</strong>
+            <p><a href="tel:+36703175060">+36 70 317 5060</a></p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-info-text">
+            <strong>Email</strong>
+            <p><a href="mailto:gepesz27@gmail.com">gepesz27@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-info-text">
+            <strong>Cím · Szolgáltatási terület</strong>
+            <p>6727 Szeged, Csap u. 99/a<br><span style="color:rgba(255,255,255,.65);font-size:.92rem">Szeged és vonzáskörzete</span></p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="contact-info-text">
+            <strong>Nyitvatartás</strong>
+            <p>Hétfő – Péntek: 8:00 – 17:00<br><span style="color:rgba(255,255,255,.65);font-size:.92rem">Hétvégén időpont-egyeztetéssel</span></p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form fade-up" id="contactForm" novalidate>
+        <h3>Ingyenes ajánlatkérés</h3>
+        <p>Néhány adat — és máris visszahívjuk.</p>
+        <div class="form-success" id="formSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Köszönjük! Üzenetét megkaptuk, hamarosan visszahívjuk.
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Név</label>
+            <input type="text" id="name" name="name" required placeholder="Kovács János">
+          </div>
+          <div class="form-field">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+36 30 123 4567">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="email@cim.hu">
+          </div>
+          <div class="form-field">
+            <label for="service">Szolgáltatás</label>
+            <select id="service" name="service">
+              <option>Klímatelepítés</option>
+              <option>Klíma karbantartás</option>
+              <option>Gázkészülék telepítés</option>
+              <option>Gázbiztonsági felülvizsgálat</option>
+              <option>Fűtéskorszerűsítés</option>
+              <option>Javítás / hibaelhárítás</option>
+              <option>Egyéb / nem tudom</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field full" style="margin-bottom:1.2rem">
+          <label for="message">Üzenet (opcionális)</label>
+          <textarea id="message" name="message" placeholder="Pl. helyiség mérete, készülék típusa, kívánt időpont..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Ajánlatkérés elküldése</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5z"/></svg>
+          </span>
+          <span>Bala-Team Kft.<small>Klíma · Gáz · Fűtés</small></span>
+        </a>
+        <p>Klíma- és gázkészülék szerviz, telepítés Szegeden és vonzáskörzetében. Engedélyezett épületgépész, közvetlen szakmai kapcsolattartás.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Szolgáltatások</h4>
+        <ul>
+          <li><a href="#szolgaltatasok">Klímatelepítés</a></li>
+          <li><a href="#szolgaltatasok">Karbantartás</a></li>
+          <li><a href="#szolgaltatasok">Gázszerelés</a></li>
+          <li><a href="#szolgaltatasok">Felülvizsgálat</a></li>
+          <li><a href="#szolgaltatasok">Fűtéskorszerűsítés</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Elérhetőség</h4>
+        <ul>
+          <li><a href="tel:+36703175060">06 70 317 5060</a></li>
+          <li><a href="mailto:gepesz27@gmail.com">gepesz27@gmail.com</a></li>
+          <li>6727 Szeged, Csap u. 99/a</li>
+          <li>H–P: 8:00 – 17:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bala-Team Kft. — Minden jog fenntartva.</span>
+      <span>Adószám · Cégjegyzékszám szerepelhet itt</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://webszovo.hu" class="badge">Készítette: <b>Webszövő</b></a>
+
+<script>
+// Header scroll style
+const header = document.getElementById('header');
+const handleScroll = () => {
+  if (window.scrollY > 30) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+};
+window.addEventListener('scroll', handleScroll, { passive: true });
+handleScroll();
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Fade-up on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in'), i * 60);
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// Form (demo)
+const form = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  formSuccess.classList.add('show');
+  form.reset();
+  setTimeout(() => {
+    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+  setTimeout(() => formSuccess.classList.remove('show'), 6000);
+});
+</script>
+</body>
+</html>

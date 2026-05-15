@@ -218,9 +218,6 @@ body {
   inset:0;
   transition:background 0.22s;
 }
-.hotspot:hover .h-area {
-  background:rgba(232,113,26,0.07);
-}
 /* Popup card */
 .h-card {
   position:absolute;
@@ -304,7 +301,7 @@ body {
 .hs-hood .h-card { top:108%; left:-60px; }
 
 /* Windshield — A-pillar / glass area */
-.hs-windshield        { left:62%; top:37%; width:120px; height:80px; }
+.hs-windshield        { left:calc(50% + 26.9vh - 60px); top:calc(37% + 95px); width:120px; height:80px; }
 .hs-windshield .h-dot { top:50%; left:50%; }
 .hs-windshield .h-card { top:108%; left:-50px; }
 
@@ -674,7 +671,7 @@ footer {
   .gallery-item { height:350px; width:250px; }
   .gallery-item--sq { width:350px; }
   .srv-grid { grid-template-columns:1fr 1fr; }
-  .srv-intro { flex-direction:column; gap:16px; }
+  .srv-intro { flex-direction:column; gap:16px; align-items:flex-start; }
   .srv-intro-lead { max-width:100%; }
   .about-layout,.contact-layout { grid-template-columns:1fr; gap:40px; }
 }
@@ -699,7 +696,7 @@ footer {
      Grille (img_x 1469px) is always off-screen — kept hidden. */
   .hs-grille { display:none; }
   .hs-hood       { left:min(calc(64vw + 13vh - 75px), calc(100% - 90px)); top:calc(57% - 70px); width:150px; height:90px; }
-  .hs-windshield { left:calc(64vw +  2vh - 60px); top:calc(36% - 70px); width:120px; height:80px; }
+  .hs-windshield { left:calc(64vw +  2vh - 60px); top:calc(36% + 25px); width:120px; height:80px; }
   .hs-door       { left:calc(64vw - 22vh - 55px); top:calc(55% - 70px); width:110px; height:90px; }
   .hs-wheel      { left:calc(64vw - 14vh - 60px); top:calc(67% - 70px); width:120px; height:95px; }
 
@@ -738,7 +735,6 @@ footer {
   .hotspot:hover .h-card { opacity:0; pointer-events:none; transform:translateY(6px) scale(0.96); }
   .hotspot.is-active .h-card { opacity:1; pointer-events:all; transform:translateY(0) scale(1); }
   .hotspot:hover .h-dot { transform:translate(-50%,-50%) scale(1); animation:hpulse 2.4s ease-in-out infinite; box-shadow:none; }
-  .hotspot:hover .h-area { background:transparent; }
 }
 .mobile-nav { display:none; }
 .mobile-nav {
