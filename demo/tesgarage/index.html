@@ -663,6 +663,34 @@ footer {
   border:1px dashed rgba(232,113,26,0.12);
 }
 .gallery-ph-icon { font-size:2.2rem; opacity:0.25; }
+.gallery-wrap { position:relative; }
+.gallery-nav {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(16,16,16,0.82);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#fff;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  transition:background 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+.gallery-nav svg { width:20px; height:20px; display:block; }
+.gallery-nav:hover { background:rgba(232,113,26,0.95); border-color:rgba(232,113,26,0.95); }
+.gallery-nav:focus-visible { outline:2px solid rgba(232,113,26,0.6); outline-offset:2px; }
+.gallery-nav--prev { left:20px; }
+.gallery-nav--next { right:20px; }
+.gallery-nav[disabled] { opacity:0; cursor:default; pointer-events:none; }
 
 /* ─── MOBILE ─── */
 @media (max-width:900px) {
@@ -670,6 +698,10 @@ footer {
   #gallery { padding:52px 0 44px; }
   .gallery-item { height:350px; width:250px; }
   .gallery-item--sq { width:350px; }
+  .gallery-nav { width:42px; height:42px; }
+  .gallery-nav svg { width:16px; height:16px; }
+  .gallery-nav--prev { left:10px; }
+  .gallery-nav--next { right:10px; }
   .srv-grid { grid-template-columns:1fr 1fr; }
   .srv-intro { flex-direction:column; gap:16px; align-items:flex-start; }
   .srv-intro-lead { max-width:100%; }
@@ -1034,17 +1066,24 @@ footer {
     </div>
     <span class="gallery-hint" id="galleryHint">húzza →</span>
   </div>
+  <div class="gallery-wrap">
+  <button class="gallery-nav gallery-nav--prev" id="galleryPrev" aria-label="Előző" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="14.5 18 8.5 12 14.5 6"></polyline></svg></button>
+  <button class="gallery-nav gallery-nav--next" id="galleryNext" aria-label="Következő" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9.5 6 15.5 12 9.5 18"></polyline></svg></button>
   <div class="gallery-strip" id="galleryStrip">
     <div class="gallery-item gallery-item--sq"><img src="g1.png" alt="TES GARAGE"></div>
     <div class="gallery-item gallery-item--sq"><img src="g2.png" alt="TES GARAGE"></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
-    <div class="gallery-item"><div class="gallery-ph"><span class="gallery-ph-icon">📷</span>kép hamarosan</div></div>
+    <div class="gallery-item gallery-item--sq"><img src="3715.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="3747.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="3849.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="9797.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="9798.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5041.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5208.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5209.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5212.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5219.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--sq"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5262.jpg" alt="TES GARAGE"></div>
+  </div>
   </div>
 </section>
 
@@ -1214,14 +1253,17 @@ hotspots.forEach(hotspot => {
 
 document.body.addEventListener('click', clearAll);
 
-// ── Gallery drag-to-scroll
+// ── Gallery drag-to-scroll + arrow navigation
 (function () {
   var strip = document.getElementById('galleryStrip');
   var hint = document.getElementById('galleryHint');
+  var prevBtn = document.getElementById('galleryPrev');
+  var nextBtn = document.getElementById('galleryNext');
   if (!strip) return;
-  var isDragging = false, startX, scrollLeft;
+  var isDragging = false, moved = false, startX, scrollLeft;
   strip.addEventListener('mousedown', function (e) {
     isDragging = true;
+    moved = false;
     startX = e.pageX - strip.getBoundingClientRect().left;
     scrollLeft = strip.scrollLeft;
     strip.classList.add('is-dragging');
@@ -1234,11 +1276,28 @@ document.body.addEventListener('click', clearAll);
     if (!isDragging) return;
     e.preventDefault();
     var x = e.pageX - strip.getBoundingClientRect().left;
+    if (Math.abs(x - startX) > 3) moved = true;
     strip.scrollLeft = scrollLeft - (x - startX) * 1.3;
   });
   strip.addEventListener('scroll', function () {
     if (hint && strip.scrollLeft > 40) hint.style.opacity = '0';
+    updateNav();
   });
+
+  function step(dir) {
+    var item = strip.querySelector('.gallery-item');
+    var itemW = item ? item.offsetWidth : 320;
+    strip.scrollBy({ left: dir * (itemW + 6) * 2, behavior: 'smooth' });
+  }
+  function updateNav() {
+    if (!prevBtn || !nextBtn) return;
+    prevBtn.disabled = strip.scrollLeft <= 2;
+    nextBtn.disabled = strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 2;
+  }
+  if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+  window.addEventListener('resize', updateNav);
+  updateNav();
 })();
 </script>
 </body>
