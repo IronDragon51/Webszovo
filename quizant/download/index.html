@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Trivium — Free Trivia Game</title>
+<meta name="description" content="Download Trivium — 700+ trivia questions with the story behind every answer. Free, fully offline, no ads.">
+<link rel="icon" href="../icon.png">
+<style>
+  :root { --ink:#241f2e; --muted:#6a6280; --brand:#7142ee; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100dvh; color:var(--ink);
+    font:16px/1.6 'Manrope',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:
+      radial-gradient(120% 80% at 15% 0%, #efe8ff 0%, transparent 60%),
+      radial-gradient(120% 80% at 100% 100%, #ffe6f4 0%, transparent 55%),
+      #faf8ff;
+    display:flex; align-items:center; justify-content:center; padding:32px 20px; }
+  .card { width:100%; max-width:440px; background:#fff; border:1px solid #ece7fa;
+    border-radius:26px; padding:36px 30px 30px; text-align:center;
+    box-shadow:0 30px 70px -30px rgba(90,40,150,0.35); }
+  .icon { width:96px; height:96px; border-radius:24px; display:block; margin:0 auto 18px;
+    box-shadow:0 14px 30px -12px #7142ee; }
+  h1 { font-size:30px; letter-spacing:-0.02em; margin:0 0 6px; }
+  .tag { color:var(--muted); margin:0 0 22px; font-size:15.5px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:0 0 26px; }
+  .chip { font:600 12.5px 'Manrope',sans-serif; color:#5a3ec8;
+    background:#f1ecff; border-radius:999px; padding:7px 13px; }
+  .btn { display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:17px; border:none; border-radius:16px; cursor:pointer;
+    color:#fff; text-decoration:none; font:800 17px 'Manrope',sans-serif;
+    background:linear-gradient(135deg,#7142ee,#e2459e);
+    box-shadow:0 10px 24px -10px #7142ee, 0 4px 0 #5a2fd0;
+    transition:transform .12s ease, box-shadow .12s ease; }
+  .btn:active { transform:translateY(3px); box-shadow:0 6px 16px -10px #7142ee, 0 1px 0 #5a2fd0; }
+  .sub { color:var(--muted); font-size:13px; margin:10px 0 0; }
+  .how { text-align:left; background:#f7f4ff; border:1px solid #ece7fa; border-radius:14px;
+    padding:14px 16px; margin:24px 0 0; font-size:13.5px; color:#4a4360; }
+  .how b { color:var(--ink); }
+  .how ol { margin:8px 0 0; padding-left:20px; } .how li { margin:3px 0; }
+  .note { font-size:12.5px; color:var(--muted); margin:18px 0 0; }
+  a.plain { color:var(--brand); text-decoration:none; }
+  footer { margin-top:22px; font-size:12px; color:#9a92ac; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <img class="icon" src="../icon.png" alt="Trivium app icon">
+    <h1>Trivium</h1>
+    <p class="tag">A daily habit for curious minds — with the story behind every answer.</p>
+
+    <div class="chips">
+      <span class="chip">700+ questions</span>
+      <span class="chip">Fully offline</span>
+      <span class="chip">No ads · no account</span>
+    </div>
+
+    <a class="btn" href="../Trivium.apk" download>⬇&nbsp; Download for Android</a>
+    <p class="sub">Free APK · ~6 MB · Android 6.0+</p>
+
+    <div class="how">
+      <b>How to install</b>
+      <ol>
+        <li>Tap the downloaded <b>Trivium.apk</b> file.</li>
+        <li>If asked, allow <b>“install from unknown apps.”</b></li>
+        <li>Open Trivium and play — even in airplane mode.</li>
+      </ol>
+    </div>
+
+    <p class="note">iPhone version coming later. · <a class="plain" href="../privacy/">Privacy</a></p>
+    <footer>© 2026 Webszovo · Trivium</footer>
+  </main>
+</body>
+</html>
