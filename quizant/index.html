@@ -2,8 +2,52 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="./support.js"></script>
+<script>
+// Phone-mode: the design renders a decorative iPhone mockup (bezel, notch,
+// fake 9:41 status bar). On a real phone screen that reads as a "double
+// phone", so on small viewports we unwrap the frame and let the app fill the
+// screen. Desktop keeps the framed showcase. The wrappers' template style
+// props never change, so React's diffing never overwrites these overrides.
+(function () {
+  function phoneViewport() {
+    return Math.min(window.innerWidth, window.innerHeight) < 520;
+  }
+  function fix() {
+    if (!phoneViewport()) return;
+    var root = document.getElementById("dc-root");
+    if (!root) return;
+    var outer = root.querySelector(".sc-host > div");
+    if (!outer || outer.__appFixed || !outer.firstElementChild) return;
+    var bezel = outer.firstElementChild;             // dark rounded phone body
+    var screen = bezel && bezel.firstElementChild;   // 398x852 screen
+    if (!screen) return;
+    outer.__appFixed = true;
+    document.body.style.margin = "0";
+    document.body.style.background = "oklch(0.972 0.014 295)";
+    outer.style.width = "100%";
+    outer.style.margin = "0";
+    bezel.style.width = "100%";
+    bezel.style.height = "100dvh";
+    bezel.style.padding = "0";
+    bezel.style.borderRadius = "0";
+    bezel.style.background = "transparent";
+    bezel.style.boxShadow = "none";
+    screen.style.width = "100%";
+    screen.style.height = "100dvh";
+    screen.style.borderRadius = "0";
+    // Hide the fake hardware: notch pill + mock status bar (contains "9:41").
+    Array.prototype.forEach.call(screen.children, function (el) {
+      var t = (el.textContent || "").trim();
+      var s = el.getAttribute("style") || "";
+      if (t.indexOf("9:41") === 0 || /width:\s*116px/.test(s)) el.style.display = "none";
+    });
+  }
+  new MutationObserver(fix).observe(document.documentElement, { childList: true, subtree: true });
+  document.addEventListener("DOMContentLoaded", fix);
+})();
+</script>
 </head>
 <body>
 <x-dc>
