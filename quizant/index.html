@@ -95,11 +95,15 @@
             <div style="font:800 34px 'Bricolage Grotesque',sans-serif; color:oklch(0.26 0.05 295); letter-spacing:-0.02em; line-height:1.05; margin-bottom:12px;">Welcome to Trivium</div>
             <div style="font:500 15px 'Manrope',sans-serif; color:oklch(0.5 0.04 295); line-height:1.55; margin-bottom:28px;">A daily habit for curious minds — sharp questions, and the story behind every answer. What should we call you?</div>
             <input value="{{ onbName }}" onInput="{{ onSetOnbName }}" placeholder="Your name" maxlength="18" style="width:100%; box-sizing:border-box; padding:15px 17px; border-radius:16px; border:1.5px solid oklch(0.86 0.03 295); background:#fff; font:600 17px 'Manrope',sans-serif; color:oklch(0.26 0.05 295); outline:none; margin-bottom:12px;">
-            <div style="display:flex; align-items:flex-start; gap:9px; padding:13px 15px; border-radius:14px; background:color-mix(in oklch, oklch(0.54 0.24 288) 7%, white); margin-bottom:auto;">
-              <i class="ph-fill ph-lock-simple-open" style="color:oklch(0.5 0.2 292); font-size:16px; flex-shrink:0; margin-top:1px;"></i>
-              <span style="font:500 12.5px 'Manrope',sans-serif; color:oklch(0.46 0.05 295); line-height:1.5;">Everything stays on your device. No account, no email — just play.</span>
+            <div style="margin-top:4px; margin-bottom:auto;">
+              <div style="font:700 11px 'Manrope',sans-serif; letter-spacing:0.13em; text-transform:uppercase; color:oklch(0.57 0.04 295); margin-bottom:12px;">Pick your look</div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <sc-for list="{{ avatarOptions }}" as="a" hint-placeholder-count="7">
+                  <button onClick="{{ a.onTap }}" style="{{ a.swatchStyle }}" aria-label="Avatar option"><sc-if value="{{ a.isInitial }}" hint-placeholder-val="{{ true }}">{{ nameInitial }}</sc-if><sc-if value="{{ a.isEmoji }}" hint-placeholder-val="{{ false }}"><span style="font-size:26px; line-height:1;">{{ a.emoji }}</span></sc-if></button>
+                </sc-for>
+              </div>
             </div>
-            <button onClick="{{ onFinishOnb }}" style-active="{{ gradPress }}" style="{{ onbStartStyle }}; margin-top:28px;">Start playing <i class="ph-bold ph-arrow-right"></i></button>
+            <button onClick="{{ onFinishOnb }}" style-active="{{ gradPress }}" style="{{ onbStartStyle }}">Start playing <i class="ph-bold ph-arrow-right"></i></button>
           </div>
         </sc-if>
 
@@ -1820,7 +1824,7 @@ class Component extends DCLogic {
       isOnboarding: s.screen === "onboarding", onbName: s.onbName,
       onSetOnbName: (e) => this.setOnbName(e), onFinishOnb: () => this.finishOnboarding(),
       onbCanStart: (s.onbName || "").trim().length > 0,
-      onbStartStyle:{ width:"100%", display:"flex", alignItems:"center", justifyContent:"center", gap:8, padding:16, border:"none", borderRadius:18, cursor:(s.onbName||"").trim() ? "pointer" : "default", font:"700 16px 'Bricolage Grotesque',sans-serif", background:(s.onbName||"").trim() ? "linear-gradient(135deg, oklch(0.54 0.24 288), oklch(0.64 0.21 350))" : "oklch(0.9 0.02 295)", color:(s.onbName||"").trim() ? "#fff" : "oklch(0.7 0.03 295)", boxShadow:(s.onbName||"").trim() ? "0 4px 0 oklch(0.4 0.19 290), 0 8px 18px -8px oklch(0.55 0.22 315)" : "none", transition:"all .2s ease" },
+      onbStartStyle:{ width:"100%", display:"flex", alignItems:"center", justifyContent:"center", gap:8, padding:16, border:"none", borderRadius:18, cursor:(s.onbName||"").trim() ? "pointer" : "default", font:"700 16px 'Bricolage Grotesque',sans-serif", background:(s.onbName||"").trim() ? "linear-gradient(135deg, oklch(0.54 0.24 288), oklch(0.64 0.21 350))" : "color-mix(in oklch, oklch(0.54 0.24 288) 14%, white)", color:(s.onbName||"").trim() ? "#fff" : "oklch(0.56 0.1 292)", boxShadow:(s.onbName||"").trim() ? "0 4px 0 oklch(0.4 0.19 290), 0 8px 18px -8px oklch(0.55 0.22 315)" : "0 2px 0 color-mix(in oklch, oklch(0.54 0.24 288) 22%, white)", transition:"all .2s ease" },
       heroPress:{ transform:"translateY(2px)" }, inkPress:{ transform:"translateY(3px)", boxShadow:"0 1px 0 oklch(0.18 0.04 295)" }, rowPress:{ transform:"translateY(2px)", boxShadow:"0 0 0 oklch(0.89 0.025 295)" },
       dailyDots, dailyLabel: s.dailyDone + "/5", dailyCta: s.dailyDone >= 5 ? "Replay" : (s.dailyDone > 0 ? "Continue" : "Play"),
       packsHeader: s.plus ? "Your packs" : "Plus packs",
