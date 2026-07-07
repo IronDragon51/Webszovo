@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <style>
+    body { margin:0; }
+  </style>
+</helmet>
+<section id="turn-2" style="box-sizing:border-box; min-width:1180px; padding:72px 80px 90px; background:radial-gradient(120% 90% at 80% 0%, oklch(0.965 0.016 295) 0%, oklch(0.955 0.008 90) 55%, oklch(0.945 0.008 80) 100%); border-bottom:1px solid oklch(0.88 0.01 90); font-family:'Space Grotesk',system-ui,sans-serif;">
+  <div style="max-width:920px; margin-bottom:48px;">
+    <div style="font:600 12px 'Space Grotesk',sans-serif; letter-spacing:0.28em; text-transform:uppercase; color:oklch(0.5 0.02 65); margin-bottom:14px;">Turn 2 · The definitive build</div>
+    <h1 style="font:400 54px 'Instrument Serif',serif; line-height:0.98; color:oklch(0.22 0.015 60); margin:0 0 16px;">Trivium <span style="font-style:italic; color:oklch(0.5 0.2 288);">1C — built to top the charts</span></h1>
+    <p style="font:400 16px 'Space Grotesk',sans-serif; line-height:1.6; color:oklch(0.4 0.02 65); max-width:680px; margin:0;">An elevated evolution of 1a with <b style="color:oklch(0.24 0.015 60);">Trivium+</b> — a cheap, optional subscription ($9.99/yr) with specialist packs. Core game stays free. The definitive build, plus a new high-stakes mode — <b style="color:oklch(0.24 0.015 60);">The Grind</b>: a 15-rung ladder, easiest to hardest, with 50/50 · Poll · Skip lifelines, safe havens, and a coin jackpot at the summit. Tap it on Home. The full app is here too: daily / endless / category / pack play, explanation-rich reveals, stats & streak calendar, Trivium+, weak-spot review, and settings.</p>
+    <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+      <button onClick="{{ onToggleLock }}" style="{{ lockBtnStyle }}">
+        <i class="{{ lockIconClass }}" style="font-size:17px;"></i> {{ lockLabel }}
+      </button><span style="font:400 13px 'Space Grotesk',sans-serif; color:oklch(0.52 0.02 65); max-width:340px; line-height:1.45;">{{ lockHint }}</span>
+    </div>
+  </div>
+  <div style="display:flex; gap:88px; flex-wrap:wrap; align-items:flex-start;">
+    <div id="1c" style="flex:0 0 auto;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px; height:62px;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; min-width:38px; height:26px; padding:0 9px; border-radius:999px; background:linear-gradient(135deg, oklch(0.54 0.24 288), oklch(0.64 0.21 350)); color:#fff; font:700 13px 'Space Grotesk',sans-serif; letter-spacing:0.06em;">1C</span>
+        <span style="font:600 22px 'Space Grotesk',sans-serif; color:oklch(0.22 0.015 60); letter-spacing:-0.01em;">Definitive</span>
+        <span style="font:600 10px 'Space Grotesk',sans-serif; letter-spacing:0.1em; text-transform:uppercase; color:oklch(0.55 0.13 75); background:color-mix(in oklch, oklch(0.72 0.14 75) 18%, white); padding:3px 9px; border-radius:999px;">+ The Grind (ladder mode)</span>
+      </div>
+      <dc-import name="Trivium 1C" hint-size="428px,882px" style="display:block; width:428px; height:882px;"></dc-import>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { locked: false };
+
+  componentDidMount() {
+    this._onWheel = (e) => {
+      if (!this.state.locked) return;
+      const t = e.target;
+      const phone = t && t.closest ? t.closest('.triv-scroll, .ed-scroll, .tc-scroll') : null;
+      if (phone) {
+        const factor = e.deltaMode === 1 ? 16 : (e.deltaMode === 2 ? phone.clientHeight : 1);
+        phone.scrollTop += e.deltaY * factor;
+        phone.scrollLeft += e.deltaX * factor;
+      }
+      // Freeze the canvas: swallow the wheel so it never reaches the pan/zoom handler.
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+    };
+    window.addEventListener('wheel', this._onWheel, { capture: true, passive: false });
+  }
+
+  componentWillUnmount() {
+    if (this._onWheel) window.removeEventListener('wheel', this._onWheel, { capture: true });
+  }
+
+  toggleLock() { this.setState(s => ({ locked: !s.locked })); }
+
+  renderVals() {
+    const locked = this.state.locked;
+    return {
+      onToggleLock: () => this.toggleLock(),
+      lockLabel: locked ? "Canvas locked — scrolling phone" : "Lock canvas to scroll phone",
+      lockIconClass: locked ? "ph-fill ph-lock-simple" : "ph ph-lock-simple-open",
+      lockBtnStyle: {
+        display: "inline-flex", alignItems: "center", gap: 9, padding: "11px 16px",
+        border: "1px solid " + (locked ? "oklch(0.5 0.13 40)" : "oklch(0.82 0.015 75)"),
+        borderRadius: 12, cursor: "pointer",
+        background: locked ? "oklch(0.5 0.13 40)" : "oklch(0.99 0.006 85)",
+        color: locked ? "#fff" : "oklch(0.3 0.015 60)",
+        font: "600 14px 'Space Grotesk',sans-serif", letterSpacing: "0.01em",
+        boxShadow: locked ? "0 8px 20px -8px oklch(0.5 0.13 40)" : "0 2px 8px -4px rgba(60,45,25,0.22)",
+        transition: "all .18s ease",
+      },
+      lockHint: locked
+        ? "Hover the phone and scroll — the board stays put. Tap again to unlock."
+        : "Turn on, then hover the phone and scroll its screen without the board moving.",
+    };
+  }
+}
+</script>
+</body>
+</html>
