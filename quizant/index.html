@@ -1,21 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trivium — Daily Trivia</title>
+<meta name="description" content="700+ trivia questions with the story behind every answer. Fully offline, no ads.">
+<meta name="theme-color" content="#7142ee">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Trivium">
+<!-- Vendored locally (no CDN at runtime): loads faster and lets the service
+     worker make the whole app work offline. Must load before support.js so
+     its loadReactUmd() sees window.React and skips the network fetch. -->
+<script src="./vendor/react.production.min.js"></script>
+<script src="./vendor/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
 <script>
-// Phone-mode: the design renders a decorative iPhone mockup (bezel, notch,
-// fake 9:41 status bar). On a real phone screen that reads as a "double
-// phone", so on small viewports we unwrap the frame and let the app fill the
-// screen. Desktop keeps the framed showcase. The wrappers' template style
-// props never change, so React's diffing never overwrites these overrides.
+// PWA: register the service worker (offline play + instant launches).
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(function () {});
+  });
+}
+// App mode: the design renders a decorative iPhone mockup (bezel, notch, fake
+// 9:41 status bar). This page IS the app, so we always unwrap it: full-bleed
+// on phones, a clean centered app column on wide screens. The framed showcase
+// remains at prototype.html. The wrappers' template style props never change,
+// so React's diffing never overwrites these overrides.
 (function () {
-  function phoneViewport() {
-    return Math.min(window.innerWidth, window.innerHeight) < 520;
-  }
   function fix() {
-    if (!phoneViewport()) return;
     var root = document.getElementById("dc-root");
     if (!root) return;
     var outer = root.querySelector(".sc-host > div");
@@ -24,10 +41,13 @@
     var screen = bezel && bezel.firstElementChild;   // 398x852 screen
     if (!screen) return;
     outer.__appFixed = true;
+    var narrow = window.innerWidth < 520;
     document.body.style.margin = "0";
-    document.body.style.background = "oklch(0.972 0.014 295)";
-    outer.style.width = "100%";
-    outer.style.margin = "0";
+    document.body.style.background = narrow
+      ? "oklch(0.972 0.014 295)"
+      : "radial-gradient(120% 90% at 20% 0%, #efe8ff 0%, #f6f2fb 55%, #fdeef7 100%)";
+    outer.style.width = narrow ? "100%" : "428px";
+    outer.style.margin = "0 auto";
     bezel.style.width = "100%";
     bezel.style.height = "100dvh";
     bezel.style.padding = "0";
@@ -35,8 +55,17 @@
     bezel.style.background = "transparent";
     bezel.style.boxShadow = "none";
     screen.style.width = "100%";
-    screen.style.height = "100dvh";
-    screen.style.borderRadius = "0";
+    if (narrow) {
+      screen.style.height = "100dvh";
+      screen.style.borderRadius = "0";
+    } else {
+      bezel.style.padding = "24px 0";           // border-box: total stays 100dvh
+      screen.style.height = "calc(100dvh - 48px)";
+      screen.style.borderRadius = "28px";
+      screen.style.boxShadow = "0 30px 80px -30px rgba(80,40,140,0.45)";
+      // the app scrolls internally; kill the stray page scrollbar on desktop
+      document.documentElement.style.overflow = "hidden";
+    }
     // Hide the fake hardware: notch pill + mock status bar (contains "9:41").
     Array.prototype.forEach.call(screen.children, function (el) {
       var t = (el.textContent || "").trim();
@@ -52,12 +81,10 @@
 <body>
 <x-dc>
 <helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="./vendor/fonts/google.css">
+  <link rel="stylesheet" href="./vendor/phosphor/regular.css">
+  <link rel="stylesheet" href="./vendor/phosphor/bold.css">
+  <link rel="stylesheet" href="./vendor/phosphor/fill.css">
   <style>
     *{ -webkit-tap-highlight-color: transparent; }
     @keyframes tc-fade { from { transform: translateY(10px); } to { transform: translateY(0); } }
