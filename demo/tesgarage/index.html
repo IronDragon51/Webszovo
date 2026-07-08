@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TES GARAGE — Autószerviz & Autóvillamossági Szerviz</title>
 <meta name="description" content="TES GARAGE — Autószerviz, autóvillamossági szerviz. Gumiszerelés, futóműállítás, HiFi beépítés, ülésfűtés, tolatóradar. Szakszerű javítás.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090909'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23E8711A'%3ETG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -529,42 +530,8 @@ section { padding:96px 0; }
   display:block;
   filter:grayscale(0.25) contrast(1.05);
 }
-.map-card {
-  position:absolute;
-  top:24px;
-  left:24px;
-  z-index:10;
-  background:rgba(9,9,9,0.92);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border:1px solid rgba(232,113,26,0.35);
-  border-radius:4px;
-  padding:14px 20px 16px;
-  pointer-events:none;
-  box-shadow:0 4px 24px rgba(0,0,0,0.6);
-}
-.map-card-name {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.15rem;
-  letter-spacing:0.12em;
-  color:var(--orange);
-  display:block;
-}
-.map-card-addr {
-  font-size:0.78rem;
-  color:rgba(255,255,255,0.55);
-  display:block;
-  margin-top:4px;
-}
-.map-card-rule {
-  width:28px;
-  height:2px;
-  background:var(--orange);
-  margin:8px 0 0;
-}
 @media (max-width:600px) {
   .map-wrap { height:320px; }
-  .map-card { top:14px; left:14px; padding:10px 14px 12px; }
 }
 
 /* ─── FOOTER ─── */
@@ -1072,8 +1039,7 @@ footer {
   <button class="gallery-nav gallery-nav--prev" id="galleryPrev" aria-label="Előző" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="14.5 18 8.5 12 14.5 6"></polyline></svg></button>
   <button class="gallery-nav gallery-nav--next" id="galleryNext" aria-label="Következő" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9.5 6 15.5 12 9.5 18"></polyline></svg></button>
   <div class="gallery-strip" id="galleryStrip">
-    <div class="gallery-item gallery-item--sq"><img src="g1.png" alt="TES GARAGE"></div>
-    <div class="gallery-item gallery-item--wide"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5218.jpg" alt="TES GARAGE"></div>
+    <!-- <div class="gallery-item gallery-item--sq"><img src="g1.png" alt="TES GARAGE"></div> -->
     <div class="gallery-item gallery-item--sq"><img src="g2.png" alt="TES GARAGE"></div>
     <div class="gallery-item gallery-item--sq"><img src="3747.jpg" alt="TES GARAGE"></div>
     <div class="gallery-item gallery-item--sq"><img src="3849.jpg" alt="TES GARAGE"></div>
@@ -1086,6 +1052,7 @@ footer {
     <div class="gallery-item gallery-item--sq"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5212.jpg" alt="TES GARAGE"></div>
     <div class="gallery-item"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5219.jpg" alt="TES GARAGE"></div>
     <div class="gallery-item gallery-item--sq"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5262.jpg" alt="TES GARAGE"></div>
+    <div class="gallery-item gallery-item--wide"><img src="81af21a2-13f0-4527-85c0-e6afa0ac987e-1_all_5218.jpg" alt="TES GARAGE"></div>
     <div class="gallery-item gallery-item--wide"><img src="9849.jpg" alt="TES GARAGE"></div>
     <div class="gallery-item gallery-item--sq"><img src="3715.jpg" alt="TES GARAGE"></div>
     <div class="gallery-item gallery-item--wide"><img src="9850.jpg" alt="TES GARAGE"></div>
@@ -1109,14 +1076,14 @@ footer {
           <div>
             <div class="cinfo-lbl">Telefon</div>
             <div class="cinfo-val">+36 20 990 6369</div>
-            <div class="cinfo-sub">H–P: 8:00–18:00 &nbsp;|&nbsp; Szo: 8:00–13:00</div>
+            <div class="cinfo-sub">H–P: 9:00–17:00 &nbsp;|&nbsp; Szo–Vas: Zárva</div>
           </div>
         </div>
         <div class="cinfo-row reveal reveal-d1">
           <div class="cinfo-ico">📧</div>
           <div>
             <div class="cinfo-lbl">Email</div>
-            <div class="cinfo-val">info@tesgarage.hu</div>
+            <div class="cinfo-val">tesgarage@gmail.com</div>
             <div class="cinfo-sub">24 órán belül válaszolunk</div>
           </div>
         </div>
@@ -1132,8 +1099,8 @@ footer {
           <div class="cinfo-ico">🕐</div>
           <div>
             <div class="cinfo-lbl">Nyitvatartás</div>
-            <div class="cinfo-val">Hétfő–Péntek: 08:00–18:00</div>
-            <div class="cinfo-sub">Szombat: 08:00–13:00 &nbsp;|&nbsp; Vasárnap: Zárva</div>
+            <div class="cinfo-val">Hétfő–Péntek: 09:00–17:00</div>
+            <div class="cinfo-sub">Szombat–Vasárnap: Zárva</div>
           </div>
         </div>
       </div>
@@ -1145,11 +1112,6 @@ footer {
 
 <!-- ════════════ MAP ════════════ -->
 <div class="map-wrap">
-  <div class="map-card">
-    <span class="map-card-name">TES GARAGE</span>
-    <span class="map-card-addr">Szeged, Bérkert u. 129. (6726)</span>
-    <div class="map-card-rule"></div>
-  </div>
   <iframe
     class="map-frame"
     src="https://maps.google.com/maps?q=Szeged,+Bérkert+u.+129,+6726&hl=hu&z=16&output=embed"
