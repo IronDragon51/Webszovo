@@ -1,7 +1,7 @@
 /* Trivium service worker — precache the whole app so it runs offline
    and launches instantly from the home screen. Bump CACHE on every deploy
    of index.html/support.js so clients pick up the new version. */
-const CACHE = 'trivium-v2';
+const CACHE = 'trivium-v3';
 const PRECACHE = [
   './',
   './support.js',
