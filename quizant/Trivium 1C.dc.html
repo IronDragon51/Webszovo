@@ -119,11 +119,12 @@
               <div style="min-width:0;">
                 <div style="font:600 12px 'Manrope',sans-serif; letter-spacing:0.08em; text-transform:uppercase; color:oklch(0.57 0.04 295); margin-bottom:2px; white-space:nowrap;">{{ dateLine }}</div>
                 <div style="font:700 23px 'Bricolage Grotesque',sans-serif; color:oklch(0.26 0.05 295); letter-spacing:-0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ greeting }}, {{ displayName }}</div>
+                <sc-if value="{{ hasNametag }}" hint-placeholder-val="{{ false }}"><div style="margin-top:5px;"><span style="{{ homeNametagStyle }}"><span style="font-size:11px;">{{ homeNametagIcon }}</span>{{ homeNametagLabel }}</span></div></sc-if>
               </div>
               <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
                 <sc-if value="{{ notKids }}" hint-placeholder-val="{{ true }}"><button onClick="{{ onShop }}" aria-label="Shop" style="display:inline-flex; align-items:center; gap:5px; height:38px; padding:0 12px 0 10px; border-radius:999px; border:1px solid color-mix(in oklch, oklch(0.72 0.14 75) 42%, white); background:linear-gradient(165deg, #fff 30%, oklch(0.965 0.025 85)); box-shadow:0 2px 0 color-mix(in oklch, oklch(0.72 0.14 75) 42%, white); cursor:pointer; flex-shrink:0;"><i class="ph-fill ph-currency-circle-dollar" style="color:oklch(0.72 0.14 75); font-size:16px;"></i><span style="font:800 13px 'Bricolage Grotesque',sans-serif; color:oklch(0.26 0.05 295); max-width:72px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ coinsCompact }}</span></button></sc-if>
                 <button onClick="{{ onStats }}" aria-label="Your stats" style="width:38px; height:38px; border-radius:50%; border:1px solid oklch(0.89 0.025 295); background:#fff; box-shadow:0 2px 0 oklch(0.89 0.025 295); cursor:pointer; display:flex; align-items:center; justify-content:center; color:oklch(0.42 0.04 295); flex-shrink:0;"><i class="ph-bold ph-chart-bar" style="font-size:18px;"></i></button>
-                <button onClick="{{ onSettings }}" aria-label="Profile and settings" style="position:relative; width:40px; height:40px; border-radius:50%; border:2px solid #fff; cursor:pointer; background:{{ avatarGrad }}; color:#fff; font:700 15px 'Bricolage Grotesque',sans-serif; box-shadow:0 2px 8px -3px oklch(0.5 0.14 300); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><sc-if value="{{ avatarIsInitial }}" hint-placeholder-val="{{ true }}">{{ nameInitial }}</sc-if><sc-if value="{{ avatarIsIcon }}" hint-placeholder-val="{{ false }}"><span style="font-size:20px; line-height:1;">{{ avatarEmoji }}</span></sc-if><sc-if value="{{ showStreakBadge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; right:-5px; bottom:-5px; min-width:20px; height:20px; padding:0 4px; border-radius:999px; background:#fff; display:flex; align-items:center; justify-content:center; gap:1px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"><i class="ph-fill ph-fire" style="color:oklch(0.66 0.2 45); font-size:11px;"></i><span style="font:800 9.5px 'Manrope',sans-serif; color:oklch(0.26 0.05 295);">{{ streakBadgeN }}</span></span></sc-if></button>
+                <span style="{{ equippedBorderWrap }}"><button onClick="{{ onSettings }}" aria-label="Profile and settings" style="position:relative; width:40px; height:40px; border-radius:50%; border:2px solid #fff; cursor:pointer; background:{{ avatarGrad }}; color:#fff; font:700 15px 'Bricolage Grotesque',sans-serif; box-shadow:0 2px 8px -3px oklch(0.5 0.14 300); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><sc-if value="{{ avatarIsInitial }}" hint-placeholder-val="{{ true }}">{{ nameInitial }}</sc-if><sc-if value="{{ avatarIsIcon }}" hint-placeholder-val="{{ false }}"><span style="font-size:20px; line-height:1;">{{ avatarEmoji }}</span></sc-if><sc-if value="{{ showStreakBadge }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; right:-5px; bottom:-5px; min-width:20px; height:20px; padding:0 4px; border-radius:999px; background:#fff; display:flex; align-items:center; justify-content:center; gap:1px; box-shadow:0 1px 3px rgba(0,0,0,0.2);"><i class="ph-fill ph-fire" style="color:oklch(0.66 0.2 45); font-size:11px;"></i><span style="font:800 9.5px 'Manrope',sans-serif; color:oklch(0.26 0.05 295);">{{ streakBadgeN }}</span></span></sc-if></button></span>
               </div>
             </div>
 
@@ -636,6 +637,16 @@
               <i class="ph-fill ph-currency-circle-dollar" style="position:absolute; right:-14px; bottom:-20px; font-size:110px; opacity:0.12;"></i>
             </div>
 
+            <div style="font:700 11px 'Manrope',sans-serif; letter-spacing:0.13em; text-transform:uppercase; color:oklch(0.57 0.04 295); margin-bottom:12px;">Cosmetics</div>
+            <button onClick="{{ onCases }}" style-active="{{ heroPress }}" style="width:100%; box-sizing:border-box; text-align:left; border:none; cursor:pointer; border-radius:20px; padding:15px 16px; margin-bottom:24px; color:#fff; background:linear-gradient(135deg, oklch(0.5 0.22 300), oklch(0.55 0.23 330), oklch(0.62 0.2 352)); display:flex; align-items:center; gap:13px; position:relative; overflow:hidden; box-shadow:0 6px 16px -10px oklch(0.55 0.22 320);">
+              <span style="width:46px; height:46px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, oklch(0.84 0.14 84), oklch(0.66 0.16 54)); color:oklch(0.28 0.06 52); font-size:24px; flex-shrink:0;"><i class="ph-fill ph-treasure-chest"></i></span>
+              <span style="flex:1; min-width:0; position:relative;">
+                <span style="display:block; font:800 16px 'Bricolage Grotesque',sans-serif; letter-spacing:-0.01em;">Open a Case</span>
+                <span style="display:block; font:500 12px 'Manrope',sans-serif; opacity:0.86; margin-top:2px;">Avatar borders &amp; nametags — Common to Legendary</span>
+              </span>
+              <span style="display:inline-flex; align-items:center; gap:4px; padding:7px 11px; border-radius:999px; background:rgba(255,255,255,0.92); color:oklch(0.42 0.15 300); font:800 12.5px 'Manrope',sans-serif; flex-shrink:0;"><i class="ph-fill ph-currency-circle-dollar" style="font-size:12px;"></i>{{ caseCostLabel }}</span>
+            </button>
+
             <div style="font:700 11px 'Manrope',sans-serif; letter-spacing:0.13em; text-transform:uppercase; color:oklch(0.57 0.04 295); margin-bottom:12px;">Boosts for The Grind</div>
             <div style="display:flex; flex-direction:column; gap:11px; margin-bottom:22px;">
               <sc-for list="{{ shopItems }}" as="it" hint-placeholder-count="4">
@@ -653,6 +664,77 @@
             <div style="display:flex; align-items:flex-start; gap:9px; padding:14px 15px; border-radius:16px; background:color-mix(in oklch, oklch(0.72 0.14 75) 9%, white); border:1px solid color-mix(in oklch, oklch(0.72 0.14 75) 32%, white);">
               <i class="ph-fill ph-crown-simple" style="color:oklch(0.6 0.13 65); font-size:18px; flex-shrink:0; margin-top:1px;"></i>
               <span style="font:500 12.5px 'Manrope',sans-serif; color:oklch(0.42 0.05 295); line-height:1.5;">Boosts are consumable and earned with coins. Permanent unlocks — packs, weak-spot review, themes — live in <b style="color:oklch(0.26 0.05 295);">Trivium+</b>.</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tc-fade .35s ease both; padding:8px 20px 44px;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+              <button onClick="{{ onBackHome }}" style="width:34px; height:34px; border-radius:50%; border:1px solid oklch(0.89 0.025 295); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; color:oklch(0.26 0.05 295); flex-shrink:0;"><i class="ph-bold ph-caret-left" style="font-size:16px;"></i></button>
+              <div style="font:700 22px 'Bricolage Grotesque',sans-serif; color:oklch(0.26 0.05 295); letter-spacing:-0.01em; flex:1;">Cases</div>
+              <span style="display:inline-flex; align-items:center; gap:5px; padding:7px 12px; border-radius:999px; background:oklch(0.26 0.05 295); color:oklch(0.82 0.14 82); font:800 13px 'Bricolage Grotesque',sans-serif;"><i class="ph-fill ph-currency-circle-dollar" style="font-size:14px;"></i>{{ caseCoins }}</span>
+            </div>
+
+            <div style="position:relative; overflow:hidden; border-radius:22px; padding:20px 18px; margin-bottom:22px; background:linear-gradient(160deg, oklch(0.3 0.08 288), oklch(0.26 0.09 315), oklch(0.32 0.1 340));">
+              <sc-if value="{{ isCaseIdle }}" hint-placeholder-val="{{ true }}">
+                <div style="text-align:center;">
+                  <div style="width:90px; height:90px; margin:2px auto 14px; border-radius:24px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, oklch(0.82 0.14 82), oklch(0.62 0.16 50)); box-shadow:0 12px 30px -12px oklch(0.6 0.16 60), inset 0 1px 0 rgba(255,255,255,0.45); color:oklch(0.28 0.06 52); font-size:46px;"><i class="ph-fill ph-treasure-chest"></i></div>
+                  <div style="font:800 21px 'Bricolage Grotesque',sans-serif; color:#fff; letter-spacing:-0.01em;">Standard Case</div>
+                  <div style="font:500 12.5px 'Manrope',sans-serif; color:rgba(255,255,255,0.72); margin-top:5px; line-height:1.5;">One cosmetic inside — an avatar border or nametag,<br>Common all the way to Legendary.</div>
+                  <button onClick="{{ onOpenCase }}" style="{{ openBtnStyle }}"><i class="ph-fill ph-lock-key-open" style="font-size:16px;"></i> Open · {{ caseCostLabel }}</button>
+                  <sc-if value="{{ resultDup }}" hint-placeholder-val="{{ false }}"><div style="font:600 11px 'Manrope',sans-serif; color:rgba(255,255,255,0.6); margin-top:9px;">Duplicates refund 30% of the coins.</div></sc-if>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isCaseSpinning }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:8px 0;">
+                  <div style="position:relative; width:322px; max-width:100%; margin:0 auto; height:104px; overflow:hidden; display:flex; align-items:center; border-radius:14px; background:rgba(0,0,0,0.22); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.08);">
+                    <span style="position:absolute; left:50%; top:-3px; transform:translateX(-50%); border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid oklch(0.85 0.15 88); z-index:4;"></span>
+                    <span style="position:absolute; left:50%; top:0; bottom:0; width:3px; transform:translateX(-50%); background:oklch(0.85 0.15 88); box-shadow:0 0 12px oklch(0.85 0.15 88); z-index:4; border-radius:2px;"></span>
+                    <div style="{{ reelStripStyle }}">
+                      <sc-for list="{{ reelTiles }}" as="tile" hint-placeholder-count="12"><span style="{{ tile.tileStyle }}"><i class="{{ tile.iconClass }}" style="font-size:21px;"></i><span style="{{ tile.nameStyle }}">{{ tile.name }}</span></span></sc-for>
+                    </div>
+                  </div>
+                  <div style="text-align:center; font:700 12px 'Manrope',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-top:14px;">Opening…</div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isCaseResult }}" hint-placeholder-val="{{ false }}">
+                <div style="text-align:center; position:relative;">
+                  <div style="font:700 11px 'Manrope',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:{{ resultRarityColor }}; margin-bottom:14px;">{{ resultRarity }} · {{ resultTypeLabel }}</div>
+                  <span style="display:inline-flex; align-items:center; justify-content:center; border-radius:50%; margin-bottom:16px; box-shadow:{{ resultGlowStyle }};">
+                    <sc-if value="{{ resultIsBorder }}" hint-placeholder-val="{{ true }}"><span style="{{ resultRing }}"><span style="{{ resultInner }}">{{ resultAvText }}</span></span></sc-if>
+                    <sc-if value="{{ resultIsNametag }}" hint-placeholder-val="{{ false }}"><span style="{{ resultChip }}"><span style="font-size:14px;">{{ resultChipIcon }}</span>{{ resultChipName }}</span></sc-if>
+                  </span>
+                  <div style="font:800 22px 'Bricolage Grotesque',sans-serif; color:#fff; letter-spacing:-0.01em;">{{ resultName }}</div>
+                  <sc-if value="{{ resultDup }}" hint-placeholder-val="{{ false }}"><div style="font:600 12px 'Manrope',sans-serif; color:rgba(255,255,255,0.66); margin-top:5px;">{{ resultDupText }}</div></sc-if>
+                  <div style="display:flex; gap:10px; margin-top:18px;">
+                    <button onClick="{{ onEquipResult }}" style="flex:1; border:none; cursor:pointer; padding:14px; border-radius:14px; font:800 14px 'Manrope',sans-serif; background:#fff; color:oklch(0.3 0.1 300);">{{ resultEquipLabel }}</button>
+                    <button onClick="{{ onCloseResult }}" style="flex:1; border:1px solid rgba(255,255,255,0.35); cursor:pointer; padding:14px; border-radius:14px; font:800 14px 'Manrope',sans-serif; background:rgba(255,255,255,0.1); color:#fff;">Done</button>
+                  </div>
+                </div>
+              </sc-if>
+              <i class="ph-fill ph-treasure-chest" style="position:absolute; right:-18px; bottom:-22px; font-size:120px; opacity:0.06; color:#fff; pointer-events:none;"></i>
+            </div>
+
+            <div style="font:700 11px 'Manrope',sans-serif; letter-spacing:0.13em; text-transform:uppercase; color:oklch(0.57 0.04 295); margin-bottom:12px;">Your locker · {{ caseInvCount }}</div>
+            <sc-if value="{{ caseInvEmpty }}" hint-placeholder-val="{{ true }}">
+              <div style="text-align:center; padding:26px 16px; border-radius:18px; border:1px dashed oklch(0.85 0.03 295); color:oklch(0.57 0.04 295); font:500 13px 'Manrope',sans-serif;">No cosmetics yet — open a case to start your collection.</div>
+            </sc-if>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <sc-for list="{{ caseInventory }}" as="it" hint-placeholder-count="4">
+                <div style="display:flex; align-items:center; gap:12px; padding:11px 13px 11px 0; border-radius:16px; background:#fff; border:1px solid oklch(0.89 0.025 295); box-shadow:0 2px 0 oklch(0.89 0.025 295); overflow:hidden;">
+                  <span style="{{ it.rarBarStyle }}"></span>
+                  <sc-if value="{{ it.isBorder }}" hint-placeholder-val="{{ true }}"><span style="{{ it.ringStyle }}"><span style="{{ it.innerStyle }}">{{ it.avText }}</span></span></sc-if>
+                  <sc-if value="{{ it.isNametag }}" hint-placeholder-val="{{ false }}"><span style="{{ it.chipStyle }}"><span style="font-size:12px;">{{ it.chipIcon }}</span>{{ it.tagName }}</span></sc-if>
+                  <span style="flex:1; min-width:0;">
+                    <span style="display:block; font:700 14.5px 'Bricolage Grotesque',sans-serif; color:oklch(0.26 0.05 295); letter-spacing:-0.01em;">{{ it.name }}</span>
+                    <span style="display:block; font:700 11px 'Manrope',sans-serif; color:{{ it.rarityColor }}; margin-top:1px;">{{ it.rarityLabel }}</span>
+                  </span>
+                  <button onClick="{{ it.onEquip }}" style="{{ it.equipBtnStyle }}">{{ it.equipLabel }}</button>
+                </div>
+              </sc-for>
             </div>
           </div>
         </sc-if>
@@ -1918,12 +2000,82 @@ class Component extends DCLogic {
     boosts: Object.assign({ fifty:0, poll:0, skip:0, shield:0 }, this._saved.boosts || {}),
     gPhase:null, gRungs:[], gRung:0, gSel:null, gReveal:false, gLifelines:{ fifty:true, poll:true, skip:true }, gRemoved:[], gPoll:null, gWon:false, gBanked:0, gPickCats:[], gShieldUsed:false, gShieldFlash:false, gTimeLeft:0, gBestStep: this._saved.gBestStep || 0,
     shopFlash:null, shareOpen:false, avatar: this._saved.avatar || "initial", kids: !!this._saved.kids, gate:null, renaming:false, nameEntry:"",
+    inventory: this._saved.inventory || [], equipBorder: this._saved.equipBorder || null, equipNametag: this._saved.equipNametag || null,
+    casePhase:null, caseReel:[], caseWinner:null, reelShift:0, caseDup:false, caseDupRefund:0,
 
   };
   GRIND_COINS = [100,250,450,700,1000,1500,2200,3200,4600,6500,9000,12500,17000,23000,35000];
   GRIND_HAVENS = [4, 9]; // 0-based rungs that lock in winnings (rung 5 & 10)
   GRIND_PLAN = ["easy","easy","easy","easy","medium","medium","medium","medium","medium","hard","hard","hard","hard","hard","hard"];
   GRIND_TIME = 20;
+  CASE_COST = 500;
+  RARITIES = {
+    common:{ label:"Common", weight:55, color:"oklch(0.62 0.02 285)", grad:"linear-gradient(160deg, oklch(0.74 0.02 285), oklch(0.56 0.02 285))" },
+    uncommon:{ label:"Uncommon", weight:26, color:"oklch(0.6 0.14 152)", grad:"linear-gradient(160deg, oklch(0.69 0.15 150), oklch(0.54 0.14 160))" },
+    rare:{ label:"Rare", weight:13, color:"oklch(0.58 0.16 250)", grad:"linear-gradient(160deg, oklch(0.66 0.16 248), oklch(0.52 0.16 264))" },
+    epic:{ label:"Epic", weight:5, color:"oklch(0.56 0.22 305)", grad:"linear-gradient(160deg, oklch(0.63 0.24 305), oklch(0.5 0.22 322))" },
+    legendary:{ label:"Legendary", weight:1, color:"oklch(0.72 0.16 72)", grad:"linear-gradient(160deg, oklch(0.85 0.15 88), oklch(0.63 0.16 50))" } };
+  RARITY_ORDER = ["legendary","epic","rare","uncommon","common"];
+  COSMETICS = [
+    { id:"b_slate", type:"border", rarity:"common", name:"Slate Ring", grad:"linear-gradient(135deg, oklch(0.74 0.02 285), oklch(0.56 0.02 285))", glow:"none" },
+    { id:"b_stone", type:"border", rarity:"common", name:"Stone Ring", grad:"linear-gradient(135deg, oklch(0.7 0.02 60), oklch(0.55 0.02 60))", glow:"none" },
+    { id:"b_moss", type:"border", rarity:"uncommon", name:"Moss Ring", grad:"linear-gradient(135deg, oklch(0.72 0.15 150), oklch(0.55 0.14 160))", glow:"none" },
+    { id:"b_tide", type:"border", rarity:"uncommon", name:"Tide Ring", grad:"linear-gradient(135deg, oklch(0.72 0.13 200), oklch(0.56 0.13 215))", glow:"none" },
+    { id:"b_sapphire", type:"border", rarity:"rare", name:"Sapphire Ring", grad:"linear-gradient(135deg, oklch(0.68 0.16 250), oklch(0.52 0.17 262))", glow:"0 0 11px -2px oklch(0.6 0.16 255)" },
+    { id:"b_orchid", type:"border", rarity:"rare", name:"Orchid Ring", grad:"linear-gradient(135deg, oklch(0.66 0.18 330), oklch(0.54 0.18 300))", glow:"0 0 11px -2px oklch(0.6 0.18 320)" },
+    { id:"b_nebula", type:"border", rarity:"epic", name:"Nebula", grad:"conic-gradient(from 210deg, oklch(0.6 0.24 305), oklch(0.62 0.22 350), oklch(0.58 0.22 280), oklch(0.6 0.24 305))", glow:"0 0 15px -2px oklch(0.58 0.22 315)" },
+    { id:"b_ember", type:"border", rarity:"epic", name:"Ember", grad:"conic-gradient(from 200deg, oklch(0.7 0.2 45), oklch(0.66 0.22 25), oklch(0.74 0.18 70), oklch(0.7 0.2 45))", glow:"0 0 15px -2px oklch(0.66 0.2 40)" },
+    { id:"b_aurora", type:"border", rarity:"legendary", name:"Aurora", grad:"conic-gradient(from 160deg, oklch(0.75 0.2 150), oklch(0.72 0.19 210), oklch(0.72 0.2 320), oklch(0.8 0.18 90), oklch(0.75 0.2 150))", glow:"0 0 20px -1px oklch(0.75 0.18 200), 0 0 0 1px rgba(255,255,255,0.45)" },
+    { id:"b_gilded", type:"border", rarity:"legendary", name:"Gilded Laurel", grad:"conic-gradient(from 210deg, oklch(0.88 0.14 92), oklch(0.68 0.16 55), oklch(0.92 0.1 100), oklch(0.7 0.15 60), oklch(0.88 0.14 92))", glow:"0 0 20px -1px oklch(0.78 0.15 75), 0 0 0 1px rgba(255,255,255,0.5)" },
+    { id:"n_rookie", type:"nametag", rarity:"common", name:"Rookie", bg:"oklch(0.93 0.008 285)", fg:"oklch(0.42 0.03 285)", icon:"" },
+    { id:"n_curious", type:"nametag", rarity:"common", name:"Curious", bg:"oklch(0.93 0.02 90)", fg:"oklch(0.44 0.05 70)", icon:"" },
+    { id:"n_scholar", type:"nametag", rarity:"uncommon", name:"Scholar", bg:"color-mix(in oklch, oklch(0.6 0.14 152) 16%, white)", fg:"oklch(0.42 0.13 155)", icon:"" },
+    { id:"n_swift", type:"nametag", rarity:"uncommon", name:"Swift", bg:"color-mix(in oklch, oklch(0.62 0.13 205) 16%, white)", fg:"oklch(0.42 0.12 210)", icon:"" },
+    { id:"n_genius", type:"nametag", rarity:"rare", name:"Genius", bg:"color-mix(in oklch, oklch(0.58 0.16 250) 16%, white)", fg:"oklch(0.44 0.16 255)", icon:"" },
+    { id:"n_maestro", type:"nametag", rarity:"rare", name:"Maestro", bg:"color-mix(in oklch, oklch(0.6 0.17 320) 16%, white)", fg:"oklch(0.46 0.17 320)", icon:"" },
+    { id:"n_prodigy", type:"nametag", rarity:"epic", name:"Prodigy", bg:"linear-gradient(135deg, oklch(0.58 0.23 305), oklch(0.56 0.22 330))", fg:"#fff", icon:"" },
+    { id:"n_oracle", type:"nametag", rarity:"epic", name:"Oracle", bg:"linear-gradient(135deg, oklch(0.52 0.2 285), oklch(0.56 0.22 315))", fg:"#fff", icon:"" },
+    { id:"n_legend", type:"nametag", rarity:"legendary", name:"Legend", bg:"linear-gradient(135deg, oklch(0.85 0.15 88), oklch(0.66 0.16 52))", fg:"oklch(0.3 0.06 60)", icon:"\uD83D\uDC51" },
+    { id:"n_luckyluke", type:"nametag", rarity:"legendary", name:"Lucky Luke", bg:"linear-gradient(135deg, oklch(0.82 0.15 90), oklch(0.72 0.16 145))", fg:"oklch(0.3 0.08 130)", icon:"\uD83C\uDF40" } ];
+  rollCase(){ const R=this.RARITIES; let total=0; for(const k in R) total+=R[k].weight; let roll=Math.random()*total, pick="common"; for(const k in R){ roll-=R[k].weight; if(roll<=0){ pick=k; break; } } const pool=this.COSMETICS.filter(c=>c.rarity===pick); return pool[Math.floor(Math.random()*pool.length)]; }
+  openCase(){ const s=this.state; if(s.casePhase==="spinning") return; if(s.coins < this.CASE_COST){ this.setState({ shopFlash:"Not enough coins" }); return; } const winner=this.rollCase(); const N=48, WIN=42, reel=[]; for(let i=0;i<N;i++){ reel.push(i===WIN?winner:this.COSMETICS[Math.floor(Math.random()*this.COSMETICS.length)]); } const full=86, tileW=78, cw=322, jit=Math.floor(Math.random()*44)-22; const shift=WIN*full + tileW/2 - cw/2 + jit; const coins=s.coins-this.CASE_COST; this.setState({ screen:"cases", casePhase:"spinning", caseReel:reel, caseWinner:winner, reelShift:0, coins }); this.persist({ coins }); if(this.sfx) this.sfx("tick"); setTimeout(()=>this.setState({ reelShift:shift }), 90); setTimeout(()=>this.finishCase(winner), 90+5000+450); }
+  finishCase(w){ const s=this.state; const owned=(s.inventory||[]).includes(w.id); let coins=s.coins, refund=0; if(owned){ refund=Math.round(this.CASE_COST*0.3); coins+=refund; } const inv= owned ? s.inventory : (s.inventory||[]).concat([w.id]); this.setState({ casePhase:"result", inventory:inv, coins, caseDup:owned, caseDupRefund:refund }); this.persist({ inventory:inv, coins }); if(this.sfx) this.sfx(w.rarity==="legendary"||w.rarity==="epic" ? "win" : "correct"); }
+  equipItem(id){ const c=this.COSMETICS.find(x=>x.id===id); if(!c) return; const patch = c.type==="border" ? { equipBorder: this.state.equipBorder===id?null:id } : { equipNametag: this.state.equipNametag===id?null:id }; this.setState(patch); this.persist(patch); if(this.sfx) this.sfx("tap"); }
+  openCasesScreen(){ this.setState({ screen:"cases", casePhase:"idle", caseWinner:null, caseReel:[], reelShift:0 }); }
+  closeCaseResult(){ this.setState({ casePhase:"idle", caseReel:[], caseWinner:null, reelShift:0 }); }
+  cosmeticVals(s){
+    const self=this; const R=this.RARITIES; const money=(n)=>n.toLocaleString("en-US");
+    const av=this.AVATARS.find(a=>a.key===s.avatar)||this.AVATARS[0]; const dn=s.name||this.props.playerName||"Alex"; const initial=(dn[0]||"A").toUpperCase(); const avEmoji=av.emoji||"";
+    const ring=(c,pad)=>({ display:"inline-flex", padding:pad+"px", borderRadius:"50%", background:c.grad, boxShadow: c.glow==="none"?"none":c.glow, boxSizing:"border-box" });
+    const innerAv=(sz)=>({ width:sz+"px", height:sz+"px", borderRadius:"50%", background:av.grad, display:"flex", alignItems:"center", justifyContent:"center", color:"#fff", font:"800 "+Math.round(sz*0.42)+"px 'Bricolage Grotesque',sans-serif", border:"2px solid #fff" });
+    const chip=(c,big)=>({ display:"inline-flex", alignItems:"center", gap:"5px", padding: big?"5px 13px":"3px 9px", borderRadius:"999px", background:c.bg, color:c.fg, font:"800 "+(big?"13":"10.5")+"px 'Manrope',sans-serif", letterSpacing:"0.03em" });
+    const border=this.COSMETICS.find(c=>c.id===s.equipBorder)||null; const nametag=this.COSMETICS.find(c=>c.id===s.equipNametag)||null;
+    const reelTiles=(s.caseReel||[]).map((c,i)=>({ key:i+"_"+c.id, name:c.name, iconClass: c.type==="border"?"ph-bold ph-circle":"ph-fill ph-tag",
+      tileStyle:{ flex:"0 0 auto", width:"78px", height:"92px", boxSizing:"border-box", borderRadius:"12px", background:R[c.rarity].grad, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:"7px", padding:"8px 6px", color:"#fff", textAlign:"center", boxShadow:"inset 0 -3px 0 rgba(0,0,0,0.16)" },
+      nameStyle:{ font:"700 10px 'Manrope',sans-serif", lineHeight:"1.15", opacity:0.96 } }));
+    const w=s.caseWinner;
+    const invList=(s.inventory||[]).map(id=>this.COSMETICS.find(c=>c.id===id)).filter(Boolean).sort((a,b)=>this.RARITY_ORDER.indexOf(a.rarity)-this.RARITY_ORDER.indexOf(b.rarity)).map(c=>{
+      const equipped = c.type==="border" ? s.equipBorder===c.id : s.equipNametag===c.id;
+      return { key:c.id, name:c.name, type:c.type, isBorder:c.type==="border", isNametag:c.type==="nametag", rarityLabel:R[c.rarity].label, rarityColor:R[c.rarity].color, equipped, equipLabel: equipped?"Equipped":"Equip", onEquip:()=>self.equipItem(c.id),
+        ringStyle:ring(c,3), innerStyle:innerAv(34), avText: av.key==="initial"?initial:avEmoji, chipStyle:chip(c,false), chipIcon:c.icon||"", tagName:c.name,
+        equipBtnStyle:{ flexShrink:0, border:"none", cursor:"pointer", padding:"8px 13px", borderRadius:"11px", font:"800 12px 'Manrope',sans-serif", background: equipped?"oklch(0.26 0.05 295)":"color-mix(in oklch, "+R[c.rarity].color+" 16%, white)", color: equipped?"#fff":R[c.rarity].color },
+        rarBarStyle:{ width:"4px", alignSelf:"stretch", borderRadius:"4px", background:R[c.rarity].color } }; });
+    return {
+      isCases: s.screen==="cases", onCases:()=>self.openCasesScreen(), onOpenCase:()=>self.openCase(), onCloseResult:()=>self.closeCaseResult(),
+      isCaseIdle: s.casePhase!=="spinning" && s.casePhase!=="result", isCaseSpinning: s.casePhase==="spinning", isCaseResult: s.casePhase==="result",
+      caseCostLabel: money(this.CASE_COST), caseCanAfford: s.coins>=this.CASE_COST, caseCoins: money(s.coins),
+      openBtnStyle:{ marginTop:"18px", width:"100%", boxSizing:"border-box", border:"none", cursor: s.coins>=this.CASE_COST?"pointer":"default", padding:"15px", borderRadius:"15px", font:"800 15px 'Bricolage Grotesque',sans-serif", letterSpacing:"0.01em", display:"flex", alignItems:"center", justifyContent:"center", gap:"8px", background: s.coins>=this.CASE_COST?"linear-gradient(135deg, oklch(0.84 0.15 86), oklch(0.68 0.16 55))":"rgba(255,255,255,0.14)", color: s.coins>=this.CASE_COST?"oklch(0.28 0.06 55)":"rgba(255,255,255,0.5)" },
+      reelTiles, reelStripStyle:{ display:"flex", gap:"8px", padding:"0", transform:"translateX(-"+(s.reelShift||0)+"px)", transition: s.casePhase==="spinning" ? "transform 5s cubic-bezier(0.16,0.84,0.24,1)" : "none", willChange:"transform" },
+      caseInventory: invList, caseInvCount: invList.length, caseInvEmpty: invList.length===0,
+      resultName: w?w.name:"", resultRarity: w?R[w.rarity].label:"", resultRarityColor: w?R[w.rarity].color:"#000", resultIsBorder: !!w && w.type==="border", resultIsNametag: !!w && w.type==="nametag",
+      resultRing: w&&w.type==="border"?ring(w,5):{display:"none"}, resultInner: innerAv(66), resultAvText: av.key==="initial"?initial:avEmoji,
+      resultChip: w&&w.type==="nametag"?chip(w,true):{display:"none"}, resultChipIcon: w?(w.icon||""):"", resultChipName: w?w.name:"",
+      resultTypeLabel: w?(w.type==="border"?"Avatar border":"Nametag"):"", resultGlowStyle: w?("0 0 40px -6px "+R[w.rarity].color):"none",
+      resultDup: !!s.caseDup, resultDupText: s.caseDup?("Duplicate - "+money(s.caseDupRefund)+" coins refunded"):"",
+      resultEquipLabel: w?((w.type==="border"?s.equipBorder:s.equipNametag)===w.id?"Equipped":"Equip"):"Equip", onEquipResult:()=> w && self.equipItem(w.id),
+      hasBorder: !!border, equippedBorderWrap: border?ring(border,3):{ display:"inline-flex" },
+      hasNametag: !!nametag, homeNametagStyle: nametag?chip(nametag,false):{display:"none"}, homeNametagLabel: nametag?nametag.name:"", homeNametagIcon: nametag?(nametag.icon||""):"" };
+  }
   AVATARS = [
     { key:"initial",   grad:"linear-gradient(135deg, oklch(0.54 0.24 288), oklch(0.64 0.21 350))" },
     { key:"fox",    emoji:"\uD83E\uDD8A", grad:"linear-gradient(135deg, oklch(0.75 0.15 55), oklch(0.7 0.16 35))" },
@@ -1981,7 +2133,7 @@ class Component extends DCLogic {
     if (this.state.settings.haptics && navigator.vibrate) { try { navigator.vibrate(60); } catch(e){} }
     this.setState({ gSel: -1, gReveal: true });
   }
-  persist(extra) { try { const cur = { name:this.state.name, avatar:this.state.avatar, kids:this.state.kids, difficulty:this.state.difficulty, dailyDone:this.state.dailyDone, dailyDate:this.state.dailyDate, lifetimeBest:this.state.lifetimeBest, reactions:this.state.reactions, lifetime:this.state.lifetime, days:this.state.days, plus:this.state.plus, missed:this.state.missed, settings:this.state.settings, coins:this.state.coins, boosts:this.state.boosts, seen:this.state.seen, freezes:this.state.freezes, freezeWeek:this.state.freezeWeek, firstWinDate:this.state.firstWinDate, coinDay:this.state.coinDay, gBestStep:this.state.gBestStep }; localStorage.setItem(this.KEY, JSON.stringify(Object.assign(cur, extra || {}))); } catch(e){} }
+  persist(extra) { try { const cur = { name:this.state.name, avatar:this.state.avatar, kids:this.state.kids, difficulty:this.state.difficulty, dailyDone:this.state.dailyDone, dailyDate:this.state.dailyDate, lifetimeBest:this.state.lifetimeBest, reactions:this.state.reactions, lifetime:this.state.lifetime, days:this.state.days, plus:this.state.plus, missed:this.state.missed, settings:this.state.settings, coins:this.state.coins, boosts:this.state.boosts, seen:this.state.seen, freezes:this.state.freezes, freezeWeek:this.state.freezeWeek, firstWinDate:this.state.firstWinDate, coinDay:this.state.coinDay, gBestStep:this.state.gBestStep, inventory:this.state.inventory, equipBorder:this.state.equipBorder, equipNametag:this.state.equipNametag }; localStorage.setItem(this.KEY, JSON.stringify(Object.assign(cur, extra || {}))); } catch(e){} }
   setAvatar(k) { this.setState({ avatar:k }); this.persist({ avatar:k }); }
   openRename() { this.setState({ renaming:true, nameEntry:this.state.name || "" }); }
   setNameEntry(e) { this.setState({ nameEntry:e.target.value }); }
@@ -2597,6 +2749,7 @@ class Component extends DCLogic {
       showStreakBadge: this.dayStreak(s.days) > 0, streakBadgeN: this.dayStreak(s.days),
       coinsCompact: (s.coins >= 1e6 ? (s.coins/1e6).toFixed(s.coins>=1e7?0:1).replace(/\.0$/,"")+"M" : (s.coins >= 1e5 ? Math.round(s.coins/1e3)+"K" : s.coins.toLocaleString("en-US"))),
       isShop: s.screen === "shop", onShop: () => this.openShop(),
+      ...this.cosmeticVals(s),
       shopItems: [
         { k:"fifty",  name:"50 : 50",  desc:"Remove two wrong answers",      icon:"scissors",         price:500,  tint:"oklch(0.6 0.15 240)" },
         { k:"poll",   name:"Poll",     desc:"See how a crowd would vote",    icon:"chart-bar",        price:500,  tint:"oklch(0.62 0.15 145)" },
