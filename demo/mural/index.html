@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masters Of Mural — Egyedi falfestés, kézzel festett falfestmények</title>
+<meta name="description" content="Egyedileg megtervezett, kézzel festett falfestmények irodába, üzletbe, otthonba és házfalra. Ingyenes konzultáció és látványterv az ország egész területén.">
+<link rel="canonical" href="https://www.mastersofmural.hu/">
+<meta name="theme-color" content="#000000">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:site_name" content="Masters Of Mural">
+<meta property="og:title" content="Masters Of Mural — Egyedi falfestés">
+<meta property="og:description" content="Egyszeri és megismételhetetlen műalkotás a falra. Kézzel festve, egyedi tervezéssel.">
+<meta property="og:url" content="https://www.mastersofmural.hu/">
+<meta property="og:image" content="https://www.mastersofmural.hu/img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,100..900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#000000;
+  --panel:#141414;
+  --graphite:#4a4a4a;
+  --concrete:#b9b6b0;
+  --lime:#e9e7e2;        /* meszelt fal */
+  --white:#ffffff;
+
+  --text-xs:.75rem;
+  --text-sm:.875rem;
+  --text-base:1rem;
+  --text-lg:1.125rem;
+  --text-xl:1.25rem;
+  --text-2xl:1.5rem;
+  --text-3xl:2rem;
+  --text-4xl:2.5rem;
+
+  --fg:var(--black);
+  --bg:var(--lime);
+
+  --pad:clamp(1.25rem, 5vw, 4.5rem);
+  --maxw:1320px;
+  --rule:1px solid rgba(0,0,0,.14);
+  --rule-inv:1px solid rgba(255,255,255,.16);
+
+  /* kézi ecsetvonás a címsorok alá */
+  --swash:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M1.5 11.6c14-3.3 33.7-5.7 58.8-7.2 25-1.5 52.6-2 82.6-1.4 17.6.4 33.1 1.1 46.4 2.2 9.7.8 19.2 1.9 28.5 3.3 5.5.8 10 1.7 13.4 2.6 3.4.9 5.6 1.8 6.6 2.7.9.8.4 1.3-1.6 1.6-2 .3-5.2.3-9.7-.1-8.9-.7-21.4-2-37.5-3.2-19.5-1.5-41.3-2.4-65.5-2.6-24.2-.2-48.6.4-73.2 1.9-13.1.8-24.8 1.8-35.2 3-5.2.6-9 .9-11.4.9-2.4 0-3.6-.3-3.6-1 0-.8.7-1.6 2.2-2.4.8-.4 1.8-.8 2.9-1.2z'/%3E%3C/svg%3E");
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:"Archivo",Arial,sans-serif;
+  font-size:var(--text-base);
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+h1,h2,h3,.display{
+  font-family:"Archivo",sans-serif;
+  font-stretch:80%;
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:.94;
+  letter-spacing:0;
+  margin:0;
+  text-wrap:balance;
+}
+
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:200;background:var(--black);color:var(--white);padding:.7rem 1.1rem;transition:top .2s}
+.skip:focus{top:1rem}
+
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+/* ---------- ecsetvonás ---------- */
+.swash::after{
+  content:"";
+  display:block;
+  width:clamp(110px,15vw,210px);
+  height:13px;
+  margin-top:.7rem;
+  background-color:currentColor;
+  -webkit-mask:var(--swash) no-repeat left center/100% 100%;
+  mask:var(--swash) no-repeat left center/100% 100%;
+}
+
+/* ---------- gombok ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:1rem 1.75rem;
+  background:var(--black);color:var(--white);
+  border:1px solid var(--black);
+  text-decoration:none;
+  font-weight:700;font-size:var(--text-sm);
+  text-transform:uppercase;letter-spacing:.06em;
+  cursor:pointer;
+  transition:background .25s ease,color .25s ease;
+}
+.btn:hover{background:transparent;color:var(--black)}
+.btn--light{background:var(--white);color:var(--black);border-color:var(--white)}
+.btn--light:hover{background:transparent;color:var(--white)}
+.btn--ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.55)}
+.btn--ghost:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+
+/* ---------- fejléc ---------- */
+.site-head{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;align-items:center;gap:1.5rem;
+  padding:1.1rem var(--pad);
+  color:var(--white);
+  transition:background .3s ease,padding .3s ease,color .3s ease;
+}
+.site-head.is-stuck{
+  background:rgba(0,0,0,.94);
+  backdrop-filter:saturate(140%) blur(8px);
+  padding-block:.7rem;
+}
+.brand{display:flex;align-items:center;gap:.85rem;text-decoration:none;margin-right:auto}
+.brand img{width:26px;height:auto}
+.brand__name{
+  display:block;font-weight:600;font-size:var(--text-sm);
+  letter-spacing:.2em;text-transform:uppercase;line-height:1.1;
+}
+.brand__sub{
+  display:block;font-size:var(--text-xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--concrete);margin-top:.3rem;
+}
+.nav{display:flex;align-items:center;gap:clamp(1rem,2vw,2rem)}
+.nav a{
+  text-decoration:none;font-size:var(--text-xs);font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;
+  padding-block:.4rem;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s ease;
+}
+.nav a:hover{border-bottom-color:currentColor}
+.nav .btn{padding:.72rem 1.15rem;font-size:var(--text-xs)}
+.burger{display:none;background:none;border:0;padding:.5rem;cursor:pointer}
+.burger span{display:block;width:26px;height:2px;background:currentColor;margin:5px 0;transition:transform .3s ease,opacity .2s ease}
+.site-head.is-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-head.is-open .burger span:nth-child(2){opacity:0}
+.site-head.is-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+@media (max-width:900px){
+  .burger{display:block}
+  .nav{
+    position:fixed;inset:0;
+    background:var(--black);
+    flex-direction:column;justify-content:center;align-items:flex-start;
+    gap:1.4rem;padding:6rem var(--pad) 3rem;
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .site-head.is-open .nav{transform:none}
+  .nav a{font-size:var(--text-2xl);font-weight:800}
+  .nav .btn{font-size:var(--text-sm);margin-top:.5rem}
+  .burger{position:relative;z-index:2;color:var(--white)}
+  .site-head.is-open .brand{position:relative;z-index:2;color:var(--white)}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  min-height:min(100svh,920px);
+  display:flex;align-items:flex-end;
+  background:var(--black);
+  color:var(--white);
+  overflow:hidden;
+}
+.hero__media{position:absolute;inset:0}
+.hero__media img,.hero__media video{width:100%;height:100%;object-fit:cover;opacity:.72}
+.hero__media::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(100deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.72) 38%,rgba(0,0,0,.18) 72%,rgba(0,0,0,.45) 100%),
+    linear-gradient(to top,rgba(0,0,0,.85),transparent 45%);
+}
+.hero__inner{position:relative;width:100%;max-width:var(--maxw);margin-inline:auto;padding:9rem var(--pad) clamp(3rem,7vw,5.5rem)}
+.hero h1{font-size:var(--text-4xl)}
+@media (max-width:900px){.hero h1{font-size:var(--text-3xl)}}
+@media (max-width:620px){:root{--text-4xl:2rem}.hero h1{font-size:2rem}}
+.hero h1 .l{display:block;overflow:hidden;padding-top:.1em;margin-top:-.1em}
+.hero h1 .l i{display:block;font-style:normal;animation:rise 1s cubic-bezier(.22,1,.36,1) both}
+.hero h1 .l:nth-child(2) i{animation-delay:.1s}
+.hero h1 .l:nth-child(3) i{animation-delay:.2s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero__lead{
+  max-width:46ch;margin:2rem 0 2.6rem;
+  color:rgba(255,255,255,.84);
+  font-size:var(--text-lg);
+  animation:fade 1s ease .45s both;
+}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.85rem;animation:fade 1s ease .6s both}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero__meta{
+  position:relative;z-index:1;
+  border-top:var(--rule-inv);
+  margin-top:clamp(2.5rem,6vw,4rem);padding-top:1.4rem;
+  display:flex;flex-wrap:wrap;gap:.5rem 2.5rem;
+  font-size:var(--text-xs);letter-spacing:.04em;color:rgba(255,255,255,.62);
+}
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .l i,.hero__lead,.hero__cta{animation:none}
+}
+
+/* ---------- általános szekció ---------- */
+.sec{padding-block:clamp(4.5rem,10vw,8rem)}
+.sec--dark{background:var(--black);color:var(--white)}
+.sec__head{max-width:62ch;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.sec__head h2{font-size:var(--text-4xl)}
+.sec__head p{margin:1.4rem 0 0;max-width:54ch;color:var(--graphite)}
+.sec--dark .sec__head p{color:var(--concrete)}
+
+/* ---------- bemutatkozás ---------- */
+.about{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.about__text h2{font-size:var(--text-4xl);max-width:16ch}
+.about__text p{max-width:50ch}
+.about__text p+p{margin-top:1.1rem}
+.about__figure{position:relative}
+.about__figure img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.about__stats{display:flex;gap:2.5rem;margin-top:2.4rem;border-top:var(--rule);padding-top:1.6rem;flex-wrap:wrap}
+.about__stats div{max-width:16ch}
+.about__stats b{
+  display:block;font-weight:800;
+  font-size:var(--text-base);text-transform:uppercase;letter-spacing:0;
+}
+.about__stats span{font-size:var(--text-sm);color:var(--graphite);line-height:1.45;display:block;margin-top:.2rem}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+
+/* ---------- szolgáltatások ---------- */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.14)}
+.service{position:relative;background:var(--black);overflow:hidden}
+.service img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;opacity:.85;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.service:hover img{transform:scale(1.04);opacity:1}
+.service__body{padding:1.5rem 1.6rem 1.9rem}
+.service h3{font-size:var(--text-xl)}
+.service p{margin:.7rem 0 0;font-size:var(--text-sm);line-height:1.6;color:var(--concrete)}
+@media (max-width:940px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.services{grid-template-columns:1fr}}
+
+/* ---------- folyamat ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.14);border-top:var(--rule);border-bottom:var(--rule)}
+.step{background:var(--lime);padding:clamp(1.8rem,3.5vw,2.6rem) clamp(1.4rem,2.5vw,2.2rem)}
+.step b{
+  display:block;font-weight:900;
+  font-size:4rem;line-height:.8;margin-bottom:1.3rem;
+  color:var(--black);
+}
+.step h3{font-size:var(--text-xl)}
+.step p{margin:.75rem 0 0;font-size:var(--text-base);color:var(--graphite);max-width:34ch}
+.process__cta{margin-top:clamp(2.2rem,4vw,3rem)}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* ---------- galéria ---------- */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14)}
+.shot{position:relative;margin:0;padding:0;border:0;background:var(--black);cursor:pointer;overflow:hidden;text-align:left;aspect-ratio:3/2}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .4s;opacity:.88}
+.shot:hover img,.shot:focus-visible img{transform:scale(1.05);opacity:1}
+.shot figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:2.5rem 1.1rem .95rem;
+  font-size:var(--text-xs);font-weight:600;letter-spacing:.02em;color:var(--white);
+  background:linear-gradient(to top,rgba(0,0,0,.82),transparent);
+  opacity:0;transform:translateY(6px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.shot:hover figcaption,.shot:focus-visible figcaption{opacity:1;transform:none}
+@media (max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:760px){
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .shot figcaption{display:none}
+}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:150;display:none;background:rgba(0,0,0,.96);padding:clamp(1rem,4vw,3rem)}
+.lb[open]{display:grid;place-items:center}
+.lb figure{margin:0;max-width:min(1200px,92vw);max-height:88vh;display:flex;flex-direction:column;gap:1rem}
+.lb img{max-height:78vh;width:auto;margin-inline:auto;object-fit:contain}
+.lb figcaption{color:var(--concrete);font-size:var(--text-sm);text-align:center;letter-spacing:.02em}
+.lb__btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:52px;height:52px;border:1px solid rgba(255,255,255,.3);background:transparent;color:var(--white);
+  cursor:pointer;display:grid;place-items:center;font-size:1.3rem;line-height:1;
+  transition:background .2s,color .2s;
+}
+.lb__btn:hover{background:var(--white);color:var(--black)}
+.lb__prev{left:clamp(.5rem,2vw,2rem)}
+.lb__next{right:clamp(.5rem,2vw,2rem)}
+.lb__close{position:absolute;top:clamp(.75rem,2vw,1.75rem);right:clamp(.75rem,2vw,1.75rem);transform:none}
+@media (max-width:620px){
+  .lb__btn{width:44px;height:44px}
+  .lb__prev{left:.4rem}.lb__next{right:.4rem}
+}
+
+/* ---------- kapcsolat ---------- */
+.contact{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(2.5rem,6vw,5rem);align-items:start}
+.contact>*{min-width:0}
+.contact__aside h2{font-size:var(--text-4xl)}
+.contact__aside p{color:var(--graphite);max-width:40ch}
+.contact__list{list-style:none;margin:2.4rem 0 0;padding:0;border-top:var(--rule)}
+.contact__list li{border-bottom:var(--rule)}
+.contact__list a{
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:.2rem 1rem;padding:1.15rem 0;text-decoration:none;
+  overflow-wrap:anywhere;
+  font-weight:800;font-size:var(--text-xl);
+  text-transform:uppercase;letter-spacing:.01em;
+  transition:padding-left .25s ease;
+}
+.contact__list a:hover{padding-left:.7rem}
+.contact__list small{
+  display:block;font-weight:400;font-size:var(--text-xs);letter-spacing:.16em;
+  color:var(--graphite);text-transform:uppercase;min-width:6.5rem;
+  font-stretch:100%;
+}
+.social{display:flex;gap:1.4rem;margin-top:2rem}
+.social a{font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.25);padding-bottom:.2rem}
+.social a:hover{border-bottom-color:var(--black)}
+
+.form{background:var(--white);padding:clamp(1.6rem,3.5vw,2.6rem)}
+.form h3{font-size:var(--text-xl)}
+.form__grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.1rem;margin-top:1.6rem}
+.field{display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.field--full{grid-column:1/-1}
+.field label{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);font-weight:600}
+.field input,.field select,.field textarea{
+  width:100%;min-width:0;
+  font:inherit;font-size:var(--text-base);color:var(--black);
+  padding:.8rem .9rem;border:1px solid rgba(0,0,0,.22);background:var(--white);border-radius:0;
+  transition:border-color .2s ease;
+}
+.field textarea{resize:vertical;min-height:92px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--black);box-shadow:inset 0 0 0 1px var(--black)}
+.field input:invalid:not(:placeholder-shown){border-color:#9a2b2b}
+fieldset{border:0;padding:0;margin:0;grid-column:1/-1}
+legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);font-weight:600;padding:0;margin-bottom:.6rem}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}
+.slots label{
+  display:block;padding:.75rem .6rem;text-align:center;cursor:pointer;
+  border:1px solid rgba(0,0,0,.22);font-size:var(--text-sm);line-height:1.35;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.slots input{position:absolute;opacity:0;pointer-events:none}
+.slots input:checked+span{display:block}
+.slots label:has(input:checked){background:var(--black);color:var(--white);border-color:var(--black)}
+.slots label:focus-within{outline:2px solid var(--black);outline-offset:2px}
+.form .btn{width:100%;justify-content:center;margin-top:1.4rem}
+.form__note{margin:1rem 0 0;font-size:var(--text-xs);line-height:1.55;color:var(--graphite)}
+.form__status{margin:1rem 0 0;font-size:var(--text-sm);font-weight:600;display:none}
+.form__status.is-on{display:block}
+@media (max-width:1080px){.contact{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .form__grid{grid-template-columns:1fr}
+  .slots{grid-template-columns:1fr}
+}
+
+/* ---------- lábléc ---------- */
+.site-foot{background:var(--black);color:var(--concrete);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.foot__top{display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between;align-items:flex-start;padding-bottom:2.5rem;border-bottom:var(--rule-inv)}
+.foot__brand{display:flex;align-items:center;gap:1rem}
+.foot__brand img{width:34px}
+.foot__name{
+  display:block;color:var(--white);font-weight:600;font-size:var(--text-base);
+  letter-spacing:.16em;text-transform:uppercase;
+}
+.foot__sub{display:block;font-size:var(--text-xs);letter-spacing:.2em;text-transform:uppercase;margin-top:.35rem}
+.foot__links{display:flex;flex-wrap:wrap;gap:1.6rem}
+.foot__links a{font-size:var(--text-xs);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--concrete)}
+.foot__links a:hover{color:var(--white)}
+.foot__bottom{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between;padding-top:1.6rem;font-size:var(--text-xs);letter-spacing:.04em}
+.foot__bottom a{color:var(--concrete);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+.foot__bottom a:hover{color:var(--white)}
+</style>
+</head>
+<body>
+<a class="skip" href="#fo">Ugrás a tartalomhoz</a>
+
+<header class="site-head" id="head">
+  <a class="brand" href="#fo" aria-label="Masters Of Mural — kezdőlap">
+    <span>
+      <span class="brand__name">Masters Of Mural</span>
+      <span class="brand__sub">Egyedi falfestés</span>
+    </span>
+  </a>
+
+  <nav class="nav" id="nav" aria-label="Fő menü">
+    <a href="#bemutatkozas">Bemutatkozás</a>
+    <a href="#szolgaltatasok">Szolgáltatások</a>
+    <a href="#folyamat">Hogyan működik</a>
+    <a href="#latvanytervek">Látványtervek</a>
+    <a href="#kapcsolat">Kapcsolat</a>
+    <a class="btn btn--light" href="#kapcsolat">Konzultációt kérek</a>
+  </nav>
+
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Menü megnyitása">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="fo">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero__media">
+      <!-- Videó helye: cseréld az <img>-et az alábbi blokkra, ha kész a tömörített mp4.
+      <video autoplay muted loop playsinline poster="img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png">
+        <source src="img/bemutatkozas.mp4" type="video/mp4">
+      </video>
+      -->
+      <img src="img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png" alt="Kézzel festett, szobrászi hatású falfestmény egy étterem falán" width="2000" height="1125" fetchpriority="high">
+    </div>
+
+    <div class="hero__inner">
+      <h1>
+        <span class="l"><i>Egyszeri és</i></span>
+        <span class="l"><i>megismételhetetlen</i></span>
+        <span class="l"><i>műalkotás</i></span>
+      </h1>
+      <p class="hero__lead">Egyedileg megtervezett, kézzel festett falfestmények. Valódi festékrétegek, cseppek és festékfolyások — ezek teszik kézzelfoghatóvá és autentikussá.</p>
+      <div class="hero__cta">
+        <a class="btn btn--light" href="#kapcsolat">Ingyenes konzultáció</a>
+        <a class="btn btn--ghost" href="#latvanytervek">Látványtervek</a>
+      </div>
+      <div class="hero__meta">
+        <span>Beltér és kültér</span>
+        <span>Bármilyen minta, bármilyen méret</span>
+        <span>Ingyenes látványterv</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BEMUTATKOZÁS ================= -->
+  <section class="sec" id="bemutatkozas">
+    <div class="wrap about">
+      <div class="about__text">
+        <h2 class="swash">Festmény, nem tapéta</h2>
+        <p>A Masters Of Mural kézzel festett falfestményeket készít — minden munka egyetlen térhez, egyetlen falra készül. Nincs két egyforma, mert nincs nyomtatás, nincs sablon: minden vonal ecsettel és festékszóróval kerül a falra.</p>
+        <p>Ugyanúgy dolgozunk egy kávézó homlokfalán, egy iroda tárgyalójában vagy egy nappali üres falán. Az első lépés mindig ugyanaz: megnézzük a teret, és megtervezzük, mi illik hozzá.</p>
+        <div class="about__stats">
+          <div><b>Egyedi terv</b><span>Minden falhoz saját látványterv készül</span></div>
+          <div><b>Bármilyen felület</b><span>Beton, vakolat, tégla, gipszkarton, vászon</span></div>
+          <div><b>Tartós festék</b><span>Kültéri munkáknál UV- és időjárásálló anyagok</span></div>
+        </div>
+      </div>
+      <figure class="about__figure" style="margin:0">
+        <img src="img/IMG_0637.PNG" alt="Kávézó belső tere plasztikus, kávécsésze motívumú falfestménnyel" width="1400" height="788" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= SZOLGÁLTATÁSOK ================= -->
+  <section class="sec sec--dark" id="szolgaltatasok">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2 class="swash">Szolgáltatásaink</h2>
+        <p>Akármilyen mintát, bármilyen felületre, bármely méretben — beltérbe és kültérbe egyaránt. Irodába, szobába, üzletbe, házfalra vagy raktárépületre.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="services">
+        <article class="service">
+          <img src="img/M%C5%B1v%C3%A9szi%20falfest%C3%A9s.png" alt="Színes, repülő sast ábrázoló művészi falfestmény" width="1100" height="619" loading="lazy">
+          <div class="service__body">
+            <h3>Művészi falfestmény</h3>
+            <p>Nagyméretű, figurális vagy absztrakt kompozíciók. A teljes falfelület egyetlen képpé válik.</p>
+          </div>
+        </article>
+
+        <article class="service">
+          <img src="img/H%C3%A1zfal%20fest%C3%A9s.png" alt="Családi ház homlokzatán színes, geometrikus tájkép falfestés" width="1100" height="733" loading="lazy">
+          <div class="service__body">
+            <h3>Házfal festés</h3>
+            <p>Homlokzatra, tűzfalra, kerítésre. Időjárásálló, UV-stabil festékkel, állványos kivitelezéssel.</p>
+          </div>
+        </article>
+
+        <article class="service">
+          <img src="img/V%C3%A1szonfest%C3%A9s.png" alt="Nappaliban elhelyezett nagyméretű, színes vászonkép" width="1100" height="733" loading="lazy">
+          <div class="service__body">
+            <h3>Vászonfestés megrendelésre</h3>
+            <p>Ha a fal nem festhető: ugyanaz a kézi munka vásznon, a tér méretére szabva, bármikor mozdítható.</p>
+          </div>
+        </article>
+
+        <article class="service">
+          <img src="img/Dekor%C3%A1ci%C3%B3s%20Falfest%C3%A9s.png" alt="Plasztikus, háromdimenziós hatású dekorációs falfestés" width="1100" height="678" loading="lazy">
+          <div class="service__body">
+            <h3>Dekorációs falfestés</h3>
+            <p>Plasztikus, 3D hatású formák és geometrikus minták, amelyek a világítással együtt dolgoznak.</p>
+          </div>
+        </article>
+
+        <article class="service">
+          <img src="img/Log%C3%B3-%20%C3%A9s%20t%C3%A1blafest%C3%A9s.png" alt="Kávézó falán festett cicás logó és felirat" width="1100" height="733" loading="lazy">
+          <div class="service__body">
+            <h3>Logó- és táblafestés</h3>
+            <p>Cégér, logó, nyitvatartás vagy menü közvetlenül a falra festve — nyomtatott matrica helyett.</p>
+          </div>
+        </article>
+
+        <article class="service">
+          <img src="img/Arculat%20fest%C3%A9s.png" alt="Bár belső tere színes, arculati elemekből álló falfestéssel" width="1100" height="733" loading="lazy">
+          <div class="service__body">
+            <h3>Arculatfestés</h3>
+            <p>A meglévő arculat — színek, formák, karakter — végigvezetve a vendégtér falain.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOLYAMAT ================= -->
+  <section class="sec" id="folyamat">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2 class="swash">Hogyan működik?</h2>
+        <p>Három lépés a megkereséstől a kész falig. Az első kettő ingyenes — árajánlatot csak a végleges terv után adunk.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="steps">
+        <article class="step">
+          <b>1</b>
+          <h3>Kapcsolatfelvétel</h3>
+          <p>Vedd fel velünk a kapcsolatot, és egy ingyenes konzultáción felmérjük az igényeidet.</p>
+        </article>
+        <article class="step">
+          <b>2</b>
+          <h3>Látványterv</h3>
+          <p>Több lehetséges látványtervet készítünk, egyeztetünk és módosítunk, amíg a terv pontosan azt mutatja, amit elképzeltél.</p>
+        </article>
+        <article class="step">
+          <b>3</b>
+          <h3>Kivitelezés</h3>
+          <p>A végleges terv után árajánlatot adunk és időpontot egyeztetünk. Innentől már csak a kész műalkotás van hátra.</p>
+        </article>
+      </div>
+      <div class="process__cta">
+        <a class="btn" href="#kapcsolat">Kérem az ingyenes konzultációt</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LÁTVÁNYTERVEK ================= -->
+  <section class="sec sec--dark" id="latvanytervek">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2 class="swash">Látványterveink</h2>
+        <p>Előre elkészített tervek különböző terekre. Kattints bármelyikre a nagyításhoz — a sajátod ezek alapján, de a te faladra készül.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="gallery" id="galeria">
+        <!-- a JS innen olvassa ki a nagy képet és a feliratot -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KAPCSOLAT ================= -->
+  <section class="sec" id="kapcsolat">
+    <div class="wrap contact">
+      <div class="contact__aside">
+        <h2 class="swash">Vedd fel velünk a kapcsolatot</h2>
+        <p>Hívj minket, írj e-mailt, vagy kérj visszahívást — a megadott idősávban keresünk.</p>
+
+        <ul class="contact__list">
+          <li><a href="tel:+36705566889"><small>Telefon</small>+36 70 556 6889</a></li>
+          <li><a href="mailto:mastersofmural@gmail.com"><small>E-mail</small>mastersofmural@gmail.com</a></li>
+        </ul>
+
+        <div class="social">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+
+      <!-- A form elküldéséhez állítsd be az action-t (pl. Formspree / saját PHP végpont). -->
+      <form class="form" id="callback" action="https://formspree.io/f/SAJAT_AZONOSITO" method="post" novalidate>
+        <h3>Kérjen visszahívást</h3>
+
+        <div class="form__grid">
+          <div class="field">
+            <label for="nev">Név *</label>
+            <input id="nev" name="nev" type="text" autocomplete="name" placeholder="Kovács Anna" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail cím *</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="nev@pelda.hu" required>
+          </div>
+          <div class="field">
+            <label for="telefon">Telefon *</label>
+            <input id="telefon" name="telefon" type="tel" autocomplete="tel" placeholder="+36 30 123 4567" required>
+          </div>
+          <div class="field">
+            <label for="telepules">Település</label>
+            <input id="telepules" name="telepules" type="text" autocomplete="address-level2" placeholder="Budapest">
+          </div>
+          <div class="field">
+            <label for="terulet">Festendő fal felülete (m²)</label>
+            <input id="terulet" name="terulet" type="number" min="1" step="1" inputmode="numeric" placeholder="12">
+          </div>
+          <div class="field">
+            <label for="hely">Kültér vagy beltér?</label>
+            <select id="hely" name="hely">
+              <option value="">Válassz…</option>
+              <option>Beltér</option>
+              <option>Kültér</option>
+              <option>Még nem tudom</option>
+            </select>
+          </div>
+
+          <fieldset>
+            <legend>Mikor kéri a visszahívást?</legend>
+            <div class="slots">
+              <label><input type="radio" name="idosav" value="Hétköznap 08:00–16:00" checked>Hétköznap<br>08:00–16:00</label>
+              <label><input type="radio" name="idosav" value="Hétköznap 16:00–21:00">Hétköznap<br>16:00–21:00</label>
+              <label><input type="radio" name="idosav" value="Hétvége 08:00–14:00">Hétvége<br>08:00–14:00</label>
+            </div>
+          </fieldset>
+
+          <div class="field field--full">
+            <label for="uzenet">Mit képzeltél el?</label>
+            <textarea id="uzenet" name="uzenet" placeholder="Pl. kávézó hátsó fala, kb. 4×3 m, kávé témájú minta"></textarea>
+          </div>
+        </div>
+
+        <button class="btn" type="submit">Visszahívást kérek</button>
+        <p class="form__status" id="status" role="status"></p>
+        <p class="form__note">Az adataidat kizárólag a visszahívás és az ajánlatadás céljából használjuk fel, harmadik félnek nem adjuk ki.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <span>
+          <span class="foot__name">Masters Of Mural</span>
+          <span class="foot__sub">Egyedi falfestés</span>
+        </span>
+      </div>
+      <nav class="foot__links" aria-label="Lábléc menü">
+        <a href="#bemutatkozas">Bemutatkozás</a>
+        <a href="#szolgaltatasok">Szolgáltatások</a>
+        <a href="#folyamat">Hogyan működik</a>
+        <a href="#latvanytervek">Látványtervek</a>
+        <a href="tel:+36705566889">+36 70 556 6889</a>
+        <a href="mailto:mastersofmural@gmail.com">mastersofmural@gmail.com</a>
+      </nav>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 Masters Of Mural</span>
+      <span>Készítette: <a href="https://webszovo.hu" target="_blank" rel="noopener">Webszövő</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Látványterv nagyban">
+  <button class="lb__btn lb__close" id="lbClose" aria-label="Bezárás">✕</button>
+  <button class="lb__btn lb__prev" id="lbPrev" aria-label="Előző">‹</button>
+  <button class="lb__btn lb__next" id="lbNext" aria-label="Következő">›</button>
+  <figure>
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":["LocalBusiness","HomeAndConstructionBusiness"],
+  "name":"Masters Of Mural",
+  "description":"Egyedi, kézzel festett falfestmények beltérbe és kültérbe.",
+  "url":"https://www.mastersofmural.hu/",
+  "telephone":"+36705566889",
+  "email":"mastersofmural@gmail.com",
+  "image":"https://www.mastersofmural.hu/img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png",
+  "priceRange":"$$",
+  "areaServed":{"@type":"Country","name":"Magyarország"},
+  "address":{"@type":"PostalAddress","addressCountry":"HU"}
+}
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- fejléc ---------- */
+  var head = document.getElementById('head');
+  var onScroll = function(){ head.classList.toggle('is-stuck', window.scrollY > 40); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---------- mobil menü ---------- */
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  var toggleNav = function(open){
+    head.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Menü bezárása' : 'Menü megnyitása');
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', function(){ toggleNav(!head.classList.contains('is-open')); });
+  nav.addEventListener('click', function(e){ if(e.target.closest('a')) toggleNav(false); });
+
+  /* ---------- galéria ---------- */
+  var shots = [
+    ['49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png', 'Étterem — egyedi falfestés a vendégtérben'],
+    ['B932F136-51E2-4FBA-A13F-5561A30C4589.png', 'Edzőterem — motivációs falfestés'],
+    ['IMG_0501.JPG', 'Fodrászat — portré falfestmény'],
+    ['IMG_0502.JPG', 'Kutyakozmetika — egyedi falfestés'],
+    ['IMG_0576.JPG', 'Művészi falfestmény — színes sas'],
+    ['IMG_0632.PNG', 'Dekorációs falfestés — térhatású mintával'],
+    ['IMG_0633.PNG', 'Kávézó — egyedi dekoráció'],
+    ['IMG_0634.PNG', 'Iroda — látványos faldekoráció'],
+    ['IMG_0636.PNG', 'Kutyakozmetika — egyedi falfestés'],
+    ['IMG_0637.PNG', 'Kávézó — cicás falfestmény'],
+    ['IMG_0638.PNG', 'Nappali — színes absztrakt falfestmény'],
+    ['IMG_0641.PNG', 'Modern falfestmény — hullámformák']
+  ];
+  var gal = document.getElementById('galeria');
+  gal.innerHTML = shots.map(function(s, i){
+    return '<figure class="shot" role="button" tabindex="0" data-i="' + i + '" aria-label="' + s[1] + ' — nagyítás">' +
+             '<img src="img/' + encodeURIComponent(s[0]) + '" alt="' + s[1] + '" loading="lazy" decoding="async">' +
+             '<figcaption>' + s[1] + '</figcaption>' +
+           '</figure>';
+  }).join('');
+
+  /* ---------- lightbox ---------- */
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var idx = 0, lastFocus = null;
+
+  function show(i){
+    idx = (i + shots.length) % shots.length;
+    lbImg.src = 'img/' + encodeURIComponent(shots[idx][0]);
+    lbImg.alt = shots[idx][1];
+    lbCap.textContent = shots[idx][1];
+  }
+  function open(i){
+    lastFocus = document.activeElement;
+    show(i);
+    lb.setAttribute('open','');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+  function close(){
+    lb.removeAttribute('open');
+    document.body.style.overflow = '';
+    if(lastFocus) lastFocus.focus();
+  }
+
+  gal.addEventListener('click', function(e){
+    var f = e.target.closest('.shot');
+    if(f) open(Number(f.dataset.i));
+  });
+  gal.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var f = e.target.closest('.shot');
+    if(f){ e.preventDefault(); open(Number(f.dataset.i)); }
+  });
+
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(idx - 1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(idx + 1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.hasAttribute('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') show(idx - 1);
+    if(e.key === 'ArrowRight') show(idx + 1);
+  });
+
+  /* ---------- űrlap ---------- */
+  var form = document.getElementById('callback');
+  var status = document.getElementById('status');
+
+  form.addEventListener('submit', function(e){
+    if(!form.checkValidity()){
+      e.preventDefault();
+      var bad = form.querySelector(':invalid');
+      if(bad){ bad.focus(); }
+      status.textContent = 'Kérjük, töltsd ki a csillaggal jelölt mezőket.';
+      status.classList.add('is-on');
+      return;
+    }
+    // Ha nincs beállítva végpont, nyissa meg a levelezőt ahelyett, hogy hibára futna.
+    if(form.action.indexOf('SAJAT_AZONOSITO') > -1){
+      e.preventDefault();
+      var d = new FormData(form), sor = [];
+      d.forEach(function(v,k){ if(v) sor.push(k + ': ' + v); });
+      status.textContent = 'Megnyitjuk a levelezőprogramot az adatokkal.';
+      status.classList.add('is-on');
+      window.location.href = 'mailto:mastersofmural@gmail.com'
+        + '?subject=' + encodeURIComponent('Visszahívás kérése – ' + (d.get('nev') || ''))
+        + '&body=' + encodeURIComponent(sor.join('\n'));
+    }
+  });
+})();
+</script>
+</body>
+</html>
