@@ -65,6 +65,9 @@ export async function onRequestPost({ request, env }) {
     model: env.MODEL || DEFAULT_MODEL,
     max_tokens: Math.min(Math.max(Number(body.max_tokens) || 1000, 1), cap),
     messages,
+    // Haiku 5.5 otherwise "thinks" ~1.200 hidden tokens per question: they count toward max_tokens (→ JSON cut off,
+    // "Bad question shape") and are billed as output (~2.4x the cost). Measured 2026-11-09.
+    reasoning: { enabled: false },
   };
 
   const base = (env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api').replace(/\/$/, '');
