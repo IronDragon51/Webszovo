@@ -15,6 +15,8 @@ const DEFAULT_MODEL = 'anthropic/claude-haiku-5.5';
 // Kept very low while testing (cost safety). Real questions need ~1000–1500; raise via the MAX_TOKENS env var
 // (e.g. 2000) once we go live — no code change needed.
 const DEFAULT_MAX_TOKENS_CAP = 300;
+const REASONING_BUDGET = 1024;   // OpenRouter reasoning.max_tokens (Anthropic minimum)
+const REASONING_HEADROOM = 2000; // added to max_tokens so reasoning can't starve the visible answer
 const MAX_INPUT_CHARS = 60000; // system + all messages; the app's biggest prompts are well under this
 const MAX_MESSAGES = 40;
 
@@ -61,13 +63,16 @@ export async function onRequestPost({ request, env }) {
 
   // The client's model / max_tokens are ignored beyond the cap — friends can't pick an expensive model.
   const cap = Math.min(Number(env.MAX_TOKENS) || DEFAULT_MAX_TOKENS_CAP, 4000);
+  const visible = Math.min(Math.max(Number(body.max_tokens) || 1000, 1), cap);
   const payload = {
     model: env.MODEL || DEFAULT_MODEL,
-    max_tokens: Math.min(Math.max(Number(body.max_tokens) || 1000, 1), cap),
+    // Hidden reasoning counts toward max_tokens, so add headroom on top of the visible budget.
+    max_tokens: visible + REASONING_HEADROOM,
     messages,
-    // Haiku 5.5 otherwise "thinks" ~1.200 hidden tokens per question: they count toward max_tokens (→ JSON cut off,
-    // "Bad question shape") and are billed as output (~2.4x the cost). Measured 2026-11-09.
-    reasoning: { enabled: false },
+    // Measured 2026-11-09: WITHOUT reasoning Haiku 5.5 ignores the Hungarian instruction (short questions come back in
+    // English) and gets facts wrong; WITH it, 6/6 Hungarian and correct. Budget is soft (seen up to ~1.750), hence the
+    // headroom — before it existed, reasoning ate the 1.500 visible budget and cut the JSON ("Bad question shape").
+    reasoning: { max_tokens: REASONING_BUDGET },
   };
 
   const base = (env.OPENROUTER_BASE_URL || 'https://openrouter.ai/api').replace(/\/$/, '');
