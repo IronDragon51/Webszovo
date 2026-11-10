@@ -60,16 +60,6 @@
         e.target.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
     };
 
-    // ── Calendly popup triggers
-    document.querySelectorAll('.calendly-trigger').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (window.Calendly) {
-                window.Calendly.initPopupWidget({ url: 'https://calendly.com/webszovo/30min' });
-            }
-        });
-    });
-
     // ── Portfolio card expand popup (desktop only)
     if (!window.matchMedia('(hover: none)').matches) {
         let popupBackdrop = null;

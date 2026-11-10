@@ -1,0 +1,25 @@
+# Cloudflare Pages response headers.
+# Demo and client-copy pages stay open to visitors, but search engines must not index them.
+# Do not also block these paths in robots.txt: a blocked crawler cannot read this header.
+
+/demo/*
+  X-Robots-Tag: noindex
+
+/active/*
+  X-Robots-Tag: noindex
+
+/quizant2/*
+  X-Robots-Tag: noindex
+
+# Pages redirects *.html to the path without .html, so match both forms.
+/g
+  X-Robots-Tag: noindex
+
+/g.html
+  X-Robots-Tag: noindex
+
+/demo_hezo_copyright
+  X-Robots-Tag: noindex
+
+/demo_hezo_copyright.html
+  X-Robots-Tag: noindex
