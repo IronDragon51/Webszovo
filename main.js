@@ -52,12 +52,31 @@
     document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 
     // ── Contact form
-    window.handleFormSubmit = function (e) {
+    // Sends to Formspree (form action). Without JS the form still posts normally.
+    window.handleFormSubmit = async function (e) {
         e.preventDefault();
-        const btn = e.target.querySelector('.form-submit');
-        btn.innerHTML = '✓ Megkaptuk! Hamarosan jelentkezünk.';
+        const form = e.target;
+        const btn = form.querySelector('.form-submit');
+        const status = form.querySelector('.form-status');
+        const original = btn.innerHTML;
+        const data = new FormData(form); // read before disabling fields
         btn.disabled = true;
-        e.target.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
+        btn.textContent = 'Küldés…';
+        status.textContent = '';
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { Accept: 'application/json' }
+            });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            btn.innerHTML = '✓ Megkaptuk! Hamarosan jelentkezünk.';
+            form.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
+        } catch (err) {
+            btn.disabled = false;
+            btn.innerHTML = original;
+            status.innerHTML = 'Az üzenetet most nem sikerült elküldeni. Kérjük, hívjon minket: <a href="tel:+36209411055">+36 20 941 1055</a>, vagy írjon: <a href="mailto:contact@webszovo.hu">contact@webszovo.hu</a>.';
+        }
     };
 
     // ── Portfolio card expand popup (desktop only)
