@@ -1799,3 +1799,7 @@ footer {
 .contact-form .form-note + .form-note { margin-top: 6px; }
 .contact-form .form-status:empty { display: none; }
 .contact-form .form-status { color: #9b2c2c; }
+
+/* Árak: gombok egy vonalban a kártyák alján */
+.pricing-section .price-card { display: flex; flex-direction: column; }
+.pricing-section .price-cta { margin-top: auto; }
