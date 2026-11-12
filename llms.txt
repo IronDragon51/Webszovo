@@ -1,30 +1,30 @@
 # Webszövő
 
-> Modern, mobilbarát weboldalak helyi vállalkozásoknak.
-> Ingyenes mintaoldal 48 órán belül, előleg és kötelezettség nélkül.
+> Modern, mobilbarát weboldalak villanyszerelőknek, vízszerelőknek, autószervizeknek és más helyi vállalkozásoknak.
+> Ingyenes mintaoldal 48 órán belül, kötelezettség nélkül.
 
 ## Szolgáltatások
-- Weboldal készítés helyi vállalkozásoknak (fodrászat, autószerviz, szerelő, étterem, szalon)
-- Google Cégprofil beállítása és optimalizálása
-- Karbantartás havi díjért: tárhely, domain, SSL, frissítések, kisebb módosítások
-- Google Analytics beállítása
+- Weboldal készítés helyi vállalkozásoknak
+- Google Cégprofil beállítása
+- Gondozás havi díjért: tárhely, domain megújítás, havonta 1 kisebb módosítás, felügyelet
 
 ## Hogyan működik
 1. Ingyenes mintaoldal az Ön vállalkozásáról, 48 órán belül.
-2. Módosítások, amíg elégedett.
-3. Élesítés a saját domainen, megegyezés után 24 órán belül.
-4. Karbantartás havi díjért.
+2. Visszajelzés és módosítások (2 javítási kör benne van).
+3. Élesítés a saját domainen, az anyagok beérkezése után 5 munkanapon belül.
+4. Gondozás havi díjért.
 
-## Árak
-- Weboldal: 90 000 – 390 000 Ft, az oldal méretétől és a funkcióktól függően.
-- Havi karbantartás: legfeljebb 10 000 Ft.
-- A mintaoldal ingyenes.
-- 30 napos pénzvisszafizetési garancia.
+## Árak (nincs ÁFA – a feltüntetett ár a végső ár)
+- Egyoldalas weboldal: 120 000 Ft
+- Többoldalas weboldal (legfeljebb 5 oldal, kapcsolati űrlappal): 220 000 Ft
+- Gondozás: 5 000 Ft/hó vagy 50 000 Ft/év
+- Extra oldal: +20 000 Ft. Google Cégprofil beállítás: 25 000 Ft.
+- Fizetés: 50% előleg, 50% élesítéskor. A mintaoldal ingyenes.
 
 ## Hol dolgozunk
-Magyarország egész területén, online. Határon túli, magyar nyelvű vállalkozásoknak is.
+Budapest és agglomeráció.
 
 ## Kapcsolat
 - Telefon: +36 70 55 66 889
-- E-mail: webszovo@gmail.com
+- E-mail: contact@webszovo.hu
 - Weboldal: https://webszovo.hu/
