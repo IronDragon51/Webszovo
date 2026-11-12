@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <meta name="robots" content="noindex">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Masters Of Mural — Egyedi falfestés, kézzel festett falfestmények</title>
@@ -14,7 +15,7 @@
 <meta property="og:title" content="Masters Of Mural — Egyedi falfestés">
 <meta property="og:description" content="Egyszeri és megismételhetetlen műalkotás a falra. Kézzel festve, egyedi tervezéssel.">
 <meta property="og:url" content="https://www.mastersofmural.hu/">
-<meta property="og:image" content="https://www.mastersofmural.hu/img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png">
+<meta property="og:image" content="https://www.mastersofmural.hu/img/sasos-falfestes.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -371,8 +372,11 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
 /* ---------- lábléc ---------- */
 .site-foot{background:var(--black);color:var(--concrete);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
 .foot__top{display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between;align-items:flex-start;padding-bottom:2.5rem;border-bottom:var(--rule-inv)}
-.foot__brand{display:flex;align-items:center;gap:1rem}
+.foot__brand{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}
 .foot__brand img{width:34px}
+.foot__contact{display:grid;gap:.45rem;padding-left:1rem;border-left:var(--rule-inv)}
+.foot__contact a{color:var(--concrete);font-size:var(--text-xs);text-decoration:none}
+.foot__contact a:hover{color:var(--white)}
 .foot__name{
   display:block;color:var(--white);font-weight:600;font-size:var(--text-base);
   letter-spacing:.16em;text-transform:uppercase;
@@ -391,6 +395,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
 
 <header class="site-head" id="head">
   <a class="brand" href="#fo" aria-label="Masters Of Mural — kezdőlap">
+    <img src="img/logo-masters-of-mural.png" alt="">
     <span>
       <span class="brand__name">Masters Of Mural</span>
       <span class="brand__sub">Egyedi falfestés</span>
@@ -417,11 +422,11 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   <section class="hero">
     <div class="hero__media">
       <!-- Videó helye: cseréld az <img>-et az alábbi blokkra, ha kész a tömörített mp4.
-      <video autoplay muted loop playsinline poster="img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png">
+      <video autoplay muted loop playsinline poster="img/sasos-falfestes.png">
         <source src="img/bemutatkozas.mp4" type="video/mp4">
       </video>
       -->
-      <img src="img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png" alt="Kézzel festett, szobrászi hatású falfestmény egy étterem falán" width="2000" height="1125" fetchpriority="high">
+      <img src="img/sasos-falfestes.png" alt="Színes, kézzel festett sasfalfestmény" fetchpriority="high">
     </div>
 
     <div class="hero__inner">
@@ -652,18 +657,21 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   <div class="wrap">
     <div class="foot__top">
       <div class="foot__brand">
+        <img src="img/logo-masters-of-mural.png" alt="">
         <span>
           <span class="foot__name">Masters Of Mural</span>
           <span class="foot__sub">Egyedi falfestés</span>
         </span>
+        <div class="foot__contact">
+          <a href="tel:+36705566889">+36 70 556 6889</a>
+          <a href="mailto:mastersofmural@gmail.com">mastersofmural@gmail.com</a>
+        </div>
       </div>
       <nav class="foot__links" aria-label="Lábléc menü">
         <a href="#bemutatkozas">Bemutatkozás</a>
         <a href="#szolgaltatasok">Szolgáltatások</a>
         <a href="#folyamat">Hogyan működik</a>
         <a href="#latvanytervek">Látványtervek</a>
-        <a href="tel:+36705566889">+36 70 556 6889</a>
-        <a href="mailto:mastersofmural@gmail.com">mastersofmural@gmail.com</a>
       </nav>
     </div>
     <div class="foot__bottom">
@@ -693,7 +701,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   "url":"https://www.mastersofmural.hu/",
   "telephone":"+36705566889",
   "email":"mastersofmural@gmail.com",
-  "image":"https://www.mastersofmural.hu/img/49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png",
+  "image":"https://www.mastersofmural.hu/img/sasos-falfestes.png",
   "priceRange":"$$",
   "areaServed":{"@type":"Country","name":"Magyarország"},
   "address":{"@type":"PostalAddress","addressCountry":"HU"}
@@ -808,7 +816,17 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
     if(form.action.indexOf('SAJAT_AZONOSITO') > -1){
       e.preventDefault();
       var d = new FormData(form), sor = [];
-      d.forEach(function(v,k){ if(v) sor.push(k + ': ' + v); });
+      var mezocimkek = {
+        nev: 'Név',
+        email: 'E-mail cím',
+        telefon: 'Telefon',
+        telepules: 'Település',
+        terulet: 'Festendő fal felülete (m²)',
+        hely: 'Kültér vagy beltér?',
+        idosav: 'Visszahívási időpont',
+        uzenet: 'Mit képzeltél el?'
+      };
+      d.forEach(function(v,k){ if(v) sor.push((mezocimkek[k] || k) + ': ' + v); });
       status.textContent = 'Megnyitjuk a levelezőprogramot az adatokkal.';
       status.classList.add('is-on');
       window.location.href = 'mailto:mastersofmural@gmail.com'
