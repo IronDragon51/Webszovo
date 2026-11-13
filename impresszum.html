@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresszum — Webszövő</title>
+    <meta name="description" content="A Webszövő weboldal üzemeltetőjének és tárhelyszolgáltatójának adatai.">
+    <link rel="canonical" href="https://webszovo.hu/impresszum">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D5A27'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='sans-serif' fill='white' font-weight='bold'>W</text></svg>">
+    <style>
+        .legal { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+        .legal .logo { display: inline-block; margin-bottom: 40px; }
+        .legal h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); margin-bottom: 24px; }
+        .legal h2 { font-size: 1.1rem; margin: 32px 0 10px; }
+        .legal p, .legal li { color: var(--text-muted); }
+        .legal dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; }
+        .legal dt { font-weight: 600; }
+        .legal dd { color: var(--text-muted); overflow-wrap: anywhere; }
+        .legal a { color: var(--accent); }
+        .legal .back { display: inline-block; margin-top: 40px; }
+        @media (max-width: 480px) { .legal dl { grid-template-columns: 1fr; gap: 2px; } .legal dd { margin-bottom: 10px; } }
+    </style>
+</head>
+
+<body>
+    <main class="legal">
+        <a href="/" class="logo">Web<span>szövő</span></a>
+        <h1>Impresszum</h1>
+
+        <h2>A weboldal üzemeltetője</h2>
+        <dl>
+            <dt>Név</dt><dd>Papp Máté egyéni vállalkozó</dd>
+            <dt>Székhely</dt><dd>Budapest, Etele út 26.</dd>
+            <dt>Adószám</dt><dd>[adószám]</dd>
+            <dt>Nyilvántartási szám</dt><dd>[nyilvántartási szám]</dd>
+            <dt>E-mail</dt><dd><a href="mailto:contact@webszovo.hu">contact@webszovo.hu</a></dd>
+            <dt>Telefon</dt><dd><a href="tel:+36209411055">+36 20 941 1055</a></dd>
+        </dl>
+
+        <h2>Tárhelyszolgáltató</h2>
+        <dl>
+            <dt>Név</dt><dd>Cloudflare, Inc.</dd>
+            <dt>Cím</dt><dd>101 Townsend St, San Francisco, CA 94107, USA</dd>
+            <dt>Weboldal</dt><dd><a href="https://www.cloudflare.com" rel="noopener">www.cloudflare.com</a></dd>
+        </dl>
+
+        <p style="margin-top: 32px;">Az adatkezelésről az <a href="adatvedelem.html">Adatkezelési tájékoztatóban</a> olvashat.</p>
+        <a href="/" class="back">← Vissza a főoldalra</a>
+    </main>
+</body>
+
+</html>
