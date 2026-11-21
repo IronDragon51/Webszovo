@@ -4,18 +4,22 @@
     <meta name="robots" content="noindex">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Masters Of Mural — Egyedi falfestés, kézzel festett falfestmények</title>
+<title>Masters Of Mural | Egyedi falfestés, kézzel festett falfestmények</title>
 <meta name="description" content="Egyedileg megtervezett, kézzel festett falfestmények irodába, üzletbe, otthonba és házfalra. Ingyenes konzultáció és látványterv az ország egész területén.">
 <link rel="canonical" href="https://www.mastersofmural.hu/">
 <meta name="theme-color" content="#000000">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="img/sas-fokep.jpg" as="image">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:site_name" content="Masters Of Mural">
-<meta property="og:title" content="Masters Of Mural — Egyedi falfestés">
+<meta property="og:title" content="Masters Of Mural | Egyedi falfestés">
 <meta property="og:description" content="Egyszeri és megismételhetetlen műalkotás a falra. Kézzel festve, egyedi tervezéssel.">
 <meta property="og:url" content="https://www.mastersofmural.hu/">
-<meta property="og:image" content="https://www.mastersofmural.hu/img/sasos-falfestes.png">
+<meta property="og:image" content="https://www.mastersofmural.hu/img/sas-fokep.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,6 +52,10 @@
   --rule:1px solid rgba(0,0,0,.14);
   --rule-inv:1px solid rgba(255,255,255,.16);
 
+  /* festékszórós háttér: 1200 px-es csempe 600 px-en (2× élesség) */
+  --spray-dark:#0c0c0c url("img/festek-fekete.jpg") repeat 0 0/600px 600px;
+  --spray-light:#f6f6f4 url("img/festek-feher.jpg") repeat 0 0/600px 600px;
+
   /* kézi ecsetvonás a címsorok alá */
   --swash:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 16' preserveAspectRatio='none'%3E%3Cpath d='M1.5 11.6c14-3.3 33.7-5.7 58.8-7.2 25-1.5 52.6-2 82.6-1.4 17.6.4 33.1 1.1 46.4 2.2 9.7.8 19.2 1.9 28.5 3.3 5.5.8 10 1.7 13.4 2.6 3.4.9 5.6 1.8 6.6 2.7.9.8.4 1.3-1.6 1.6-2 .3-5.2.3-9.7-.1-8.9-.7-21.4-2-37.5-3.2-19.5-1.5-41.3-2.4-65.5-2.6-24.2-.2-48.6.4-73.2 1.9-13.1.8-24.8 1.8-35.2 3-5.2.6-9 .9-11.4.9-2.4 0-3.6-.3-3.6-1 0-.8.7-1.6 2.2-2.4.8-.4 1.8-.8 2.9-1.2z'/%3E%3C/svg%3E");
 }
@@ -58,7 +66,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
 
 body{
   margin:0;
-  background:var(--bg);
+  background:var(--spray-light);
   color:var(--fg);
   font-family:"Archivo",Arial,sans-serif;
   font-size:var(--text-base);
@@ -92,9 +100,10 @@ h1,h2,h3,.display{
 .swash::after{
   content:"";
   display:block;
-  width:clamp(110px,15vw,210px);
-  height:13px;
-  margin-top:.7rem;
+  width:var(--sw,100%);  /* a cím leghosszabb sorának szélessége (JS méri) */
+  max-width:100%;
+  height:14px;
+  margin-top:.3rem;
   background-color:currentColor;
   -webkit-mask:var(--swash) no-repeat left center/100% 100%;
   mask:var(--swash) no-repeat left center/100% 100%;
@@ -122,17 +131,16 @@ h1,h2,h3,.display{
 .site-head{
   position:fixed;inset:0 0 auto 0;z-index:100;
   display:flex;align-items:center;gap:1.5rem;
-  padding:1.1rem var(--pad);
+  padding:.9rem var(--pad);
   color:var(--white);
-  transition:background .3s ease,padding .3s ease,color .3s ease;
+  background:var(--spray-dark);
+  border-bottom:var(--rule-inv);
+  transition:padding .3s ease;
 }
-.site-head.is-stuck{
-  background:rgba(0,0,0,.94);
-  backdrop-filter:saturate(140%) blur(8px);
-  padding-block:.7rem;
-}
+.site-head.is-stuck{padding-block:.6rem}
 .brand{display:flex;align-items:center;gap:.85rem;text-decoration:none;margin-right:auto}
-.brand img{width:26px;height:auto}
+.brand img{width:auto;height:46px;transition:height .3s ease}
+.site-head.is-stuck .brand img{height:38px}
 .brand__name{
   display:block;font-weight:600;font-size:var(--text-sm);
   letter-spacing:.2em;text-transform:uppercase;line-height:1.1;
@@ -161,7 +169,7 @@ h1,h2,h3,.display{
   .burger{display:block}
   .nav{
     position:fixed;inset:0;
-    background:var(--black);
+    background:var(--spray-dark);
     flex-direction:column;justify-content:center;align-items:flex-start;
     gap:1.4rem;padding:6rem var(--pad) 3rem;
     transform:translateX(100%);
@@ -184,7 +192,7 @@ h1,h2,h3,.display{
   overflow:hidden;
 }
 .hero__media{position:absolute;inset:0}
-.hero__media img,.hero__media video{width:100%;height:100%;object-fit:cover;opacity:.72}
+.hero__media img,.hero__media video{width:100%;height:100%;object-fit:cover;object-position:68% 45%;opacity:.8}
 .hero__media::after{
   content:"";position:absolute;inset:0;
   background:
@@ -221,11 +229,10 @@ h1,h2,h3,.display{
 
 /* ---------- általános szekció ---------- */
 .sec{padding-block:clamp(4.5rem,10vw,8rem)}
-.sec--dark{background:var(--black);color:var(--white)}
+.sec+.sec{padding-top:clamp(1rem,3vw,2rem)}
 .sec__head{max-width:62ch;margin-bottom:clamp(2.5rem,5vw,4rem)}
 .sec__head h2{font-size:var(--text-4xl)}
 .sec__head p{margin:1.4rem 0 0;max-width:54ch;color:var(--graphite)}
-.sec--dark .sec__head p{color:var(--concrete)}
 
 /* ---------- bemutatkozás ---------- */
 .about{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
@@ -244,8 +251,8 @@ h1,h2,h3,.display{
 @media (max-width:860px){.about{grid-template-columns:1fr}}
 
 /* ---------- szolgáltatások ---------- */
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.14)}
-.service{position:relative;background:var(--black);overflow:hidden}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.service{position:relative;background:var(--spray-dark);color:var(--white);overflow:hidden}
 .service img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;opacity:.85;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s}
 .service:hover img{transform:scale(1.04);opacity:1}
 .service__body{padding:1.5rem 1.6rem 1.9rem}
@@ -255,8 +262,9 @@ h1,h2,h3,.display{
 @media (max-width:620px){.services{grid-template-columns:1fr}}
 
 /* ---------- folyamat ---------- */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.14);border-top:var(--rule);border-bottom:var(--rule)}
-.step{background:var(--lime);padding:clamp(1.8rem,3.5vw,2.6rem) clamp(1.4rem,2.5vw,2.2rem)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--rule);border-bottom:var(--rule)}
+.step{padding:clamp(1.8rem,3.5vw,2.6rem) clamp(1.4rem,2.5vw,2.2rem)}
+.step+.step{border-left:var(--rule)}
 .step b{
   display:block;font-weight:900;
   font-size:4rem;line-height:.8;margin-bottom:1.3rem;
@@ -265,10 +273,10 @@ h1,h2,h3,.display{
 .step h3{font-size:var(--text-xl)}
 .step p{margin:.75rem 0 0;font-size:var(--text-base);color:var(--graphite);max-width:34ch}
 .process__cta{margin-top:clamp(2.2rem,4vw,3rem)}
-@media (max-width:860px){.steps{grid-template-columns:1fr}}
+@media (max-width:860px){.steps{grid-template-columns:1fr}.step+.step{border-left:0;border-top:var(--rule)}}
 
 /* ---------- galéria ---------- */
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.14)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
 .shot{position:relative;margin:0;padding:0;border:0;background:var(--black);cursor:pointer;overflow:hidden;text-align:left;aspect-ratio:3/2}
 .shot img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .4s;opacity:.88}
 .shot:hover img,.shot:focus-visible img{transform:scale(1.05);opacity:1}
@@ -332,7 +340,11 @@ h1,h2,h3,.display{
 .social a{font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.25);padding-bottom:.2rem}
 .social a:hover{border-bottom-color:var(--black)}
 
-.form{background:var(--white);padding:clamp(1.6rem,3.5vw,2.6rem)}
+.form{background:var(--white);padding:clamp(1.6rem,3.5vw,2.6rem);box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form__status.is-ok{color:#1d5e2c}
+.form__status.is-err{color:#9a2b2b}
+.form .btn[disabled]{opacity:.6;cursor:wait}
 .form h3{font-size:var(--text-xl)}
 .form__grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.1rem;margin-top:1.6rem}
 .field{display:flex;flex-direction:column;gap:.4rem;min-width:0}
@@ -370,10 +382,10 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
 }
 
 /* ---------- lábléc ---------- */
-.site-foot{background:var(--black);color:var(--concrete);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
+.site-foot{background:var(--spray-dark);color:var(--concrete);padding-block:clamp(3rem,6vw,4.5rem) 2rem}
 .foot__top{display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:space-between;align-items:flex-start;padding-bottom:2.5rem;border-bottom:var(--rule-inv)}
 .foot__brand{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}
-.foot__brand img{width:34px}
+.foot__brand img{width:auto;height:64px}
 .foot__contact{display:grid;gap:.45rem;padding-left:1rem;border-left:var(--rule-inv)}
 .foot__contact a{color:var(--concrete);font-size:var(--text-xs);text-decoration:none}
 .foot__contact a:hover{color:var(--white)}
@@ -394,8 +406,8 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
 <a class="skip" href="#fo">Ugrás a tartalomhoz</a>
 
 <header class="site-head" id="head">
-  <a class="brand" href="#fo" aria-label="Masters Of Mural — kezdőlap">
-    <img src="img/logo-masters-of-mural.png" alt="">
+  <a class="brand" href="#fo" aria-label="Masters Of Mural, kezdőlap">
+    <img src="img/logo-feher.svg" alt="" width="29" height="46">
     <span>
       <span class="brand__name">Masters Of Mural</span>
       <span class="brand__sub">Egyedi falfestés</span>
@@ -422,11 +434,11 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   <section class="hero">
     <div class="hero__media">
       <!-- Videó helye: cseréld az <img>-et az alábbi blokkra, ha kész a tömörített mp4.
-      <video autoplay muted loop playsinline poster="img/sasos-falfestes.png">
+      <video autoplay muted loop playsinline poster="img/sas-fokep.jpg">
         <source src="img/bemutatkozas.mp4" type="video/mp4">
       </video>
       -->
-      <img src="img/sasos-falfestes.png" alt="Színes, kézzel festett sasfalfestmény" fetchpriority="high">
+      <img src="img/sas-fokep.jpg" alt="Színes, festékszóróval festett repülő sas" width="1532" height="1152" fetchpriority="high">
     </div>
 
     <div class="hero__inner">
@@ -435,7 +447,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
         <span class="l"><i>megismételhetetlen</i></span>
         <span class="l"><i>műalkotás</i></span>
       </h1>
-      <p class="hero__lead">Egyedileg megtervezett, kézzel festett falfestmények. Valódi festékrétegek, cseppek és festékfolyások — ezek teszik kézzelfoghatóvá és autentikussá.</p>
+      <p class="hero__lead">Egyedileg megtervezett, kézzel festett falfestmények. Valódi festékrétegek, cseppek és festékfolyások teszik kézzelfoghatóvá és autentikussá.</p>
       <div class="hero__cta">
         <a class="btn btn--light" href="#kapcsolat">Ingyenes konzultáció</a>
         <a class="btn btn--ghost" href="#latvanytervek">Látványtervek</a>
@@ -453,7 +465,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
     <div class="wrap about">
       <div class="about__text">
         <h2 class="swash">Festmény, nem tapéta</h2>
-        <p>A Masters Of Mural kézzel festett falfestményeket készít — minden munka egyetlen térhez, egyetlen falra készül. Nincs két egyforma, mert nincs nyomtatás, nincs sablon: minden vonal ecsettel és festékszóróval kerül a falra.</p>
+        <p>A Masters Of Mural kézzel festett falfestményeket készít. Minden munka egyetlen térhez, egyetlen falra készül. Nincs két egyforma, mert nincs nyomtatás, nincs sablon: minden vonal ecsettel és festékszóróval kerül a falra.</p>
         <p>Ugyanúgy dolgozunk egy kávézó homlokfalán, egy iroda tárgyalójában vagy egy nappali üres falán. Az első lépés mindig ugyanaz: megnézzük a teret, és megtervezzük, mi illik hozzá.</p>
         <div class="about__stats">
           <div><b>Egyedi terv</b><span>Minden falhoz saját látványterv készül</span></div>
@@ -462,17 +474,17 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
         </div>
       </div>
       <figure class="about__figure" style="margin:0">
-        <img src="img/IMG_0637.PNG" alt="Kávézó belső tere plasztikus, kávécsésze motívumú falfestménnyel" width="1400" height="788" loading="lazy">
+        <img src="img/IMG_0637.PNG" alt="Étterem vendégtere plasztikus, olívaágas falfestménnyel" width="1400" height="788" loading="lazy">
       </figure>
     </div>
   </section>
 
   <!-- ================= SZOLGÁLTATÁSOK ================= -->
-  <section class="sec sec--dark" id="szolgaltatasok">
+  <section class="sec" id="szolgaltatasok">
     <div class="wrap">
       <div class="sec__head">
         <h2 class="swash">Szolgáltatásaink</h2>
-        <p>Akármilyen mintát, bármilyen felületre, bármely méretben — beltérbe és kültérbe egyaránt. Irodába, szobába, üzletbe, házfalra vagy raktárépületre.</p>
+        <p>Akármilyen mintát, bármilyen felületre, bármely méretben, beltérbe és kültérbe egyaránt. Irodába, szobába, üzletbe, házfalra vagy raktárépületre.</p>
       </div>
     </div>
 
@@ -514,7 +526,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
           <img src="img/Log%C3%B3-%20%C3%A9s%20t%C3%A1blafest%C3%A9s.png" alt="Kávézó falán festett cicás logó és felirat" width="1100" height="733" loading="lazy">
           <div class="service__body">
             <h3>Logó- és táblafestés</h3>
-            <p>Cégér, logó, nyitvatartás vagy menü közvetlenül a falra festve — nyomtatott matrica helyett.</p>
+            <p>Cégér, logó, nyitvatartás vagy menü közvetlenül a falra festve, nyomtatott matrica helyett.</p>
           </div>
         </article>
 
@@ -522,7 +534,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
           <img src="img/Arculat%20fest%C3%A9s.png" alt="Bár belső tere színes, arculati elemekből álló falfestéssel" width="1100" height="733" loading="lazy">
           <div class="service__body">
             <h3>Arculatfestés</h3>
-            <p>A meglévő arculat — színek, formák, karakter — végigvezetve a vendégtér falain.</p>
+            <p>A meglévő arculat színei, formái és karaktere végigvezetve a vendégtér falain.</p>
           </div>
         </article>
       </div>
@@ -534,7 +546,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
     <div class="wrap">
       <div class="sec__head">
         <h2 class="swash">Hogyan működik?</h2>
-        <p>Három lépés a megkereséstől a kész falig. Az első kettő ingyenes — árajánlatot csak a végleges terv után adunk.</p>
+        <p>Három lépés a megkereséstől a kész falig. Az első kettő ingyenes, árajánlatot csak a végleges terv után adunk.</p>
       </div>
     </div>
     <div class="wrap">
@@ -562,11 +574,11 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   </section>
 
   <!-- ================= LÁTVÁNYTERVEK ================= -->
-  <section class="sec sec--dark" id="latvanytervek">
+  <section class="sec" id="latvanytervek">
     <div class="wrap">
       <div class="sec__head">
         <h2 class="swash">Látványterveink</h2>
-        <p>Előre elkészített tervek különböző terekre. Kattints bármelyikre a nagyításhoz — a sajátod ezek alapján, de a te faladra készül.</p>
+        <p>Előre elkészített tervek különböző terekre. Kattints bármelyikre a nagyításhoz. A sajátod ezek alapján, de a te faladra készül.</p>
       </div>
     </div>
     <div class="wrap">
@@ -581,7 +593,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
     <div class="wrap contact">
       <div class="contact__aside">
         <h2 class="swash">Vedd fel velünk a kapcsolatot</h2>
-        <p>Hívj minket, írj e-mailt, vagy kérj visszahívást — a megadott idősávban keresünk.</p>
+        <p>Hívj minket, írj e-mailt, vagy kérj visszahívást, és a megadott idősávban keresünk.</p>
 
         <ul class="contact__list">
           <li><a href="tel:+36209411055"><small>Telefon</small>+36 20 941 1055</a></li>
@@ -595,9 +607,14 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
         </div>
       </div>
 
-      <!-- A form elküldéséhez állítsd be az action-t (pl. Formspree / saját PHP végpont). -->
-      <form class="form" id="callback" action="https://formspree.io/f/SAJAT_AZONOSITO" method="post" novalidate>
+      <!-- Küldés: FormSubmit.co, a levél a mastersofmural@gmail.com címre érkezik.
+           Az első beküldés után a FormSubmit egyszeri megerősítő levelet küld erre a címre; az abban lévő gombra kell kattintani. -->
+      <form class="form" id="callback" action="https://formsubmit.co/mastersofmural@gmail.com" method="post" novalidate>
         <h3>Kérjen visszahívást</h3>
+        <input type="hidden" name="_subject" value="Visszahívás kérése a weboldalról">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="hp" aria-hidden="true"><label>Ne töltsd ki: <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
 
         <div class="form__grid">
           <div class="field">
@@ -657,7 +674,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   <div class="wrap">
     <div class="foot__top">
       <div class="foot__brand">
-        <img src="img/logo-masters-of-mural.png" alt="">
+        <img src="img/logo-feher.svg" alt="" width="41" height="64">
         <span>
           <span class="foot__name">Masters Of Mural</span>
           <span class="foot__sub">Egyedi falfestés</span>
@@ -701,7 +718,7 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   "url":"https://www.mastersofmural.hu/",
   "telephone":"+36209411055",
   "email":"mastersofmural@gmail.com",
-  "image":"https://www.mastersofmural.hu/img/sasos-falfestes.png",
+  "image":"https://www.mastersofmural.hu/img/sas-fokep.jpg",
   "priceRange":"$$",
   "areaServed":{"@type":"Country","name":"Magyarország"},
   "address":{"@type":"PostalAddress","addressCountry":"HU"}
@@ -718,6 +735,20 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   onScroll();
   window.addEventListener('scroll', onScroll, {passive:true});
 
+  /* ---------- ecsetvonás a cím szélességéhez ---------- */
+  var swashes = document.querySelectorAll('.swash');
+  var fitSwash = function(){
+    swashes.forEach(function(h){
+      var r = document.createRange(); r.selectNodeContents(h);
+      var w = 0, rects = r.getClientRects();
+      for(var i = 0; i < rects.length; i++){ w = Math.max(w, rects[i].right - h.getBoundingClientRect().left); }
+      if(w) h.style.setProperty('--sw', Math.ceil(w) + 'px');
+    });
+  };
+  fitSwash();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(fitSwash);
+  window.addEventListener('resize', fitSwash);
+
   /* ---------- mobil menü ---------- */
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
@@ -732,22 +763,22 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
 
   /* ---------- galéria ---------- */
   var shots = [
-    ['49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png', 'Étterem — egyedi falfestés a vendégtérben'],
-    ['B932F136-51E2-4FBA-A13F-5561A30C4589.png', 'Edzőterem — motivációs falfestés'],
-    ['IMG_0501.JPG', 'Fodrászat — portré falfestmény'],
-    ['IMG_0502.JPG', 'Kutyakozmetika — egyedi falfestés'],
-    ['IMG_0576.JPG', 'Művészi falfestmény — színes sas'],
-    ['IMG_0632.PNG', 'Dekorációs falfestés — térhatású mintával'],
-    ['IMG_0633.PNG', 'Kávézó — egyedi dekoráció'],
-    ['IMG_0634.PNG', 'Iroda — látványos faldekoráció'],
-    ['IMG_0636.PNG', 'Kutyakozmetika — egyedi falfestés'],
-    ['IMG_0637.PNG', 'Kávézó — cicás falfestmény'],
-    ['IMG_0638.PNG', 'Nappali — színes absztrakt falfestmény'],
-    ['IMG_0641.PNG', 'Modern falfestmény — hullámformák']
+    ['49C1B1BD-5290-4FF4-AA58-06FA4D6EDFE4.png', 'Olasz étterem, koccintós falfestmény'],
+    ['B932F136-51E2-4FBA-A13F-5561A30C4589.png', 'Edzőterem, motivációs falfestés'],
+    ['IMG_0501.JPG', 'Fodrászat, portré falfestmény'],
+    ['IMG_0502.JPG', 'Kutyakozmetika, plasztikus kutyás falfestés'],
+    ['IMG_0576.JPG', 'Színes, levélmintás falfestmény-tervek'],
+    ['IMG_0632.PNG', 'Házfal, színes geometrikus falfestés'],
+    ['IMG_0633.PNG', 'Nappali, térhatású hullámformák'],
+    ['IMG_0634.PNG', 'Nappali, plasztikus hullámminta'],
+    ['IMG_0636.PNG', 'Kávézó, térhatású kávés falfestmény'],
+    ['IMG_0637.PNG', 'Étterem, plasztikus olívaágas falfestmény'],
+    ['IMG_0638.PNG', 'Iroda, látványos faldekoráció'],
+    ['IMG_0641.PNG', 'Kutyakozmetika, kutyás-cicás faldekoráció']
   ];
   var gal = document.getElementById('galeria');
   gal.innerHTML = shots.map(function(s, i){
-    return '<figure class="shot" role="button" tabindex="0" data-i="' + i + '" aria-label="' + s[1] + ' — nagyítás">' +
+    return '<figure class="shot" role="button" tabindex="0" data-i="' + i + '" aria-label="' + s[1] + ', nagyítás">' +
              '<img src="img/' + encodeURIComponent(s[0]) + '" alt="' + s[1] + '" loading="lazy" decoding="async">' +
              '<figcaption>' + s[1] + '</figcaption>' +
            '</figure>';
@@ -803,36 +834,40 @@ legend{font-size:var(--text-xs);letter-spacing:.12em;text-transform:uppercase;co
   var form = document.getElementById('callback');
   var status = document.getElementById('status');
 
+  var setStatus = function(msg, kind){
+    status.textContent = msg;
+    status.className = 'form__status is-on' + (kind ? ' is-' + kind : '');
+  };
+
   form.addEventListener('submit', function(e){
+    e.preventDefault();
     if(!form.checkValidity()){
-      e.preventDefault();
       var bad = form.querySelector(':invalid');
       if(bad){ bad.focus(); }
-      status.textContent = 'Kérjük, töltsd ki a csillaggal jelölt mezőket.';
-      status.classList.add('is-on');
+      setStatus('Kérjük, töltsd ki a csillaggal jelölt mezőket.', 'err');
       return;
     }
-    // Ha nincs beállítva végpont, nyissa meg a levelezőt ahelyett, hogy hibára futna.
-    if(form.action.indexOf('SAJAT_AZONOSITO') > -1){
-      e.preventDefault();
-      var d = new FormData(form), sor = [];
-      var mezocimkek = {
-        nev: 'Név',
-        email: 'E-mail cím',
-        telefon: 'Telefon',
-        telepules: 'Település',
-        terulet: 'Festendő fal felülete (m²)',
-        hely: 'Kültér vagy beltér?',
-        idosav: 'Visszahívási időpont',
-        uzenet: 'Mit képzeltél el?'
-      };
-      d.forEach(function(v,k){ if(v) sor.push((mezocimkek[k] || k) + ': ' + v); });
-      status.textContent = 'Megnyitjuk a levelezőprogramot az adatokkal.';
-      status.classList.add('is-on');
-      window.location.href = 'mailto:mastersofmural@gmail.com'
-        + '?subject=' + encodeURIComponent('Visszahívás kérése – ' + (d.get('nev') || ''))
-        + '&body=' + encodeURIComponent(sor.join('\n'));
-    }
+    var btn = form.querySelector('button[type="submit"]');
+    var d = new FormData(form);
+    d.set('_subject', 'Visszahívás kérése: ' + (d.get('nev') || ''));
+    d.set('_replyto', d.get('email') || '');
+    btn.disabled = true;
+    setStatus('Küldés folyamatban…');
+
+    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      method: 'POST',
+      headers: {'Accept': 'application/json'},
+      body: d
+    }).then(function(r){
+      return r.json().catch(function(){ return {}; }).then(function(j){
+        if(!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+      });
+    }).then(function(){
+      form.reset();
+      setStatus('Köszönjük! Megkaptuk az üzenetedet, a megadott idősávban visszahívunk.', 'ok');
+    }).catch(function(){
+      setStatus('Most nem sikerült elküldeni. Hívj minket a +36 20 941 1055 számon, vagy írj a mastersofmural@gmail.com címre.', 'err');
+    }).then(function(){ btn.disabled = false; });
   });
 })();
 </script>
