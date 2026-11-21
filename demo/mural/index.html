@@ -24,7 +24,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -71,9 +71,9 @@ body{
   margin:0;
   background:var(--spray-light);
   color:var(--fg);
-  font-family:"Archivo",Arial,sans-serif;
+  font-family:"Inter",Arial,sans-serif;
   font-size:var(--text-base);
-  line-height:1.68;
+  line-height:1.7;
   -webkit-font-smoothing:antialiased;
   overflow-x:clip;
 }
@@ -82,12 +82,11 @@ a{color:inherit}
 button{font:inherit;color:inherit}
 
 h1,h2,h3,.display{
-  font-family:"Archivo",sans-serif;
-  font-stretch:80%;
-  font-weight:900;
+  font-family:"Montserrat",Arial,sans-serif;
+  font-weight:800;
   text-transform:uppercase;
-  line-height:.94;
-  letter-spacing:0;
+  line-height:1.08;
+  letter-spacing:-.01em;
   margin:0;
   text-wrap:balance;
 }
@@ -179,7 +178,7 @@ h1,h2,h3,.display{
     transition:transform .35s cubic-bezier(.4,0,.2,1);
   }
   .site-head.is-open .nav{transform:none}
-  .nav a{font-size:var(--text-2xl);font-weight:800}
+  .nav a{font-size:var(--text-2xl);font-weight:700;font-family:"Montserrat",sans-serif}
   .nav .btn{font-size:var(--text-sm);margin-top:.5rem}
   .burger{position:relative;z-index:2;color:var(--white)}
   .site-head.is-open .brand{position:relative;z-index:2;color:var(--white)}
@@ -205,7 +204,7 @@ h1,h2,h3,.display{
 .hero__inner{position:relative;width:100%;max-width:var(--maxw);margin-inline:auto;padding:9rem var(--pad) clamp(3rem,7vw,5.5rem)}
 .hero h1{font-size:var(--text-4xl)}
 @media (max-width:900px){.hero h1{font-size:var(--text-3xl)}}
-@media (max-width:620px){:root{--text-4xl:2rem}.hero h1{font-size:2rem}}
+@media (max-width:620px){:root{--text-4xl:1.6rem}.hero h1{font-size:1.6rem}}
 .hero h1 .l{display:block;overflow:hidden;padding-top:.1em;margin-top:-.1em}
 .hero h1 .l i{display:block;font-style:normal;animation:rise 1s cubic-bezier(.22,1,.36,1) both}
 .hero h1 .l:nth-child(2) i{animation-delay:.1s}
@@ -247,7 +246,7 @@ h1,h2,h3,.display{
 .about__stats{display:flex;gap:2.5rem;margin-top:2.4rem;border-top:var(--rule);padding-top:1.6rem;flex-wrap:wrap}
 .about__stats div{max-width:16ch}
 .about__stats b{
-  display:block;font-weight:800;
+  display:block;font-weight:700;font-family:"Montserrat",sans-serif;
   font-size:var(--text-base);text-transform:uppercase;letter-spacing:0;
 }
 .about__stats span{font-size:var(--text-sm);color:var(--graphite);line-height:1.45;display:block;margin-top:.2rem}
@@ -269,7 +268,7 @@ h1,h2,h3,.display{
 .step{padding:clamp(1.8rem,3.5vw,2.6rem) clamp(1.4rem,2.5vw,2.2rem)}
 .step+.step{border-left:var(--rule)}
 .step b{
-  display:block;font-weight:900;
+  display:block;font-weight:800;font-family:"Montserrat",sans-serif;
   font-size:4rem;line-height:.8;margin-bottom:1.3rem;
   color:var(--black);
 }
@@ -329,7 +328,7 @@ h1,h2,h3,.display{
 .contact__list a{
   display:flex;align-items:baseline;flex-wrap:wrap;gap:.2rem 1rem;padding:1.15rem 0;text-decoration:none;
   overflow-wrap:anywhere;
-  font-weight:800;font-size:var(--text-xl);
+  font-weight:700;font-family:"Montserrat",sans-serif;font-size:var(--text-xl);
   text-transform:uppercase;letter-spacing:.01em;
   transition:padding-left .25s ease;
 }
@@ -337,7 +336,6 @@ h1,h2,h3,.display{
 .contact__list small{
   display:block;font-weight:400;font-size:var(--text-xs);letter-spacing:.16em;
   color:var(--graphite);text-transform:uppercase;min-width:6.5rem;
-  font-stretch:100%;
 }
 .social{display:flex;gap:1.4rem;margin-top:2rem}
 .social a{font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.25);padding-bottom:.2rem}
