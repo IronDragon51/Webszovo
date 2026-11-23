@@ -2,3 +2,6 @@
 # large build artifact — kept locally, not deployed
 demo/tesgarage.zip
 demo/mural/img/festekszoro-4k/
+
+# local MCP client config — never deploy
+.mcp.json
